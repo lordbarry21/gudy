@@ -6,7 +6,11 @@
 [![Storage](https://img.shields.io/badge/Database-Hive%202.2-FFA000)](https://docs.hivedb.dev)
 [![Platform](https://img.shields.io/badge/Platforms-Android%20%7C%20iOS-brightgreen)](https://flutter.dev)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Branch](https://img.shields.io/badge/Branch-dev%20(Developer%20%26%20Demo%20Mode)-orange?logo=git&logoColor=white)](DEVELOPMENT.md)
 [![Code Style](https://img.shields.io/badge/Style-Flutter%20Lints-00B4AB)](https://pub.dev/packages/flutter_lints)
+
+> [!NOTE]
+> **Developer & Demo Mode Branch (`dev`)**: This branch contains developer tooling, demo quick actions in Profile, and active development features. Refer to [DEVELOPMENT.md](DEVELOPMENT.md) for developer documentation. For the stable production publish release, switch to the [`main`](https://github.com/lordbarry21/gudy/tree/main) branch.
 
 > **Gudy** (Guides Study) is an intuitive, offline-first study companion designed for students preparing for high-stakes examinations: **OSN (National Science Olympiad)**, **TKA Matematika**, **Language Mastery**, and **Vocational Certifications (Serkom Laravel/RPL)**.
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'core/config/app_config.dart';
 import 'core/theme/app_theme.dart';
 import 'router/app_router.dart';
 import 'data/local/hive_service.dart';
@@ -36,8 +37,8 @@ class GudyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'Gudy',
-      debugShowCheckedModeBanner: false,
+      title: AppConfig.isDevMode ? 'Gudy (Dev & Demo)' : 'Gudy',
+      debugShowCheckedModeBanner: AppConfig.showDebugBanner,
       theme: AppTheme.darkTheme,
       routerConfig: appRouter,
     );

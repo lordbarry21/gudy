@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../core/config/app_config.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
 import '../../../core/theme/app_theme.dart';
@@ -36,6 +37,12 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
               // Profile card
               _buildProfileCard(progress, unlockedCount, achievements.length),
               const SizedBox(height: AppTheme.spacingLg),
+
+              // Developer & Demo Mode Section
+              if (AppConfig.enableDevTools) ...[
+                _buildDeveloperSection(),
+                const SizedBox(height: AppTheme.spacingLg),
+              ],
 
               // Settings sections
               _buildSettingsSection(),
@@ -208,6 +215,95 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
     );
   }
 
+  Widget _buildDeveloperSection() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            const Icon(Icons.developer_mode, color: AppColors.accentWarning, size: 20),
+            const SizedBox(width: 8),
+            Text(
+              'Developer & Demo Tools',
+              style: AppTypography.heading4.copyWith(color: AppColors.accentWarning),
+            ),
+          ],
+        ),
+        const SizedBox(height: AppTheme.spacingMd),
+        Container(
+          padding: const EdgeInsets.all(AppTheme.cardPadding),
+          decoration: BoxDecoration(
+            color: AppColors.cardBackground,
+            borderRadius: BorderRadius.circular(AppTheme.cardRadius),
+            border: Border.all(
+              color: AppColors.accentWarning.withValues(alpha: 0.3),
+            ),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Branch: dev • ${AppConfig.environmentName}',
+                style: AppTypography.caption.copyWith(color: AppColors.textSecondary),
+              ),
+              const SizedBox(height: AppTheme.spacingMd),
+              Wrap(
+                spacing: AppTheme.spacingSm,
+                runSpacing: AppTheme.spacingSm,
+                children: [
+                  ActionChip(
+                    avatar: const Icon(Icons.local_fire_department, size: 16, color: AppColors.streakFire),
+                    label: const Text('+3 Streak (Demo)'),
+                    backgroundColor: AppColors.tertiaryBackground,
+                    onPressed: () async {
+                      await _progressRepo.updateStreak();
+                      await _progressRepo.updateStreak();
+                      await _progressRepo.updateStreak();
+                      if (mounted) {
+                        setState(() {});
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text('Demo: Streak incremented by +3')),
+                        );
+                      }
+                    },
+                  ),
+                  ActionChip(
+                    avatar: const Icon(Icons.check_circle_outline, size: 16, color: AppColors.accentInfo),
+                    label: const Text('+1 Topic Done (Demo)'),
+                    backgroundColor: AppColors.tertiaryBackground,
+                    onPressed: () async {
+                      await _progressRepo.addCompletedTopic();
+                      if (mounted) {
+                        setState(() {});
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text('Demo: +1 topic completed')),
+                        );
+                      }
+                    },
+                  ),
+                  ActionChip(
+                    avatar: const Icon(Icons.refresh, size: 16, color: AppColors.accentSuccess),
+                    label: const Text('Reset Demo Data'),
+                    backgroundColor: AppColors.tertiaryBackground,
+                    onPressed: () {
+                      _progressRepo.resetAllProgress();
+                      if (mounted) {
+                        setState(() {});
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text('Demo data reinitialized')),
+                        );
+                      }
+                    },
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
   Widget _buildAboutSection() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -250,7 +346,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                       children: [
                         Text('Gudy', style: AppTypography.heading4),
                         Text(
-                          'Version 1.0.0',
+                          'Version ${AppConfig.appVersion}',
                           style: AppTypography.caption,
                         ),
                       ],
