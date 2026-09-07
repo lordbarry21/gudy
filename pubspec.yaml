@@ -1,0 +1,47 @@
+name: gudy
+description: "Gudy - Guides Study. Study tracker app for OSN, Math Competitions, TKA, Languages, and Serkom."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.6.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Icons
+  cupertino_icons: ^1.0.8
+
+  # Navigation
+  go_router: ^14.8.1
+
+  # State Management (lightweight)
+  flutter_riverpod: ^2.6.1
+
+  # Local Storage (fast, lightweight NoSQL)
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+
+  # Utilities
+  intl: ^0.20.2
+  uuid: ^4.5.1
+
+  # Share/Copy functionality
+  share_plus: ^10.1.4
+
+  # Google Fonts (Inter)
+  google_fonts: ^6.2.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+  # Hive code generation
+  hive_generator: ^2.0.1
+  build_runner: ^2.4.14
+
+flutter:
+  uses-material-design: true
