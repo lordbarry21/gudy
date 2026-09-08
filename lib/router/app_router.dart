@@ -199,6 +199,7 @@ class _MainShellState extends State<MainShell>
               const SizedBox(height: 4),
               Text(
                 item.label,
+                overflow: TextOverflow.ellipsis,
                 style: TextStyle(
                   fontSize: 11,
                   fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,

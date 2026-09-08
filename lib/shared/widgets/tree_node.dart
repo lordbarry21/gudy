@@ -187,7 +187,7 @@ class _TreeNodeState extends State<TreeNode>
       case MasteryStatus.mastered:
         return AppColors.masteryGreenLight;
       case MasteryStatus.inProgress:
-        return AppColors.accentWarning.withOpacity(0.1);
+        return AppColors.accentAmber.withValues(alpha: 0.1);
       default:
         return Colors.transparent;
     }
@@ -198,7 +198,7 @@ class _TreeNodeState extends State<TreeNode>
       case MasteryStatus.mastered:
         return AppColors.accentSuccess;
       case MasteryStatus.inProgress:
-        return AppColors.accentWarning;
+        return AppColors.accentAmber;
       default:
         return AppColors.textPrimary;
     }
@@ -212,7 +212,7 @@ class _TreeNodeState extends State<TreeNode>
       width: 24,
       height: 24,
       decoration: BoxDecoration(
-        color: color.withOpacity(0.2),
+        color: color.withValues(alpha: 0.2),
         shape: BoxShape.circle,
       ),
       child: Center(

@@ -556,7 +556,6 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
         borderRadius: BorderRadius.circular(12),
       ),
       tileColor: AppColors.surfaceLight,
-      margin: const EdgeInsets.only(bottom: 8),
     );
   }
 

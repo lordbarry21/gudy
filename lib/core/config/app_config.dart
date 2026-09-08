@@ -8,7 +8,7 @@ enum AppEnvironment {
 class AppConfig {
   static const AppEnvironment environment = AppEnvironment.developer;
   static const bool isDevMode = true;
-  static const bool showDebugBanner = true;
+  static const bool showDebugBanner = false;
   static const String appVersion = '1.0.0-dev+1';
   static const String environmentName = 'Developer & Demo Mode';
 

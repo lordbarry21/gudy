@@ -97,11 +97,13 @@ class _SubjectDetailScreenState extends ConsumerState<SubjectDetailScreen>
                       icon: Icons.account_tree,
                       isSelected: _showMindMap,
                       onTap: () => setState(() => _showMindMap = true),
+                      gradient: subjectGradient,
                     ),
                     _buildViewToggle(
                       icon: Icons.list,
                       isSelected: !_showMindMap,
                       onTap: () => setState(() => _showMindMap = false),
+                      gradient: subjectGradient,
                     ),
                   ],
                 ),
@@ -316,7 +318,6 @@ class _SubjectDetailScreenState extends ConsumerState<SubjectDetailScreen>
         ),
         const SizedBox(height: 16),
         Container(
-          height: 350,
           decoration: BoxDecoration(
             color: AppColors.cardLight,
             borderRadius: BorderRadius.circular(20),
@@ -338,17 +339,6 @@ class _SubjectDetailScreenState extends ConsumerState<SubjectDetailScreen>
             },
           ),
         ),
-        const SizedBox(height: 24),
-        ShaderMask(
-          shaderCallback: (bounds) => gradient.createShader(bounds),
-          child: Text(
-            'Topics',
-            style: AppTypography.titleMedium.copyWith(
-              color: Colors.white,
-            ),
-          ),
-        ),
-        const SizedBox(height: 12),
       ],
     );
   }

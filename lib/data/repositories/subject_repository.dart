@@ -28,6 +28,10 @@ class SubjectRepository {
 
   /// Get topics by subject
   List<Topic> getTopicsBySubject(String subjectId) {
+    // Ensure data is initialized
+    if (HiveService.getAllSubjects().isEmpty) {
+      _initializeSubjects();
+    }
     return HiveService.getTopicsBySubject(subjectId);
   }
 
@@ -46,6 +50,10 @@ class SubjectRepository {
 
   /// Get topic by ID
   Topic? getTopic(String id) {
+    // Ensure data is initialized
+    if (HiveService.getAllSubjects().isEmpty) {
+      _initializeSubjects();
+    }
     return HiveService.getTopic(id);
   }
 
