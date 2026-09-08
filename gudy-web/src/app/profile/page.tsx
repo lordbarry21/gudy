@@ -37,6 +37,7 @@ export default function ProfilePage() {
     totalQuizzesTaken: 0,
     categoriesPlayed: 0,
   })
+  const [imageError, setImageError] = useState(false)
 
   useEffect(() => {
     setMounted(true)
@@ -127,7 +128,7 @@ export default function ProfilePage() {
         >
           <div className="flex items-center gap-4 mb-6">
             {/* Profile Picture */}
-            {user?.photoURL ? (
+            {user?.photoURL && !imageError ? (
               <div className="w-16 h-16 rounded-2xl overflow-hidden shadow-sm shrink-0 border-2 border-border">
                 <Image
                   src={user.photoURL}
@@ -135,6 +136,8 @@ export default function ProfilePage() {
                   width={64}
                   height={64}
                   className="w-full h-full object-cover"
+                  unoptimized
+                  onError={() => setImageError(true)}
                 />
               </div>
             ) : (

@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
-import { Fraunces, Source_Serif_4, Plus_Jakarta_Sans } from 'next/font/google'
+import { Fraunces, Literata, Sora } from 'next/font/google'
 import { AuthProvider } from '@/contexts/AuthContext'
 import { Navigation } from '@/components/navigation/navigation'
 import { ThemeProvider } from '@/components/theme-provider'
 import '@/styles/globals.css'
 
-// Fraunces - Quirky editorial serif for headings (like Apple's typography choices)
+// Fraunces - Quirky editorial serif for headings (Steve Jobs philosophy: type with soul)
 const fraunces = Fraunces({
   subsets: ['latin'],
   variable: '--font-display',
@@ -13,18 +13,21 @@ const fraunces = Fraunces({
   axes: ['SOFT', 'WONK', 'opsz'], // Variable axes for optical sizing
 })
 
-// Source Serif 4 - Adobe's masterpiece for long-form reading
-const sourceSerif = Source_Serif_4({
+// Literata - Designed specifically for long-form digital reading (Google Fonts)
+// The voice of your content - comfortable for hours of study
+const literata = Literata({
   subsets: ['latin'],
-  variable: '--font-serif',
+  variable: '--font-body',
   display: 'swap',
-  weight: ['200', '300', '400', '600', '700'],
+  axes: ['opsz', 'wght'], // opsz for optical sizing, wght for weight range
+  style: ['normal', 'italic'],
 })
 
-// Plus Jakarta Sans - Warm geometric sans for UI elements
-const plusJakarta = Plus_Jakarta_Sans({
+// Sora - Modern geometric sans with distinctive character
+// The voice of your UI - functional but not boring
+const sora = Sora({
   subsets: ['latin'],
-  variable: '--font-sans',
+  variable: '--font-ui',
   display: 'swap',
   weight: ['400', '500', '600', '700', '800'],
 })
@@ -64,7 +67,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${fraunces.variable} ${sourceSerif.variable} ${plusJakarta.variable} font-serif antialiased bg-background text-text-primary min-h-screen`}>
+      <body className={`${fraunces.variable} ${literata.variable} ${sora.variable} font-body antialiased bg-background text-text-primary min-h-screen`}>
         <ThemeProvider>
           <AuthProvider>
             <Navigation>{children}</Navigation>
