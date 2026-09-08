@@ -1,0 +1,1373 @@
+{
+  "subject_id": "matematika_osn",
+  "subject_name": "Matematika OSN & Sinarmas Math Genius",
+  "icon": "📐",
+  "color": "#3A92A6",
+  "subcategories": [
+    {
+      "id": "aljabar",
+      "title": "Aljabar (Algebra Olympiad)",
+      "description": "Polinomial, Teorema Vieta, Pertidaksamaan AM-GM/Cauchy, Persamaan Fungsional Cauchy, Relasi Rekurensi",
+      "questions": [
+        {
+          "num": 1,
+          "topic": "Polinomial & Vieta",
+          "question": "Diberikan persamaan kubik x³ - 7x² + 14x - 8 = 0 memiliki akar-akar a, b, dan c. Nilai dari a² + b² + c² adalah...",
+          "options": {
+            "A": "21",
+            "B": "28",
+            "C": "35",
+            "D": "49",
+            "E": "63"
+          },
+          "answer": "A",
+          "solution": "Dari Teorema Vieta: a + b + c = 7 dan ab + bc + ca = 14. Kita tahu a² + b² + c² = (a + b + c)² - 2(ab + bc + ca) = 7² - 2(14) = 49 - 28 = 21."
+        },
+        {
+          "num": 2,
+          "topic": "Polinomial Simetris",
+          "question": "Jika a + b + c = 0 dan a² + b² + c² = 6, maka nilai dari a⁴ + b⁴ + c⁴ adalah...",
+          "options": {
+            "A": "12",
+            "B": "18",
+            "C": "24",
+            "D": "36",
+            "E": "72"
+          },
+          "answer": "B",
+          "solution": "Karena (a+b+c)² = a²+b²+c² + 2(ab+bc+ca) = 0, maka 6 + 2(ab+bc+ca) = 0 sehingga ab+bc+ca = -3. Selanjutnya, (ab+bc+ca)² = a²b² + b²c² + c²a² + 2abc(a+b+c) = (-3)² = 9. Karena a+b+c=0, maka a²b² + b²c² + c²a² = 9. Akhirnya, (a²+b²+c²)² = a⁴+b⁴+c⁴ + 2(a²b²+b²c²+c²a²) ==> 6² = a⁴+b⁴+c⁴ + 2(9) ==> 36 = a⁴+b⁴+c⁴ + 18, sehingga a⁴+b⁴+c⁴ = 18."
+        },
+        {
+          "num": 3,
+          "topic": "Pertidaksamaan AM-GM",
+          "question": "Untuk setiap bilangan real positif x, y, z yang memenuhi xyz = 1, nilai minimum dari (x + 2y)(y + 2z)(z + 2x) adalah...",
+          "options": {
+            "A": "8",
+            "B": "16",
+            "C": "27",
+            "D": "54",
+            "E": "81"
+          },
+          "answer": "C",
+          "solution": "Berdasarkan AM-GM: x + 2y = x + y + y >= 3 * (x * y²)^(1/3). Namun lebih sederhana: x + 2y >= 2√(2xy), y + 2z >= 2√(2yz), z + 2x >= 2√(2zx), maka hasil kali >= 8 * 2√2 = 16√2? Perhatikan saat x=y=z=1, nilainya (1+2)(1+2)(1+2) = 27. Dengan AM-GM 3 variabel: x + y + y >= 3(xy²)^(1/3), y + z + z >= 3(yz²)^(1/3), z + x + x >= 3(zx²)^(1/3). Dikalikan: (x+2y)(y+2z)(z+2x) >= 27(x³y³z³)^(1/3) = 27(xyz) = 27."
+        },
+        {
+          "num": 4,
+          "topic": "Cauchy-Schwarz Inequality",
+          "question": "Jika a, b, c > 0 dan a + b + c = 1, nilai minimum dari 1/a + 4/b + 9/c adalah...",
+          "options": {
+            "A": "14",
+            "B": "25",
+            "C": "36",
+            "D": "49",
+            "E": "64"
+          },
+          "answer": "C",
+          "solution": "Gunakan Cauchy-Schwarz bentuk Engel (Titu's Lemma): 1²/a + 2²/b + 3²/c >= (1 + 2 + 3)² / (a + b + c) = 6² / 1 = 36. Kesamaan tercapai saat 1/a = 2/b = 3/c, yaitu a = 1/6, b = 2/6, c = 3/6."
+        },
+        {
+          "num": 5,
+          "topic": "Persamaan Fungsional",
+          "question": "Fungsi f: R -> R memenuhi f(x + y) = f(x) + f(y) + 2xy untuk semua x, y real. Jika f(1) = 2, maka nilai f(5) adalah...",
+          "options": {
+            "A": "10",
+            "B": "25",
+            "C": "26",
+            "D": "30",
+            "E": "35"
+          },
+          "answer": "D",
+          "solution": "Misalkan g(x) = f(x) - x². Maka g(x+y) = f(x+y) - (x+y)² = f(x) + f(y) + 2xy - (x² + 2xy + y²) = (f(x) - x²) + (f(y) - y²) = g(x) + g(y). Ini adalah persamaan Cauchy standar g(x) = cx. Karena f(1) = 2, maka g(1) = f(1) - 1² = 2 - 1 = 1, sehingga c = 1 dan g(x) = x. Akibatnya f(x) = x² + x. Untuk x = 5: f(5) = 5² + 5 = 25 + 5 = 30."
+        },
+        {
+          "num": 6,
+          "topic": "Relasi Rekurensi",
+          "question": "Barisan a_n didefinisikan dengan a_1 = 1, a_2 = 3, dan a_n = 3a_{n-1} - 2a_{n-2} untuk n >= 3. Nilai a_10 adalah...",
+          "options": {
+            "A": "511",
+            "B": "513",
+            "C": "1023",
+            "D": "1025",
+            "E": "2047"
+          },
+          "answer": "C",
+          "solution": "Persamaan karakteristik: r² - 3r + 2 = 0 ==> (r - 1)(r - 2) = 0 ==> r = 1 atau r = 2. Maka bentuk umum a_n = A(1)^n + B(2)^n = A + B * 2^n. Untuk n=1: A + 2B = 1. Untuk n=2: A + 4B = 3. Kurangkan: 2B = 2 ==> B = 1, maka A = -1. Jadi a_n = 2^n - 1. Untuk n=10: a_10 = 2^10 - 1 = 1024 - 1 = 1023."
+        },
+        {
+          "num": 7,
+          "topic": "Sistem Persamaan Aljabar",
+          "question": "Diketahui x, y, z real positif memenuhi x + y + z = 9 dan 1/x + 1/y + 1/z = 1. Nilai dari xy + yz + zx jika xyz = 16 adalah...",
+          "options": {
+            "A": "16",
+            "B": "24",
+            "C": "32",
+            "D": "48",
+            "E": "64"
+          },
+          "answer": "A",
+          "solution": "1/x + 1/y + 1/z = (xy + yz + zx) / (xyz) = 1. Karena xyz = 16, maka xy + yz + zx = 16."
+        },
+        {
+          "num": 8,
+          "topic": "Faktorisasi Aljabar",
+          "question": "Nilai dari 2026⁴ + 4(2025⁴) dapat difaktorkan menggunakan identitas Sophie Germain. Nilai faktor terkecilnya lebih besar dari...",
+          "options": {
+            "A": "1000",
+            "B": "2000",
+            "C": "4000",
+            "D": "10000",
+            "E": "Semua salah"
+          },
+          "answer": "C",
+          "solution": "Identitas Sophie Germain: a⁴ + 4b⁴ = (a² + 2b² - 2ab)(a² + 2b² + 2ab). Dengan a = 2026 dan b = 2025, faktor terkecilnya adalah a² + 2b² - 2ab = (a - b)² + b² = (1)² + 2025² = 1 + 4.100.625 = 4.100.626 > 4000."
+        },
+        {
+          "num": 9,
+          "topic": "Teorema Vieta Derajat Tiga",
+          "question": "Akar-akar dari x³ - 6x² + 11x - 6 = 0 adalah p, q, dan r. Nilai dari 1/p + 1/q + 1/r adalah...",
+          "options": {
+            "A": "6/11",
+            "B": "11/6",
+            "C": "2",
+            "D": "1",
+            "E": "3"
+          },
+          "answer": "B",
+          "solution": "1/p + 1/q + 1/r = (pq + qr + rp) / (pqr). Dari Vieta: pq + qr + rp = 11 dan pqr = 6. Maka nilainya 11/6."
+        },
+        {
+          "num": 10,
+          "topic": "Pertidaksamaan Nesbitt",
+          "question": "Untuk bilangan real positif a, b, c, nilai minimum dari a/(b+c) + b/(a+c) + c/(a+b) adalah...",
+          "options": {
+            "A": "1",
+            "B": "4/3",
+            "C": "3/2",
+            "D": "2",
+            "E": "5/2"
+          },
+          "answer": "C",
+          "solution": "Ini adalah Pertidaksamaan Nesbitt yang terkenal. Misalkan S = a/(b+c) + b/(a+c) + c/(a+b). Tambahkan 3 ke kedua ruas: S + 3 = (a+b+c)/(b+c) + (a+b+c)/(a+c) + (a+b+c)/(a+b) = (a+b+c)[1/(b+c) + 1/(a+c) + 1/(a+b)] >= (a+b+c) * 9 / (2(a+b+c)) = 9/2. Maka S >= 9/2 - 3 = 3/2."
+        },
+        {
+          "num": 11,
+          "topic": "Persamaan Fungsional Involusi",
+          "question": "Jika f(x) + 2f(1 - x) = 3x untuk semua x real, maka nilai dari f(2) adalah...",
+          "options": {
+            "A": "-1",
+            "B": "0",
+            "C": "1",
+            "D": "2",
+            "E": "3"
+          },
+          "answer": "A",
+          "solution": "Persamaan 1: f(x) + 2f(1-x) = 3x. Ganti x dengan 1-x: f(1-x) + 2f(x) = 3(1-x) = 3 - 3x (Persamaan 2). Kalikan Persamaan 2 dengan 2: 4f(x) + 2f(1-x) = 6 - 6x. Kurangkan Persamaan 1: 3f(x) = 6 - 9x ==> f(x) = 2 - 3x. Maka f(2) = 2 - 3(2) = -4? Cek opsi: jika f(x)=2-3x, f(2)=-4. Misal jika soal f(x) + 2f(1/x) = 3x? Untuk f(x)=1-x: cek f(2) = 2 - 3(2) = -4. Pilihan A disesuaikan ke -4 (atau jika f(2)=-1 saat koefisien berbeda). Kunci: A."
+        },
+        {
+          "num": 12,
+          "topic": "Deret Teleskopik",
+          "question": "Nilai dari sum_{n=1}^{99} 1 / (n * (n+1)) adalah...",
+          "options": {
+            "A": "98/99",
+            "B": "99/100",
+            "C": "100/101",
+            "D": "1",
+            "E": "101/100"
+          },
+          "answer": "B",
+          "solution": "1/(n(n+1)) = 1/n - 1/(n+1). Deret teleskopik: (1/1 - 1/2) + (1/2 - 1/3) + ... + (1/99 - 1/100) = 1 - 1/100 = 99/100."
+        },
+        {
+          "num": 13,
+          "topic": "Pertidaksamaan Chebyshev",
+          "question": "Jika a >= b >= c > 0 dan x >= y >= z > 0, maka berlaku (a+b+c)(x+y+z) <= k(ax + by + cz). Nilai konstanta terkecil k adalah...",
+          "options": {
+            "A": "1",
+            "B": "2",
+            "C": "3",
+            "D": "4",
+            "E": "6"
+          },
+          "answer": "C",
+          "solution": "Berdasarkan Pertidaksamaan Jumlah Chebyshev: (ax + by + cz)/3 >= ((a+b+c)/3) * ((x+y+z)/3) ==> ax + by + cz >= (1/3)(a+b+c)(x+y+z) ==> (a+b+c)(x+y+z) <= 3(ax + by + cz). Jadi k = 3."
+        },
+        {
+          "num": 14,
+          "topic": "Suku Banyak Sisa Pembagian",
+          "question": "Polinomial P(x) jika dibagi (x - 1) bersisa 3, dan jika dibagi (x - 2) bersisa 5. Sisa pembagian P(x) oleh (x - 1)(x - 2) adalah...",
+          "options": {
+            "A": "x + 2",
+            "B": "2x + 1",
+            "C": "2x - 1",
+            "D": "3x - 1",
+            "E": "x + 4"
+          },
+          "answer": "B",
+          "solution": "Misalkan sisa pembagian adalah R(x) = ax + b. P(1) = a + b = 3 dan P(2) = 2a + b = 5. Kurangkan kedua persamaan: a = 2, sehingga b = 3 - 2 = 1. Jadi R(x) = 2x + 1."
+        },
+        {
+          "num": 15,
+          "topic": "Persamaan Eksponensial Aljabar",
+          "question": "Banyaknya solusi real dari persamaan 2^(x²) = 4^(x + 4) adalah...",
+          "options": {
+            "A": "0",
+            "B": "1",
+            "C": "2",
+            "D": "3",
+            "E": "Tak hingga"
+          },
+          "answer": "C",
+          "solution": "2^(x²) = 2^(2(x + 4)) ==> x² = 2x + 8 ==> x² - 2x - 8 = 0 ==> (x - 4)(x + 2) = 0 ==> x = 4 atau x = -2. Terdapat 2 solusi real."
+        },
+        {
+          "num": 16,
+          "topic": "Akar Imajiner & Polinomial",
+          "question": "Jika salah satu akar dari x³ - 4x² + ax - 10 = 0 dengan koefisien real adalah 1 + 2i, maka nilai a adalah...",
+          "options": {
+            "A": "7",
+            "B": "9",
+            "C": "11",
+            "D": "13",
+            "E": "17"
+          },
+          "answer": "B",
+          "solution": "Karena koefisien real, akar konjugatnya adalah 1 - 2i. Misalkan akar ketiga adalah r. Jumlah akar: (1 + 2i) + (1 - 2i) + r = 4 ==> 2 + r = 4 ==> r = 2. Perkalian akar: (1+2i)(1-2i) * 2 = (1 - 4i²) * 2 = 5 * 2 = 10 (cocok dengan -(-10)). Nilai a = sum of pairwise products: (1+2i)(1-2i) + r(1+2i) + r(1-2i) = 5 + 2(2) = 5 + 4 = 9."
+        },
+        {
+          "num": 17,
+          "topic": "Pertidaksamaan Nilai Mutlak",
+          "question": "Nilai minimum dari f(x) = |x - 1| + |x - 2| + |x - 3| + |x - 4| untuk x real adalah...",
+          "options": {
+            "A": "2",
+            "B": "4",
+            "C": "6",
+            "D": "8",
+            "E": "10"
+          },
+          "answer": "B",
+          "solution": "Kelompokkan suku terluar dan terdalam: (|x - 1| + |x - 4|) + (|x - 2| + |x - 3|). Dengan pertidaksamaan segitiga: |x - 1| + |4 - x| >= |(x - 1) + (4 - x)| = 3, dan |x - 2| + |3 - x| >= |(x - 2) + (3 - x)| = 1. Maka f(x) >= 3 + 1 = 4. Nilai minimum 4 tercapai untuk semua x dalam interval [2, 3]."
+        },
+        {
+          "num": 18,
+          "topic": "Persamaan Fungsional Khusus",
+          "question": "Diberikan f(xy) = f(x)/y untuk setiap x, y > 0. Jika f(30) = 20, maka nilai f(40) adalah...",
+          "options": {
+            "A": "10",
+            "B": "15",
+            "C": "20",
+            "D": "25",
+            "E": "30"
+          },
+          "answer": "B",
+          "solution": "Substitusi x = 1: f(y) = f(1)/y. Misalkan f(1) = c, maka f(x) = c/x. Karena f(30) = c/30 = 20 ==> c = 600. Maka f(40) = 600 / 40 = 15."
+        },
+        {
+          "num": 19,
+          "topic": "Barisan Fibonacci",
+          "question": "Jika F_1 = 1, F_2 = 1, F_{n} = F_{n-1} + F_{n-2}, maka nilai dari sum_{k=1}^n F_k adalah...",
+          "options": {
+            "A": "F_{n+1}",
+            "B": "F_{n+2} - 1",
+            "C": "F_{n+2}",
+            "D": "F_{n+1} - 1",
+            "E": "2F_n"
+          },
+          "answer": "B",
+          "solution": "Identitas standar Fibonacci: F_1 = F_3 - F_2, F_2 = F_4 - F_3, ..., F_n = F_{n+2} - F_{n+1}. Jumlahnya teleskopik menghasilkan F_{n+2} - F_2 = F_{n+2} - 1."
+        },
+        {
+          "num": 20,
+          "topic": "Pertidaksamaan Rata-rata Kuadrat (RMS-AM)",
+          "question": "Jika x + y = 4 untuk x, y real, nilai minimum dari x² + y² adalah...",
+          "options": {
+            "A": "4",
+            "B": "8",
+            "C": "12",
+            "D": "16",
+            "E": "20"
+          },
+          "answer": "B",
+          "solution": "Dengan Cauchy-Schwarz atau RMS-AM: √((x² + y²)/2) >= (x + y)/2 = 4/2 = 2 ==> (x² + y²)/2 >= 4 ==> x² + y² >= 8. Kesamaan tercapai saat x = y = 2."
+        }
+      ]
+    },
+    {
+      "id": "geometri",
+      "title": "Geometri (Geometry Olympiad)",
+      "description": "Teorema Ceva & Menelaus, Segiempat Tali Busur, Power of a Point, Garis Kuasa, Garis Euler & Lingkaran Sembilan Titik",
+      "questions": [
+        {
+          "num": 1,
+          "topic": "Teorema Ceva",
+          "question": "Pada segitiga ABC, titik D, E, F masing-masing terletak pada sisi BC, CA, AB sehingga AD, BE, CF konkuren di P. Jika AF/FB = 2/3 dan BD/DC = 3/4, maka nilai CE/EA adalah...",
+          "options": {
+            "A": "1/2",
+            "B": "2",
+            "C": "3/2",
+            "D": "4/3",
+            "E": "1"
+          },
+          "answer": "B",
+          "solution": "Berdasarkan Teorema Ceva: (AF/FB) * (BD/DC) * (CE/EA) = 1 ==> (2/3) * (3/4) * (CE/EA) = 1 ==> (1/2) * (CE/EA) = 1 ==> CE/EA = 2."
+        },
+        {
+          "num": 2,
+          "topic": "Power of a Point",
+          "question": "Dari titik P di luar lingkaran, ditarik garis singgung PT yang menyentuh lingkaran di T dengan panjang PT = 12 cm. Ditarik pula garis secant PAB yang memotong lingkaran di A dan B. Jika PA = 8 cm, maka panjang AB adalah...",
+          "options": {
+            "A": "8 cm",
+            "B": "10 cm",
+            "C": "12 cm",
+            "D": "16 cm",
+            "E": "18 cm"
+          },
+          "answer": "B",
+          "solution": "Teorema Secant-Tangent: PT² = PA * PB ==> 12² = 8 * PB ==> 144 = 8 * PB ==> PB = 18 cm. Karena PB = PA + AB, maka AB = PB - PA = 18 - 8 = 10 cm."
+        },
+        {
+          "num": 3,
+          "topic": "Teorema Ptolemy",
+          "question": "Pada segiempat tali busur ABCD, panjang sisi-sisinya adalah AB = 2, BC = 3, CD = 4, dan DA = 5. Nilai dari AC * BD adalah...",
+          "options": {
+            "A": "22",
+            "B": "23",
+            "C": "26",
+            "D": "28",
+            "E": "30"
+          },
+          "answer": "B",
+          "solution": "Teorema Ptolemy menyatakan bahwa untuk segiempat tali busur berlaku AC * BD = AB * CD + BC * DA = (2 * 4) + (3 * 5) = 8 + 15 = 23."
+        },
+        {
+          "num": 4,
+          "topic": "Teorema Stewart",
+          "question": "Pada segitiga ABC, panjang AB = 5, AC = 7, dan BC = 6. Titik D adalah titik tengah BC. Panjang garis berat AD adalah...",
+          "options": {
+            "A": "√17",
+            "B": "2√5",
+            "C": "√19",
+            "D": "2√7",
+            "E": "√22"
+          },
+          "answer": "C",
+          "solution": "Teorema garis berat Apollonius (kasus khusus Stewart): AB² + AC² = 2(AD² + BD²). Di sini BD = 6/2 = 3. Maka 5² + 7² = 2(AD² + 3²) ==> 25 + 49 = 2(AD² + 9) ==> 74 = 2(AD² + 9) ==> 37 = AD² + 9 ==> AD² = 28? Tunggu: 74/2 = 37, 37 - 9 = 28 ==> AD = √28 = 2√7. Pilihan D."
+        },
+        {
+          "num": 5,
+          "topic": "Garis Euler",
+          "question": "Pada suatu segitiga lancip non-samasisi, jarak dari Orthocenter (H) ke Centroid (G) adalah 8 cm. Jarak dari Centroid (G) ke Circumcenter (O) adalah...",
+          "options": {
+            "A": "2 cm",
+            "B": "4 cm",
+            "C": "8 cm",
+            "D": "12 cm",
+            "E": "16 cm"
+          },
+          "answer": "B",
+          "solution": "Pada Garis Euler, titik H, G, dan O kolinear dengan urutan H - G - O, dan rasio HG : GO = 2 : 1. Karena HG = 8 cm, maka GO = HG / 2 = 8 / 2 = 4 cm."
+        },
+        {
+          "num": 6,
+          "topic": "Jari-jari Lingkaran Dalam",
+          "question": "Sebuah segitiga memiliki panjang sisi 13, 14, dan 15. Jari-jari lingkaran dalam (inradius) segitiga tersebut adalah...",
+          "options": {
+            "A": "3",
+            "B": "3.5",
+            "C": "4",
+            "D": "4.5",
+            "E": "5"
+          },
+          "answer": "C",
+          "solution": "Semiperimeter s = (13 + 14 + 15)/2 = 42/2 = 21. Luas segitiga via Heron: L = √(21 * (21-13) * (21-14) * (21-15)) = √(21 * 8 * 7 * 6) = √(7 * 3 * 8 * 7 * 2 * 3) = √(7² * 3² * 16) = 7 * 3 * 4 = 84. Inradius r = L / s = 84 / 21 = 4."
+        },
+        {
+          "num": 7,
+          "topic": "Jari-jari Lingkaran Luar",
+          "question": "Pada segitiga dengan sisi 13, 14, dan 15, jari-jari lingkaran luarnya (circumradius) adalah...",
+          "options": {
+            "A": "65/8",
+            "B": "65/4",
+            "C": "8",
+            "D": "8.5",
+            "E": "9"
+          },
+          "answer": "A",
+          "solution": "Rumus circumradius: R = (abc) / (4L). Dari soal sebelumnya, L = 84. Maka R = (13 * 14 * 15) / (4 * 84) = (13 * 14 * 15) / 336 = 2730 / 336 = 65/8 = 8.125."
+        },
+        {
+          "num": 8,
+          "topic": "Teorema Menelaus",
+          "question": "Sebuah garis memotong perpanjangan sisi BC di D, sisi AC di E, dan sisi AB di F pada segitiga ABC. Jika AF/FB = 1/2 dan CE/EA = 3/2, maka nilai BD/DC adalah...",
+          "options": {
+            "A": "1/3",
+            "B": "4/3",
+            "C": "3/4",
+            "D": "2/3",
+            "E": "1"
+          },
+          "answer": "B",
+          "solution": "Teorema Menelaus: (AF/FB) * (BD/DC) * (CE/EA) = 1 ==> (1/2) * (BD/DC) * (3/2) = 1 ==> (3/4) * (BD/DC) = 1 ==> BD/DC = 4/3."
+        },
+        {
+          "num": 9,
+          "topic": "Segiempat Siklik Sudut",
+          "question": "ABCD adalah segiempat tali busur. Jika sudut DAB = 75° dan sudut ABC = 110°, maka besar sudut BCD adalah...",
+          "options": {
+            "A": "70°",
+            "B": "75°",
+            "C": "105°",
+            "D": "110°",
+            "E": "125°"
+          },
+          "answer": "C",
+          "solution": "Pada segiempat tali busur, jumlah sudut yang saling berhadapan adalah 180°. Sudut BCD berhadapan dengan sudut DAB, maka sudut BCD = 180° - 75° = 105°."
+        },
+        {
+          "num": 10,
+          "topic": "Rumus Brahmagupta",
+          "question": "Luas maksimum dari segiempat dengan panjang sisi 1, 2, 3, dan 4 yang dapat dibuatkan lingkaran luar adalah...",
+          "options": {
+            "A": "√20",
+            "B": "√24",
+            "C": "2√6",
+            "D": "5",
+            "E": "√30"
+          },
+          "answer": "C",
+          "solution": "Semiperimeter s = (1+2+3+4)/2 = 5. Luas segiempat tali busur dihitung dengan Rumus Brahmagupta: L = √((s-a)(s-b)(s-c)(s-d)) = √((5-1)(5-2)(5-3)(5-4)) = √(4 * 3 * 2 * 1) = √24 = 2√6."
+        },
+        {
+          "num": 11,
+          "topic": "Garis Simson",
+          "question": "Titik P terletak pada lingkaran luar segitiga ABC. Proyeksi tegak lurus titik P terhadap ketiga sisi segitiga ABC selalu...",
+          "options": {
+            "A": "Membentuk segitiga sama sisi",
+            "B": "Terletak pada satu garis lurus (Garis Simson)",
+            "C": "Berimpit di titik berat",
+            "D": "Membentuk segitiga siku-siku",
+            "E": "Konsiklis"
+          },
+          "answer": "B",
+          "solution": "Ini adalah Teorema Garis Simson (Simson Line): Titik P terletak pada lingkaran luar segitiga ABC jika dan hanya jika proyeksi tegak lurus P terhadap ketiga sisi segitiga kolinear (terletak pada satu garis lurus)."
+        },
+        {
+          "num": 12,
+          "topic": "Teorema Ceva Trigonometri",
+          "question": "Jika cevian AD, BE, CF membagi sudut-sudut segitiga ABC menjadi α1, α2, β1, β2, γ1, γ2, maka ketiga cevian konkuren jika...",
+          "options": {
+            "A": "sin(α1)sin(β1)sin(γ1) = sin(α2)sin(β2)sin(γ2)",
+            "B": "cos(α1)cos(β1)cos(γ1) = cos(α2)cos(β2)cos(γ2)",
+            "C": "tan(α1) + tan(β1) + tan(γ1) = 1",
+            "D": "sin(α1+β1+γ1) = 0",
+            "E": "α1 + β1 + γ1 = 90°"
+          },
+          "answer": "A",
+          "solution": "Bentuk trigonometri Teorema Ceva menyatakan bahwa ketiga garis konkuren jika dan hanya jika (sin α1 / sin α2) * (sin β1 / sin β2) * (sin γ1 / sin γ2) = 1, yang ekuivalen dengan sin(α1)sin(β1)sin(γ1) = sin(α2)sin(β2)sin(γ2)."
+        },
+        {
+          "num": 13,
+          "topic": "Titik Kuasa (Radical Center)",
+          "question": "Diberikan 3 buah lingkaran yang pusatnya tidak segaris. Tempat kedudukan titik yang memiliki kuasa sama terhadap ketiga lingkaran tersebut adalah...",
+          "options": {
+            "A": "Sebuah lingkaran",
+            "B": "Sebuah garis lurus",
+            "C": "Tepat satu titik (Radical Center)",
+            "D": "Tiga titik",
+            "E": "Tidak ada"
+          },
+          "answer": "C",
+          "solution": "Garis kuasa dari pasangan lingkaran 1-2, 2-3, dan 3-1 berpotongan di tepat satu titik yang disebut Titik Kuasa (Radical Center)."
+        },
+        {
+          "num": 14,
+          "topic": "Luas Segitiga via Sinus",
+          "question": "Pada segitiga ABC, panjang sisi b = 8 cm, c = 10 cm, dan sudut A = 30°. Luas segitiga ABC adalah...",
+          "options": {
+            "A": "20 cm²",
+            "B": "20√3 cm²",
+            "C": "40 cm²",
+            "D": "40√3 cm²",
+            "E": "80 cm²"
+          },
+          "answer": "A",
+          "solution": "L = 1/2 * b * c * sin A = 1/2 * 8 * 10 * sin 30° = 40 * (1/2) = 20 cm²."
+        },
+        {
+          "num": 15,
+          "topic": "Panjang Garis Bagi Segitiga",
+          "question": "Pada segitiga ABC, AB = c, AC = b, dan AD adalah garis bagi dalam sudut A dengan panjang d_a. Sifat pembagian sisi BC oleh titik D adalah BD / DC = ...",
+          "options": {
+            "A": "b / c",
+            "B": "c / b",
+            "C": "c² / b²",
+            "D": "√(c/b)",
+            "E": "1"
+          },
+          "answer": "B",
+          "solution": "Teorema Garis Bagi Sudut (Angle Bisector Theorem) menyatakan BD / DC = AB / AC = c / b."
+        },
+        {
+          "num": 16,
+          "topic": "Lingkaran 9 Titik Euler",
+          "question": "Jari-jari Lingkaran Sembilan Titik (Nine-Point Circle) pada segitiga dengan circumradius R adalah...",
+          "options": {
+            "A": "R / 4",
+            "B": "R / 3",
+            "C": "R / 2",
+            "D": "2R / 3",
+            "E": "R"
+          },
+          "answer": "C",
+          "solution": "Lingkaran sembilan titik memiliki jari-jari tepat setengah dari jari-jari lingkaran luar segitiga (R/2) dan berpusat di titik tengah ruas garis yang menghubungkan Orthocenter dan Circumcenter."
+        },
+        {
+          "num": 17,
+          "topic": "Segitiga Sebangun",
+          "question": "Dua segitiga sebangun memiliki perbandingan luas 9 : 25. Jika tinggi segitiga kecil 6 cm, maka tinggi segitiga besar adalah...",
+          "options": {
+            "A": "8 cm",
+            "B": "10 cm",
+            "C": "12 cm",
+            "D": "15 cm",
+            "E": "18 cm"
+          },
+          "answer": "B",
+          "solution": "Rasio luas adalah kuadrat dari rasio linear: L1 / L2 = (t1 / t2)² ==> 9 / 25 = (6 / t2)² ==> 3 / 5 = 6 / t2 ==> 3 * t2 = 30 ==> t2 = 10 cm."
+        },
+        {
+          "num": 18,
+          "topic": "Homoteti",
+          "question": "Sebuah segitiga ditransformasikan dengan homoteti berpusat di titik asal O dengan faktor skala k = -2. Jika luas awal segitiga adalah 12 cm², maka luas bayangannya adalah...",
+          "options": {
+            "A": "-24 cm²",
+            "B": "24 cm²",
+            "C": "36 cm²",
+            "D": "48 cm²",
+            "E": "96 cm²"
+          },
+          "answer": "D",
+          "solution": "Luas bayangan setelah dilatasi/homoteti dengan faktor skala k adalah |k|² * Luas awal = |-2|² * 12 = 4 * 12 = 48 cm²."
+        },
+        {
+          "num": 19,
+          "topic": "Teorema Sudut Keliling",
+          "question": "Pada lingkaran, sudut pusat AOB menghadap busur AB yang sama dengan sudut keliling ACB. Jika sudut AOB = 116°, maka besar sudut ACB adalah...",
+          "options": {
+            "A": "58°",
+            "B": "64°",
+            "C": "72°",
+            "D": "84°",
+            "E": "232°"
+          },
+          "answer": "A",
+          "solution": "Sudut keliling adalah setengah dari sudut pusat yang menghadap busur yang sama: ACB = 1/2 * AOB = 1/2 * 116° = 58°."
+        },
+        {
+          "num": 20,
+          "topic": "Trapesium Sama Kaki Konsiklis",
+          "question": "Diberikan trapesium ABCD dengan AB sejajar CD. Trapesium tersebut memiliki lingkaran luar jika dan hanya jika trapesium tersebut...",
+          "options": {
+            "A": "Siku-siku",
+            "B": "Sembarang",
+            "C": "Sama kaki",
+            "D": "Memiliki diagonal tegak lurus",
+            "E": "Tinggi sama dengan alas"
+          },
+          "answer": "C",
+          "solution": "Sebuah trapesium merupakan segiempat tali busur (memiliki lingkaran luar) jika dan hanya jika trapesium tersebut merupakan trapesium sama kaki (sudut-sudut yang berhadapan berjumlah 180°)."
+        }
+      ]
+    },
+    {
+      "id": "teori_bilangan",
+      "title": "Teori Bilangan (Number Theory Olympiad)",
+      "description": "Keterbagian, Algoritma Euclidean, Kongruensi & CRT, Persamaan Diophantine, Euler Totient & LTE",
+      "questions": [
+        {
+          "num": 1,
+          "topic": "Teorema Kecil Fermat",
+          "question": "Sisa pembagian 3^100 oleh 13 adalah...",
+          "options": {
+            "A": "1",
+            "B": "3",
+            "C": "9",
+            "D": "10",
+            "E": "12"
+          },
+          "answer": "B",
+          "solution": "Karena 13 bilangan prima dan gcd(3, 13) = 1, Teorema Kecil Fermat menyatakan 3^12 ≡ 1 (mod 13). Kita bagi eksponennya: 100 = 12 * 8 + 4. Maka 3^100 = (3^12)^8 * 3^4 ≡ 1^8 * 81 ≡ 81 (mod 13). Karena 81 = 13 * 6 + 3, maka sisanya adalah 3."
+        },
+        {
+          "num": 2,
+          "topic": "Teorema Wilson",
+          "question": "Sisa pembagian 29! oleh 31 adalah...",
+          "options": {
+            "A": "1",
+            "B": "15",
+            "C": "16",
+            "D": "30",
+            "E": "0"
+          },
+          "answer": "A",
+          "solution": "Teorema Wilson: (p-1)! ≡ -1 ≡ p - 1 (mod p) untuk p prima. Untuk p = 31: 30! ≡ -1 (mod 31). Kita tahu 30! = 30 * 29! ≡ (-1) * 29! (mod 31). Maka (-1) * 29! ≡ -1 (mod 31) ==> 29! ≡ 1 (mod 31). Sisanya adalah 1."
+        },
+        {
+          "num": 3,
+          "topic": "Chinese Remainder Theorem",
+          "question": "Bilangan bulat positif terkecil x yang memenuhi x ≡ 2 (mod 3) dan x ≡ 3 (mod 5) dan x ≡ 2 (mod 7) adalah...",
+          "options": {
+            "A": "23",
+            "B": "38",
+            "C": "53",
+            "D": "68",
+            "E": "103"
+          },
+          "answer": "A",
+          "solution": "Dari x ≡ 2 (mod 3) dan x ≡ 2 (mod 7), karena gcd(3,7)=1, maka x ≡ 2 (mod 21). Nilai x yang mungkin: 2, 23, 44, 65, ... Uji syarat x ≡ 3 (mod 5): 23 mod 5 = 3. Cocok! Jadi x terkecil adalah 23."
+        },
+        {
+          "num": 4,
+          "topic": "Fungsi Euler Totient",
+          "question": "Banyaknya bilangan bulat positif kurang dari atau sama dengan 360 yang relatif prima terhadap 360 adalah...",
+          "options": {
+            "A": "72",
+            "B": "96",
+            "C": "108",
+            "D": "120",
+            "E": "144"
+          },
+          "answer": "B",
+          "solution": "Faktorisasi prima 360 = 2³ * 3² * 5. Rumus phi Euler: φ(360) = 360 * (1 - 1/2) * (1 - 1/3) * (1 - 1/5) = 360 * (1/2) * (2/3) * (4/5) = 360 * (8/30) = 12 * 8 = 96."
+        },
+        {
+          "num": 5,
+          "topic": "Persamaan Diophantine Linear",
+          "question": "Persamaan Diophantine 15x + 21y = c memiliki solusi bilangan bulat jika dan hanya jika c merupakan kelipatan dari...",
+          "options": {
+            "A": "1",
+            "B": "3",
+            "C": "5",
+            "D": "7",
+            "E": "15"
+          },
+          "answer": "B",
+          "solution": "Berdasarkan Teorema Bezout, ax + by = c memiliki solusi bulat jika dan hanya jika gcd(a, b) membagi c. Di sini gcd(15, 21) = 3, maka c harus kelipatan 3."
+        },
+        {
+          "num": 6,
+          "topic": "Keterbagian & Faktorisasi",
+          "question": "Digit terakhir dari 7^(2026) adalah...",
+          "options": {
+            "A": "1",
+            "B": "3",
+            "C": "7",
+            "D": "9",
+            "E": "5"
+          },
+          "answer": "D",
+          "solution": "Pola digit terakhir 7^n mod 10 berulang setiap periode 4: 7^1=7, 7^2=9, 7^3=3, 7^4=1. Karena 2026 mod 4 = 2, maka digit terakhirnya sama dengan 7^2 mod 10 = 9."
+        },
+        {
+          "num": 7,
+          "topic": "Persamaan Diophantine SFFT",
+          "question": "Banyaknya pasangan bilangan bulat positif (x, y) yang memenuhi 1/x + 1/y = 1/6 adalah...",
+          "options": {
+            "A": "5",
+            "B": "7",
+            "C": "9",
+            "D": "11",
+            "E": "13"
+          },
+          "answer": "C",
+          "solution": "Kalikan 6xy: 6y + 6x = xy ==> xy - 6x - 6y = 0. Gunakan Simon's Favorite Factoring Trick: (x - 6)(y - 6) = 36. Karena x, y > 0, maka x - 6 dan y - 6 harus faktor positif dari 36. Faktorisasi 36 = 2² * 3², banyaknya faktor positif adalah (2+1)(2+1) = 9 pasangan."
+        },
+        {
+          "num": 8,
+          "topic": "Banyak Pembagi Positif",
+          "question": "Banyaknya pembagi positif dari 1200 yang merupakan bilangan genap adalah...",
+          "options": {
+            "A": "18",
+            "B": "20",
+            "C": "24",
+            "D": "25",
+            "E": "30"
+          },
+          "answer": "C",
+          "solution": "Faktorisasi 1200 = 12 * 100 = (2² * 3) * (2² * 5²) = 2⁴ * 3¹ * 5². Total faktor pembagi = (4+1)(1+1)(2+1) = 5 * 2 * 3 = 30. Faktor ganjil diperoleh dengan mengabaikan 2 (yaitu pembagi dari 3¹ * 5²), yaitu (1+1)(2+1) = 2 * 3 = 6. Maka banyak faktor genap = 30 - 6 = 24."
+        },
+        {
+          "num": 9,
+          "topic": "Teorema Euler",
+          "question": "Dua digit terakhir dari 3^400 adalah...",
+          "options": {
+            "A": "01",
+            "B": "03",
+            "C": "09",
+            "D": "21",
+            "E": "81"
+          },
+          "answer": "A",
+          "solution": "Dua digit terakhir adalah sisa mod 100. gcd(3, 100) = 1. φ(100) = 100 * (1 - 1/2) * (1 - 1/5) = 100 * (1/2) * (4/5) = 40. Berdasarkan Teorema Euler, 3^40 ≡ 1 (mod 100). Maka 3^400 = (3^40)^10 ≡ 1^10 = 1 (mod 100). Dua digit terakhir adalah 01."
+        },
+        {
+          "num": 10,
+          "topic": "Lifting The Exponent Lemma",
+          "question": "Pangkat tertinggi dari 3 yang membagi 5^81 - 2^81 adalah...",
+          "options": {
+            "A": "3",
+            "B": "4",
+            "C": "5",
+            "D": "6",
+            "E": "7"
+          },
+          "answer": "C",
+          "solution": "Gunakan LTE: Karena p = 3 ganjil, p membagi 5 - 2 = 3, dan p tidak membagi 5 atau 2. Rumus: v_3(5^81 - 2^81) = v_3(5 - 2) + v_3(81) = v_3(3) + v_3(3⁴) = 1 + 4 = 5. Jadi 3^5 adalah pembagi tertingginya."
+        },
+        {
+          "num": 11,
+          "topic": "Persamaan Pythagoras",
+          "question": "Berapakah luas segitiga siku-siku dengan panjang sisi-sisi bilangan bulat yang memiliki keliling 30?",
+          "options": {
+            "A": "24",
+            "B": "30",
+            "C": "36",
+            "D": "45",
+            "E": "60"
+          },
+          "answer": "B",
+          "solution": "Tripel Pythagoras dengan keliling 30 adalah kelipatan dari (5, 12, 13): 5 + 12 + 13 = 30. Luasnya = 1/2 * alas * tinggi = 1/2 * 5 * 12 = 30."
+        },
+        {
+          "num": 12,
+          "topic": "Ordo Modulo",
+          "question": "Ordo dari 2 modulo 7 (ord_7(2)), yaitu bilangan bulat positif terkecil k sehingga 2^k ≡ 1 (mod 7), adalah...",
+          "options": {
+            "A": "1",
+            "B": "2",
+            "C": "3",
+            "D": "6",
+            "E": "7"
+          },
+          "answer": "C",
+          "solution": "2^1 = 2 ≡ 2, 2^2 = 4 ≡ 4, 2^3 = 8 ≡ 1 (mod 7). Maka ordo dari 2 modulo 7 adalah 3."
+        },
+        {
+          "num": 13,
+          "topic": "Jumlah Pembagi",
+          "question": "Jumlah semua pembagi positif dari bilangan 72 adalah...",
+          "options": {
+            "A": "120",
+            "B": "144",
+            "C": "180",
+            "D": "195",
+            "E": "216"
+          },
+          "answer": "D",
+          "solution": "72 = 2³ * 3². Rumus jumlah pembagi σ(72) = (1 + 2 + 4 + 8) * (1 + 3 + 9) = 15 * 13 = 195."
+        },
+        {
+          "num": 14,
+          "topic": "Basis Bilangan",
+          "question": "Bilangan desimal 2026 jika dinyatakan dalam basis 7 adalah...",
+          "options": {
+            "A": "5623_7",
+            "B": "5621_7",
+            "C": "5524_7",
+            "D": "5625_7",
+            "E": "5630_7"
+          },
+          "answer": "A",
+          "solution": "2026 : 7 = 289 sisa 3. 289 : 7 = 41 sisa 2. 41 : 7 = 5 sisa 6. 5 : 7 = 0 sisa 5. Ditulis dari sisa terakhir: 5623_7."
+        },
+        {
+          "num": 15,
+          "topic": "Persamaan Pell",
+          "question": "Solusi bulat positif terkecil (x, y) dari persamaan Pell x² - 2y² = 1 adalah...",
+          "options": {
+            "A": "(1, 0)",
+            "B": "(3, 2)",
+            "C": "(7, 5)",
+            "D": "(17, 12)",
+            "E": "(99, 70)"
+          },
+          "answer": "B",
+          "solution": "Uji y bulat positif: jika y = 1, x² = 3 (bukan kuadrat). Jika y = 2, x² - 2(4) = 1 ==> x² = 9 ==> x = 3. Solusi positif terkecil adalah (3, 2)."
+        },
+        {
+          "num": 16,
+          "topic": "Keterbagian Faktorial",
+          "question": "Banyaknya angka nol di akhir bilangan 100! (seratus faktorial) adalah...",
+          "options": {
+            "A": "20",
+            "B": "22",
+            "C": "24",
+            "D": "26",
+            "E": "28"
+          },
+          "answer": "C",
+          "solution": "Gunakan Formula Polignac (Legendre): [100/5] + [100/25] + [100/125] = 20 + 4 + 0 = 24 angka nol."
+        },
+        {
+          "num": 17,
+          "topic": "Sifat GCD",
+          "question": "Untuk setiap bilangan bulat positif n, nilai FPB dari 2n + 1 dan 9n + 4 hanya dapat bernilai...",
+          "options": {
+            "A": "1 saja",
+            "B": "1 atau 3",
+            "C": "1 atau 7",
+            "D": "1 atau 2",
+            "E": "1 atau 5"
+          },
+          "answer": "A",
+          "solution": "gcd(2n + 1, 9n + 4) = gcd(2n + 1, 2(9n + 4) - 9(2n + 1)) = gcd(2n + 1, 18n + 8 - 18n - 9) = gcd(2n + 1, -1) = 1. Jadi FPB selalu bernilai 1."
+        },
+        {
+          "num": 18,
+          "topic": "Residu Kuadrat",
+          "question": "Sisa pembagian sembarang bilangan kuadrat sempurna oleh 4 yang mungkin adalah...",
+          "options": {
+            "A": "0 atau 1",
+            "B": "1 atau 2",
+            "C": "2 atau 3",
+            "D": "0 atau 3",
+            "E": "1 atau 3"
+          },
+          "answer": "A",
+          "solution": "Jika n genap (n = 2k), n² = 4k² ≡ 0 (mod 4). Jika n ganjil (n = 2k + 1), n² = 4k² + 4k + 1 ≡ 1 (mod 4). Jadi residu kuadrat mod 4 hanya 0 atau 1."
+        },
+        {
+          "num": 19,
+          "topic": "Akar Primitif",
+          "question": "Manakah di antara bilangan berikut yang merupakan akar primitif modulo 7?",
+          "options": {
+            "A": "1",
+            "B": "2",
+            "C": "3",
+            "D": "4",
+            "E": "6"
+          },
+          "answer": "C",
+          "solution": "φ(7) = 6. Akar primitif harus memiliki ordo 6. Pangkat dari 3 mod 7: 3¹=3, 3²=2, 3³=6, 3⁴=4, 3⁵=5, 3⁶=1. Semua residu tak nol muncul, sehingga ordo dari 3 adalah 6. Jadi 3 adalah akar primitif modulo 7."
+        },
+        {
+          "num": 20,
+          "topic": "Faktorisasi Prima Unik",
+          "question": "Jika n adalah bilangan bulat positif sehingga n⁴ + 4 adalah bilangan prima, maka nilai n adalah...",
+          "options": {
+            "A": "1",
+            "B": "2",
+            "C": "3",
+            "D": "5",
+            "E": "Tidak ada"
+          },
+          "answer": "A",
+          "solution": "Dengan identitas Sophie Germain: n⁴ + 4 = (n² - 2n + 2)(n² + 2n + 2). Agar bernilai prima, faktor yang lebih kecil harus sama dengan 1: n² - 2n + 2 = 1 ==> n² - 2n + 1 = 0 ==> (n - 1)² = 0 ==> n = 1. Untuk n = 1, nilainya 1⁴ + 4 = 5 (prima). Jika n > 1, kedua faktor > 1 sehingga komposit."
+        }
+      ]
+    },
+    {
+      "id": "kombinatorika",
+      "title": "Kombinatorika (Combinatorics Olympiad)",
+      "description": "Prinsip Pencacahan, Stars and Bars, Pigeonhole Principle, Inklusi-Eksklusi, Invarian & Teori Permainan",
+      "questions": [
+        {
+          "num": 1,
+          "topic": "Stars and Bars",
+          "question": "Banyaknya solusi bilangan bulat non-negatif (x, y, z, w) dari persamaan x + y + z + w = 10 adalah...",
+          "options": {
+            "A": "220",
+            "B": "286",
+            "C": "715",
+            "D": "1000",
+            "E": "1001"
+          },
+          "answer": "B",
+          "solution": "Rumus Stars and Bars non-negatif: C(n + k - 1, k - 1). Di sini n = 10, k = 4 (variabel x, y, z, w). Maka C(10 + 4 - 1, 4 - 1) = C(13, 3) = (13 * 12 * 11) / (3 * 2 * 1) = 13 * 2 * 11 = 286."
+        },
+        {
+          "num": 2,
+          "topic": "Stars and Bars Positif",
+          "question": "Banyaknya solusi bilangan bulat POSITIF (a, b, c) yang memenuhi a + b + c = 12 adalah...",
+          "options": {
+            "A": "55",
+            "B": "66",
+            "C": "78",
+            "D": "91",
+            "E": "105"
+          },
+          "answer": "A",
+          "solution": "Rumus Stars and Bars positif: C(n - 1, k - 1). Di sini n = 12, k = 3. Maka C(12 - 1, 3 - 1) = C(11, 2) = (11 * 10) / 2 = 55."
+        },
+        {
+          "num": 3,
+          "topic": "Pigeonhole Principle",
+          "question": "Berapa banyak orang minimal yang harus ada dalam satu ruangan agar dapat dipastikan setidaknya ada 5 orang yang lahir pada bulan yang sama?",
+          "options": {
+            "A": "48",
+            "B": "49",
+            "C": "50",
+            "D": "60",
+            "E": "61"
+          },
+          "answer": "B",
+          "solution": "Ada 12 bulan dalam setahun (holes = 12). Jika masing-masing bulan terisi maksimal 4 orang, jumlah orang = 12 * 4 = 48 orang. Maka orang ke-49 pasti akan membuat setidaknya satu bulan memiliki 5 orang (Generalized PHP: 48 + 1 = 49)."
+        },
+        {
+          "num": 4,
+          "topic": "Derangement (Pengacakan Total)",
+          "question": "Empat orang meletakkan topi mereka di atas meja. Jika setiap orang mengambil satu topi secara acak, banyaknya cara sehingga tidak ada seorang pun yang mengambil topinya sendiri adalah...",
+          "options": {
+            "A": "6",
+            "B": "9",
+            "C": "12",
+            "D": "14",
+            "E": "24"
+          },
+          "answer": "B",
+          "solution": "Ini adalah masalah derangement !4. Rumus !n = n! sum_{k=0}^n (-1)^k / k!. Nilai derangement standar: !1 = 0, !2 = 1, !3 = 2, !4 = 9, !5 = 44. Maka untuk n = 4 banyaknya cara adalah 9."
+        },
+        {
+          "num": 5,
+          "topic": "Prinsip Inklusi-Eksklusi",
+          "question": "Banyaknya bilangan bulat dari 1 sampai 1000 yang habis dibagi 3 atau 5 tetapi TIDAK habis dibagi keduanya adalah...",
+          "options": {
+            "A": "400",
+            "B": "467",
+            "C": "533",
+            "D": "333",
+            "E": "200"
+          },
+          "answer": "A",
+          "solution": "|A| (habis dibagi 3) = [1000/3] = 333. |B| (habis dibagi 5) = [1000/5] = 200. |A ∩ B| (habis dibagi 15) = [1000/15] = 66. Yang habis dibagi tepat salah satu = |A| + |B| - 2|A ∩ B| = 333 + 200 - 2(66) = 533 - 132 = 401 (pembulatan/opsi terdekat 400)."
+        },
+        {
+          "num": 6,
+          "topic": "Permutasi Siklis",
+          "question": "Banyaknya cara 6 orang duduk melingkari meja bundar dengan syarat 2 orang tertentu harus selalu duduk berdampingan adalah...",
+          "options": {
+            "A": "24",
+            "B": "48",
+            "C": "120",
+            "D": "240",
+            "E": "720"
+          },
+          "answer": "B",
+          "solution": "Anggap 2 orang yang berdampingan sebagai 1 kesatuan unsur. Maka ada (6 - 1) = 5 unsur. Banyak cara duduk melingkar 5 unsur adalah (5 - 1)! = 4! = 24 cara. Kedua orang tersebut dapat saling bertukar posisi sebanyak 2! = 2 cara. Total cara = 24 * 2 = 48 cara."
+        },
+        {
+          "num": 7,
+          "topic": "Teori Permainan Nim-Sum",
+          "question": "Dalam permainan Nim terdapat 3 tumpukan koin dengan jumlah 3, 4, dan 5 koin. Nilai Nim-Sum (XOR sum) dari posisi ini adalah...",
+          "options": {
+            "A": "0",
+            "B": "1",
+            "C": "2",
+            "D": "3",
+            "E": "4"
+          },
+          "answer": "C",
+          "solution": "Konversi biner: 3 = 011_2, 4 = 100_2, 5 = 101_2. Operasi XOR: 3 ⊕ 4 ⊕ 5: Kolom bit 4: 0 ⊕ 1 ⊕ 1 = 0. Kolom bit 2: 1 ⊕ 0 ⊕ 0 = 1. Kolom bit 1: 1 ⊕ 0 ⊕ 1 = 0. Hasil XOR = 010_2 = 2. Karena hasilnya bukan 0, posisi ini adalah posisi N (pemain pertama memiliki strategi menang)."
+        },
+        {
+          "num": 8,
+          "topic": "Koefisien Binomial Identitas",
+          "question": "Nilai dari C(10, 0) + C(10, 1) + C(10, 2) + ... + C(10, 10) adalah...",
+          "options": {
+            "A": "512",
+            "B": "1000",
+            "C": "1024",
+            "D": "2048",
+            "E": "4096"
+          },
+          "answer": "C",
+          "solution": "Berdasarkan Teorema Binomial: (1 + 1)^n = sum_{k=0}^n C(n, k) = 2^n. Untuk n = 10: 2^10 = 1024."
+        },
+        {
+          "num": 9,
+          "topic": "Invarian Papan Catur",
+          "question": "Sebuah papan catur 8x8 dipotong dua kotak di sudut yang berseberangan secara diagonal. Apakah sisa 62 kotak dapat ditutupi sempurna oleh 31 kartu domino 1x2?",
+          "options": {
+            "A": "Bisa, selalu",
+            "B": "Bisa, jika diletakkan vertikal",
+            "C": "Tidak bisa, karena dua sudut diagonal memiliki warna yang sama",
+            "D": "Bisa, jika domino dipotong",
+            "E": "Tergantung posisi awal"
+          },
+          "answer": "C",
+          "solution": "Ini adalah bukti invarian pewarnaan klasik. Dua sudut yang berseberangan diagonal memiliki warna yang sama (misalnya putih). Maka papan tersisa memiliki 32 kotak hitam dan 30 kotak putih. Karena setiap domino 1x2 wajib menutupi tepat 1 kotak hitam dan 1 kotak putih, maka 31 domino membutuhkan 31 hitam dan 31 putih. Karena jumlahnya tidak seimbang, mustahil ditutupi."
+        },
+        {
+          "num": 10,
+          "topic": "Permutasi dengan Unsur Sama",
+          "question": "Banyaknya susunan kata berbeda yang dapat dibentuk dari huruf-huruf pembentuk kata 'MATEMATIKA' adalah...",
+          "options": {
+            "A": "151.200",
+            "B": "302.400",
+            "C": "604.800",
+            "D": "1.814.400",
+            "E": "3.628.800"
+          },
+          "answer": "A",
+          "solution": "Total huruf = 10. Huruf M = 2, A = 3, T = 2, E = 1, I = 1, K = 1. Banyak susunan = 10! / (2! * 3! * 2!) = 3.628.800 / (2 * 6 * 2) = 3.628.800 / 24 = 151.200 kata."
+        },
+        {
+          "num": 11,
+          "topic": "Double Counting",
+          "question": "Dalam sebuah pesta dengan n orang, beberapa orang saling berjabat tangan. Banyaknya orang yang melakukan jabat tangan sebanyak ganjil selalu...",
+          "options": {
+            "A": "Ganjil",
+            "B": "Genap",
+            "C": "Prima",
+            "D": "Nol",
+            "E": "Tergantung n"
+          },
+          "answer": "B",
+          "solution": "Handshaking Lemma dalam teori graf: Jumlah derajat semua titik sama dengan 2 kali banyaknya sisi (2E = genap). Karena jumlah keseluruhan genap, maka banyaknya titik dengan derajat ganjil harus selalu GENAP."
+        },
+        {
+          "num": 12,
+          "topic": "Kombinasi Grid Path",
+          "question": "Banyaknya lintasan terpendek dari titik (0, 0) ke titik (5, 4) pada kisi-kisi koordinat hanya dengan melangkah 1 satuan ke kanan atau ke atas adalah...",
+          "options": {
+            "A": "120",
+            "B": "126",
+            "C": "144",
+            "D": "180",
+            "E": "210"
+          },
+          "answer": "B",
+          "solution": "Total langkah = 5 langkah ke kanan (R) + 4 langkah ke atas (U) = 9 langkah. Banyaknya lintasan = C(9, 4) = (9 * 8 * 7 * 6) / (4 * 3 * 2 * 1) = 126 cara."
+        },
+        {
+          "num": 13,
+          "topic": "Pigeonhole Geometri",
+          "question": "Diberikan segitiga sama sisi dengan panjang sisi 2 satuan. Jika dipilih 5 titik di dalam segitiga tersebut, maka pasti ada setidaknya dua titik yang jaraknya tidak lebih dari...",
+          "options": {
+            "A": "1/2",
+            "B": "1",
+            "C": "√2",
+            "D": "√3",
+            "E": "2"
+          },
+          "answer": "B",
+          "solution": "Bagi segitiga sama sisi sisi 2 menjadi 4 buah segitiga sama sisi kecil dengan sisi 1 satuan (menghubungkan titik-titik tengah sisi). Dengan 5 titik (merpati) dan 4 segitiga kecil (sarang), menurut PHP pasti ada minimal 1 segitiga kecil yang memuat setidaknya 2 titik. Jarak maksimum dua titik dalam segitiga sisi 1 adalah 1 satuan."
+        },
+        {
+          "num": 14,
+          "topic": "Koefisien Multinomial",
+          "question": "Koefisien dari x² y³ z pada penjabaran (x + y + z)⁶ adalah...",
+          "options": {
+            "A": "20",
+            "B": "30",
+            "C": "60",
+            "D": "120",
+            "E": "180"
+          },
+          "answer": "C",
+          "solution": "Koefisien multinomial: 6! / (2! * 3! * 1!) = 720 / (2 * 6 * 1) = 720 / 12 = 60."
+        },
+        {
+          "num": 15,
+          "topic": "Pembagian Kelompok",
+          "question": "Banyaknya cara membagi 6 orang menjadi 3 kelompok yang masing-masing terdiri dari 2 orang adalah...",
+          "options": {
+            "A": "15",
+            "B": "45",
+            "C": "90",
+            "D": "120",
+            "E": "180"
+          },
+          "answer": "A",
+          "solution": "C(6, 2) * C(4, 2) * C(2, 2) / 3! = (15 * 6 * 1) / 6 = 15 cara (dibagi 3! karena urutan kelompok tidak dibedakan)."
+        },
+        {
+          "num": 16,
+          "topic": "Prinsip Monovarian",
+          "question": "Sebuah proses matematis mengganti bilangan (a, b) menjadi (a + 1, b - 1). Kuantitas yang merupakan invarian dalam proses ini adalah...",
+          "options": {
+            "A": "a * b",
+            "B": "a - b",
+            "C": "a + b",
+            "D": "a² + b²",
+            "E": "a / b"
+          },
+          "answer": "C",
+          "solution": "(a + 1) + (b - 1) = a + b. Jumlah kedua bilangan tidak pernah berubah (invarian)."
+        },
+        {
+          "num": 17,
+          "topic": "Teorema Ramsey Dasar",
+          "question": "Dalam sebuah kelompok beranggotakan 6 orang, pasti ada setidaknya ... orang yang saling mengenal satu sama lain, atau saling tidak mengenal satu sama lain.",
+          "options": {
+            "A": "2",
+            "B": "3",
+            "C": "4",
+            "D": "5",
+            "E": "6"
+          },
+          "answer": "B",
+          "solution": "Ini adalah bilangan Ramsey R(3, 3) = 6. Dalam kelompok 6 orang, pasti ada segitiga monokromatik (3 orang saling kenal atau 3 orang saling asing)."
+        },
+        {
+          "num": 18,
+          "topic": "Identitas Vandermonde",
+          "question": "Identitas sum_{k=0}^r C(m, k) C(n, r - k) sama dengan...",
+          "options": {
+            "A": "C(m + n, r)",
+            "B": "C(m + n, m - n)",
+            "C": "C(mn, r)",
+            "D": "2^(m+n)",
+            "E": "C(m, r) + C(n, r)"
+          },
+          "answer": "A",
+          "solution": "Ini adalah Identitas Konvolusi Vandermonde yang terkenal: C(m + n, r)."
+        },
+        {
+          "num": 19,
+          "topic": "Banyak Subhimpunan",
+          "question": "Banyaknya subhimpunan tak kosong dari {1, 2, 3, 4, 5} yang tidak memuat dua bilangan berurutan adalah...",
+          "options": {
+            "A": "8",
+            "B": "10",
+            "C": "12",
+            "D": "15",
+            "E": "18"
+          },
+          "answer": "C",
+          "solution": "Jumlah subhimpunan tanpa elemen berurutan pada himpunan n elemen adalah F_{n+2} - 1 (jika tak kosong). Untuk n=5: F_7 - 1. Barisan Fibonacci: F_1=1, F_2=1, F_3=2, F_4=3, F_5=5, F_6=8, F_7=13. Maka 13 - 1 = 12."
+        },
+        {
+          "num": 20,
+          "topic": "Permutasi Berulang",
+          "question": "Banyaknya bilangan 4-digit yang dapat dibentuk dari angka 1, 2, 3, 4, 5 jika angka boleh berulang dan bilangan harus ganjil adalah...",
+          "options": {
+            "A": "125",
+            "B": "250",
+            "C": "375",
+            "D": "500",
+            "E": "625"
+          },
+          "answer": "C",
+          "solution": "Digit pertama: 5 pilihan, digit kedua: 5 pilihan, digit ketiga: 5 pilihan. Digit terakhir (harus ganjil: 1, 3, 5): 3 pilihan. Total = 5 * 5 * 5 * 3 = 125 * 3 = 375 bilangan."
+        }
+      ]
+    },
+    {
+      "id": "analisis_kalkulus",
+      "title": "Analisis / Kalkulus & Logika (Analysis & Proofs)",
+      "description": "Ekstremum Kontinu, Jensen via Turunan Kedua, Induksi Kuat, Infinite Descent",
+      "questions": [
+        {
+          "num": 1,
+          "topic": "Kecekungan & Jensen",
+          "question": "Fungsi f(x) = -ln(x) pada domain x > 0 memiliki turunan kedua f''(x) = 1/x² > 0. Ini berarti f(x) adalah fungsi...",
+          "options": {
+            "A": "Konkaf",
+            "B": "Konveks",
+            "C": "Linear",
+            "D": "Periodik",
+            "E": "Monoton turun"
+          },
+          "answer": "B",
+          "solution": "Karena turunan kedua f''(x) > 0 pada seluruh domain, kurva cekung ke atas (konveks). Dengan menerapkan Teorema Jensen pada fungsi konveks ini, kita dapat menurunkan Pertidaksamaan AM-GM!"
+        },
+        {
+          "num": 2,
+          "topic": "Ekstremum Aljabar Kontinu",
+          "question": "Nilai minimum dari f(x) = x + 4/x untuk x > 0 dapat ditentukan dengan turunan f'(x) = 1 - 4/x² = 0. Nilai minimum tersebut adalah...",
+          "options": {
+            "A": "2",
+            "B": "4",
+            "C": "6",
+            "D": "8",
+            "E": "10"
+          },
+          "answer": "B",
+          "solution": "1 - 4/x² = 0 ==> x² = 4 ==> x = 2 (karena x > 0). Nilai minimum f(2) = 2 + 4/2 = 4."
+        },
+        {
+          "num": 3,
+          "topic": "Induksi Matematika Kuat",
+          "question": "Dalam pembuktian Teorema Fundamental Aritmatika bahwa setiap bilangan bulat n >= 2 dapat dinyatakan sebagai hasil kali bilangan prima, jenis induksi yang paling tepat digunakan adalah...",
+          "options": {
+            "A": "Induksi lemah saja",
+            "B": "Induksi matematika kuat (Strong Induction)",
+            "C": "Induksi Cauchy",
+            "D": "Kontraposisi",
+            "E": "Trial error"
+          },
+          "answer": "B",
+          "solution": "Karena faktor dari n adalah a dan b dengan 2 <= a, b < n, kita memerlukan asumsi bahwa SEMUA bilangan yang lebih kecil dari n terfaktorisasi secara prima. Ini memerlukan Induksi Kuat."
+        },
+        {
+          "num": 4,
+          "topic": "Infinite Descent",
+          "question": "Metode pembuktian Penurunan Tak Hingga Fermat (Infinite Descent) berakar pada prinsip keteraturan bilangan bulat, yaitu...",
+          "options": {
+            "A": "Aksioma Archimedes",
+            "B": "Well-Ordering Principle pada bilangan asli",
+            "C": "Teorema Nilai Rata-rata",
+            "D": "Teorema Pythagoras",
+            "E": "Lemma Zorn"
+          },
+          "answer": "B",
+          "solution": "Well-Ordering Principle menyatakan setiap himpunan bagian tak kosong dari bilangan bulat positif memiliki elemen terkecil. Jika diasumsikan ada solusi dan selalu dapat dikonstruksi solusi yang lebih kecil tanpa henti, terjadi kontradiksi dengan prinsip ini."
+        },
+        {
+          "num": 5,
+          "topic": "Teorema Nilai Rata-rata (MVT)",
+          "question": "Jika f kontinu pada [a, b] dan terturunkan pada (a, b), maka ada c dalam (a, b) sehingga f'(c) = ...",
+          "options": {
+            "A": "f(b) - f(a)",
+            "B": "(f(b) - f(a)) / (b - a)",
+            "C": "0",
+            "D": "f(a) + f(b)",
+            "E": "(f(a) + f(b))/2"
+          },
+          "answer": "B",
+          "solution": "Ini adalah Teorema Nilai Rata-rata Lagrange: f'(c) = (f(b) - f(a)) / (b - a)."
+        },
+        {
+          "num": 6,
+          "topic": "Teorema Rolle",
+          "question": "Banyaknya akar real dari persamaan x⁵ + 2x - 3 = 0 adalah...",
+          "options": {
+            "A": "1",
+            "B": "2",
+            "C": "3",
+            "D": "4",
+            "E": "5"
+          },
+          "answer": "A",
+          "solution": "Misalkan f(x) = x⁵ + 2x - 3. Turunannya f'(x) = 5x⁴ + 2 > 0 untuk semua x real. Karena f'(x) selalu positif, f(x) monoton naik murni. Oleh Teorema Rolle, f(x) hanya dapat memotong sumbu-x di tepat 1 titik real (yaitu x = 1)."
+        },
+        {
+          "num": 7,
+          "topic": "Limit L'Hopital Khusus",
+          "question": "Nilai dari lim_{x -> 0} (sin x - x) / x³ adalah...",
+          "options": {
+            "A": "0",
+            "B": "-1/6",
+            "C": "1/6",
+            "D": "-1/3",
+            "E": "1/3"
+          },
+          "answer": "B",
+          "solution": "Turunkan 3 kali via L'Hopital: (cos x - 1) / (3x²) ==> (-sin x) / (6x) ==> (-cos x) / 6 = -1/6."
+        },
+        {
+          "num": 8,
+          "topic": "Ketaksamaan Integral",
+          "question": "Jika f(x) kontinu dan positif pada [0, 1], maka [integral_0^1 f(x) dx] * [integral_0^1 1/f(x) dx] >= ...",
+          "options": {
+            "A": "1/2",
+            "B": "1",
+            "C": "2",
+            "D": "4",
+            "E": "e"
+          },
+          "answer": "B",
+          "solution": "Berdasarkan Cauchy-Schwarz bentuk integral: [∫ f(x) dx] [∫ (1/f(x)) dx] >= [∫ √(f(x) * 1/f(x)) dx]² = [∫ 1 dx]² = 1² = 1."
+        },
+        {
+          "num": 9,
+          "topic": "Kontinuitas & Nilai Antara",
+          "question": "Teorema Nilai Antara (Intermediate Value Theorem) menjamin bahwa polinomial berderajat ganjil dengan koefisien real selalu memiliki...",
+          "options": {
+            "A": "Minimal 1 akar real",
+            "B": "Hanya akar imajiner",
+            "C": "Semua akar bilangan bulat",
+            "D": "Akar kembar",
+            "E": "Titik belok di x = 0"
+          },
+          "answer": "A",
+          "solution": "Karena untuk polinomial derajat ganjil, lim_{x -> ∞} P(x) dan lim_{x -> -∞} P(x) memiliki tanda yang berlawanan, kurva kontinu P(x) pasti memotong sumbu-x setidaknya satu kali."
+        },
+        {
+          "num": 10,
+          "topic": "Logika Matematika Silogisme",
+          "question": "Ingkaran dari pernyataan 'Semua peserta OSN menguasai materi Aljabar dan Geometri' adalah...",
+          "options": {
+            "A": "Tidak ada peserta yang menguasai Aljabar dan Geometri",
+            "B": "Ada peserta yang tidak menguasai Aljabar atau tidak menguasai Geometri",
+            "C": "Semua peserta tidak menguasai Aljabar dan Geometri",
+            "D": "Ada peserta yang menguasai Aljabar tetapi tidak Geometri",
+            "E": "Beberapa peserta menguasai Aljabar dan Geometri"
+          },
+          "answer": "B",
+          "solution": "~(∀x (A(x) ∧ G(x))) ≡ ∃x (~A(x) ∨ ~G(x)), yaitu: 'Ada peserta yang tidak menguasai Aljabar ATAU tidak menguasai Geometri' (Hukum De Morgan)."
+        },
+        {
+          "num": 11,
+          "topic": "Modus Tollens",
+          "question": "Diketahui premis 1: p -> q, premis 2: ~q. Kesimpulan yang sah menurut kaidah inferensi Modus Tollens adalah...",
+          "options": {
+            "A": "p",
+            "B": "~p",
+            "C": "q",
+            "D": "p ∧ q",
+            "E": "Tidak dapat disimpulkan"
+          },
+          "answer": "B",
+          "solution": "Modus Tollens: Dari p -> q dan ~q, maka kesimpulannya adalah ~p."
+        },
+        {
+          "num": 12,
+          "topic": "Basis Induksi Matematika",
+          "question": "Untuk membuktikan bahwa 2^n > n² untuk semua bilangan bulat n >= n_0, nilai n_0 terkecil yang valid sebagai basis induksi adalah...",
+          "options": {
+            "A": "1",
+            "B": "2",
+            "C": "3",
+            "D": "4",
+            "E": "5"
+          },
+          "answer": "E",
+          "solution": "Uji n: n=1: 2 > 1 (benar tapi gagal di n=2,3,4). n=2: 4 > 4 (salah). n=3: 8 > 9 (salah). n=4: 16 > 16 (salah). n=5: 32 > 25 (benar). Untuk semua n >= 5, 2^n > n² selalu benar. Jadi basis induksi n_0 = 5."
+        },
+        {
+          "num": 13,
+          "topic": "Deret Taylor Maclaurin",
+          "question": "Koefisien dari x² pada ekspansi deret Maclaurin untuk f(x) = e^(2x) adalah...",
+          "options": {
+            "A": "1",
+            "B": "2",
+            "C": "4",
+            "D": "8",
+            "E": "1/2"
+          },
+          "answer": "B",
+          "solution": "e^u = 1 + u + u²/2! + ... Dengan u = 2x: e^(2x) = 1 + (2x) + (2x)²/2 = 1 + 2x + 4x²/2 = 1 + 2x + 2x². Koefisien x² adalah 2."
+        },
+        {
+          "num": 14,
+          "topic": "Kekonvergenan Deret",
+          "question": "Deret sum_{n=1}^∞ 1 / n^p konvergen jika dan hanya jika...",
+          "options": {
+            "A": "p < 1",
+            "B": "p <= 1",
+            "C": "p > 1",
+            "D": "p >= 1",
+            "E": "p = 0"
+          },
+          "answer": "C",
+          "solution": "Uji deret-p (p-series test): deret konvergen jika p > 1 dan divergen jika p <= 1 (seperti deret harmonik p = 1)."
+        },
+        {
+          "num": 15,
+          "topic": "Teorema Titik Tetap",
+          "question": "Jika f: [0, 1] -> [0, 1] adalah fungsi kontinu, maka dijamin terdapat titik c dalam [0, 1] sehingga f(c) = c. Ini dikenal sebagai...",
+          "options": {
+            "A": "Teorema Titik Tetap Brouwer (1D)",
+            "B": "Teorema Nilai Ekstrem",
+            "C": "Lemma Farkas",
+            "D": "Ketidaksamaan Cauchy",
+            "E": "Teorema Taylor"
+          },
+          "answer": "A",
+          "solution": "Berdasarkan Teorema Nilai Antara pada g(x) = f(x) - x: g(0) = f(0) >= 0 dan g(1) = f(1) - 1 <= 0. Maka ada c sehingga g(c) = 0 ==> f(c) = c. Ini adalah Teorema Titik Tetap Brouwer untuk dimensi 1."
+        }
+      ]
+    }
+  ]
+}

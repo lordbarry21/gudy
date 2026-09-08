@@ -89,6 +89,96 @@ export interface NavItem {
   icon: string
 }
 
+// ============== QUIZ SYSTEM TYPES ==============
+
+// Quiz Question
+export interface QuizQuestion {
+  num: number
+  topic: string
+  question: string
+  options: Record<string, string> // A, B, C, D, E
+  answer: string
+  solution: string
+}
+
+// Quiz Subcategory
+export interface QuizSubcategory {
+  id: string
+  title: string
+  description?: string
+  questions: QuizQuestion[]
+}
+
+// Quiz Data (from JSON)
+export interface QuizData {
+  subject_id: string
+  subject_name: string
+  icon: string
+  color: string
+  subcategories: QuizSubcategory[]
+}
+
+// Quiz Attempt Record
+export interface QuizAttempt {
+  id: string
+  subjectId: string
+  subcategoryId: string
+  subcategoryTitle: string
+  score: number // percentage 0-100
+  correctAnswers: number
+  wrongAnswers: number
+  skippedQuestions: number
+  totalQuestions: number
+  answers: Record<number, string> // questionNum -> selectedAnswer
+  startedAt: string
+  completedAt: string
+}
+
+// Quiz State (active quiz session)
+export interface QuizSession {
+  subjectId: string
+  subcategoryId: string
+  subcategoryTitle: string
+  questions: QuizQuestion[]
+  currentIndex: number
+  answers: Record<number, string> // questionNum -> selectedAnswer
+  startedAt: string
+  isSubmitted: boolean
+  isComplete: boolean
+}
+
+// Quiz Result Summary
+export interface QuizResult {
+  attempt: QuizAttempt
+  questions: QuizQuestion[]
+  answers: Record<number, string>
+}
+
+// Best Score per subcategory
+export interface QuizBestScore {
+  subcategoryId: string
+  bestScore: number
+  bestAttemptAt: string
+  totalAttempts: number
+}
+
+// Quiz Progress (user's quiz history)
+export interface QuizProgress {
+  attempts: QuizAttempt[]
+  bestScores: Record<string, QuizBestScore>
+  totalQuizzesTaken: number
+  averageScore: number
+}
+
+// ============== FIREBASE AUTH TYPES ==============
+
+export interface FirebaseUser {
+  uid: string
+  email: string | null
+  displayName: string | null
+  photoURL: string | null
+}
+
 // App State
 export interface AppState {
   progress: UserProgress

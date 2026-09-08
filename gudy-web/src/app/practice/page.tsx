@@ -1,9 +1,15 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { motion, AnimatePresence } from 'motion/react'
+import { useEffect, useState, useCallback } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { useAppStore } from '@/lib/store'
-import { PRACTICE_EXAMS } from '@/lib/practice-manifest'
+import { useQuizStore, useActiveQuiz, useQuizProgress } from '@/lib/quiz-store'
+import { loadQuizData } from '@/lib/quiz-data'
+import { AuthModal } from '@/components/auth/AuthModal'
+import {
+  QuizCard,
+  QuizModal,
+} from '@/components/quiz'
 import {
   FilePdf,
   DownloadSimple,
@@ -15,16 +21,39 @@ import {
   Books,
   Sparkle,
   Lightning,
+  User,
+  SignIn,
+  Trophy,
 } from '@phosphor-icons/react'
+import { useAuth } from '@/contexts/AuthContext'
+import { QuizData, QuizQuestion, QuizAttempt } from '@/types'
 
-type PracticeExam = (typeof PRACTICE_EXAMS)[number]
+type PracticeExam = {
+  subjectId: string
+  subjectName: string
+  subcategoryId: string
+  title: string
+  description: string
+  questionCount: number
+  pdfUrl: string
+  icon: string
+  color: string
+}
 
 export default function PracticePage() {
   const { subjects, initialize, isInitialized } = useAppStore()
+  const { user, loading: authLoading } = useAuth()
   const [mounted, setMounted] = useState(false)
   const [selectedSubject, setSelectedSubject] = useState<string>('all')
   const [searchQuery, setSearchQuery] = useState('')
-  const [previewExam, setPreviewExam] = useState<PracticeExam | null>(null)
+  const [showAuthModal, setShowAuthModal] = useState(false)
+  const [quizData, setQuizData] = useState<Record<string, QuizData>>({})
+  const [practiceList, setPracticeList] = useState<PracticeExam[]>([])
+
+  // Quiz state from store
+  const activeQuiz = useActiveQuiz()
+  const quizProgress = useQuizProgress()
+  const { startQuiz, selectAnswer, nextQuestion, prevQuestion, goToQuestion, submitQuiz, cancelQuiz } = useQuizStore()
 
   useEffect(() => {
     setMounted(true)
@@ -33,23 +62,58 @@ export default function PracticePage() {
     }
   }, [initialize, isInitialized])
 
-  if (!mounted) {
-    return (
-      <main className="min-h-screen bg-background flex items-center justify-center">
-        <div className="w-8 h-8 border-2 border-accent border-t-transparent rounded-full animate-spin" />
-      </main>
-    )
-  }
+  // Load quiz data
+  useEffect(() => {
+    const loadData = async () => {
+      const subjectIds = [
+        'bahasa_indonesia',
+        'bahasa_inggris',
+        'matematika_osn',
+        'tka_matematika',
+        'serkom',
+      ]
+
+      const loadedData: Record<string, QuizData> = {}
+      const list: PracticeExam[] = []
+
+      for (const subjectId of subjectIds) {
+        const data = await loadQuizData(subjectId)
+        if (data) {
+          loadedData[subjectId] = data
+
+          // Build practice list from subcategories
+          for (const subcat of data.subcategories) {
+            list.push({
+              subjectId: data.subject_id,
+              subjectName: data.subject_name,
+              subcategoryId: subcat.id,
+              title: subcat.title,
+              description: subcat.description || '',
+              questionCount: subcat.questions.length,
+              pdfUrl: `/practice/${data.subject_id}/${subcat.id}.pdf`,
+              icon: data.icon,
+              color: data.color,
+            })
+          }
+        }
+      }
+
+      setQuizData(loadedData)
+      setPracticeList(list)
+    }
+
+    loadData()
+  }, [])
 
   // Filter exams based on subject & search query
-  const filteredExams = PRACTICE_EXAMS.filter((exam) => {
+  const filteredExams = practiceList.filter((exam) => {
     const matchesSubject =
-      selectedSubject === 'all' || exam.subject_id === selectedSubject
+      selectedSubject === 'all' || exam.subjectId === selectedSubject
     const matchesSearch =
       searchQuery.trim() === '' ||
       exam.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       exam.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      exam.subject_name.toLowerCase().includes(searchQuery.toLowerCase())
+      exam.subjectName.toLowerCase().includes(searchQuery.toLowerCase())
 
     return matchesSubject && matchesSearch
   })
@@ -64,6 +128,77 @@ export default function PracticePage() {
   const getSubjectIcon = (subjectId: string): string => {
     const s = subjects.find((sub) => sub.id === subjectId)
     return s ? s.icon : '📝'
+  }
+
+  // Get best score for a subcategory
+  const getBestScore = (subcategoryId: string) => {
+    return quizProgress.bestScores[subcategoryId] || null
+  }
+
+  // Handle starting a quiz
+  const handleStartQuiz = (exam: PracticeExam) => {
+    if (!user) {
+      setShowAuthModal(true)
+      return
+    }
+
+    const data = quizData[exam.subjectId]
+    const subcategory = data?.subcategories.find((s) => s.id === exam.subcategoryId)
+
+    if (subcategory) {
+      startQuiz(
+        exam.subjectId,
+        exam.subcategoryId,
+        exam.title,
+        subcategory.questions
+      )
+    }
+  }
+
+  // Handle quiz submission
+  const handleSubmitQuiz = useCallback(() => {
+    return submitQuiz()
+  }, [submitQuiz])
+
+  // Handle quiz completion (for showing results)
+  const [submittedAttempt, setSubmittedAttempt] = useState<QuizAttempt | null>(null)
+
+  const handleNextQuestion = useCallback(() => {
+    if (activeQuiz) {
+      const nextIndex = activeQuiz.currentIndex + 1
+      if (nextIndex >= activeQuiz.questions.length) {
+        // Last question - submit
+        const attempt = submitQuiz()
+        setSubmittedAttempt(attempt)
+      } else {
+        nextQuestion()
+      }
+    }
+  }, [activeQuiz, nextQuestion, submitQuiz])
+
+  // Handle retry
+  const handleRetry = () => {
+    if (activeQuiz) {
+      const data = quizData[activeQuiz.subjectId]
+      const subcategory = data?.subcategories.find((s) => s.id === activeQuiz.subcategoryId)
+      if (subcategory) {
+        setSubmittedAttempt(null)
+        startQuiz(
+          activeQuiz.subjectId,
+          activeQuiz.subcategoryId,
+          activeQuiz.subcategoryTitle,
+          subcategory.questions
+        )
+      }
+    }
+  }
+
+  if (!mounted) {
+    return (
+      <main className="min-h-screen bg-background flex items-center justify-center">
+        <div className="w-8 h-8 border-2 border-accent border-t-transparent rounded-full animate-spin" />
+      </main>
+    )
   }
 
   return (
@@ -83,18 +218,70 @@ export default function PracticePage() {
                 <span>Bank Soal & Ujian Mandiri Resmi (Target 100)</span>
               </div>
               <h1 className="text-3xl lg:text-4xl font-bold text-text-primary tracking-tight">
-                Latihan Soal & Ujian PDF
+                Latihan Soal & Ujian
               </h1>
               <p className="text-text-secondary text-sm mt-1">
-                Kumpulan lengkap paket ujian mandiri per subkategori (15-20 soal acak + kunci jawaban & pembahasan detail)
+                Kumpulkan dan asah kemampuan dengan soal-soal interaktif per subkategori
               </p>
             </div>
-            <div className="flex items-center gap-2 text-xs font-medium text-text-muted bg-surface border border-border rounded-xl px-3.5 py-2">
-              <Books size={16} className="text-accent" />
-              <span>{PRACTICE_EXAMS.length} Paket Ujian Tersedia</span>
+            <div className="flex items-center gap-3">
+              {/* User Status */}
+              {user ? (
+                <div className="flex items-center gap-2 text-xs font-medium text-text-muted bg-surface border border-border rounded-xl px-3.5 py-2">
+                  <div className="w-6 h-6 rounded-full bg-accent/20 flex items-center justify-center">
+                    <User size={14} className="text-accent" />
+                  </div>
+                  <span>{user.displayName || user.email?.split('@')[0]}</span>
+                </div>
+              ) : (
+                <button
+                  onClick={() => setShowAuthModal(true)}
+                  className="flex items-center gap-2 text-xs font-medium text-text-muted bg-surface border border-border rounded-xl px-3.5 py-2 hover:text-accent hover:border-accent/50 transition-colors"
+                >
+                  <SignIn size={14} />
+                  <span>Login untuk simpan progress</span>
+                </button>
+              )}
+
+              {/* Stats */}
+              <div className="flex items-center gap-2 text-xs font-medium text-text-muted bg-surface border border-border rounded-xl px-3.5 py-2">
+                <Books size={16} className="text-accent" />
+                <span>{practiceList.length} Paket Tersedia</span>
+              </div>
             </div>
           </div>
         </motion.div>
+
+        {/* Stats Cards (for logged in users) */}
+        {user && quizProgress.totalQuizzesTaken > 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="grid grid-cols-3 gap-3 mb-6"
+          >
+            <div className="bg-surface border border-border rounded-xl p-4 text-center">
+              <Trophy size={20} className="text-warning mx-auto mb-1" />
+              <p className="text-lg font-bold text-text-primary">
+                {quizProgress.averageScore}%
+              </p>
+              <p className="text-xs text-text-muted">Rata-rata Skor</p>
+            </div>
+            <div className="bg-surface border border-border rounded-xl p-4 text-center">
+              <CheckCircle size={20} className="text-success mx-auto mb-1" />
+              <p className="text-lg font-bold text-text-primary">
+                {quizProgress.totalQuizzesTaken}
+              </p>
+              <p className="text-xs text-text-muted">Quiz Dikerjakan</p>
+            </div>
+            <div className="bg-surface border border-border rounded-xl p-4 text-center">
+              <Sparkle size={20} className="text-accent mx-auto mb-1" />
+              <p className="text-lg font-bold text-text-primary">
+                {Object.keys(quizProgress.bestScores).length}
+              </p>
+              <p className="text-xs text-text-muted">Kategori Dimainkan</p>
+            </div>
+          </motion.div>
+        )}
 
         {/* Search Bar */}
         <div className="relative mb-6">
@@ -134,12 +321,10 @@ export default function PracticePage() {
                 : 'bg-surface border border-border text-text-secondary hover:text-text-primary hover:bg-surface-elevated'
             }`}
           >
-            Semua Subjek ({PRACTICE_EXAMS.length})
+            Semua ({practiceList.length})
           </button>
           {subjects.map((subject) => {
-            const count = PRACTICE_EXAMS.filter(
-              (e) => e.subject_id === subject.id
-            ).length
+            const count = practiceList.filter((e) => e.subjectId === subject.id).length
             return (
               <button
                 key={subject.id}
@@ -172,94 +357,25 @@ export default function PracticePage() {
           transition={{ duration: 0.3, delay: 0.15 }}
         >
           {filteredExams.map((exam, index) => {
-            const color = getSubjectColor(exam.subject_id)
-            const icon = getSubjectIcon(exam.subject_id)
-            const duration = exam.question_count <= 15 ? 45 : 60
+            const color = getSubjectColor(exam.subjectId)
+            const icon = getSubjectIcon(exam.subjectId)
+            const bestScore = getBestScore(exam.subcategoryId)
 
             return (
-              <motion.div
-                key={`${exam.subject_id}_${exam.subcategory_id}`}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.03 * (index % 10) }}
-                className="bg-surface border border-border rounded-2xl p-5 hover:border-border-hover transition-all shadow-card flex flex-col justify-between group"
-              >
-                <div>
-                  {/* Top Meta */}
-                  <div className="flex items-start justify-between gap-3 mb-3">
-                    <div className="flex items-center gap-2.5">
-                      <div
-                        className="w-10 h-10 rounded-xl flex items-center justify-center text-xl shrink-0"
-                        style={{ background: `${color}18` }}
-                      >
-                        {icon}
-                      </div>
-                      <div>
-                        <span
-                          className="text-[11px] font-semibold tracking-wide uppercase block"
-                          style={{ color }}
-                        >
-                          {exam.subject_name}
-                        </span>
-                        <h3 className="font-bold text-text-primary text-base group-hover:text-accent transition-colors leading-snug">
-                          {exam.title}
-                        </h3>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Description */}
-                  <p className="text-xs text-text-secondary line-clamp-2 mb-4">
-                    {exam.description}
-                  </p>
-
-                  {/* Badges */}
-                  <div className="flex flex-wrap items-center gap-2 mb-4">
-                    <span className="inline-flex items-center gap-1 text-[11px] font-medium bg-surface-elevated text-text-secondary px-2.5 py-1 rounded-lg border border-border">
-                      <Books size={12} className="text-accent" />
-                      {exam.question_count} Soal PG
-                    </span>
-                    <span className="inline-flex items-center gap-1 text-[11px] font-medium bg-surface-elevated text-text-secondary px-2.5 py-1 rounded-lg border border-border">
-                      <Clock size={12} className="text-warning" />
-                      {duration} Menit
-                    </span>
-                    <span className="inline-flex items-center gap-1 text-[11px] font-medium bg-success/10 text-success px-2.5 py-1 rounded-lg">
-                      <CheckCircle size={12} weight="fill" />
-                      Kunci & Bahas
-                    </span>
-                  </div>
-                </div>
-
-                {/* Actions */}
-                <div className="pt-3 border-t border-border/60 flex items-center gap-2">
-                  <button
-                    onClick={() => setPreviewExam(exam)}
-                    className="flex-1 inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl text-xs font-semibold bg-accent text-white hover:bg-accent-hover transition-colors shadow-sm"
-                  >
-                    <FilePdf size={15} weight="fill" />
-                    <span>Buka Ujian</span>
-                  </button>
-
-                  <a
-                    href={exam.pdf_url}
-                    download
-                    className="inline-flex items-center justify-center gap-1 p-2 rounded-xl text-xs font-medium bg-surface-elevated text-text-secondary hover:text-text-primary border border-border hover:border-border-hover transition-colors"
-                    title="Unduh file PDF"
-                  >
-                    <DownloadSimple size={16} />
-                  </a>
-
-                  <a
-                    href={exam.pdf_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-1 p-2 rounded-xl text-xs font-medium bg-surface-elevated text-text-secondary hover:text-text-primary border border-border hover:border-border-hover transition-colors"
-                    title="Buka di tab baru"
-                  >
-                    <ArrowSquareOut size={16} />
-                  </a>
-                </div>
-              </motion.div>
+              <QuizCard
+                key={`${exam.subjectId}_${exam.subcategoryId}`}
+                title={exam.title}
+                description={exam.description}
+                questionCount={exam.questionCount}
+                duration={exam.questionCount <= 15 ? 45 : 60}
+                subjectColor={color}
+                subjectIcon={icon}
+                subjectName={exam.subjectName}
+                bestScore={bestScore || undefined}
+                onStartQuiz={() => handleStartQuiz(exam)}
+                onOpenPdf={() => window.open(exam.pdfUrl, '_blank')}
+                index={index}
+              />
             )
           })}
         </motion.div>
@@ -277,81 +393,36 @@ export default function PracticePage() {
         )}
       </div>
 
-      {/* PDF Modal Viewer */}
-      <AnimatePresence>
-        {previewExam && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/70 backdrop-blur-sm">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.2 }}
-              className="bg-surface border border-border rounded-2xl shadow-2xl w-full max-w-5xl h-[92vh] flex flex-col overflow-hidden"
-            >
-              {/* Modal Header */}
-              <div className="px-5 py-3.5 border-b border-border flex items-center justify-between bg-surface-elevated">
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-accent/15 flex items-center justify-center text-accent">
-                    <FilePdf size={20} weight="fill" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-text-primary text-sm sm:text-base leading-tight">
-                      {previewExam.title}
-                    </h3>
-                    <p className="text-[11px] text-text-muted">
-                      {previewExam.subject_name} &bull; {previewExam.question_count} Soal &bull; Target Nilai 100
-                    </p>
-                  </div>
-                </div>
+      {/* Quiz Modal */}
+      {activeQuiz && (
+        <QuizModal
+          isOpen={true}
+          onClose={() => {
+            cancelQuiz()
+            setSubmittedAttempt(null)
+          }}
+          subjectName={subjects.find((s) => s.id === activeQuiz.subjectId)?.name || ''}
+          subcategoryTitle={activeQuiz.subcategoryTitle}
+          questions={activeQuiz.questions}
+          currentIndex={activeQuiz.currentIndex}
+          answers={activeQuiz.answers}
+          isSubmitted={activeQuiz.isSubmitted}
+          submittedAttempt={submittedAttempt || undefined}
+          onSelectAnswer={(questionNum, answer) => selectAnswer(questionNum, answer)}
+          onNext={handleNextQuestion}
+          onPrev={prevQuestion}
+          onGoToQuestion={goToQuestion}
+          onSubmit={handleSubmitQuiz}
+          onRetry={handleRetry}
+        />
+      )}
 
-                <div className="flex items-center gap-2">
-                  <a
-                    href={previewExam.pdf_url}
-                    download
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-accent text-white hover:bg-accent-hover transition-colors"
-                  >
-                    <DownloadSimple size={14} weight="bold" />
-                    <span className="hidden sm:inline">Unduh PDF</span>
-                  </a>
-
-                  <a
-                    href={previewExam.pdf_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 p-2 rounded-xl text-xs text-text-secondary hover:text-text-primary hover:bg-surface border border-border transition-colors"
-                    title="Buka Tab Baru"
-                  >
-                    <ArrowSquareOut size={16} />
-                  </a>
-
-                  <button
-                    onClick={() => setPreviewExam(null)}
-                    className="p-2 rounded-xl text-text-secondary hover:text-text-primary hover:bg-surface border border-border transition-colors"
-                    title="Tutup"
-                  >
-                    <X size={16} />
-                  </button>
-                </div>
-              </div>
-
-              {/* Embedded PDF iframe */}
-              <div className="flex-1 bg-[#2b2b2b] relative">
-                <iframe
-                  src={previewExam.pdf_url}
-                  className="w-full h-full border-none"
-                  title={previewExam.title}
-                />
-              </div>
-
-              {/* Modal Footer */}
-              <div className="px-5 py-2.5 border-t border-border bg-surface flex items-center justify-between text-xs text-text-muted">
-                <span>Dokumen Resmi Bank Soal Gudy Examination Series</span>
-                <span className="font-mono text-[11px]">{previewExam.pdf_url}</span>
-              </div>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
+      {/* Auth Modal */}
+      <AuthModal
+        isOpen={showAuthModal}
+        onClose={() => setShowAuthModal(false)}
+        initialTab="login"
+      />
     </main>
   )
 }

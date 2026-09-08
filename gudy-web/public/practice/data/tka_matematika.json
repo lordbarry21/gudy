@@ -1,0 +1,1730 @@
+{
+  "subject_id": "tka_matematika",
+  "subject_name": "TKA Wajib: Matematika",
+  "icon": "📊",
+  "color": "#D97757",
+  "subcategories": [
+    {
+      "id": "bilangan_operasi",
+      "title": "Bilangan & Operasi Lanjut",
+      "description": "Eksponen, Bentuk Akar, Logaritma, Barisan Aritmatika/Geometri, Deret Tak Hingga, Matematika Finansial",
+      "questions": [
+        {
+          "num": 1,
+          "topic": "Eksponen",
+          "question": "Bentuk sederhana dari ((2 a³ b⁻²) / (4 a⁻¹ b))⁻² adalah...",
+          "options": {
+            "A": "4 b⁶ / a⁸",
+            "B": "a⁸ / (4 b⁶)",
+            "C": "4 a⁸ / b⁶",
+            "D": "b⁶ / (4 a⁸)",
+            "E": "2 b⁶ / a⁸"
+          },
+          "answer": "A",
+          "solution": "Di dalam kurung: (2/4) * a^(3 - (-1)) * b^(-2 - 1) = (1/2) a⁴ b⁻³ = a⁴ / (2 b³). Dipangkatkan -2: ((a⁴)/(2b³))⁻² = ((2b³)/a⁴)² = 4 b⁶ / a⁸."
+        },
+        {
+          "num": 2,
+          "topic": "Merasionalkan Akar",
+          "question": "Bentuk rasional dari 6 / (√5 - √2) adalah...",
+          "options": {
+            "A": "2(√5 + √2)",
+            "B": "3(√5 + √2)",
+            "C": "2(√5 - √2)",
+            "D": "6(√5 + √2)",
+            "E": "√5 + √2"
+          },
+          "answer": "A",
+          "solution": "Kalikan pembilang dan penyebut dengan sekawan (√5 + √2): 6(√5 + √2) / (5 - 2) = 6(√5 + √2) / 3 = 2(√5 + √2)."
+        },
+        {
+          "num": 3,
+          "topic": "Persamaan Eksponen",
+          "question": "Nilai x yang memenuhi persamaan 3^(2x - 1) = 27^(x - 2) adalah...",
+          "options": {
+            "A": "3",
+            "B": "4",
+            "C": "5",
+            "D": "6",
+            "E": "7"
+          },
+          "answer": "C",
+          "solution": "3^(2x - 1) = (3³)^(x - 2) ==> 3^(2x - 1) = 3^(3x - 6) ==> 2x - 1 = 3x - 6 ==> 3x - 2x = 6 - 1 ==> x = 5."
+        },
+        {
+          "num": 4,
+          "topic": "Logaritma Dasar",
+          "question": "Nilai dari ²log 24 - ²log 12 + ²log 16 adalah...",
+          "options": {
+            "A": "3",
+            "B": "4",
+            "C": "5",
+            "D": "6",
+            "E": "7"
+          },
+          "answer": "C",
+          "solution": "²log (24 / 12 * 16) = ²log (2 * 16) = ²log 32 = ²log (2⁵) = 5."
+        },
+        {
+          "num": 5,
+          "topic": "Sifat Pergantian Basis Logaritma",
+          "question": "Jika ²log 3 = a dan ³log 5 = b, maka nilai ⁶log 15 dinyatakan dalam a dan b adalah...",
+          "options": {
+            "A": "(a + b) / (1 + a)",
+            "B": "(a + ab) / (1 + a)",
+            "C": "(1 + ab) / (1 + a)",
+            "D": "(a(1 + b)) / (1 + a)",
+            "E": "(1 + b) / (1 + a)"
+          },
+          "answer": "B",
+          "solution": "⁶log 15 = ²log 15 / ²log 6 = (²log 3 + ²log 5) / (²log 2 + ²log 3). Kita tahu ²log 5 = ²log 3 * ³log 5 = a * b. Maka (a + ab) / (1 + a)."
+        },
+        {
+          "num": 6,
+          "topic": "Persamaan Logaritma",
+          "question": "Himpunan penyelesaian dari log(x² - 3) = log(2x) adalah...",
+          "options": {
+            "A": "{-1, 3}",
+            "B": "{3}",
+            "C": "{-1}",
+            "D": "{1, 3}",
+            "E": "{}"
+          },
+          "answer": "B",
+          "solution": "x² - 3 = 2x ==> x² - 2x - 3 = 0 ==> (x - 3)(x + 1) = 0 ==> x = 3 atau x = -1. Uji syarat numerus: 2x > 0 ==> x > 0. Karena x = -1 tidak memenuhi x > 0, maka solusi valid hanya x = 3."
+        },
+        {
+          "num": 7,
+          "topic": "Barisan Aritmatika",
+          "question": "Suku ke-4 dan suku ke-9 suatu barisan aritmatika berturut-turut adalah 17 dan 37. Suku ke-20 barisan tersebut adalah...",
+          "options": {
+            "A": "77",
+            "B": "81",
+            "C": "85",
+            "D": "89",
+            "E": "93"
+          },
+          "answer": "B",
+          "solution": "U_9 - U_4 = 5b = 37 - 17 = 20 ==> b = 4. U_4 = a + 3(4) = 17 ==> a = 5. Maka U_20 = a + 19b = 5 + 19(4) = 5 + 76 = 81."
+        },
+        {
+          "num": 8,
+          "topic": "Deret Aritmatika",
+          "question": "Jumlah 15 suku pertama dari deret aritmatika 3 + 7 + 11 + 15 + ... adalah...",
+          "options": {
+            "A": "435",
+            "B": "465",
+            "C": "480",
+            "D": "510",
+            "E": "525"
+          },
+          "answer": "B",
+          "solution": "a = 3, b = 4. S_15 = 15/2 * [2(3) + (15 - 1)(4)] = 15/2 * [6 + 56] = 15/2 * 62 = 15 * 31 = 465."
+        },
+        {
+          "num": 9,
+          "topic": "Barisan Geometri",
+          "question": "Suku ketiga suatu barisan geometri adalah 18 dan suku keenamnya adalah 486. Rasio barisan tersebut adalah...",
+          "options": {
+            "A": "2",
+            "B": "3",
+            "C": "4",
+            "D": "5",
+            "E": "6"
+          },
+          "answer": "B",
+          "solution": "U_6 / U_3 = r³ = 486 / 18 = 27 ==> r = ∛27 = 3."
+        },
+        {
+          "num": 10,
+          "topic": "Deret Geometri Tak Hingga",
+          "question": "Sebuah bola dijatuhkan dari ketinggian 12 meter dan memantul kembali dengan ketinggian 2/3 kali tinggi sebelumnya. Panjang seluruh lintasan bola hingga berhenti adalah...",
+          "options": {
+            "A": "36 meter",
+            "B": "48 meter",
+            "C": "60 meter",
+            "D": "72 meter",
+            "E": "84 meter"
+          },
+          "answer": "C",
+          "solution": "Rumus cepat lintasan pantulan bola: S = h * (1 + r) / (1 - r). Di sini h = 12, r = 2/3. Maka S = 12 * (1 + 2/3) / (1 - 2/3) = 12 * (5/3) / (1/3) = 12 * 5 = 60 meter."
+        },
+        {
+          "num": 11,
+          "topic": "Bunga Majemuk",
+          "question": "Modal sebesar Rp10.000.000 ditabung dengan bunga majemuk 10% per tahun. Nilai akhir modal setelah 2 tahun adalah...",
+          "options": {
+            "A": "Rp11.000.000",
+            "B": "Rp12.000.000",
+            "C": "Rp12.100.000",
+            "D": "Rp12.500.000",
+            "E": "Rp13.000.000"
+          },
+          "answer": "C",
+          "solution": "M_n = M_0 (1 + i)^n = 10.000.000 * (1 + 0.10)² = 10.000.000 * 1.21 = Rp12.100.000."
+        },
+        {
+          "num": 12,
+          "topic": "Pertumbuhan Eksponensial",
+          "question": "Bakteri membelah diri menjadi dua setiap 20 menit. Jika mula-mula terdapat 50 bakteri, banyak bakteri setelah 2 jam adalah...",
+          "options": {
+            "A": "1600",
+            "B": "3200",
+            "C": "6400",
+            "D": "12800",
+            "E": "25600"
+          },
+          "answer": "B",
+          "solution": "2 jam = 120 menit. n = 120 / 20 = 6 periode pembelahan. N = N_0 * 2^n = 50 * 2⁶ = 50 * 64 = 3200 bakteri."
+        },
+        {
+          "num": 13,
+          "topic": "Pertidaksamaan Eksponen",
+          "question": "Penyelesaian dari (1/2)^(x² - 3x) >= (1/2)^(x + 5) adalah...",
+          "options": {
+            "A": "-1 <= x <= 5",
+            "B": "x <= -1 atau x >= 5",
+            "C": "-5 <= x <= 1",
+            "D": "x <= -5 atau x >= 1",
+            "E": "1 <= x <= 5"
+          },
+          "answer": "A",
+          "solution": "Karena basis 1/2 < 1, tanda pertidaksamaan dibalik: x² - 3x <= x + 5 ==> x² - 4x - 5 <= 0 ==> (x - 5)(x + 1) <= 0 ==> -1 <= x <= 5."
+        },
+        {
+          "num": 14,
+          "topic": "Pertidaksamaan Logaritma",
+          "question": "Himpunan penyelesaian dari ³log(2x - 5) < 2 adalah...",
+          "options": {
+            "A": "x < 7",
+            "B": "5/2 < x < 7",
+            "C": "x > 5/2",
+            "D": "0 < x < 7",
+            "E": "x > 7"
+          },
+          "answer": "B",
+          "solution": "³log(2x - 5) < ³log 9 ==> 2x - 5 < 9 ==> 2x < 14 ==> x < 7. Syarat numerus: 2x - 5 > 0 ==> x > 5/2. Irisan keduanya: 5/2 < x < 7."
+        },
+        {
+          "num": 15,
+          "topic": "Bentuk Akar Kuadrat Bertingkat",
+          "question": "Bentuk sederhana dari √(8 + 2√15) adalah...",
+          "options": {
+            "A": "√5 + √3",
+            "B": "√6 + √2",
+            "C": "√7 + 1",
+            "D": "2 + √3",
+            "E": "√5 - √3"
+          },
+          "answer": "A",
+          "solution": "Cari dua bilangan yang jika dijumlahkan bernilai 8 dan dikalikan bernilai 15: a + b = 8, ab = 15 ==> a = 5, b = 3. Maka √(8 + 2√15) = √5 + √3."
+        },
+        {
+          "num": 16,
+          "topic": "Persamaan Kuadrat Eksponen",
+          "question": "Akar-akar dari 2^(2x) - 10 * 2^x + 16 = 0 adalah x_1 dan x_2. Nilai dari x_1 + x_2 adalah...",
+          "options": {
+            "A": "4",
+            "B": "5",
+            "C": "6",
+            "D": "8",
+            "E": "10"
+          },
+          "answer": "A",
+          "solution": "Misalkan y = 2^x: y² - 10y + 16 = 0 ==> (y - 2)(y - 8) = 0 ==> y_1 = 2 atau y_2 = 8. Untuk y_1 = 2 ==> 2^x = 2 ==> x_1 = 1. Untuk y_2 = 8 ==> 2^x = 8 ==> x_2 = 3. Maka x_1 + x_2 = 1 + 3 = 4."
+        },
+        {
+          "num": 17,
+          "topic": "Suku Tengah Barisan Aritmatika",
+          "question": "Suatu barisan aritmatika memiliki suku pertama 4 dan suku terakhir 76. Suku tengah barisan tersebut adalah...",
+          "options": {
+            "A": "38",
+            "B": "40",
+            "C": "42",
+            "D": "44",
+            "E": "46"
+          },
+          "answer": "B",
+          "solution": "U_t = (a + U_n) / 2 = (4 + 76) / 2 = 80 / 2 = 40."
+        },
+        {
+          "num": 18,
+          "topic": "Sisipan Barisan Aritmatika",
+          "question": "Di antara bilangan 2 dan 38 disisipkan 8 bilangan sehingga terbentuk barisan aritmatika baru. Beda barisan yang baru adalah...",
+          "options": {
+            "A": "3",
+            "B": "4",
+            "C": "5",
+            "D": "6",
+            "E": "7"
+          },
+          "answer": "B",
+          "solution": "Rumus beda baru: b' = (y - x) / (k + 1) = (38 - 2) / (8 + 1) = 36 / 9 = 4."
+        },
+        {
+          "num": 19,
+          "topic": "Deret Geometri Konvergen",
+          "question": "Jumlah deret geometri tak hingga 18 + 6 + 2 + 2/3 + ... adalah...",
+          "options": {
+            "A": "24",
+            "B": "27",
+            "C": "30",
+            "D": "36",
+            "E": "45"
+          },
+          "answer": "B",
+          "solution": "a = 18, r = 6/18 = 1/3. S_∞ = a / (1 - r) = 18 / (1 - 1/3) = 18 / (2/3) = 18 * 3/2 = 27."
+        },
+        {
+          "num": 20,
+          "topic": "Peluruhan Radioaktif",
+          "question": "Suatu zat radioaktif memiliki waktu paruh 4 jam. Jika mula-mula terdapat 80 gram zat radioaktif, massa zat yang tersisa setelah 16 jam adalah...",
+          "options": {
+            "A": "2.5 gram",
+            "B": "5 gram",
+            "C": "10 gram",
+            "D": "15 gram",
+            "E": "20 gram"
+          },
+          "answer": "B",
+          "solution": "n = 16 / 4 = 4 periode waktu paruh. M = M_0 * (1/2)^n = 80 * (1/2)⁴ = 80 / 16 = 5 gram."
+        }
+      ]
+    },
+    {
+      "id": "aljabar_pemodelan",
+      "title": "Aljabar & Pemodelan",
+      "description": "SPLDV/SPLTV, Persamaan/Pertidaksamaan Kuadrat, Rasional, Nilai Mutlak, Fungsi Komposisi/Invers, Matriks",
+      "questions": [
+        {
+          "num": 1,
+          "topic": "SPLDV Cerita",
+          "question": "Harga 3 buku dan 2 pensil adalah Rp16.500, sedangkan harga 2 buku dan 4 pensil adalah Rp19.000. Harga 1 buku dan 1 pensil adalah...",
+          "options": {
+            "A": "Rp6.000",
+            "B": "Rp6.500",
+            "C": "Rp7.000",
+            "D": "Rp7.500",
+            "E": "Rp8.000"
+          },
+          "answer": "B",
+          "solution": "3x + 2y = 16.500 (kalikan 2: 6x + 4y = 33.000). Kurangkan 2x + 4y = 19.000 ==> 4x = 14.000 ==> x = 3.500 (harga 1 buku). Substitusi: 2(3.500) + 4y = 19.000 ==> 7.000 + 4y = 19.000 ==> 4y = 12.000 ==> y = 3.000 (harga 1 pensil). Harga 1 buku + 1 pensil = 3.500 + 3.000 = Rp6.500."
+        },
+        {
+          "num": 2,
+          "topic": "Persamaan Kuadrat & Vieta",
+          "question": "Persamaan kuadrat x² - 5x + 6 = 0 memiliki akar-akar α dan β. Persamaan kuadrat baru yang akar-akarnya (α - 2) dan (β - 2) adalah...",
+          "options": {
+            "A": "x² - x = 0",
+            "B": "x² + x = 0",
+            "C": "x² - 3x + 2 = 0",
+            "D": "x² + 3x = 0",
+            "E": "x² - 5x = 0"
+          },
+          "answer": "A",
+          "solution": "Gunakan substitusi invers: jika y = x - 2, maka x = y + 2. Masukkan ke persamaan awal: (y + 2)² - 5(y + 2) + 6 = 0 ==> y² + 4y + 4 - 5y - 10 + 6 = 0 ==> y² - y = 0, yaitu x² - x = 0."
+        },
+        {
+          "num": 3,
+          "topic": "Pertidaksamaan Rasional",
+          "question": "Himpunan penyelesaian dari (2x - 3) / (x + 1) <= 1 adalah...",
+          "options": {
+            "A": "-1 < x <= 4",
+            "B": "-1 <= x <= 4",
+            "C": "x < -1 atau x >= 4",
+            "D": "x <= -1 atau x >= 4",
+            "E": "x <= 4"
+          },
+          "answer": "A",
+          "solution": "(2x - 3)/(x + 1) - 1 <= 0 ==> [(2x - 3) - (x + 1)] / (x + 1) <= 0 ==> (x - 4) / (x + 1) <= 0. Pembuat nol: x = 4 dan x = -1. Karena penyebut tidak boleh nol (x ≠ -1), maka interval penyelesaiannya adalah -1 < x <= 4."
+        },
+        {
+          "num": 4,
+          "topic": "Persamaan Nilai Mutlak",
+          "question": "Nilai x yang memenuhi persamaan |2x - 5| = 7 adalah...",
+          "options": {
+            "A": "x = 6 atau x = -1",
+            "B": "x = 6 atau x = 1",
+            "C": "x = -6 atau x = 1",
+            "D": "x = 5 atau x = -2",
+            "E": "x = 7 atau x = -1"
+          },
+          "answer": "A",
+          "solution": "Kasus 1: 2x - 5 = 7 ==> 2x = 12 ==> x = 6. Kasus 2: 2x - 5 = -7 ==> 2x = -2 ==> x = -1. Jadi x = 6 atau x = -1."
+        },
+        {
+          "num": 5,
+          "topic": "Fungsi Komposisi",
+          "question": "Diketahui f(x) = 2x + 3 dan g(x) = x² - 1. Nilai dari (g ∘ f)(-2) adalah...",
+          "options": {
+            "A": "-2",
+            "B": "-1",
+            "C": "0",
+            "D": "1",
+            "E": "3"
+          },
+          "answer": "C",
+          "solution": "f(-2) = 2(-2) + 3 = -4 + 3 = -1. Kemudian g(f(-2)) = g(-1) = (-1)² - 1 = 1 - 1 = 0."
+        },
+        {
+          "num": 6,
+          "topic": "Invers Fungsi Pecahan Linear",
+          "question": "Jika f(x) = (3x + 2) / (2x - 5) untuk x ≠ 5/2, maka f⁻¹(x) adalah...",
+          "options": {
+            "A": "(5x + 2) / (2x - 3)",
+            "B": "(5x - 2) / (2x - 3)",
+            "C": "(2x + 5) / (3x - 2)",
+            "D": "(3x - 5) / (2x + 2)",
+            "E": "(5x + 3) / (2x - 2)"
+          },
+          "answer": "A",
+          "solution": "Rumus cepat invers f(x) = (ax + b)/(cx + d) adalah f⁻¹(x) = (-dx + b)/(cx - a). Di sini a = 3, b = 2, c = 2, d = -5. Maka f⁻¹(x) = (-(-5)x + 2) / (2x - 3) = (5x + 2) / (2x - 3)."
+        },
+        {
+          "num": 7,
+          "topic": "Determinan Matriks",
+          "question": "Jika matriks A = [[2, 3], [4, x]] memiliki determinan sama dengan -2, maka nilai x adalah...",
+          "options": {
+            "A": "3",
+            "B": "4",
+            "C": "5",
+            "D": "6",
+            "E": "7"
+          },
+          "answer": "C",
+          "solution": "det(A) = 2x - 3(4) = 2x - 12 = -2 ==> 2x = 10 ==> x = 5."
+        },
+        {
+          "num": 8,
+          "topic": "Invers Matriks 2x2",
+          "question": "Invers dari matriks A = [[3, 5], [1, 2]] adalah...",
+          "options": {
+            "A": "[[2, -5], [-1, 3]]",
+            "B": "[[-2, 5], [1, -3]]",
+            "C": "[[2, 5], [1, 3]]",
+            "D": "[[3, -5], [-1, 2]]",
+            "E": "[[-3, 5], [1, -2]]"
+          },
+          "answer": "A",
+          "solution": "det(A) = 3(2) - 5(1) = 6 - 5 = 1. Invers A⁻¹ = (1 / det) * [[d, -b], [-c, a]] = [[2, -5], [-1, 3]]."
+        },
+        {
+          "num": 9,
+          "topic": "Perkalian Matriks",
+          "question": "Hasil perkalian matriks [[1, 2], [3, 4]] * [[2, 0], [1, 3]] adalah...",
+          "options": {
+            "A": "[[4, 6], [10, 12]]",
+            "B": "[[4, 6], [10, 9]]",
+            "C": "[[2, 6], [3, 12]]",
+            "D": "[[4, 0], [3, 12]]",
+            "E": "[[3, 2], [4, 7]]"
+          },
+          "answer": "A",
+          "solution": "Baris 1: [1*2 + 2*1, 1*0 + 2*3] = [2+2, 0+6] = [4, 6]. Baris 2: [3*2 + 4*1, 3*0 + 4*3] = [6+4, 0+12] = [10, 12]."
+        },
+        {
+          "num": 10,
+          "topic": "Diskriminan Persamaan Kuadrat",
+          "question": "Agar persamaan kuadrat x² + (m - 1)x + 9 = 0 memiliki dua akar real kembar, nilai m yang memenuhi adalah...",
+          "options": {
+            "A": "7 atau -5",
+            "B": "5 atau -7",
+            "C": "6 atau -6",
+            "D": "7 atau -7",
+            "E": "3 atau -3"
+          },
+          "answer": "A",
+          "solution": "Syarat akar kembar: D = 0 ==> b² - 4ac = (m - 1)² - 4(1)(9) = 0 ==> (m - 1)² - 36 = 0 ==> (m - 1)² = 36 ==> m - 1 = ±6. Maka m = 1 + 6 = 7 atau m = 1 - 6 = -5."
+        },
+        {
+          "num": 11,
+          "topic": "SPLTV Metode Eliminasi",
+          "question": "Diketahui x + y + z = 6, 2x - y + z = 3, dan x + 2y - z = 2. Nilai x adalah...",
+          "options": {
+            "A": "1",
+            "B": "2",
+            "C": "3",
+            "D": "4",
+            "E": "5"
+          },
+          "answer": "A",
+          "solution": "Jumlahkan pers 1 dan pers 3: 2x + 3y = 8. Jumlahkan pers 1 dan pers 2: 3x + 2z = 9... Eliminasi menghasilkan x = 1, y = 2, z = 3. Nilai x = 1."
+        },
+        {
+          "num": 12,
+          "topic": "Pertidaksamaan Kuadrat",
+          "question": "Himpunan penyelesaian dari x² - 2x - 8 >= 0 adalah...",
+          "options": {
+            "A": "-2 <= x <= 4",
+            "B": "x <= -2 atau x >= 4",
+            "C": "-4 <= x <= 2",
+            "D": "x <= -4 atau x >= 2",
+            "E": "x >= 4"
+          },
+          "answer": "B",
+          "solution": "(x - 4)(x + 2) >= 0. Karena tanda >=, daerah penyelesaian berada di luar interval akar: x <= -2 atau x >= 4."
+        },
+        {
+          "num": 13,
+          "topic": "Invers Komposisi Fungsi",
+          "question": "Jika (f ∘ g)(x) = 4x + 7 dan g(x) = 2x - 1, maka f(x) adalah...",
+          "options": {
+            "A": "2x + 5",
+            "B": "2x + 9",
+            "C": "2x - 5",
+            "D": "4x + 9",
+            "E": "2x + 8"
+          },
+          "answer": "B",
+          "solution": "Misalkan u = g(x) = 2x - 1 ==> 2x = u + 1 ==> x = (u + 1) / 2. Maka f(u) = 4((u + 1) / 2) + 7 = 2(u + 1) + 7 = 2u + 2 + 7 = 2u + 9. Jadi f(x) = 2x + 9."
+        },
+        {
+          "num": 14,
+          "topic": "Transpos Matriks",
+          "question": "Jika A = [[2, 1], [3, 4]], maka matriks A^T + 2I (dengan I matriks identitas) adalah...",
+          "options": {
+            "A": "[[4, 3], [1, 6]]",
+            "B": "[[4, 1], [3, 6]]",
+            "C": "[[2, 3], [1, 4]]",
+            "D": "[[4, 5], [3, 6]]",
+            "E": "[[6, 3], [1, 8]]"
+          },
+          "answer": "A",
+          "solution": "A^T = [[2, 3], [1, 4]]. 2I = [[2, 0], [0, 2]]. Maka A^T + 2I = [[2+2, 3+0], [1+0, 4+2]] = [[4, 3], [1, 6]]."
+        },
+        {
+          "num": 15,
+          "topic": "Pertidaksamaan Nilai Mutlak Dua Ruas",
+          "question": "Penyelesaian dari |x + 3| <= |2x - 1| adalah...",
+          "options": {
+            "A": "x <= -2/3 atau x >= 4",
+            "B": "-2/3 <= x <= 4",
+            "C": "x <= -4 atau x >= 2/3",
+            "D": "-4 <= x <= 2/3",
+            "E": "x >= 4"
+          },
+          "answer": "A",
+          "solution": "Kuadratkan kedua ruas: (x + 3)² - (2x - 1)² <= 0 ==> [(x + 3) + (2x - 1)][(x + 3) - (2x - 1)] <= 0 ==> (3x + 2)(-x + 4) <= 0 ==> -(3x + 2)(x - 4) <= 0 ==> (3x + 2)(x - 4) >= 0. Pembuat nol x = -2/3 dan x = 4. Maka x <= -2/3 atau x >= 4."
+        },
+        {
+          "num": 16,
+          "topic": "Fungsi Kuadrat Nilai Maksimum",
+          "question": "Nilai maksimum dari fungsi kuadrat f(x) = -2x² + 8x + 5 adalah...",
+          "options": {
+            "A": "11",
+            "B": "13",
+            "C": "15",
+            "D": "17",
+            "E": "21"
+          },
+          "answer": "B",
+          "solution": "Sumbu simetri: x_p = -b / (2a) = -8 / (2 * (-2)) = -8 / -4 = 2. Nilai maksimum y_p = f(2) = -2(2)² + 8(2) + 5 = -8 + 16 + 5 = 13."
+        },
+        {
+          "num": 17,
+          "topic": "Sifat Determinan Matriks",
+          "question": "Jika det(A) = 3 dan det(B) = -2 untuk matriks ordo 2x2, maka det(2 * A * B⁻¹) adalah...",
+          "options": {
+            "A": "-6",
+            "B": "-3",
+            "C": "-12",
+            "D": "-4.5",
+            "E": "-6"
+          },
+          "answer": "A",
+          "solution": "Untuk matriks 2x2, det(k M) = k² det(M). Maka det(2 * A * B⁻¹) = 2² * det(A) * (1 / det(B)) = 4 * 3 * (1 / -2) = 12 / -2 = -6."
+        },
+        {
+          "num": 18,
+          "topic": "Persamaan Garis Lurus",
+          "question": "Persamaan garis yang melalui titik (2, -3) dan tegak lurus garis 2x - 4y + 5 = 0 adalah...",
+          "options": {
+            "A": "2x + y - 1 = 0",
+            "B": "2x + y + 1 = 0",
+            "C": "x - 2y - 8 = 0",
+            "D": "2x - y - 7 = 0",
+            "E": "x + 2y + 4 = 0"
+          },
+          "answer": "A",
+          "solution": "Gradien garis awal: m_1 = -2 / -4 = 1/2. Garis tegak lurus memiliki gradien m_2 = -1 / m_1 = -2. Persamaan garis: y - (-3) = -2(x - 2) ==> y + 3 = -2x + 4 ==> 2x + y - 1 = 0."
+        },
+        {
+          "num": 19,
+          "topic": "Domain Aljabar",
+          "question": "Domain alami dari fungsi f(x) = √(2x - 6) / (x - 5) adalah...",
+          "options": {
+            "A": "x >= 3",
+            "B": "x >= 3 dan x ≠ 5",
+            "C": "x > 3 dan x ≠ 5",
+            "D": "x > 5",
+            "E": "3 <= x < 5"
+          },
+          "answer": "B",
+          "solution": "Syarat di dalam akar: 2x - 6 >= 0 ==> x >= 3. Syarat penyebut tidak boleh nol: x - 5 ≠ 0 ==> x ≠ 5. Maka domainnya adalah x >= 3 dan x ≠ 5."
+        },
+        {
+          "num": 20,
+          "topic": "Sistem Persamaan Matriks",
+          "question": "Jika [[2, 1], [1, 1]] * [[x], [y]] = [[5], [3]], maka nilai x + 2y adalah...",
+          "options": {
+            "A": "3",
+            "B": "4",
+            "C": "5",
+            "D": "6",
+            "E": "7"
+          },
+          "answer": "B",
+          "solution": "Sistem persamaan: (1) 2x + y = 5, (2) x + y = 3. Kurangkan (1) dan (2): x = 2. Maka y = 3 - 2 = 1. Nilai x + 2y = 2 + 2(1) = 4."
+        }
+      ]
+    },
+    {
+      "id": "geometri_dimensi_tiga",
+      "title": "Geometri & Dimensi Tiga",
+      "description": "Kedudukan & Jarak Titik/Garis/Bidang Kubus & Limas, Sudut Ruang Tiga Dimensi, Transformasi Geometri",
+      "questions": [
+        {
+          "num": 1,
+          "topic": "Jarak Titik ke Titik Kubus",
+          "question": "Pada kubus ABCD.EFGH dengan panjang rusuk 6 cm, jarak titik A ke titik G (diagonal ruang) adalah...",
+          "options": {
+            "A": "6√2 cm",
+            "B": "6√3 cm",
+            "C": "12 cm",
+            "D": "9√2 cm",
+            "E": "8√3 cm"
+          },
+          "answer": "B",
+          "solution": "Diagonal ruang kubus dengan rusuk r adalah r√3 = 6√3 cm."
+        },
+        {
+          "num": 2,
+          "topic": "Jarak Titik ke Garis Kubus",
+          "question": "Pada kubus ABCD.EFGH dengan rusuk 6 cm, jarak titik C ke diagonal ruang AG adalah...",
+          "options": {
+            "A": "2√3 cm",
+            "B": "2√6 cm",
+            "C": "3√6 cm",
+            "D": "4√2 cm",
+            "E": "3√2 cm"
+          },
+          "answer": "B",
+          "solution": "Perhatikan segitiga ACG siku-siku di C. AC = 6√2 cm (diagonal bidang), CG = 6 cm, AG = 6√3 cm. Jarak C ke AG adalah tinggi segitiga d = (AC * CG) / AG = (6√2 * 6) / (6√3) = 6√2 / √3 = 2√6 cm."
+        },
+        {
+          "num": 3,
+          "topic": "Jarak Titik ke Bidang Kubus",
+          "question": "Pada kubus ABCD.EFGH dengan panjang rusuk 8 cm, jarak titik E ke bidang BDG adalah...",
+          "options": {
+            "A": "8/3 √3 cm",
+            "B": "16/3 √3 cm",
+            "C": "4√3 cm",
+            "D": "8√2 cm",
+            "E": "16/3 √2 cm"
+          },
+          "answer": "B",
+          "solution": "Bidang BDG dan AFH membagi diagonal ruang EC = 8√3 menjadi 3 bagian sama panjang. Jarak titik E ke bidang BDG adalah 2/3 dari panjang diagonal ruang EC = 2/3 * 8√3 = 16/3 √3 cm."
+        },
+        {
+          "num": 4,
+          "topic": "Sudut Garis dan Bidang",
+          "question": "Pada kubus ABCD.EFGH, besar sudut antara garis AH dan bidang BDHF adalah...",
+          "options": {
+            "A": "30°",
+            "B": "45°",
+            "C": "60°",
+            "D": "75°",
+            "E": "90°"
+          },
+          "answer": "A",
+          "solution": "Proyeksi titik A ke bidang BDHF adalah titik tengah AC, sebut P. Garis proyeksi AH pada BDHF adalah PH. Perhatikan segitiga APH siku-siku di P. AP = 1/2 AC = 1/2 * r√2. AH = r√2. Maka sin θ = AP / AH = (1/2 r√2) / (r√2) = 1/2 ==> θ = 30°."
+        },
+        {
+          "num": 5,
+          "topic": "Jarak Titik ke Bidang Limas",
+          "question": "Pada limas beraturan T.ABCD dengan alas persegi berusuk 4 cm dan panjang rusuk tegak 6 cm, tinggi limas adalah...",
+          "options": {
+            "A": "2√7 cm",
+            "B": "4√2 cm",
+            "C": "2√5 cm",
+            "D": "√28 cm",
+            "E": "√32 cm"
+          },
+          "answer": "A",
+          "solution": "Titik puncak T diproyeksikan ke titik pusat alas O (titik potong diagonal AC dan BD). AC = 4√2 cm, maka AO = 2√2 cm. Tinggi TO = √(TA² - AO²) = √(6² - (2√2)²) = √(36 - 8) = √28 = 2√7 cm."
+        },
+        {
+          "num": 6,
+          "topic": "Translasi Geometri",
+          "question": "Bayangan titik P(3, -5) oleh translasi T = [-2, 4] adalah...",
+          "options": {
+            "A": "(1, -1)",
+            "B": "(5, -9)",
+            "C": "(1, -9)",
+            "D": "(5, -1)",
+            "E": "(-1, 1)"
+          },
+          "answer": "A",
+          "solution": "P'(x', y') = (3 + (-2), -5 + 4) = (1, -1)."
+        },
+        {
+          "num": 7,
+          "topic": "Refleksi terhadap Garis y = x",
+          "question": "Titik A(4, -2) direfleksikan terhadap garis y = x. Koordinat bayangan titik A adalah...",
+          "options": {
+            "A": "(-2, 4)",
+            "B": "(2, -4)",
+            "C": "(-4, 2)",
+            "D": "(4, 2)",
+            "E": "(-2, -4)"
+          },
+          "answer": "A",
+          "solution": "Refleksi terhadap y = x menukar posisi koordinat: (x, y) -> (y, x). Maka (4, -2) menjadi (-2, 4)."
+        },
+        {
+          "num": 8,
+          "topic": "Rotasi 90 Derajat",
+          "question": "Bayangan titik B(-3, 5) jika dirotasikan sebesar 90° berlawanan arah jarum jam dengan pusat O(0, 0) adalah...",
+          "options": {
+            "A": "(-5, -3)",
+            "B": "(5, 3)",
+            "C": "(-5, 3)",
+            "D": "(3, -5)",
+            "E": "(5, -3)"
+          },
+          "answer": "A",
+          "solution": "Rumus rotasi 90° berlawanan jarum jam: (x, y) -> (-y, x). Maka (-3, 5) -> (-5, -3)."
+        },
+        {
+          "num": 9,
+          "topic": "Dilatasi Titik",
+          "question": "Titik C(2, -4) didilatasikan dengan pusat P(1, 2) dan faktor skala k = 3. Koordinat bayangan C' adalah...",
+          "options": {
+            "A": "(4, -16)",
+            "B": "(4, -14)",
+            "C": "(6, -12)",
+            "D": "(3, -10)",
+            "E": "(5, -16)"
+          },
+          "answer": "A",
+          "solution": "x' = a + k(x - a) = 1 + 3(2 - 1) = 1 + 3(1) = 4. y' = b + k(y - b) = 2 + 3(-4 - 2) = 2 + 3(-6) = 2 - 18 = -16. Maka C'(4, -16)."
+        },
+        {
+          "num": 10,
+          "topic": "Refleksi Garis",
+          "question": "Persamaan bayangan garis 2x - 3y + 6 = 0 oleh refleksi terhadap sumbu-X adalah...",
+          "options": {
+            "A": "2x + 3y + 6 = 0",
+            "B": "2x - 3y - 6 = 0",
+            "C": "-2x + 3y + 6 = 0",
+            "D": "3x - 2y + 6 = 0",
+            "E": "2x + 3y - 6 = 0"
+          },
+          "answer": "A",
+          "solution": "Refleksi terhadap sumbu-X: x' = x ==> x = x', dan y' = -y ==> y = -y'. Substitusi ke garis: 2(x') - 3(-y') + 6 = 0 ==> 2x + 3y + 6 = 0."
+        },
+        {
+          "num": 11,
+          "topic": "Komposisi Transformasi",
+          "question": "Titik D(1, 2) ditransformasikan oleh matriks [[2, 0], [0, 2]] dilanjutkan rotasi 180° pusat O(0,0). Koordinat akhir D adalah...",
+          "options": {
+            "A": "(-2, -4)",
+            "B": "(2, 4)",
+            "C": "(-4, -2)",
+            "D": "(4, 2)",
+            "E": "(-1, -2)"
+          },
+          "answer": "A",
+          "solution": "Transformasi 1 (dilatasi k=2): D1(2*1, 2*2) = (2, 4). Rotasi 180°: (x, y) -> (-x, -y). Maka (2, 4) -> (-2, -4)."
+        },
+        {
+          "num": 12,
+          "topic": "Sudut Dua Bidang Kubus",
+          "question": "Pada kubus ABCD.EFGH, nilai cosinus sudut antara bidang AFH dan bidang CFH adalah...",
+          "options": {
+            "A": "1/3",
+            "B": "2/3",
+            "C": "1/2",
+            "D": "1/2 √2",
+            "E": "1/2 √3"
+          },
+          "answer": "A",
+          "solution": "Tarik garis tinggi dari A ke FH (jatuh di titik tengah FH, sebut M) dan dari C ke FH (juga di M). Sudut antara bidang AFH dan CFH adalah sudut AMC. Pada segitiga AMC: AM = r/2 √6, CM = r/2 √6, AC = r√2. Dengan Aturan Cosinus: cos(AMC) = (AM² + CM² - AC²) / (2 AM CM) = (6/4 + 6/4 - 2) / (2 * 6/4) = (3 - 2) / 3 = 1/3."
+        },
+        {
+          "num": 13,
+          "topic": "Jarak Titik ke Garis Kubus",
+          "question": "Pada kubus ABCD.EFGH berusuk 4 cm, titik P adalah titik tengah rusuk GH. Jarak titik B ke titik P adalah...",
+          "options": {
+            "A": "4√2 cm",
+            "B": "6 cm",
+            "C": "2√13 cm",
+            "D": "2√14 cm",
+            "E": "5√2 cm"
+          },
+          "answer": "B",
+          "solution": "Gunakan koordinat Kartesius dengan B(0, 0, 0), A(4, 0, 0), C(0, 4, 0), F(0, 0, 4). Maka H(4, 4, 4) dan G(0, 4, 4). Titik tengah P dari GH adalah (2, 4, 4). Jarak BP = √(2² + 4² + 4²) = √(4 + 16 + 16) = √36 = 6 cm."
+        },
+        {
+          "num": 14,
+          "topic": "Jarak Dua Garis Bersilangan",
+          "question": "Pada kubus ABCD.EFGH dengan rusuk 6 cm, jarak antara garis AE dan garis CG adalah...",
+          "options": {
+            "A": "6 cm",
+            "B": "6√2 cm",
+            "C": "6√3 cm",
+            "D": "3√2 cm",
+            "E": "3√3 cm"
+          },
+          "answer": "B",
+          "solution": "Garis AE dan CG sejajar vertikal dan terletak pada bidang diagonal ACGE. Jarak antara kedua garis adalah panjang ruas garis AC (diagonal bidang alas) = 6√2 cm."
+        },
+        {
+          "num": 15,
+          "topic": "Refleksi terhadap Garis x = h",
+          "question": "Titik Q(-1, 3) direfleksikan terhadap garis x = 2. Bayangannya adalah...",
+          "options": {
+            "A": "(5, 3)",
+            "B": "(3, 3)",
+            "C": "(-5, 3)",
+            "D": "(1, 3)",
+            "E": "(4, 3)"
+          },
+          "answer": "A",
+          "solution": "x' = 2h - x = 2(2) - (-1) = 4 + 1 = 5. y' = y = 3. Maka Q'(5, 3)."
+        },
+        {
+          "num": 16,
+          "topic": "Matriks Rotasi",
+          "question": "Matriks yang bersesuaian dengan rotasi 90° searah jarum jam dengan pusat O(0,0) adalah...",
+          "options": {
+            "A": "[[0, 1], [-1, 0]]",
+            "B": "[[0, -1], [1, 0]]",
+            "C": "[[-1, 0], [0, -1]]",
+            "D": "[[1, 0], [0, 1]]",
+            "E": "[[0, -1], [-1, 0]]"
+          },
+          "answer": "A",
+          "solution": "Searah jarum jam = rotasi -90°. Matriks rotasi θ: [[cos θ, -sin θ], [sin θ, cos θ]]. Untuk θ = -90°: cos(-90°) = 0, sin(-90°) = -1. Maka [[0, -(-1)], [-1, 0]] = [[0, 1], [-1, 0]]."
+        },
+        {
+          "num": 17,
+          "topic": "Volume Bangun Ruang Gabungan",
+          "question": "Volume sebuah balok dengan panjang 8 cm, lebar 6 cm, dan tinggi 10 cm adalah...",
+          "options": {
+            "A": "240 cm³",
+            "B": "360 cm³",
+            "C": "480 cm³",
+            "D": "600 cm³",
+            "E": "720 cm³"
+          },
+          "answer": "C",
+          "solution": "Volume balok = p * l * t = 8 * 6 * 10 = 480 cm³."
+        },
+        {
+          "num": 18,
+          "topic": "Luas Permukaan Tabung",
+          "question": "Luas permukaan tabung tertutup dengan jari-jari alas 7 cm dan tinggi 10 cm (menggunakan π = 22/7) adalah...",
+          "options": {
+            "A": "528 cm²",
+            "B": "748 cm²",
+            "C": "836 cm²",
+            "D": "924 cm²",
+            "E": "1056 cm²"
+          },
+          "answer": "B",
+          "solution": "L = 2πr(r + t) = 2 * (22/7) * 7 * (7 + 10) = 44 * 17 = 748 cm²."
+        },
+        {
+          "num": 19,
+          "topic": "Luas Bayangan Dilatasi",
+          "question": "Sebuah lingkaran dengan luas 25 cm² didilatasikan dengan faktor skala k = -3. Luas bayangan lingkaran tersebut adalah...",
+          "options": {
+            "A": "75 cm²",
+            "B": "150 cm²",
+            "C": "225 cm²",
+            "D": "250 cm²",
+            "E": "300 cm²"
+          },
+          "answer": "C",
+          "solution": "Luas bayangan = k² * Luas awal = (-3)² * 25 = 9 * 25 = 225 cm²."
+        },
+        {
+          "num": 20,
+          "topic": "Jarak Titik ke Rusuk Tegak Limas",
+          "question": "Pada limas T.ABC dengan bidang alas segitiga sama sisi berusuk 6 cm dan rusuk tegak saling tegak lurus, jarak puncak T ke alas ABC dapat dihitung dengan...",
+          "options": {
+            "A": "Tinggi segitiga sisi tegak",
+            "B": "Proyeksi ortogonal T ke titik berat segitiga ABC",
+            "C": "Garis bagi sudut alas",
+            "D": "Setengah rusuk tegak",
+            "E": "Panjang sisi alas"
+          },
+          "answer": "B",
+          "solution": "Pada limas beraturan, proyeksi ortogonal puncak T ke bidang alas tepat jatuh di titik berat (centroid) bidang alas segitiga ABC."
+        }
+      ]
+    },
+    {
+      "id": "trigonometri",
+      "title": "Trigonometri",
+      "description": "Sudut Istimewa & Relasi Kuadran, Identitas Trigonometri & Sudut Ganda, Aturan Sinus & Cosinus, Persamaan Trigonometri",
+      "questions": [
+        {
+          "num": 1,
+          "topic": "Sudut Berelasi Kuadran II",
+          "question": "Nilai dari sin 150° + cos 300° - tan 225° adalah...",
+          "options": {
+            "A": "0",
+            "B": "1/2",
+            "C": "1",
+            "D": "-1/2",
+            "E": "-1"
+          },
+          "answer": "A",
+          "solution": "sin 150° = sin(180° - 30°) = sin 30° = 1/2. cos 300° = cos(360° - 60°) = cos 60° = 1/2. tan 225° = tan(180° + 45°) = tan 45° = 1. Maka 1/2 + 1/2 - 1 = 1 - 1 = 0."
+        },
+        {
+          "num": 2,
+          "topic": "Aturan Sinus",
+          "question": "Pada segitiga ABC, besar sudut A = 30°, sudut B = 45°, dan panjang sisi a = 6 cm. Panjang sisi b adalah...",
+          "options": {
+            "A": "3√2 cm",
+            "B": "6√2 cm",
+            "C": "6√3 cm",
+            "D": "12 cm",
+            "E": "12√2 cm"
+          },
+          "answer": "B",
+          "solution": "Aturan Sinus: a / sin A = b / sin B ==> 6 / sin 30° = b / sin 45° ==> 6 / (1/2) = b / (1/2 √2) ==> 12 = b / (1/2 √2) ==> b = 12 * 1/2 √2 = 6√2 cm."
+        },
+        {
+          "num": 3,
+          "topic": "Aturan Cosinus",
+          "question": "Pada segitiga ABC, panjang sisi b = 5 cm, c = 8 cm, dan sudut A = 60°. Panjang sisi a adalah...",
+          "options": {
+            "A": "6 cm",
+            "B": "7 cm",
+            "C": "8 cm",
+            "D": "√49 cm",
+            "E": "√51 cm"
+          },
+          "answer": "B",
+          "solution": "Aturan Cosinus: a² = b² + c² - 2bc cos A = 5² + 8² - 2(5)(8) cos 60° = 25 + 64 - 80(1/2) = 89 - 40 = 49. Maka a = √49 = 7 cm."
+        },
+        {
+          "num": 4,
+          "topic": "Identitas Sudut Ganda",
+          "question": "Jika sin x = 3/5 untuk 0° < x < 90°, maka nilai dari sin 2x adalah...",
+          "options": {
+            "A": "12/25",
+            "B": "24/25",
+            "C": "7/25",
+            "D": "16/25",
+            "E": "18/25"
+          },
+          "answer": "B",
+          "solution": "Karena sin x = 3/5, maka cos x = √(1 - (3/5)²) = 4/5. Rumus sin 2x = 2 sin x cos x = 2 * (3/5) * (4/5) = 24/25."
+        },
+        {
+          "num": 5,
+          "topic": "Cos Sudut Ganda",
+          "question": "Bentuk (1 - cos 2x) / (1 + cos 2x) identik dengan...",
+          "options": {
+            "A": "sin² x",
+            "B": "cos² x",
+            "C": "tan² x",
+            "D": "cot² x",
+            "E": "sec² x"
+          },
+          "answer": "C",
+          "solution": "1 - cos 2x = 2 sin² x dan 1 + cos 2x = 2 cos² x. Maka (2 sin² x) / (2 cos² x) = sin² x / cos² x = tan² x."
+        },
+        {
+          "num": 6,
+          "topic": "Persamaan Trigonometri",
+          "question": "Himpunan penyelesaian dari 2 sin x - 1 = 0 untuk 0° <= x <= 360° adalah...",
+          "options": {
+            "A": "{30°, 150°}",
+            "B": "{30°, 60°}",
+            "C": "{60°, 120°}",
+            "D": "{150°, 210°}",
+            "E": "{30°, 330°}"
+          },
+          "answer": "A",
+          "solution": "sin x = 1/2. Pada interval [0°, 360°], sinus bernilai positif di kuadran I dan II: x = 30° atau x = 180° - 30° = 150°."
+        },
+        {
+          "num": 7,
+          "topic": "Luas Segitiga via Trigonometri",
+          "question": "Luas segitiga ABC yang memiliki sisi a = 8 cm, b = 10 cm, dan sudut C = 30° adalah...",
+          "options": {
+            "A": "20 cm²",
+            "B": "20√3 cm²",
+            "C": "40 cm²",
+            "D": "40√3 cm²",
+            "E": "80 cm²"
+          },
+          "answer": "A",
+          "solution": "L = 1/2 * a * b * sin C = 1/2 * 8 * 10 * sin 30° = 40 * (1/2) = 20 cm²."
+        },
+        {
+          "num": 8,
+          "topic": "Identitas Penjumlahan Sudut",
+          "question": "Nilai dari cos 75° adalah...",
+          "options": {
+            "A": "(√6 - √2) / 4",
+            "B": "(√6 + √2) / 4",
+            "C": "(√3 - 1) / 2",
+            "D": "(√2 - √6) / 4",
+            "E": "(√6 - √2) / 2"
+          },
+          "answer": "A",
+          "solution": "cos 75° = cos(45° + 30°) = cos 45° cos 30° - sin 45° sin 30° = (1/2 √2)(1/2 √3) - (1/2 √2)(1/2) = (√6 - √2) / 4."
+        },
+        {
+          "num": 9,
+          "topic": "Tan Penjumlahan Sudut",
+          "question": "Jika tan A = 1/2 dan tan B = 1/3, maka nilai tan(A + B) adalah...",
+          "options": {
+            "A": "1/5",
+            "B": "5/6",
+            "C": "1",
+            "D": "6/5",
+            "E": "2"
+          },
+          "answer": "C",
+          "solution": "tan(A + B) = (tan A + tan B) / (1 - tan A tan B) = (1/2 + 1/3) / (1 - (1/2)(1/3)) = (5/6) / (1 - 1/6) = (5/6) / (5/6) = 1."
+        },
+        {
+          "num": 10,
+          "topic": "Periode Grafik Trigonometri",
+          "question": "Periode dari fungsi trigonometri y = 3 sin(2x - π/3) adalah...",
+          "options": {
+            "A": "π/2",
+            "B": "π",
+            "C": "2π",
+            "D": "3π",
+            "E": "4π"
+          },
+          "answer": "B",
+          "solution": "Periode untuk fungsi y = A sin(kx ± c) adalah T = 2π / |k|. Di sini k = 2, maka T = 2π / 2 = π."
+        },
+        {
+          "num": 11,
+          "topic": "Amplitudo & Nilai Maksimum",
+          "question": "Nilai maksimum dan minimum dari f(x) = -4 cos(3x) + 2 berturut-turut adalah...",
+          "options": {
+            "A": "6 dan -2",
+            "B": "4 dan -4",
+            "C": "2 dan -6",
+            "D": "6 dan 2",
+            "E": "4 dan -2"
+          },
+          "answer": "A",
+          "solution": "Nilai cos(3x) berada pada interval [-1, 1]. Nilai maksimum saat cos(3x) = -1: f(x) = -4(-1) + 2 = 4 + 2 = 6. Nilai minimum saat cos(3x) = 1: f(x) = -4(1) + 2 = -2. Maka berturut-turut 6 dan -2."
+        },
+        {
+          "num": 12,
+          "topic": "Sudut Elevasi Cerita",
+          "question": "Seorang anak memandang puncak tiang bendera dengan sudut elevasi 45°. Jika jarak anak ke tiang bendera adalah 15 meter dan tinggi mata anak dari tanah adalah 1,5 meter, maka tinggi tiang bendera adalah...",
+          "options": {
+            "A": "15 meter",
+            "B": "16,5 meter",
+            "C": "18 meter",
+            "D": "15√2 meter",
+            "E": "16,5√3 meter"
+          },
+          "answer": "B",
+          "solution": "tan 45° = y / x ==> 1 = y / 15 ==> y = 15 meter. Tinggi tiang total = y + tinggi mata anak = 15 + 1,5 = 16,5 meter."
+        },
+        {
+          "num": 13,
+          "topic": "Konversi Perkalian ke Penjumlahan",
+          "question": "Bentuk 2 sin 75° cos 15° senilai dengan...",
+          "options": {
+            "A": "(2 + √3) / 2",
+            "B": "1 + √3",
+            "C": "√3 / 2",
+            "D": "1",
+            "E": "2 - √3"
+          },
+          "answer": "A",
+          "solution": "2 sin A cos B = sin(A + B) + sin(A - B) = sin(75° + 15°) + sin(75° - 15°) = sin 90° + sin 60° = 1 + 1/2 √3 = (2 + √3) / 2."
+        },
+        {
+          "num": 14,
+          "topic": "Persamaan Trigonometri Kuadrat",
+          "question": "Himpunan penyelesaian dari 2 cos² x + cos x - 1 = 0 pada interval 0 <= x <= 2π adalah...",
+          "options": {
+            "A": "{π/3, π, 5π/3}",
+            "B": "{π/6, π, 11π/6}",
+            "C": "{π/3, 2π/3, π}",
+            "D": "{0, π/3, 5π/3}",
+            "E": "{π/3, 5π/3}"
+          },
+          "answer": "A",
+          "solution": "(2 cos x - 1)(cos x + 1) = 0 ==> cos x = 1/2 atau cos x = -1. Untuk cos x = 1/2 ==> x = π/3 atau x = 2π - π/3 = 5π/3. Untuk cos x = -1 ==> x = π. Maka {π/3, π, 5π/3}."
+        },
+        {
+          "num": 15,
+          "topic": "Identitas Dasar Pythagoras",
+          "question": "Jika sec x = 13/12 dan x di kuadran IV, maka nilai tan x adalah...",
+          "options": {
+            "A": "-5/12",
+            "B": "5/12",
+            "C": "-12/5",
+            "D": "12/13",
+            "E": "-5/13"
+          },
+          "answer": "A",
+          "solution": "tan² x = sec² x - 1 = (13/12)² - 1 = 169/144 - 1 = 25/144 ==> tan x = ± 5/12. Karena di kuadran IV nilai tangen negatif, maka tan x = -5/12."
+        },
+        {
+          "num": 16,
+          "topic": "Relasi Sinus dan Cosinus Komplemen",
+          "question": "Nilai dari sin 40° - cos 50° adalah...",
+          "options": {
+            "A": "-1",
+            "B": "0",
+            "C": "1/2",
+            "D": "1",
+            "E": "√3 / 2"
+          },
+          "answer": "B",
+          "solution": "cos 50° = cos(90° - 40°) = sin 40°. Maka sin 40° - cos 50° = sin 40° - sin 40° = 0."
+        },
+        {
+          "num": 17,
+          "topic": "Aturan Cosinus Menghitung Sudut",
+          "question": "Pada segitiga ABC dengan panjang sisi a = 3 cm, b = 5 cm, dan c = 7 cm, sudut C adalah...",
+          "options": {
+            "A": "60°",
+            "B": "90°",
+            "C": "120°",
+            "D": "135°",
+            "E": "150°"
+          },
+          "answer": "C",
+          "solution": "cos C = (a² + b² - c²) / (2ab) = (3² + 5² - 7²) / (2 * 3 * 5) = (9 + 25 - 49) / 30 = -15 / 30 = -1/2. Karena cos C = -1/2 pada segitiga, C = 180° - 60° = 120°."
+        },
+        {
+          "num": 18,
+          "topic": "Grafik Fungsi Pergeseran Fasa",
+          "question": "Titik potong grafik y = 2 cos(x - π/2) dengan sumbu-Y adalah...",
+          "options": {
+            "A": "(0, 0)",
+            "B": "(0, 1)",
+            "C": "(0, 2)",
+            "D": "(0, -2)",
+            "E": "(0, √2)"
+          },
+          "answer": "A",
+          "solution": "Substitusi x = 0: y = 2 cos(0 - π/2) = 2 cos(-π/2) = 2(0) = 0. Maka titik potongnya adalah (0, 0)."
+        },
+        {
+          "num": 19,
+          "topic": "Sinus Sudut 3A",
+          "question": "Rumus ekspansi sin 3A dinyatakan dalam sin A adalah...",
+          "options": {
+            "A": "3 sin A - 4 sin³ A",
+            "B": "4 sin³ A - 3 sin A",
+            "C": "3 sin A + 4 sin³ A",
+            "D": "3 cos A - 4 sin A",
+            "E": "sin³ A - 3 sin A"
+          },
+          "answer": "A",
+          "solution": "Identitas standar: sin 3A = 3 sin A - 4 sin³ A."
+        },
+        {
+          "num": 20,
+          "topic": "Persamaan Bentuk a cos x + b sin x",
+          "question": "Nilai maksimum dari fungsi f(x) = 3 cos x + 4 sin x + 1 adalah...",
+          "options": {
+            "A": "5",
+            "B": "6",
+            "C": "7",
+            "D": "8",
+            "E": "9"
+          },
+          "answer": "B",
+          "solution": "Bentuk a cos x + b sin x memiliki amplitudo R = √(a² + b²) = √(3² + 4²) = √25 = 5. Maka nilai maksimum = R + c = 5 + 1 = 6."
+        }
+      ]
+    },
+    {
+      "id": "kalkulus_dasar",
+      "title": "Kalkulus Dasar",
+      "description": "Limit Fungsi Aljabar, Teorema L'Hopital, Turunan & Aplikasi Ekstremum/Gradien, Integral Luas Daerah Kurva",
+      "questions": [
+        {
+          "num": 1,
+          "topic": "Limit Faktorisasi",
+          "question": "Nilai dari lim_{x -> 2} (x² - 5x + 6) / (x² - 4) adalah...",
+          "options": {
+            "A": "-1/4",
+            "B": "1/4",
+            "C": "-1/2",
+            "D": "1/2",
+            "E": "0"
+          },
+          "answer": "A",
+          "solution": "Faktorisasi: (x - 2)(x - 3) / ((x - 2)(x + 2)) = (x - 3) / (x + 2). Substitusi x = 2: (2 - 3) / (2 + 2) = -1/4."
+        },
+        {
+          "num": 2,
+          "topic": "Limit Kali Sekawan",
+          "question": "Nilai dari lim_{x -> 4} (x - 4) / (√x - 2) adalah...",
+          "options": {
+            "A": "1",
+            "B": "2",
+            "C": "4",
+            "D": "8",
+            "E": "16"
+          },
+          "answer": "C",
+          "solution": "Kalikan sekawan (√x + 2): (x - 4)(√x + 2) / (x - 4) = √x + 2. Untuk x = 4: √4 + 2 = 2 + 2 = 4."
+        },
+        {
+          "num": 3,
+          "topic": "Limit Tak Hingga Rasional",
+          "question": "Nilai dari lim_{x -> ∞} (4x³ - 2x + 1) / (2x³ + 5x² - 3) adalah...",
+          "options": {
+            "A": "0",
+            "B": "1/2",
+            "C": "1",
+            "D": "2",
+            "E": "∞"
+          },
+          "answer": "D",
+          "solution": "Karena derajat pembilang dan penyebut sama (derajat 3), bagi koefisien pangkat tertingginya: 4 / 2 = 2."
+        },
+        {
+          "num": 4,
+          "topic": "Turunan Aturan Rantai",
+          "question": "Turunan pertama dari f(x) = (3x² - 2)⁴ adalah f'(x) = ...",
+          "options": {
+            "A": "24x(3x² - 2)³",
+            "B": "12x(3x² - 2)³",
+            "C": "4(3x² - 2)³",
+            "D": "6x(3x² - 2)³",
+            "E": "24x(3x² - 2)⁴"
+          },
+          "answer": "A",
+          "solution": "f'(x) = 4(3x² - 2)³ * d/dx(3x² - 2) = 4(3x² - 2)³ * (6x) = 24x(3x² - 2)³."
+        },
+        {
+          "num": 5,
+          "topic": "Turunan Aturan Perkalian",
+          "question": "Jika f(x) = (2x + 1)(x² - 3), maka nilai f'(1) adalah...",
+          "options": {
+            "A": "0",
+            "B": "2",
+            "C": "4",
+            "D": "6",
+            "E": "8"
+          },
+          "answer": "B",
+          "solution": "f'(x) = u'v + uv' = 2(x² - 3) + (2x + 1)(2x). Untuk x = 1: f'(1) = 2(1 - 3) + (2(1) + 1)(2(1)) = 2(-2) + (3)(2) = -4 + 6 = 2."
+        },
+        {
+          "num": 6,
+          "topic": "Persamaan Garis Singgung Kurva",
+          "question": "Persamaan garis singgung kurva y = x² - 4x + 3 di titik (3, 0) adalah...",
+          "options": {
+            "A": "y = 2x - 6",
+            "B": "y = 2x + 6",
+            "C": "y = -2x + 6",
+            "D": "y = x - 3",
+            "E": "y = 3x - 9"
+          },
+          "answer": "A",
+          "solution": "y' = 2x - 4. Di x = 3, gradien m = 2(3) - 4 = 2. Garis singgung: y - 0 = 2(x - 3) ==> y = 2x - 6."
+        },
+        {
+          "num": 7,
+          "topic": "Interval Fungsi Naik",
+          "question": "Fungsi f(x) = 1/3 x³ - x² - 3x + 4 naik pada interval...",
+          "options": {
+            "A": "-1 < x < 3",
+            "B": "x < -1 atau x > 3",
+            "C": "-3 < x < 1",
+            "D": "x < -3 atau x > 1",
+            "E": "x > 3"
+          },
+          "answer": "B",
+          "solution": "Syarat naik: f'(x) > 0 ==> x² - 2x - 3 > 0 ==> (x - 3)(x + 1) > 0 ==> x < -1 atau x > 3."
+        },
+        {
+          "num": 8,
+          "topic": "Nilai Stasioner & Maksimum",
+          "question": "Nilai maksimum dari kurva y = -x³ + 3x² + 9x - 5 pada interval [-2, 4] adalah...",
+          "options": {
+            "A": "17",
+            "B": "22",
+            "C": "27",
+            "D": "32",
+            "E": "35"
+          },
+          "answer": "B",
+          "solution": "y' = -3x² + 6x + 9 = 0 ==> x² - 2x - 3 = 0 ==> (x - 3)(x + 1) = 0 ==> x = 3 atau x = -1. Nilai di titik stasioner dan ujung interval: f(-2) = -(-8) + 3(4) + 9(-2) - 5 = 8 + 12 - 18 - 5 = -3. f(-1) = -(-1) + 3(1) + 9(-1) - 5 = 1 + 3 - 9 - 5 = -10. f(3) = -(27) + 3(9) + 9(3) - 5 = -27 + 27 + 27 - 5 = 22. f(4) = -(64) + 3(16) + 9(4) - 5 = -64 + 48 + 36 - 5 = 15. Nilai maksimum adalah 22."
+        },
+        {
+          "num": 9,
+          "topic": "Aplikasi Optimasi Cerita",
+          "question": "Kawat sepanjang 40 meter akan digunakan untuk memagari lahan berbentuk persegi panjang. Luas maksimum lahan yang dapat dipagari adalah...",
+          "options": {
+            "A": "80 m²",
+            "B": "90 m²",
+            "C": "100 m²",
+            "D": "120 m²",
+            "E": "160 m²"
+          },
+          "answer": "C",
+          "solution": "Keliling = 2(p + l) = 40 ==> p + l = 20 ==> l = 20 - p. Luas L(p) = p(20 - p) = 20p - p². Luas maksimum terjadi saat p = -b / (2a) = -20 / (2 * (-1)) = 10 m. Luas maks = 10 * 10 = 100 m²."
+        },
+        {
+          "num": 10,
+          "topic": "Integral Tak Tentu Aljabar",
+          "question": "Hasil dari ∫ (6x² - 4x + 5) dx adalah...",
+          "options": {
+            "A": "2x³ - 2x² + 5x + C",
+            "B": "3x³ - 2x² + 5x + C",
+            "C": "2x³ - 4x² + 5x + C",
+            "D": "6x³ - 2x² + 5x + C",
+            "E": "2x³ - 2x² + C"
+          },
+          "answer": "A",
+          "solution": "∫ (6x² - 4x + 5) dx = 6/3 x³ - 4/2 x² + 5x + C = 2x³ - 2x² + 5x + C."
+        },
+        {
+          "num": 11,
+          "topic": "Integral Tentu Dasar",
+          "question": "Nilai dari ∫₁³ (3x² - 2x) dx adalah...",
+          "options": {
+            "A": "16",
+            "B": "18",
+            "C": "20",
+            "D": "22",
+            "E": "24"
+          },
+          "answer": "B",
+          "solution": "[x³ - x²]₁³ = (3³ - 3²) - (1³ - 1²) = (27 - 9) - (1 - 1) = 18 - 0 = 18."
+        },
+        {
+          "num": 12,
+          "topic": "Integral Substitusi",
+          "question": "Hasil dari ∫ 2x (x² + 3)⁴ dx adalah...",
+          "options": {
+            "A": "1/5 (x² + 3)⁵ + C",
+            "B": "1/4 (x² + 3)⁵ + C",
+            "C": "(x² + 3)⁵ + C",
+            "D": "2/5 (x² + 3)⁵ + C",
+            "E": "1/10 (x² + 3)⁵ + C"
+          },
+          "answer": "A",
+          "solution": "Misalkan u = x² + 3 ==> du = 2x dx. Maka ∫ u⁴ du = 1/5 u⁵ + C = 1/5 (x² + 3)⁵ + C."
+        },
+        {
+          "num": 13,
+          "topic": "Luas Daerah di Bawah Kurva",
+          "question": "Luas daerah yang dibatasi oleh kurva y = 4 - x² dan sumbu-X adalah...",
+          "options": {
+            "A": "16/3 satuan luas",
+            "B": "32/3 satuan luas",
+            "C": "8 satuan luas",
+            "D": "12 satuan luas",
+            "E": "64/3 satuan luas"
+          },
+          "answer": "B",
+          "solution": "Titik potong sumbu-X: 4 - x² = 0 ==> x = ±2. Luas = ∫_{-2}² (4 - x²) dx = [4x - 1/3 x³]_{-2}² = (8 - 8/3) - (-8 + 8/3) = 16/3 - (-16/3) = 32/3 satuan luas."
+        },
+        {
+          "num": 14,
+          "topic": "Luas Antara Dua Kurva (Rumus Cepat D√D)",
+          "question": "Luas daerah yang dibatasi oleh kurva parabola y = x² dan garis y = 2x adalah...",
+          "options": {
+            "A": "2/3",
+            "B": "4/3",
+            "C": "2",
+            "D": "8/3",
+            "E": "4"
+          },
+          "answer": "B",
+          "solution": "Persamaan gabungan: x² - 2x = 0. a = 1, b = -2, c = 0. Diskriminan D = b² - 4ac = (-2)² - 0 = 4. Rumus cepat Luas = D√D / (6 a²) = 4√4 / (6 * 1) = (4 * 2) / 6 = 8 / 6 = 4/3 satuan luas."
+        },
+        {
+          "num": 15,
+          "topic": "Kecepatan dan Percepatan",
+          "question": "Posisi sebuah partikel diberikan oleh s(t) = 2t³ - 6t² + 4t. Percepatan partikel pada saat t = 3 detik adalah...",
+          "options": {
+            "A": "12 m/s²",
+            "B": "18 m/s²",
+            "C": "24 m/s²",
+            "D": "30 m/s²",
+            "E": "36 m/s²"
+          },
+          "answer": "C",
+          "solution": "Kecepatan v(t) = s'(t) = 6t² - 12t + 4. Percepatan a(t) = v'(t) = 12t - 12. Untuk t = 3: a(3) = 12(3) - 12 = 36 - 12 = 24 m/s²."
+        },
+        {
+          "num": 16,
+          "topic": "Limit Bentuk Tak Tentu Tak Hingga Kurang Tak Hingga",
+          "question": "Nilai dari lim_{x -> ∞} (√(x² + 6x) - √(x² - 2x)) adalah...",
+          "options": {
+            "A": "2",
+            "B": "4",
+            "C": "6",
+            "D": "8",
+            "E": "0"
+          },
+          "answer": "B",
+          "solution": "Rumus cepat lim_{x -> ∞} (√(ax² + bx + c) - √(ax² + px + q)) = (b - p) / (2√a). Di sini a = 1, b = 6, p = -2. Maka L = (6 - (-2)) / (2√1) = 8 / 2 = 4."
+        },
+        {
+          "num": 17,
+          "topic": "Teorema L'Hopital",
+          "question": "Dengan Teorema L'Hopital, nilai lim_{x -> 0} (e^(2x) - 1) / (3x) adalah...",
+          "options": {
+            "A": "0",
+            "B": "2/3",
+            "C": "3/2",
+            "D": "1",
+            "E": "2"
+          },
+          "answer": "B",
+          "solution": "Bentuk 0/0. Turunkan pembilang dan penyebut: d/dx(e^(2x) - 1) = 2e^(2x) dan d/dx(3x) = 3. Maka lim_{x -> 0} 2e^(2x) / 3 = 2(1) / 3 = 2/3."
+        },
+        {
+          "num": 18,
+          "topic": "Titik Belok Kurva",
+          "question": "Titik belok dari kurva y = x³ - 6x² + 9x + 1 terjadi pada absis x = ...",
+          "options": {
+            "A": "1",
+            "B": "2",
+            "C": "3",
+            "D": "4",
+            "E": "6"
+          },
+          "answer": "B",
+          "solution": "Syarat titik belok: y'' = 0. y' = 3x² - 12x + 9 ==> y'' = 6x - 12 = 0 ==> 6x = 12 ==> x = 2."
+        },
+        {
+          "num": 19,
+          "topic": "Gradien Garis Normal",
+          "question": "Gradien garis normal pada kurva y = x² - 3x di titik (2, -2) adalah...",
+          "options": {
+            "A": "1",
+            "B": "-1",
+            "C": "2",
+            "D": "-1/2",
+            "E": "1/2"
+          },
+          "answer": "B",
+          "solution": "y' = 2x - 3. Di x = 2, gradien garis singgung m_t = 2(2) - 3 = 1. Gradien garis normal m_n = -1 / m_t = -1 / 1 = -1."
+        },
+        {
+          "num": 20,
+          "topic": "Biaya Marginal",
+          "question": "Biaya total produksi x unit barang adalah C(x) = x³ - 30x² + 300x. Biaya marginal saat diproduksi 10 unit barang adalah...",
+          "options": {
+            "A": "0",
+            "B": "50",
+            "C": "100",
+            "D": "150",
+            "E": "300"
+          },
+          "answer": "A",
+          "solution": "Biaya marginal MC = C'(x) = 3x² - 60x + 300. Untuk x = 10: MC(10) = 3(10)² - 60(10) + 300 = 300 - 600 + 300 = 0."
+        }
+      ]
+    },
+    {
+      "id": "statistika_peluang",
+      "title": "Statistika & Peluang",
+      "description": "Ukuran Pemusatan & Penyebaran Data, Efek Transformasi Data, Kaidah Pencacahan, Permutasi/Kombinasi, Peluang Majemuk",
+      "questions": [
+        {
+          "num": 1,
+          "topic": "Rata-rata Gabungan",
+          "question": "Nilai rata-rata ujian matematika 20 siswa pria adalah 75, sedangkan rata-rata 30 siswa wanita adalah 80. Nilai rata-rata seluruh siswa kelas tersebut adalah...",
+          "options": {
+            "A": "77",
+            "B": "77.5",
+            "C": "78",
+            "D": "78.5",
+            "E": "79"
+          },
+          "answer": "C",
+          "solution": "x̄_gab = (n_1 * x̄_1 + n_2 * x̄_2) / (n_1 + n_2) = (20 * 75 + 30 * 80) / (20 + 30) = (1500 + 2400) / 50 = 3900 / 50 = 78."
+        },
+        {
+          "num": 2,
+          "topic": "Efek Transformasi Data",
+          "question": "Sekumpulan data memiliki rata-rata 40 dan simpangan baku 6. Jika setiap data dikalikan 2 lalu dikurangi 5, maka nilai rata-rata dan simpangan baku yang baru adalah...",
+          "options": {
+            "A": "75 dan 7",
+            "B": "75 dan 12",
+            "C": "80 dan 12",
+            "D": "80 dan 7",
+            "E": "75 dan 6"
+          },
+          "answer": "B",
+          "solution": "Rata-rata baru = 2 * 40 - 5 = 80 - 5 = 75. Simpangan baku HANYA terpengaruh oleh operasi perkalian: SB baru = |2| * 6 = 12 (operasi pengurangan tidak mengubah ukuran penyebaran). Jadi 75 dan 12."
+        },
+        {
+          "num": 3,
+          "topic": "Median Data Berkelompok",
+          "question": "Pada tabel distribusi frekuensi dengan N = 40, kelas median terletak pada interval 60-69 dengan batas bawah L = 59.5, frekuensi kumulatif sebelum kelas median F_k = 15, frekuensi kelas median f_m = 10, dan panjang kelas p = 10. Nilai median adalah...",
+          "options": {
+            "A": "63.5",
+            "B": "64.5",
+            "C": "65.5",
+            "D": "66.5",
+            "E": "67.5"
+          },
+          "answer": "B",
+          "solution": "Me = L + ((1/2 N - F_k) / f_m) * p = 59.5 + ((20 - 15) / 10) * 10 = 59.5 + (5 / 10) * 10 = 59.5 + 5 = 64.5."
+        },
+        {
+          "num": 4,
+          "topic": "Modus Data Berkelompok",
+          "question": "Pada kelas modus interval 50-59 dengan L = 49.5, selisih frekuensi dengan kelas sebelumnya d_1 = 3, selisih frekuensi dengan kelas sesudahnya d_2 = 2, dan panjang kelas p = 10. Modus data tersebut adalah...",
+          "options": {
+            "A": "54.5",
+            "B": "55.5",
+            "C": "56.5",
+            "D": "57.5",
+            "E": "58.5"
+          },
+          "answer": "B",
+          "solution": "Mo = L + (d_1 / (d_1 + d_2)) * p = 49.5 + (3 / (3 + 2)) * 10 = 49.5 + (3/5) * 10 = 49.5 + 6 = 55.5."
+        },
+        {
+          "num": 5,
+          "topic": "Simpangan Baku Data Tunggal",
+          "question": "Simpangan baku dari data sampel 4, 6, 8, 2, 5 adalah...",
+          "options": {
+            "A": "√2",
+            "B": "2",
+            "C": "√5",
+            "D": "√6",
+            "E": "3"
+          },
+          "answer": "B",
+          "solution": "Rata-rata = (4 + 6 + 8 + 2 + 5)/5 = 25/5 = 5. Kuadrat deviasi: (4-5)² + (6-5)² + (8-5)² + (2-5)² + (5-5)² = 1 + 1 + 9 + 9 + 0 = 20. Variansi = 20 / 5 = 4. Simpangan baku = √4 = 2."
+        },
+        {
+          "num": 6,
+          "topic": "Kaidah Perkalian",
+          "question": "Dari angka-angka 1, 2, 3, 4, 5, 6 akan dibuat bilangan ratusan yang angka-angkanya TIDAK boleh berulang dan bernilai genap. Banyaknya bilangan yang dapat dibuat adalah...",
+          "options": {
+            "A": "40",
+            "B": "60",
+            "C": "80",
+            "D": "100",
+            "E": "120"
+          },
+          "answer": "B",
+          "solution": "Kotak satuan (genap: 2, 4, 6) = 3 pilihan. Kotak ratusan (sisa 5 angka) = 5 pilihan. Kotak puluhan (sisa 4 angka) = 4 pilihan. Banyak bilangan = 5 * 4 * 3 = 60 bilangan."
+        },
+        {
+          "num": 7,
+          "topic": "Permutasi Posisi",
+          "question": "Dari 8 orang pengurus OSIS akan dipilih Ketua, Sekretaris, dan Bendahara. Banyaknya susunan pengurus yang mungkin adalah...",
+          "options": {
+            "A": "56",
+            "B": "112",
+            "C": "336",
+            "D": "504",
+            "E": "672"
+          },
+          "answer": "C",
+          "solution": "Permutasi P(8, 3) = 8! / (8 - 3)! = 8 * 7 * 6 = 336 susunan."
+        },
+        {
+          "num": 8,
+          "topic": "Kombinasi Tim",
+          "question": "Dari 10 orang pemain basket akan dipilih tim inti yang terdiri dari 5 orang. Banyaknya cara memilih tim inti adalah...",
+          "options": {
+            "A": "126",
+            "B": "252",
+            "C": "504",
+            "D": "720",
+            "E": "1024"
+          },
+          "answer": "B",
+          "solution": "Kombinasi C(10, 5) = (10 * 9 * 8 * 7 * 6) / (5 * 4 * 3 * 2 * 1) = 252 cara."
+        },
+        {
+          "num": 9,
+          "topic": "Kombinasi Bersyarat",
+          "question": "Sebuah kotak berisi 5 bola merah dan 4 bola putih. Dari kotak tersebut diambil 3 bola sekaligus secara acak. Peluang terambilnya 2 bola merah dan 1 bola putih adalah...",
+          "options": {
+            "A": "5/21",
+            "B": "10/21",
+            "C": "15/21",
+            "D": "20/21",
+            "E": "4/9"
+          },
+          "answer": "B",
+          "solution": "n(S) = C(9, 3) = (9 * 8 * 7) / (3 * 2 * 1) = 84. n(A) = C(5, 2) * C(4, 1) = 10 * 4 = 40. P(A) = 40 / 84 = 10 / 21."
+        },
+        {
+          "num": 10,
+          "topic": "Peluang Komplemen",
+          "question": "Dalam pelemparan 3 keping uang logam secara bersamaan, peluang munculnya paling sedikit satu sisi angka adalah...",
+          "options": {
+            "A": "1/8",
+            "B": "3/8",
+            "C": "5/8",
+            "D": "7/8",
+            "E": "1"
+          },
+          "answer": "D",
+          "solution": "Gunakan komplemen: P(paling sedikit 1 angka) = 1 - P(semua gambar). Kejadian semua gambar hanya 1 (GGG) dari total 2³ = 8 ruang sampel. Maka P = 1 - 1/8 = 7/8."
+        },
+        {
+          "num": 11,
+          "topic": "Peluang Kejadian Saling Lepas",
+          "question": "Dua dadu dilempar bersamaan satu kali. Peluang munculnya jumlah kedua mata dadu 5 atau 9 adalah...",
+          "options": {
+            "A": "1/9",
+            "B": "2/9",
+            "C": "1/4",
+            "D": "7/36",
+            "E": "5/18"
+          },
+          "answer": "B",
+          "solution": "Jumlah 5: (1,4), (2,3), (3,2), (4,1) -> 4 cara. Jumlah 9: (3,6), (4,5), (5,4), (6,3) -> 4 cara. Saling lepas: n(A ∪ B) = 4 + 4 = 8. Peluang = 8 / 36 = 2 / 9."
+        },
+        {
+          "num": 12,
+          "topic": "Peluang Kejadian Bebas",
+          "question": "Peluang siswa A lulus ujian adalah 0,8 dan peluang siswa B lulus adalah 0,7. Peluang bahwa HANYA siswa A yang lulus ujian adalah...",
+          "options": {
+            "A": "0.56",
+            "B": "0.24",
+            "C": "0.14",
+            "D": "0.06",
+            "E": "0.74"
+          },
+          "answer": "B",
+          "solution": "Hanya A lulus berarti A lulus dan B tidak lulus: P(A ∩ B') = P(A) * P(B') = 0.8 * (1 - 0.7) = 0.8 * 0.3 = 0.24."
+        },
+        {
+          "num": 13,
+          "topic": "Peluang Bersyarat",
+          "question": "Dari sebuah keluarga dengan 2 anak diketahui bahwa salah satu anaknya adalah laki-laki. Peluang bahwa kedua anaknya laki-laki adalah...",
+          "options": {
+            "A": "1/4",
+            "B": "1/3",
+            "C": "1/2",
+            "D": "2/3",
+            "E": "3/4"
+          },
+          "answer": "B",
+          "solution": "Ruang sampel 2 anak: {LL, LP, PL, PP}. Diketahui minimal satu laki-laki, ruang sampel tereduksi menjadi {LL, LP, PL} (3 elemen). Kejadian keduanya laki-laki adalah {LL} (1 elemen). Peluang bersyarat = 1/3."
+        },
+        {
+          "num": 14,
+          "topic": "Frekuensi Harapan",
+          "question": "Dua buah dadu dilemparkan sebanyak 180 kali. Frekuensi harapan munculnya mata dadu kembar (dobel) adalah...",
+          "options": {
+            "A": "15 kali",
+            "B": "20 kali",
+            "C": "30 kali",
+            "D": "36 kali",
+            "E": "45 kali"
+          },
+          "answer": "C",
+          "solution": "Mata dadu kembar: (1,1), (2,2), ..., (6,6) ada 6 dari 36 kemungkinan (P = 6/36 = 1/6). Frekuensi harapan E = n * P = 180 * (1/6) = 30 kali."
+        },
+        {
+          "num": 15,
+          "topic": "Jangkauan Interkuartil",
+          "question": "Diberikan data terurut: 3, 5, 7, 8, 9, 11, 13. Jangkauan interkuartil (IQR = Q3 - Q1) data tersebut adalah...",
+          "options": {
+            "A": "4",
+            "B": "6",
+            "C": "8",
+            "D": "10",
+            "E": "12"
+          },
+          "answer": "B",
+          "solution": "Median Q2 = 8. Paruh bawah {3, 5, 7} memiliki Q1 = 5. Paruh atas {9, 11, 13} memiliki Q3 = 11. Jangkauan interkuartil = Q3 - Q1 = 11 - 5 = 6."
+        },
+        {
+          "num": 16,
+          "topic": "Pengambilan Bertahap Tanpa Pengembalian",
+          "question": "Dari setumpuk kartu bridge (52 kartu), diambil 2 kartu satu per satu tanpa pengembalian. Peluang terambilnya kedua kartu As adalah...",
+          "options": {
+            "A": "1/221",
+            "B": "1/169",
+            "C": "1/52",
+            "D": "4/663",
+            "E": "2/221"
+          },
+          "answer": "A",
+          "solution": "P(As pertama) = 4/52 = 1/13. P(As kedua setelah 1 As diambil) = 3/51 = 1/17. Peluang = (1/13) * (1/17) = 1 / 221."
+        },
+        {
+          "num": 17,
+          "topic": "Permutasi Melingkar",
+          "question": "Banyaknya cara 5 orang duduk mengelilingi meja makan bundar adalah...",
+          "options": {
+            "A": "12",
+            "B": "24",
+            "C": "60",
+            "D": "120",
+            "E": "240"
+          },
+          "answer": "B",
+          "solution": "P_siklis = (n - 1)! = (5 - 1)! = 4! = 4 * 3 * 2 * 1 = 24 cara."
+        },
+        {
+          "num": 18,
+          "topic": "Kuartil Data Tunggal Berbobot",
+          "question": "Jika setiap data pada suatu sampel x_1, x_2, ..., x_n ditambah konstanta 10, maka besaran yang TIDAK mengalami perubahan nilai adalah...",
+          "options": {
+            "A": "Rata-rata",
+            "B": "Median",
+            "C": "Modus",
+            "D": "Simpangan Kuartil",
+            "E": "Kuartil Atas"
+          },
+          "answer": "D",
+          "solution": "Penambahan konstanta k menggeser posisi seluruh data secara identik. Akibatnya ukuran pemusatan dan letak (mean, median, modus, kuartil) bertambah k. Namun selisih antar-data tetap, sehingga ukuran penyebaran (jangkauan, simpangan baku, ragam, simpangan kuartil) TIDAK BERUBAH."
+        },
+        {
+          "num": 19,
+          "topic": "Diagram Lingkaran Derajat",
+          "question": "Diagram lingkaran menunjukkan data hobi siswa: Olahraga 120°, Musik 90°, Membaca 60°, dan Sisanya Menari. Jika banyak siswa yang hobi Menari adalah 45 orang, jumlah seluruh siswa adalah...",
+          "options": {
+            "A": "150",
+            "B": "180",
+            "C": "200",
+            "D": "240",
+            "E": "300"
+          },
+          "answer": "B",
+          "solution": "Derajat Menari = 360° - (120° + 90° + 60°) = 360° - 270° = 90°. Karena 90° mewakili 45 orang, maka total siswa (360°) = (360° / 90°) * 45 = 4 * 45 = 180 orang."
+        },
+        {
+          "num": 20,
+          "topic": "Peluang Distribusi Binomial",
+          "question": "Sebuah koin seimbang dilempar 4 kali. Peluang muncul tepat 2 kali sisi gambar adalah...",
+          "options": {
+            "A": "1/4",
+            "B": "3/8",
+            "C": "1/2",
+            "D": "5/8",
+            "E": "3/16"
+          },
+          "answer": "B",
+          "solution": "P(X = k) = C(n, k) * p^k * (1-p)^(n-k). Di sini n = 4, k = 2, p = 1/2. C(4, 2) * (1/2)² * (1/2)² = 6 * (1/4) * (1/4) = 6/16 = 3/8."
+        }
+      ]
+    }
+  ]
+}
