@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../../data/repositories/subject_repository.dart';
 import '../../shared/widgets/modern_cards.dart';
+import '../../shared/widgets/animated_widgets.dart';
 
-/// Practice Screen - Beautiful Gradient Design
+/// Practice Screen - VIBRANT ANIMATED Design
 class PracticeScreen extends ConsumerStatefulWidget {
   const PracticeScreen({super.key});
 
@@ -14,9 +16,27 @@ class PracticeScreen extends ConsumerStatefulWidget {
   ConsumerState<PracticeScreen> createState() => _PracticeScreenState();
 }
 
-class _PracticeScreenState extends ConsumerState<PracticeScreen> {
+class _PracticeScreenState extends ConsumerState<PracticeScreen>
+    with TickerProviderStateMixin {
   final _subjectRepo = SubjectRepository();
   String _selectedSubject = 'all';
+
+  late AnimationController _headerController;
+
+  @override
+  void initState() {
+    super.initState();
+    _headerController = AnimationController(
+      duration: const Duration(milliseconds: 600),
+      vsync: this,
+    )..forward();
+  }
+
+  @override
+  void dispose() {
+    _headerController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,49 +46,59 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
       backgroundColor: AppColors.backgroundLight,
       body: SafeArea(
         child: CustomScrollView(
+          physics: const BouncingScrollPhysics(),
           slivers: [
-            // Beautiful Header
+            // Beautiful Animated Header
             SliverToBoxAdapter(
-              child: Container(
-                padding: const EdgeInsets.all(AppTheme.screenPadding),
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      AppColors.accentPurple.withValues(alpha: 0.08),
-                      AppColors.accentPink.withValues(alpha: 0.05),
-                    ],
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
+              child: FadeTransition(
+                opacity: _headerController,
+                child: Container(
+                  padding: const EdgeInsets.all(AppTheme.screenPadding),
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        AppColors.accentPurple.withValues(alpha: 0.12),
+                        AppColors.accentPink.withValues(alpha: 0.08),
+                      ],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
                   ),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    ShaderMask(
-                      shaderCallback: (bounds) =>
-                          AppColors.mainGradient.createShader(bounds),
-                      child: Text(
-                        'Practice',
-                        style: AppTypography.displayMedium.copyWith(
-                          color: Colors.white,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          PulsingWidget(
+                            child: ShaderMask(
+                              shaderCallback: (bounds) =>
+                                  AppColors.neonGlowGradient.createShader(bounds),
+                              child: Text(
+                                '⚡ Practice',
+                                style: AppTypography.displayMedium.copyWith(
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        'Test your knowledge and level up',
+                        style: AppTypography.bodyMedium.copyWith(
+                          color: AppColors.textSecondary,
                         ),
                       ),
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      'Test your knowledge and level up',
-                      style: AppTypography.bodyMedium.copyWith(
-                        color: AppColors.textSecondary,
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
 
             const SliverToBoxAdapter(child: SizedBox(height: 20)),
 
-            // Subject filter with beautiful chips
+            // Subject filter with animated chips
             SliverToBoxAdapter(
               child: SizedBox(
                 height: 50,
@@ -79,19 +109,25 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
                   itemCount: subjects.length + 1,
                   itemBuilder: (context, index) {
                     if (index == 0) {
-                      return Padding(
-                        padding: const EdgeInsets.only(right: 10),
-                        child: _buildFilterChip('all', '✨ All', _selectedSubject, null),
+                      return StaggeredAnimation(
+                        index: 0,
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 10),
+                          child: _buildFilterChip('all', '✨ All', _selectedSubject, null),
+                        ),
                       );
                     }
                     final subject = subjects[index - 1];
-                    return Padding(
-                      padding: const EdgeInsets.only(right: 10),
-                      child: _buildFilterChip(
-                        subject.id,
-                        '${subject.icon} ${subject.name}',
-                        _selectedSubject,
-                        AppColors.getSubjectGradient(subject.id),
+                    return StaggeredAnimation(
+                      index: index,
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 10),
+                        child: _buildFilterChip(
+                          subject.id,
+                          '${subject.icon} ${subject.name}',
+                          _selectedSubject,
+                          AppColors.getSubjectGradient(subject.id),
+                        ),
                       ),
                     );
                   },
@@ -113,10 +149,13 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
                       return const SizedBox.shrink();
                     }
                     final item = practiceItems[index];
-                    return Padding(
-                      padding:
-                          const EdgeInsets.only(bottom: AppTheme.spacing16),
-                      child: _buildPracticeCard(item),
+                    return StaggeredAnimation(
+                      index: 10 + index,
+                      child: Padding(
+                        padding:
+                            const EdgeInsets.only(bottom: AppTheme.spacing16),
+                        child: _buildPracticeCard(item),
+                      ),
                     );
                   },
                   childCount: _getPracticeItems().length,
@@ -134,15 +173,16 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
   Widget _buildFilterChip(String id, String label, String selectedId, LinearGradient? gradient) {
     final isSelected = id == selectedId;
 
-    return GestureDetector(
+    return BounceButton(
       onTap: () {
+        HapticFeedback.lightImpact();
         setState(() {
           _selectedSubject = id;
         });
       },
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
         decoration: BoxDecoration(
           gradient: isSelected && gradient != null ? gradient : null,
           color: isSelected && gradient == null ? AppColors.accentPurple : null,
@@ -153,8 +193,8 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
                     color: (isSelected && gradient != null
                             ? gradient.colors.first
                             : AppColors.accentPurple)
-                        .withValues(alpha: 0.3),
-                    blurRadius: 12,
+                        .withValues(alpha: 0.4),
+                    blurRadius: 15,
                     offset: const Offset(0, 4),
                   ),
                 ]
@@ -164,7 +204,7 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
           label,
           style: AppTypography.labelMedium.copyWith(
             color: isSelected ? Colors.white : AppColors.textSecondary,
-            fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
+            fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,
           ),
         ),
       ),
@@ -172,79 +212,104 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
   }
 
   Widget _buildPracticeCard(PracticeItem item) {
-    return Container(
-      decoration: BoxDecoration(
-        color: AppColors.cardLight,
-        borderRadius: BorderRadius.circular(20),
-        boxShadow: AppColors.getSoftShadow(),
-        border: Border.all(color: AppColors.border),
-      ),
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          onTap: () {},
+    return BounceButton(
+      onTap: () {
+        HapticFeedback.mediumImpact();
+        // TODO: Navigate to practice session
+      },
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        decoration: BoxDecoration(
+          color: AppColors.cardLight,
           borderRadius: BorderRadius.circular(20),
-          child: Padding(
-            padding: const EdgeInsets.all(20),
-            child: Row(
-              children: [
-                Container(
-                  width: 60,
-                  height: 60,
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                        item.color.withValues(alpha: 0.15),
-                        item.color.withValues(alpha: 0.05),
-                      ],
-                    ),
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  child: Center(
-                    child: Text(item.icon, style: const TextStyle(fontSize: 30)),
-                  ),
-                ),
-                const SizedBox(width: 16),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        item.title,
-                        style: AppTypography.titleMedium.copyWith(
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        item.subtitle,
-                        style: AppTypography.bodySmall,
-                      ),
-                      const SizedBox(height: 12),
-                      Row(
-                        children: [
-                          _buildInfoChip('📝', '${item.questionCount}'),
-                          const SizedBox(width: 10),
-                          _buildInfoChip('⭐', item.difficulty),
-                        ],
-                      ),
+          boxShadow: [
+            BoxShadow(
+              color: item.color.withValues(alpha: 0.15),
+              blurRadius: 20,
+              offset: const Offset(0, 4),
+            ),
+          ],
+          border: Border.all(color: AppColors.border),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Row(
+            children: [
+              Container(
+                width: 60,
+                height: 60,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      item.color.withValues(alpha: 0.2),
+                      item.color.withValues(alpha: 0.1),
                     ],
                   ),
+                  borderRadius: BorderRadius.circular(16),
+                  boxShadow: [
+                    BoxShadow(
+                      color: item.color.withValues(alpha: 0.3),
+                      blurRadius: 10,
+                      offset: const Offset(0, 2),
+                    ),
+                  ],
                 ),
-                Container(
-                  padding: const EdgeInsets.all(12),
-                  decoration: BoxDecoration(
-                    color: item.color.withValues(alpha: 0.1),
-                    shape: BoxShape.circle,
-                  ),
-                  child: Icon(
-                    Icons.play_arrow_rounded,
-                    color: item.color,
-                    size: 28,
-                  ),
+                child: Center(
+                  child: Text(item.icon, style: const TextStyle(fontSize: 30)),
                 ),
-              ],
-            ),
+              ),
+              const SizedBox(width: 16),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      item.title,
+                      style: AppTypography.titleMedium.copyWith(
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      item.subtitle,
+                      style: AppTypography.bodySmall,
+                    ),
+                    const SizedBox(height: 12),
+                    Row(
+                      children: [
+                        _buildInfoChip('📝', '${item.questionCount}'),
+                        const SizedBox(width: 10),
+                        _buildInfoChip('⭐', item.difficulty),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.all(14),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      item.color.withValues(alpha: 0.2),
+                      item.color.withValues(alpha: 0.1),
+                    ],
+                  ),
+                  shape: BoxShape.circle,
+                  boxShadow: [
+                    BoxShadow(
+                      color: item.color.withValues(alpha: 0.3),
+                      blurRadius: 10,
+                      offset: const Offset(0, 2),
+                    ),
+                  ],
+                ),
+                child: Icon(
+                  Icons.play_arrow_rounded,
+                  color: item.color,
+                  size: 28,
+                ),
+              ),
+            ],
           ),
         ),
       ),
@@ -295,7 +360,7 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
 
       items.add(PracticeItem(
         id: '${subject.id}_quick',
-        title: 'Quick Quiz',
+        title: 'Quick Quiz ⚡',
         subtitle: '5 questions • Fast paced',
         icon: '⚡',
         color: gradient.colors.first,

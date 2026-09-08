@@ -1,0 +1,1563 @@
+# -*- coding: utf-8 -*-
+"""
+Practice Question Bank: Sertifikasi Kompetensi (BNSP) Junior Web Developer & LKS RPL Laravel
+6 Subcategories:
+- Standar Unit Kompetensi SKKNI BNSP (20 questions)
+- Laravel Core, Routing & Requests (20 questions)
+- Database, Migrations & Eloquent ORM (20 questions)
+- RESTful API & Sanctum Authentication (20 questions)
+- Web Security Hardening OWASP Top 10 (20 questions)
+- Automated Testing, Git & Deployment (20 questions)
+Total: 120 Questions with Detailed Code Solutions & Examiner Insights
+"""
+
+SERKOM_DATA = {
+    "subject_id": "serkom",
+    "subject_name": "Sertifikasi Kompetensi (BNSP) JWD & LKS RPL Laravel",
+    "icon": "💻",
+    "color": "#459A72",
+    "subcategories": [
+        {
+            "id": "skkni_core_units",
+            "title": "Standar Unit Kompetensi SKKNI BNSP",
+            "description": "6 Unit Kompetensi J.620100: UI Web, Eksekusi Pemrograman, Organisasi File MVC, Panduan PSR-12, OOP, Composer Libraries",
+            "questions": [
+                {
+                    "num": 1,
+                    "topic": "Unit J.620100.005.02 (User Interface)",
+                    "question": "Dalam unit kompetensi J.620100.005.02, elemen HTML5 yang paling tepat dan semantik untuk membungkus navigasi menu utama sebuah situs web adalah...",
+                    "options": {"A": "<div id='nav'>", "B": "<nav>", "C": "<menu-bar>", "D": "<section class='menu'>", "E": "<header-nav>"},
+                    "answer": "B",
+                    "solution": "HTML5 menyediakan tag semantik `<nav>` yang dirancang khusus membungkus tautan navigasi utama, meningkatkan aksesibilitas dan SEO."
+                },
+                {
+                    "num": 2,
+                    "topic": "Unit J.620100.010.01 (Eksekusi Pemrograman PHP)",
+                    "question": "Pada PHP 8.x, operator nullsafe (`?->`) berfungsi untuk...",
+                    "options": {
+                        "A": "Menghapus variabel yang bernilai null dari memori",
+                        "B": "Mengakses properti atau method objek tanpa memicu error jika objek tersebut bernilai null",
+                        "C": "Mengubah semua nilai null menjadi angka nol secara otomatis",
+                        "D": "Membandingkan dua objek apakah keduanya null",
+                        "E": "Mengecek apakah database terhubung"
+                    },
+                    "answer": "B",
+                    "solution": "Operator nullsafe `$user?->profile?->address` menghentikan rantai pemanggilan dan mengembalikan null jika salah satu objek null, mencegah `Attempt to read property on null` error."
+                },
+                {
+                    "num": 3,
+                    "topic": "Unit J.620100.015.01 (Organisasi File MVC)",
+                    "question": "Dalam arsitektur MVC framework Laravel, file class controller seperti `ProductController.php` harus ditempatkan di direktori...",
+                    "options": {"A": "app/Models", "B": "app/Http/Controllers", "C": "resources/views", "D": "routes", "E": "config"},
+                    "answer": "B",
+                    "solution": "Standar PSR-4 dan konvensi Laravel menempatkan semua controller HTTP di dalam direktori `app/Http/Controllers`."
+                },
+                {
+                    "num": 4,
+                    "topic": "Unit J.620100.016.01 (Kaidah Koding PSR-12)",
+                    "question": "Menurut standar PSR-12, penulisan nama class dan nama method dalam PHP yang BENAR adalah...",
+                    "options": {
+                        "A": "Nama class PascalCase (UserOrder) dan method camelCase (calculateTotal)",
+                        "B": "Nama class snake_case (user_order) dan method PascalCase (CalculateTotal)",
+                        "C": "Nama class camelCase (userOrder) dan method snake_case (calculate_total)",
+                        "D": "Semua menggunakan huruf kapital penuh (USERORDER)",
+                        "E": "Bebas sesuai selera programmer tanpa aturan"
+                    },
+                    "answer": "A",
+                    "solution": "PSR-12 mewajibkan PascalCase untuk nama class (*UserOrder, ProductService*) dan camelCase untuk nama method (*calculateTotal, getUserById*)."
+                },
+                {
+                    "num": 5,
+                    "topic": "Unit J.620100.017.02 (Pemrograman Terstruktur OOP)",
+                    "question": "Prinsip OOP yang menyembunyikan detail internal objek dan hanya memperbolehkan akses melalui method getter/setter atau method publik disebut...",
+                    "options": {"A": "Inheritance", "B": "Polymorphism", "C": "Encapsulation (Enkapsulasi)", "D": "Abstraction", "E": "Interface"},
+                    "answer": "C",
+                    "solution": "Enkapsulasi membungkus data/properti dengan visibilitas private/protected dan menyediakan antarmuka publik untuk mengontrol aksesnya."
+                },
+                {
+                    "num": 6,
+                    "topic": "Unit J.620100.019.02 (Library Pre-Existing Composer)",
+                    "question": "Perintah Composer yang tepat untuk menambahkan package Laravel Sanctum ke dalam proyek adalah...",
+                    "options": {
+                        "A": "composer install laravel/sanctum",
+                        "B": "composer require laravel/sanctum",
+                        "C": "npm install laravel/sanctum",
+                        "D": "php artisan add laravel/sanctum",
+                        "E": "git clone laravel/sanctum"
+                    },
+                    "answer": "B",
+                    "solution": "Perintah `composer require <vendor>/<package>` digunakan untuk mendownload dan menambahkan package baru ke dalam `composer.json`."
+                },
+                {
+                    "num": 7,
+                    "topic": "Konfigurasi Lingkungan .env",
+                    "question": "Mengapa file `.env` tidak boleh diunggah (*commit*) ke public repository Git?",
+                    "options": {
+                        "A": "Karena ukuran filenya terlalu besar untuk diunggah",
+                        "B": "Karena memuat kredensial sensitif seperti password database, APP_KEY, dan API secret token",
+                        "C": "Karena Git tidak mendukung file berekstensi .env",
+                        "D": "Agar Composer dapat bekerja lebih cepat",
+                        "E": "Karena file .env hanya boleh dibaca oleh Windows"
+                    },
+                    "answer": "B",
+                    "solution": "File `.env` menyimpan konfigurasi rahasia produksi; membocorkannya ke Git publik akan membuka celah eksploitasi credential."
+                },
+                {
+                    "num": 8,
+                    "topic": "Tipe Data Match Expression PHP 8",
+                    "question": "Keunggulan utama struktur `match` expression di PHP 8 dibandingkan struktur `switch` konvensional adalah...",
+                    "options": {
+                        "A": "Match menggunakan perbandingan ketat (strict comparison `===`) dan langsung mengembalikan nilai tanpa perlu `break`",
+                        "B": "Match hanya bisa membandingkan angka bulat",
+                        "C": "Match membutuhkan file konfigurasi XML",
+                        "D": "Match lebih lambat dieksekusi",
+                        "E": "Match tidak memiliki nilai default"
+                    },
+                    "answer": "A",
+                    "solution": "`match` menggunakan perbandingan tipe identik (`===`), tidak mengalami type coercion bug seperti `switch`, dan tidak membutuhkan pernyataan `break`."
+                },
+                {
+                    "num": 9,
+                    "topic": "Blade Templating Directive",
+                    "question": "Direktif Blade di Laravel yang digunakan untuk menampilkan data dengan escaping HTML (mencegah serangan XSS) adalah...",
+                    "options": {"A": "{!! $data !!}", "B": "{{ $data }}", "C": "<? $data ?>", "D": "[[ $data ]]", "E": "<% $data %>"},
+                    "answer": "B",
+                    "solution": "`{{ $data }}` secara otomatis menjalankan fungsi PHP `htmlspecialchars()` untuk menetralkan karakter berbahaya seperti `<script>`."
+                },
+                {
+                    "num": 10,
+                    "topic": "CSS Grid vs Flexbox",
+                    "question": "Dalam perancangan antarmuka pengguna web (UI), perbedaan konseptual antara CSS Flexbox dan CSS Grid adalah...",
+                    "options": {
+                        "A": "Flexbox dirancang untuk tata letak satu dimensi (baris ATAU kolom), sedangkan CSS Grid untuk dua dimensi (baris DAN kolom secara bersamaan)",
+                        "B": "Flexbox hanya berjalan di browser Firefox",
+                        "C": "CSS Grid tidak memerlukan deklarasi CSS",
+                        "D": "Flexbox tidak bisa menangani teks",
+                        "E": "CSS Grid hanya untuk gambar latar belakang"
+                    },
+                    "answer": "A",
+                    "solution": "Flexbox adalah sistem layout satu dimensi (1D), sedangkan CSS Grid adalah sistem layout berbasis kolom dan baris dua dimensi (2D)."
+                },
+                {
+                    "num": 11,
+                    "topic": "Autoloading PSR-4",
+                    "question": "File `composer.json` memuat blok `\"autoload\": { \"psr-4\": { \"App\\\\\": \"app/\" } }`. Konfigurasi ini berarti...",
+                    "options": {
+                        "A": "Semua file di folder app/ akan dihapus otomatis",
+                        "B": "Namespace `App\\` dipetakan ke direktori fisik `app/` untuk pemanggilan class otomatis",
+                        "C": "Aplikasi hanya boleh dijalankan di server Linux",
+                        "D": "Versi PHP harus 4.0",
+                        "E": "Database akan dimigrasi secara otomatis"
+                    },
+                    "answer": "B",
+                    "solution": "PSR-4 mendefinisikan pemetaan antara prefix namespace PHP dan path direktori fisik pada sistem file."
+                },
+                {
+                    "num": 12,
+                    "topic": "Dependency Injection di Laravel",
+                    "question": "Teknik memasukkan objek dependensi (seperti Request atau Service) langsung melalui parameter konstruktor atau method controller disebut...",
+                    "options": {"A": "Hardcoded instantiation", "B": "Dependency Injection", "C": "Global variable injection", "D": "SQL Injection", "E": "Dynamic typing"},
+                    "answer": "B",
+                    "solution": "Dependency Injection (DI) memungkinkan Service Container Laravel secara otomatis menginstansiasi dan menyuntikkan class yang dibutuhkan ke controller."
+                },
+                {
+                    "num": 13,
+                    "topic": "Visibilitas Properti OOP",
+                    "question": "Jika sebuah properti class dideklarasikan sebagai `protected`, maka properti tersebut dapat diakses oleh...",
+                    "options": {
+                        "A": "Hanya class itu sendiri dan class turunannya (*subclass/child class*)",
+                        "B": "Semua file di luar class tanpa batasan",
+                        "C": "Hanya web server Apache",
+                        "D": "Hanya file konfigurasi .env",
+                        "E": "Tidak dapat diakses oleh siapapun"
+                    },
+                    "answer": "A",
+                    "solution": "Properti `protected` dapat diakses oleh class pendefinisinya dan seluruh class yang mewarisinya (*inheritance*), namun tersembunyi dari instansiasi publik luar."
+                },
+                {
+                    "num": 14,
+                    "topic": "Responsivitas Mobile-First",
+                    "question": "Dalam utility framework seperti Tailwind CSS, pendekatan desain *mobile-first* berarti...",
+                    "options": {
+                        "A": "Website hanya bisa dibuka lewat layar smartphone",
+                        "B": "Gaya CSS dasar dirancang untuk layar terkecil, kemudian breakpoint seperti `md:` dan `lg:` menambahkan aturan untuk layar lebih besar",
+                        "C": "Website tidak memiliki warna",
+                        "D": "Mengabaikan penggunaan media query",
+                        "E": "Ukuran font dibuat tetap 12px untuk semua perangkat"
+                    },
+                    "answer": "B",
+                    "solution": "Mobile-first mengutamakan styling viewport mobile tanpa prefix, lalu memperluas tampilan dengan prefix responsif (`sm:`, `md:`, `lg:`, `xl:`)."
+                },
+                {
+                    "num": 15,
+                    "topic": "Trait di PHP",
+                    "question": "Di dalam bahasa pemrograman PHP, `trait` berfungsi untuk...",
+                    "options": {
+                        "A": "Menghubungkan aplikasi ke server FTP",
+                        "B": "Mekanisme penggunaan kembali kode (*code reuse*) pada bahasa *single-inheritance* seperti PHP",
+                        "C": "Menggantikan peran database MySQL",
+                        "D": "Mencegah file PHP dibaca hacker",
+                        "E": "Mengatur kecepatan internet klien"
+                    },
+                    "answer": "B",
+                    "solution": "Trait memungkinkan kumpulan method digunakan bersama (*reuse*) di berbagai class terpisah tanpa hierarki warisan bertingkat yang rumit."
+                },
+                {
+                    "num": 16,
+                    "topic": "Type Hinting di PHP",
+                    "question": "Keuntungan menggunakan *strict typing* (`declare(strict_types=1);`) dan *type hinting* pada parameter fungsi PHP adalah...",
+                    "options": {
+                        "A": "Mencegah kesalahan konversi tipe data implisit (*type coercion*) dan meningkatkan keandalan kode",
+                        "B": "Membuat aplikasi berjalan lambat",
+                        "C": "Menghapus kebutuhan pengujian unit test",
+                        "D": "Membuat kode hanya bisa berjalan di macOS",
+                        "E": "Menyembunyikan kode dari browser"
+                    },
+                    "answer": "A",
+                    "solution": "Strict types memastikan jika suatu fungsi mengharapkan integer, pengiriman string '10' akan langsung memicu TypeError, mencegah bug runtime tersembunyi."
+                },
+                {
+                    "num": 17,
+                    "topic": "Composer Dump-Autoload",
+                    "question": "Perintah CLI yang digunakan untuk meregenerasi file class loader setelah membuat class atau helper baru di luar konvensi otomatis adalah...",
+                    "options": {
+                        "A": "composer update",
+                        "B": "composer dump-autoload",
+                        "C": "php artisan refresh",
+                        "D": "npm run build",
+                        "E": "composer clear-cache"
+                    },
+                    "answer": "B",
+                    "solution": "`composer dump-autoload` memindai ulang seluruh direktori class dan meregenerasi tabel pemetaan class di `vendor/composer/autoload_classmap.php`."
+                },
+                {
+                    "num": 18,
+                    "topic": "Prinsip SOLID: Single Responsibility",
+                    "question": "Prinsip Single Responsibility Principle (SRP) dalam arsitektur software menyatakan bahwa...",
+                    "options": {
+                        "A": "Satu programmer harus mengerjakan seluruh proyek sendirian",
+                        "B": "Sebuah class hanya boleh memiliki satu alasan untuk berubah (hanya mengemban satu tanggung jawab spesifik)",
+                        "C": "Satu controller harus memuat seluruh query database dan logika UI",
+                        "D": "Semua method harus memiliki satu parameter saja",
+                        "E": "Aplikasi hanya boleh memiliki satu tabel database"
+                    },
+                    "answer": "B",
+                    "solution": "SRP menyatakan sebuah class harus memiliki satu fokus tugas saja. Misalnya: InvoiceGenerator hanya mengurus cetak invoice, bukan mengirim email dan mengelola payment."
+                },
+                {
+                    "num": 19,
+                    "topic": "Form Semantik Aksesibilitas",
+                    "question": "Atribut HTML yang WAJIB dipasangkan pada tag `<label>` agar terhubung langsung dengan elemen `<input id='username'>` adalah...",
+                    "options": {"A": "name='username'", "B": "for='username'", "C": "link='username'", "D": "target='username'", "E": "to='username'"},
+                    "answer": "B",
+                    "solution": "Atribut `for` pada label mencocokkan nilai `id` dari elemen input, memungkinkan pengguna mengklik label untuk memfokuskan kursor ke input."
+                },
+                {
+                    "num": 20,
+                    "topic": "Peran Asesor Uji Kompetensi BNSP",
+                    "question": "Dalam pelaksanaan asesmen kompetensi BNSP, tugas utama asesor kompetensi adalah...",
+                    "options": {
+                        "A": "Mengajarkan materi pemrograman dari awal hingga mahir",
+                        "B": "Mengumpulkan bukti unjuk kerja, memverifikasi portofolio, dan merekomendasikan keputusan Kompeten (K) atau Belum Kompeten (BK)",
+                        "C": "Memberikan kunci jawaban ujian praktik kepada peserta",
+                        "D": "Menjual sertifikat kelulusan kepada peserta",
+                        "E": "Menuliskan kode aplikasi untuk peserta ujian"
+                    },
+                    "answer": "B",
+                    "solution": "Asesor BNSP bertindak sebagai evaluator independen yang mengumpulkan bukti (*evidence collection*) berdasarkan kriteria unjuk kerja SKKNI."
+                }
+            ]
+        },
+        {
+            "id": "laravel_routing_requests",
+            "title": "Laravel Core, Routing & Request Handling",
+            "description": "RESTful Resource Controllers, Route Model Binding, Form Request Validation, Custom Error Messages, Middleware Pipeline",
+            "questions": [
+                {
+                    "num": 1,
+                    "topic": "Resource Routing Controller",
+                    "question": "Perintah tunggal `Route::resource('articles', ArticleController::class);` di Laravel secara otomatis mendaftarkan berapa endpoint aksi standar RESTful?",
+                    "options": {"A": "4 endpoint", "B": "5 endpoint", "C": "7 endpoint", "D": "8 endpoint", "E": "10 endpoint"},
+                    "answer": "C",
+                    "solution": "7 endpoint standar: index (GET), create (GET), store (POST), show (GET), edit (GET), update (PUT/PATCH), dan destroy (DELETE)."
+                },
+                {
+                    "num": 2,
+                    "topic": "Route Model Binding Implisit",
+                    "question": "Pada route `Route::get('/users/{user}', [UserController::class, 'show']);`, agar Route Model Binding otomatis mencari user berdasarkan `id`, tipe parameter method controller harus dideklarasikan sebagai...",
+                    "options": {
+                        "A": "public function show($id)",
+                        "B": "public function show(User $user)",
+                        "C": "public function show(Request $request)",
+                        "D": "public function show(int $user_id)",
+                        "E": "public function show(Model $model)"
+                    },
+                    "answer": "B",
+                    "solution": "Dengan type-hint `User $user` yang namanya cocok dengan segmen URI `{user}`, Laravel otomatis mengeksekusi `User::findOrFail($user)`."
+                },
+                {
+                    "num": 3,
+                    "topic": "Form Request Validation Class",
+                    "question": "Perintah artisan untuk membuat class Form Request baru di Laravel adalah...",
+                    "options": {
+                        "A": "php artisan make:validator StorePostRequest",
+                        "B": "php artisan make:request StorePostRequest",
+                        "C": "php artisan generate:request StorePostRequest",
+                        "D": "php artisan create:form StorePostRequest",
+                        "E": "php artisan make:form-request StorePostRequest"
+                    },
+                    "answer": "B",
+                    "solution": "`php artisan make:request <Name>` membuat class request baru di dalam direktori `app/Http/Requests`."
+                },
+                {
+                    "num": 4,
+                    "topic": "Aturan Validasi Unique on Update",
+                    "question": "Saat melakukan update data profil user, bagaimana aturan validasi agar email tetap lolos validasi `unique` jika email tersebut adalah milik user itu sendiri?",
+                    "options": {
+                        "A": "'email' => 'required|email|unique:users,email,' . $this->user->id",
+                        "B": "'email' => 'required|email|unique:users,email'",
+                        "C": "'email' => 'required|email'",
+                        "D": "'email' => 'required|ignore_unique'",
+                        "E": "'email' => 'nullable'"
+                    },
+                    "answer": "A",
+                    "solution": "Mengabaikan ID user yang sedang diupdate: `Rule::unique('users', 'email')->ignore($this->user->id)` atau sintaks string `unique:users,email,` . $this->user->id."
+                },
+                {
+                    "num": 5,
+                    "topic": "Pendaftaran Custom Middleware di Laravel 11",
+                    "question": "Pada arsitektur modern Laravel 11, custom middleware didaftarkan melalui file...",
+                    "options": {"A": "app/Http/Kernel.php", "B": "bootstrap/app.php", "C": "config/middleware.php", "D": "routes/web.php", "E": "public/index.php"},
+                    "answer": "B",
+                    "solution": "Di Laravel 11, file `app/Http/Kernel.php` dihapus dan seluruh konfigurasi middleware dialihkan ke closure `$middleware` di dalam `bootstrap/app.php`."
+                },
+                {
+                    "num": 6,
+                    "topic": "Flash Message Session",
+                    "question": "Cara mengirim pesan sukses sementara yang hanya bertahan selama satu redirect di Laravel controller adalah...",
+                    "options": {
+                        "A": "return redirect()->route('posts.index')->with('success', 'Data berhasil disimpan!');",
+                        "B": "Session::put('success', 'Data berhasil disimpan!');",
+                        "C": "Cookie::queue('success', 'Data berhasil disimpan!');",
+                        "D": "return response()->json(['success' => true]);",
+                        "E": "view('posts.index', ['success' => 'ok']);"
+                    },
+                    "answer": "A",
+                    "solution": "Method `->with('key', 'value')` pada objek redirect menyimpan data ke dalam flash session yang otomatis terhapus pada request berikutnya."
+                },
+                {
+                    "num": 7,
+                    "topic": "Custom Error Message pada Request",
+                    "question": "Method pada Form Request class yang harus di-override untuk menyesuaikan teks pesan kesalahan validasi ke dalam Bahasa Indonesia adalah...",
+                    "options": {"A": "rules()", "B": "messages()", "C": "attributes()", "D": "authorize()", "E": "failedValidation()"},
+                    "answer": "B",
+                    "solution": "Method `public function messages(): array` mengembalikan pasangan key aturan validasi dan pesan kustomnya: `['title.required' => 'Judul artikel wajib diisi!']`."
+                },
+                {
+                    "num": 8,
+                    "topic": "Route Prefixing & Grouping",
+                    "question": "Perhatikan konfigurasi route:\n```php\nRoute::prefix('admin')->middleware(['auth'])->group(function () {\n    Route::get('/dashboard', [AdminController::class, 'index']);\n});\n```\nURL yang tepat untuk mengakses method dashboard di atas adalah...",
+                    "options": {"A": "/dashboard", "B": "/admin/dashboard", "C": "/auth/dashboard", "D": "/admin/auth/dashboard", "E": "/panel/dashboard"},
+                    "answer": "B",
+                    "solution": "Prefix `'admin'` digabungkan dengan path route `'/dashboard'` sehingga URL akhirnya menjadi `/admin/dashboard`."
+                },
+                {
+                    "num": 9,
+                    "topic": "Mengambil Data Tervalidasi",
+                    "question": "Cara paling aman dan bersih mengambil data input di controller setelah Form Request divalidasi adalah...",
+                    "options": {
+                        "A": "$request->all();",
+                        "B": "$_POST;",
+                        "C": "$request->validated();",
+                        "D": "$request->query();",
+                        "E": "$request->getContent();"
+                    },
+                    "answer": "C",
+                    "solution": "`$request->validated()` HANYA mengembalikan data atribut yang secara eksplisit telah didefinisikan dan lolos aturan validasi, memfilter input liar yang tidak diharapkan."
+                },
+                {
+                    "num": 10,
+                    "topic": "Named Routes URL Generator",
+                    "question": "Jika rute diberi nama: `Route::get('/user/{id}/profile', ...)->name('profile.show');`, kode Blade untuk menghasilkan URL yang benar adalah...",
+                    "options": {
+                        "A": "<a href=\"{{ url('profile.show', $user->id) }}\">",
+                        "B": "<a href=\"{{ route('profile.show', $user->id) }}\">",
+                        "C": "<a href=\"{{ path('profile.show', $user->id) }}\">",
+                        "D": "<a href=\"{{ link('profile.show', $user->id) }}\">",
+                        "E": "<a href=\"/profile.show/{{ $user->id }}\">"
+                    },
+                    "answer": "B",
+                    "solution": "Helper `route('profile.show', ['id' => $user->id])` meng-generate URL absolut berdasarkan nama rute yang terdaftar."
+                },
+                {
+                    "num": 11,
+                    "topic": "Aturan Validasi File Upload Gambar",
+                    "question": "Aturan validasi yang memastikan file berjenis gambar (jpg, png, webp) dengan ukuran maksimal 2MB adalah...",
+                    "options": {
+                        "A": "'avatar' => 'file|max:2000'",
+                        "B": "'avatar' => 'image|mimes:jpeg,png,webp|max:2048'",
+                        "C": "'avatar' => 'string|max:2MB'",
+                        "D": "'avatar' => 'picture|size:2048'",
+                        "E": "'avatar' => 'binary|ext:png,jpg'"
+                    },
+                    "answer": "B",
+                    "solution": "Aturan `image` memeriksa MIME type gambar asli, `mimes:jpeg,png,webp` membatasi ekstensi, dan `max:2048` membatasi ukuran maksimal 2048 Kilobytes (2 Megabytes)."
+                },
+                {
+                    "num": 12,
+                    "topic": "Middleware Handle Method",
+                    "question": "Struktur standar method `handle` pada custom middleware Laravel yang meneruskan request ke pipeline berikutnya adalah...",
+                    "options": {
+                        "A": "public function handle(Request $request, Closure $next) { return $next($request); }",
+                        "B": "public function handle(Request $request) { return true; }",
+                        "C": "public function handle() { return response('ok'); }",
+                        "D": "public function handle(Closure $next) { return $next(); }",
+                        "E": "public function handle(Request $request) { return $request; }"
+                    },
+                    "answer": "A",
+                    "solution": "Middleware menerima `$request` dan `$next` closure, mengeksekusi logika pengecekan, lalu mengembalikan `$next($request)` untuk meneruskan aliran ke controller."
+                },
+                {
+                    "num": 13,
+                    "topic": "HTTP Method Spoofing pada Form HTML",
+                    "question": "Karena browser web standar hanya mendukung metode GET dan POST pada tag `<form>`, direktif Blade yang digunakan untuk mengirim request PUT atau DELETE adalah...",
+                    "options": {"A": "@method('PUT')", "B": "@http('PUT')", "C": "@type('PUT')", "D": "@verb('PUT')", "E": "@action('PUT')"},
+                    "answer": "A",
+                    "solution": "`@method('PUT')` menyisipkan hidden input `<input type=\"hidden\" name=\"_method\" value=\"PUT\">` yang dideteksi oleh middleware router Laravel."
+                },
+                {
+                    "num": 14,
+                    "topic": "Route Model Binding Custom Key",
+                    "question": "Jika ingin Route Model Binding mencari artikel berdasarkan kolom `slug` (bukan ID), definisi rute yang tepat adalah...",
+                    "options": {
+                        "A": "Route::get('/articles/{article:slug}', [ArticleController::class, 'show']);",
+                        "B": "Route::get('/articles/{slug}', [ArticleController::class, 'show']);",
+                        "C": "Route::get('/articles/{article}', [ArticleController::class, 'show'])->bySlug();",
+                        "D": "Route::get('/articles/{article_slug}', [ArticleController::class, 'show']);",
+                        "E": "Route::get('/articles/slug/{article}', [ArticleController::class, 'show']);"
+                    },
+                    "answer": "A",
+                    "solution": "Sintaks `{article:slug}` memberitahu Laravel untuk menginstansiasi model `Article` dengan mencocokkan nilai URI terhadap kolom `slug`."
+                },
+                {
+                    "num": 15,
+                    "topic": "Rate Limiting Throttle",
+                    "question": "Middleware `throttle:60,1` pada sebuah grup rute berarti...",
+                    "options": {
+                        "A": "Membatasi setiap user maksimal 60 request per 1 menit",
+                        "B": "Membatasi transfer file 60 Megabyte per detik",
+                        "C": "Membatasi waktu proses request maksimal 60 detik",
+                        "D": "Memblokir 60 alamat IP dalam 1 hari",
+                        "E": "Menyimpan 60 file cache selama 1 jam"
+                    },
+                    "answer": "A",
+                    "solution": "Sintaks rate limiter `throttle:max_attempts,decay_minutes` membatasi klien hingga maksimal 60 percobaan per interval 1 menit."
+                },
+                {
+                    "num": 16,
+                    "topic": "Method Authorize pada Form Request",
+                    "question": "Jika method `authorize()` pada Form Request mengembalikan nilai `false`, respon HTTP yang otomatis dikembalikan ke klien adalah...",
+                    "options": {"A": "200 OK", "B": "401 Unauthorized", "C": "403 Forbidden", "D": "404 Not Found", "E": "500 Internal Server Error"},
+                    "answer": "C",
+                    "solution": "Jika `authorize()` menghasilkan `false`, Laravel melempar `AuthorizationException` yang diterjemahkan menjadi HTTP status `403 Forbidden`."
+                },
+                {
+                    "num": 17,
+                    "topic": "Mengakses Query String Parameter",
+                    "question": "Untuk mengambil nilai parameter `search` dari URL `/products?search=laptop` di controller Laravel, sintaks yang tepat adalah...",
+                    "options": {
+                        "A": "$request->query('search'); atau $request->search;",
+                        "B": "$request->header('search');",
+                        "C": "$request->segment(1);",
+                        "D": "$request->cookie('search');",
+                        "E": "$request->session('search');"
+                    },
+                    "answer": "A",
+                    "solution": "`$request->query('search')` atau properti dinamis `$request->search` mengambil parameter dari query string URL."
+                },
+                {
+                    "num": 18,
+                    "topic": "Route Fallback 404 Kustom",
+                    "question": "Cara mendaftarkan penanganan halaman jika tidak ada rute yang cocok (*fallback route*) di file `routes/web.php` adalah...",
+                    "options": {
+                        "A": "Route::fallback(function () { return view('errors.404'); });",
+                        "B": "Route::catchAll(function () { ... });",
+                        "C": "Route::any('*', function () { ... });",
+                        "D": "Route::error404(function () { ... });",
+                        "E": "Route::default(function () { ... });"
+                    },
+                    "answer": "A",
+                    "solution": "`Route::fallback(...)` menangani semua request yang tidak cocok dengan endpoint manapun sebelum mengembalikan 404 default."
+                },
+                {
+                    "num": 19,
+                    "topic": "Aturan Validasi 'Confirmed'",
+                    "question": "Aturan validasi `'password' => 'required|confirmed'` mewajibkan form pengiriman menyertakan input pendamping bernama...",
+                    "options": {
+                        "A": "password_repeat",
+                        "B": "password_confirmation",
+                        "C": "confirm_password",
+                        "D": "password_verify",
+                        "E": "repeat_password"
+                    },
+                    "answer": "B",
+                    "solution": "Rule `confirmed` di Laravel mengharuskan adanya input bernama `{field}_confirmation` dengan nilai yang sama persis."
+                },
+                {
+                    "num": 20,
+                    "topic": "Response Download File",
+                    "question": "Method controller untuk memaksa browser pengguna mengunduh file dokumen PDF lokal adalah...",
+                    "options": {
+                        "A": "return response()->download($filePath);",
+                        "B": "return response()->file($filePath);",
+                        "C": "return response()->view($filePath);",
+                        "D": "return response()->stream($filePath);",
+                        "E": "return response()->json($filePath);"
+                    },
+                    "answer": "A",
+                    "solution": "`response()->download($filePath)` menetapkan header HTTP `Content-Disposition: attachment;` yang memicu dialog unduhan otomatis pada browser."
+                }
+            ]
+        },
+        {
+            "id": "database_eloquent_orm",
+            "title": "Database, Migrations & Eloquent ORM",
+            "description": "Database Schema Design, Foreign Keys, Relasi Eloquent (1:1, 1:N, N:M), Eager Loading N+1 Prevention, Seeding & Factories",
+            "questions": [
+                {
+                    "num": 1,
+                    "topic": "Foreign Key Constraint Migration",
+                    "question": "Perhatikan kode migration:\n`$table->foreignId('category_id')->constrained()->cascadeOnDelete();`\nFungsi dari method `cascadeOnDelete()` adalah...",
+                    "options": {
+                        "A": "Mencegah kategori dihapus jika masih ada data produk yang terhubung",
+                        "B": "Otomatis menghapus semua data anak jika data induk kategori dihapus",
+                        "C": "Mengubah category_id menjadi null saat kategori dihapus",
+                        "D": "Membuat tabel cadangan saat penghapusan",
+                        "E": "Menghapus database secara permanen"
+                    },
+                    "answer": "B",
+                    "solution": "`cascadeOnDelete()` (ON DELETE CASCADE) memastikan saat baris parent di tabel categories dihapus, seluruh baris child yang merujuknya terhapus otomatis demi integritas referensial."
+                },
+                {
+                    "num": 2,
+                    "topic": "N+1 Query Problem & Eager Loading",
+                    "question": "Kode berikut memicu masalah N+1 query:\n```php\n$books = Book::all();\nforeach ($books as $book) {\n    echo $book->author->name;\n}\n```\nSolusi yang tepat untuk menyelesaikan masalah tersebut dengan Eager Loading adalah...",
+                    "options": {
+                        "A": "$books = Book::with('author')->get();",
+                        "B": "$books = Book::lazy();",
+                        "C": "$books = Book::load('author');",
+                        "D": "$books = Book::select('author')->get();",
+                        "E": "$books = Book::join('authors')->get();"
+                    },
+                    "answer": "A",
+                    "solution": "`Book::with('author')->get()` melakukan Eager Loading: mengeksekusi 1 query untuk mengambil seluruh buku dan 1 query tambahan `WHERE id IN (...)` untuk mengambil seluruh penulis sekaligus (total hanya 2 query)."
+                },
+                {
+                    "num": 3,
+                    "topic": "Relasi One to Many (1:N)",
+                    "question": "Jika satu Kategori memiliki banyak Produk, definisi method relasi yang benar di Model `Category` adalah...",
+                    "options": {
+                        "A": "public function products() { return $this->hasMany(Product::class); }",
+                        "B": "public function products() { return $this->belongsTo(Product::class); }",
+                        "C": "public function products() { return $this->hasOne(Product::class); }",
+                        "D": "public function products() { return $this->belongsToMany(Product::class); }",
+                        "E": "public function products() { return $this->hasManyThrough(Product::class); }"
+                    },
+                    "answer": "A",
+                    "solution": "Relasi satu ke banyak di sisi parent (Category) didefinisikan dengan method `hasMany()`. Sisi child (Product) menggunakan `belongsTo()`."
+                },
+                {
+                    "num": 4,
+                    "topic": "Relasi Many to Many (N:M)",
+                    "question": "Relasi banyak ke banyak antara `User` dan `Role` membutuhkan tabel perantara (*pivot table*) yang menurut konvensi default penamaan Laravel bernama...",
+                    "options": {"A": "users_roles", "B": "role_user", "C": "user_roles", "D": "roles_users", "E": "pivot_user_role"},
+                    "answer": "B",
+                    "solution": "Konvensi tabel pivot di Laravel menggabungkan nama kedua model dalam bentuk singular alfabetis yang dipisahkan garis bawah: model `Role` dan `User` menghasilkan `role_user`."
+                },
+                {
+                    "num": 5,
+                    "topic": "Soft Deletes",
+                    "question": "Fitur `SoftDeletes` di Eloquent tidak menghapus baris data secara fisik dari database, melainkan mengisi kolom...",
+                    "options": {"A": "is_deleted", "B": "deleted_at", "C": "status", "D": "archived_at", "E": "removed_date"},
+                    "answer": "B",
+                    "solution": "SoftDeletes menambahkan kolom timestamp `deleted_at`. Jika baris dihapus, kolom ini diisi tanggal penghapusan sehingga otomatis di-exclude dari query biasa."
+                },
+                {
+                    "num": 6,
+                    "topic": "Database Seeder Command",
+                    "question": "Perintah CLI untuk mereset seluruh database dari awal (drop all tables), menjalankan seluruh migration, dan langsung mengisi dummy data dari seeder adalah...",
+                    "options": {
+                        "A": "php artisan migrate:fresh --seed",
+                        "B": "php artisan db:reset",
+                        "C": "php artisan migrate:rollback",
+                        "D": "php artisan db:seed --force",
+                        "E": "php artisan schema:rebuild"
+                    },
+                    "answer": "A",
+                    "solution": "`migrate:fresh --seed` menghapus seluruh tabel yang ada, membuat ulang tabel dari file migration, lalu mengeksekusi `DatabaseSeeder` secara otomatis."
+                },
+                {
+                    "num": 7,
+                    "topic": "Model Factory & Faker",
+                    "question": "Di dalam file Factory Laravel, library yang digunakan secara bawaan untuk menghasilkan data dummy acak (seperti nama, email, alamat palsu) adalah...",
+                    "options": {"A": "Mockery", "B": "Faker", "C": "Carbon", "D": "Guzzle", "E": "Monolog"},
+                    "answer": "B",
+                    "solution": "Laravel mengintegrasikan library PHP Faker (`fake()->name()`, `fake()->unique()->safeEmail()`) untuk mengisi data dummy pada factories."
+                },
+                {
+                    "num": 8,
+                    "topic": "Query Builder Aggregates",
+                    "question": "Cara menghitung jumlah total record produk yang memiliki status `active = true` menggunakan Eloquent adalah...",
+                    "options": {
+                        "A": "Product::where('active', true)->count();",
+                        "B": "Product::where('active', true)->sum();",
+                        "C": "Product::where('active', true)->total();",
+                        "D": "Product::where('active', true)->all()->length;",
+                        "E": "Product::where('active', true)->max();"
+                    },
+                    "answer": "A",
+                    "solution": "Method aggregate `count()` menghasilkan query SQL `SELECT COUNT(*) FROM products WHERE active = 1;`."
+                },
+                {
+                    "num": 9,
+                    "topic": "Local Query Scopes",
+                    "question": "Jika di Model `User` didefinisikan method `public function scopeActive($query) { return $query->where('status', 'active'); }`, cara memanggilnya di controller adalah...",
+                    "options": {
+                        "A": "User::scopeActive()->get();",
+                        "B": "User::active()->get();",
+                        "C": "User::getActive()->get();",
+                        "D": "User::where('scopeActive')->get();",
+                        "E": "User::queryScope('active')->get();"
+                    },
+                    "answer": "B",
+                    "solution": "Local Scope dipanggil dengan menghilangkan prefix `scope` dan menggunakan camelCase: `User::active()->get()`."
+                },
+                {
+                    "num": 10,
+                    "topic": "Pagination Eloquent",
+                    "question": "Untuk menampilkan data dengan sistem paginasi sebanyak 15 data per halaman, method yang digunakan adalah...",
+                    "options": {"A": "Product::limit(15)->get();", "B": "Product::paginate(15);", "C": "Product::page(15);", "D": "Product::chunk(15);", "E": "Product::take(15);"},
+                    "answer": "B",
+                    "solution": "`paginate(15)` secara otomatis membaca query string `?page=n`, membatasi SQL via `LIMIT 15 OFFSET ...`, dan menyediakan helper render link navigasi."
+                },
+                {
+                    "num": 11,
+                    "topic": "Mutator & Accessor (Casts Modern)",
+                    "question": "Pada Laravel 11, cara modern mendefinisikan accessor/mutator atribut `first_name` agar selalu berhuruf kapital di awal kata (*Title Case*) adalah menggunakan...",
+                    "options": {
+                        "A": "getFirstNameAttribute() lama",
+                        "B": "Attribute::make(get: fn ($value) => ucfirst($value))",
+                        "C": "setFirstName()",
+                        "D": "cast('first_name', 'capital')",
+                        "E": "function titleCase()"
+                    },
+                    "answer": "B",
+                    "solution": "Laravel modern menggunakan class `Illuminate\\Database\\Eloquent\\Casts\\Attribute::make()` dengan closure `get` dan `set`."
+                },
+                {
+                    "num": 12,
+                    "topic": "Database Transactions",
+                    "question": "Kode `DB::transaction(function () { ... });` digunakan untuk...",
+                    "options": {
+                        "A": "Mempercepat koneksi internet database",
+                        "B": "Menjamin serangkaian operasi database berhasil seluruhnya (*commit*), atau jika salah satu gagal, seluruh perubahan otomatis dibatalkan (*rollback*)",
+                        "C": "Menghitung biaya transaksi keuangan",
+                        "D": "Membuat tabel bank baru",
+                        "E": "Mengenkripsi database dengan password"
+                    },
+                    "answer": "B",
+                    "solution": "Database Transactions menjamin sifat ACID: jika terjadi exception di dalam closure, operasi otomatis di-rollback sehingga tidak ada data yang tersimpan setengah-setengah."
+                },
+                {
+                    "num": 13,
+                    "topic": "WithCount Relasi",
+                    "question": "Query `Category::withCount('products')->get();` akan menambahkan atribut virtual pada setiap objek kategori bernama...",
+                    "options": {"A": "products_total", "B": "products_count", "C": "count_products", "D": "total_products", "E": "products_sum"},
+                    "answer": "B",
+                    "solution": "`withCount('relation')` menambahkan kolom `{relation}_count` langsung dari subquery SQL tanpa perlu me-load seluruh data relasinya."
+                },
+                {
+                    "num": 14,
+                    "topic": "Relasi Polymorphic",
+                    "question": "Jika satu model `Comment` dapat dimiliki oleh model `Post` maupun model `Video`, jenis relasi Eloquent yang tepat digunakan adalah...",
+                    "options": {
+                        "A": "One to Many biasa",
+                        "B": "Polymorphic One to Many (`morphTo` dan `morphMany`)",
+                        "C": "Many to Many biasa",
+                        "D": "Has One Through",
+                        "E": "Self Referencing"
+                    },
+                    "answer": "B",
+                    "solution": "Relasi Polimorfik menggunakan dua kolom (misal: `commentable_id` dan `commentable_type`) sehingga satu model komentar dapat berelasi ke berbagai model entitas yang berbeda."
+                },
+                {
+                    "num": 15,
+                    "topic": "Method UpdateOrCreate",
+                    "question": "Method Eloquent yang digunakan untuk mencari data berdasarkan kriteria tertentu, memperbaruinya jika ditemukan, atau membuat data baru jika belum ada adalah...",
+                    "options": {"A": "findOrNew()", "B": "firstOrCreate()", "C": "updateOrCreate()", "D": "upsert()", "E": "saveOrFail()"},
+                    "answer": "C",
+                    "solution": "`updateOrCreate(['email' => $email], ['name' => $name])` mengeksekusi operasi upsert cerdas berdasarkan kriteria pencarian array pertama."
+                },
+                {
+                    "num": 16,
+                    "topic": "Chunking Data Besar",
+                    "question": "Saat memproses 100.000 baris data agar aplikasi tidak kehabisan memori server (*out of memory error*), method yang tepat digunakan adalah...",
+                    "options": {"A": "all()", "B": "chunk() atau cursor()", "C": "get()", "D": "pluck()", "E": "select()"},
+                    "answer": "B",
+                    "solution": "`chunk(1000, function ($users) { ... })` memecah pengambilan data dalam batch kecil ke dalam memori satu per satu, menjaga efisiensi RAM server."
+                },
+                {
+                    "num": 17,
+                    "topic": "Pivot Data Attachment",
+                    "question": "Pada relasi Many-to-Many antara User dan Role, method untuk menambahkan role baru ke user tanpa menghapus role yang sudah ada adalah...",
+                    "options": {
+                        "A": "$user->roles()->attach($roleId);",
+                        "B": "$user->roles()->sync($roleId);",
+                        "C": "$user->roles()->detach($roleId);",
+                        "D": "$user->roles()->save($roleId);",
+                        "E": "$user->roles()->insert($roleId);"
+                    },
+                    "answer": "A",
+                    "solution": "`attach($id)` menambahkan baris baru di tabel pivot. Method `sync($ids)` akan mengganti seluruh relasi lama, sedangkan `detach($id)` mencabut relasi."
+                },
+                {
+                    "num": 18,
+                    "topic": "Indexing Database Migration",
+                    "question": "Tujuan menambahkan `$table->index('email');` pada file migration adalah...",
+                    "options": {
+                        "A": "Mencegah email ganda",
+                        "B": "Mempercepat performa pencarian query SQL pada kolom tersebut",
+                        "C": "Mengubah font email di browser",
+                        "D": "Mengirim email verifikasi otomatis",
+                        "E": "Mengompresi ukuran data"
+                    },
+                    "answer": "B",
+                    "solution": "Index database membuat struktur data B-Tree yang mempercepat eksekusi klausa `WHERE email = ...` secara signifikan pada tabel bervolume tinggi."
+                },
+                {
+                    "num": 19,
+                    "topic": "Method Pluck",
+                    "question": "Kode `Product::pluck('name');` akan mengembalikan...",
+                    "options": {
+                        "A": "Objek model Product lengkap",
+                        "B": "Koleksi (*Collection*) yang hanya berisi daftar nilai kolom `name` saja",
+                        "C": "Jumlah karakter dari nama produk",
+                        "D": "Nilai produk termahal",
+                        "E": "Tabel pivot"
+                    },
+                    "answer": "B",
+                    "solution": "`pluck('column')` mengekstrak nilai dari kolom tertentu saja menjadi flat array/collection sederhana: `['Laptop', 'Mouse', 'Keyboard']`."
+                },
+                {
+                    "num": 20,
+                    "topic": "Event Model (Observers)",
+                    "question": "Jika kita ingin otomatis membuat slug dari judul postingan setiap kali model `Post` akan disimpan, event model yang tepat ditangkap adalah...",
+                    "options": {"A": "created", "B": "saving / creating", "C": "deleted", "D": "retrieved", "E": "restored"},
+                    "answer": "B",
+                    "solution": "Event `creating` atau `saving` dieksekusi tepat sebelum query `INSERT` atau `UPDATE` dikirimkan ke database, waktu yang ideal untuk meng-generate slug."
+                }
+            ]
+        },
+        {
+            "id": "rest_api_sanctum",
+            "title": "RESTful API & Sanctum Authentication",
+            "description": "Eloquent API Resources, Sanctum Bearer Token Auth, HTTP Status Codes (200, 201, 401, 404, 422), Multipart Form Uploads",
+            "questions": [
+                {
+                    "num": 1,
+                    "topic": "Eloquent API Resource",
+                    "question": "Tujuan utama penggunaan Eloquent API Resource (`JsonResource`) dalam pembuatan RESTful API Laravel adalah...",
+                    "options": {
+                        "A": "Mempercepat koneksi WiFi klien",
+                        "B": "Menyediakan lapisan transformasi format payload JSON yang konsisten serta menyembunyikan kolom sensitif (seperti password hash)",
+                        "C": "Menggantikan kebutuhan database MySQL",
+                        "D": "Mengubah file PHP menjadi file JavaScript",
+                        "E": "Membuat dokumentasi PDF otomatis"
+                    },
+                    "answer": "B",
+                    "solution": "API Resource bertindak sebagai presenter/transformer layer antara model Eloquent dan output JSON respon API, memungkinkan pemilihan dan pemformatan data yang aman."
+                },
+                {
+                    "num": 2,
+                    "topic": "Sanctum Token Issuing",
+                    "question": "Di controller login API, sintaks Laravel Sanctum untuk menghasilkan plain-text Bearer Token bagi user yang berhasil diautentikasi adalah...",
+                    "options": {
+                        "A": "$token = $user->createToken('auth_token')->plainTextToken;",
+                        "B": "$token = $user->generateToken();",
+                        "C": "$token = Sanctum::makeToken($user);",
+                        "D": "$token = $user->api_token;",
+                        "E": "$token = JWT::encode($user);"
+                    },
+                    "answer": "A",
+                    "solution": "Method `$user->createToken('token_name')->plainTextToken` menghasilkan token otentikasi unik yang dikembalikan ke klien untuk dipakai pada header `Authorization: Bearer <token>`."
+                },
+                {
+                    "num": 3,
+                    "topic": "Sanctum Token Revocation (Logout)",
+                    "question": "Sintaks untuk mencabut (*revoke*) token yang sedang digunakan saat user logout dari API adalah...",
+                    "options": {
+                        "A": "Auth::logout();",
+                        "B": "$request->user()->currentAccessToken()->delete();",
+                        "C": "Session::flush();",
+                        "D": "$user->delete();",
+                        "E": "Sanctum::destroy();"
+                    },
+                    "answer": "B",
+                    "solution": "`$request->user()->currentAccessToken()->delete()` menghapus baris token yang aktif saat ini di tabel `personal_access_tokens`."
+                },
+                {
+                    "num": 4,
+                    "topic": "HTTP Status Code 201 Created",
+                    "question": "Ketika sebuah endpoint API berhasil membuat resource baru di database (misalnya proses registrasi user atau penambahan artikel baru), status code HTTP yang standar dikembalikan adalah...",
+                    "options": {"A": "200 OK", "B": "201 Created", "C": "204 No Content", "D": "301 Moved Permanently", "E": "202 Accepted"},
+                    "answer": "B",
+                    "solution": "HTTP 201 Created secara spesifik menandakan request berhasil dan menghasilkan pembuatan resource baru di server."
+                },
+                {
+                    "num": 5,
+                    "topic": "HTTP Status Code 422 Unprocessable Entity",
+                    "question": "Respon status code 422 Unprocessable Content pada REST API Laravel dikembalikan secara otomatis ketika...",
+                    "options": {
+                        "A": "Server database padam",
+                        "B": "Request data input gagal memenuhi aturan validasi (validation failure)",
+                        "C": "Pengguna belum login",
+                        "D": "URL endpoint tidak ditemukan",
+                        "E": "Token API kadaluarsa"
+                    },
+                    "answer": "B",
+                    "solution": "Saat validasi Form Request gagal pada request JSON, Laravel otomatis merespon dengan status 422 beserta payload detail kesalahan kolom input."
+                },
+                {
+                    "num": 6,
+                    "topic": "HTTP Status Code 401 vs 403",
+                    "question": "Perbedaan mendasar antara status code 401 Unauthorized dan 403 Forbidden adalah...",
+                    "options": {
+                        "A": "401 berarti klien belum terotentikasi (belum login/token invalid), sedangkan 403 berarti klien terotentikasi tetapi tidak memiliki hak akses/izin (forbidden)",
+                        "B": "401 untuk error server, 403 untuk error klien",
+                        "C": "401 hanya untuk web, 403 hanya untuk mobile app",
+                        "D": "Tidak ada perbedaan, keduanya identik",
+                        "E": "401 berhasil, 403 gagal"
+                    },
+                    "answer": "A",
+                    "solution": "401 Unauthorized = Who are you? (tidak terotentikasi). 403 Forbidden = I know who you are, but you cannot enter here (otorisasi ditolak)."
+                },
+                {
+                    "num": 7,
+                    "topic": "Proteksi Route API via Sanctum Middleware",
+                    "question": "Rute API yang mewajibkan header Bearer Token Sanctum yang valid diproteksi menggunakan middleware...",
+                    "options": {"A": "middleware('auth')", "B": "middleware('auth:sanctum')", "C": "middleware('api_token')", "D": "middleware('sanctum:check')", "E": "middleware('bearer')"},
+                    "answer": "B",
+                    "solution": "`auth:sanctum` menggunakan driver guard Sanctum untuk memvalidasi Bearer Token personal access token pada setiap request."
+                },
+                {
+                    "num": 8,
+                    "topic": "Format Standar Response JSON",
+                    "question": "Struktur payload response JSON yang baik dan konsisten untuk endpoint REST API adalah...",
+                    "options": {
+                        "A": "Hanya mengembalikan string kosong",
+                        "B": "JSON terstruktur yang memiliki key status/meta, message, dan data",
+                        "C": "HTML mentah",
+                        "D": "Teks XML tanpa tag penutup",
+                        "E": "Array angka tanpa nama kolom"
+                    },
+                    "answer": "B",
+                    "solution": "Struktur konsisten `{\"success\": true, \"message\": \"...\", \"data\": { ... }}` mempermudah frontend engineer dalam memparsing respon."
+                },
+                {
+                    "num": 9,
+                    "topic": "Menangani Paginasi pada API Resource",
+                    "question": "Cara paling efisien mengembalikan data list produk terpaginasi dengan transformasi `ProductResource` adalah...",
+                    "options": {
+                        "A": "return ProductResource::collection(Product::paginate(10));",
+                        "B": "return new ProductResource(Product::all());",
+                        "C": "return Product::paginate(10)->toJson();",
+                        "D": "return response()->json(ProductResource::toArray());",
+                        "E": "return ProductResource::all();"
+                    },
+                    "answer": "A",
+                    "solution": "`ProductResource::collection($paginatedData)` otomatis menyertakan metadata paginasi (links, current_page, total, per_page) di dalam payload JSON."
+                },
+                {
+                    "num": 10,
+                    "topic": "File Upload Multipart via API",
+                    "question": "Header HTTP `Content-Type` yang WAJIB dikirimkan oleh klien saat mengunggah file gambar bersama data teks ke endpoint API adalah...",
+                    "options": {
+                        "A": "application/json",
+                        "B": "multipart/form-data",
+                        "C": "application/x-www-form-urlencoded",
+                        "D": "text/plain",
+                        "E": "application/pdf"
+                    },
+                    "answer": "B",
+                    "solution": "Pengunggahan file binary melalui HTTP mewajibkan encoding `multipart/form-data` agar file dapat dipecah menjadi boundary chunks."
+                },
+                {
+                    "num": 11,
+                    "topic": "Penyimpanan File Storage Disk",
+                    "question": "Kode untuk menyimpan file upload 'avatar' ke direktori public storage di Laravel adalah...",
+                    "options": {
+                        "A": "$path = $request->file('avatar')->store('avatars', 'public');",
+                        "B": "$path = move_uploaded_file('avatar');",
+                        "C": "$path = Storage::save('avatar');",
+                        "D": "$path = $request->avatar->upload();",
+                        "E": "$path = File::put('avatar');"
+                    },
+                    "answer": "A",
+                    "solution": "`$request->file('avatar')->store('folder', 'public')` secara aman menghasilkan nama file unik terenkripsi dan menyimpannya di `storage/app/public/folder`."
+                },
+                {
+                    "num": 12,
+                    "topic": "Artisan Storage Link",
+                    "question": "Perintah CLI untuk membuat symbolic link dari direktori `public/storage` ke `storage/app/public` agar file upload dapat diakses publik adalah...",
+                    "options": {"A": "php artisan storage:link", "B": "php artisan make:symlink", "C": "php artisan file:publish", "D": "php artisan storage:open", "E": "php artisan link:create"},
+                    "answer": "A",
+                    "solution": "`php artisan storage:link` menciptakan symlink Windows/Linux sehingga file di dalam storage dapat diakses via URL publik `/storage/...`."
+                },
+                {
+                    "num": 13,
+                    "topic": "CORS (Cross-Origin Resource Sharing)",
+                    "question": "Jika aplikasi frontend Vue/React yang berjalan di `localhost:3000` diblokir browser saat memanggil API Laravel di `localhost:8000`, file konfigurasi Laravel yang harus disesuaikan adalah...",
+                    "options": {"A": "config/cors.php", "B": "config/database.php", "C": "config/auth.php", "D": "config/mail.php", "E": "config/session.php"},
+                    "answer": "A",
+                    "solution": "`config/cors.php` mengatur izin origin domain (`allowed_origins`), method, dan headers yang diperbolehkan mengakses server API."
+                },
+                {
+                    "num": 14,
+                    "topic": "HTTP Method DELETE Respon 204",
+                    "question": "Ketika sebuah endpoint API berhasil menghapus resource dan tidak mengembalikan payload data konten apapun ke klien, status code HTTP terbaik adalah...",
+                    "options": {"A": "200 OK", "B": "204 No Content", "C": "404 Not Found", "D": "201 Created", "E": "500 Internal Error"},
+                    "answer": "B",
+                    "solution": "HTTP 204 No Content menandakan server berhasil memproses request penghapusan tanpa perlu mengirimkan isi body respon."
+                },
+                {
+                    "num": 15,
+                    "topic": "Trait HasApiTokens",
+                    "question": "Agar model `User` dapat menggunakan fitur personal access token Sanctum, model tersebut harus menyertakan trait...",
+                    "options": {
+                        "A": "use HasApiTokens;",
+                        "B": "use ApiAuthenticatable;",
+                        "C": "use SanctumUser;",
+                        "D": "use GenerateTokens;",
+                        "E": "use BearerToken;"
+                    },
+                    "answer": "A",
+                    "solution": "Trait `Laravel\\Sanctum\\HasApiTokens` menambahkan method relasi dan helper `tokens()`, `createToken()`, dll. ke model User."
+                },
+                {
+                    "num": 16,
+                    "topic": "Handling Missing Model Route Binding",
+                    "question": "Di Laravel, jika client memanggil endpoint `GET /api/posts/999` namun data id 999 tidak ada di database, respon default yang dikembalikan adalah...",
+                    "options": {
+                        "A": "404 Not Found dengan format JSON",
+                        "B": "500 Internal Server Error",
+                        "C": "200 OK dengan null",
+                        "D": "Redirect ke halaman utama",
+                        "E": "Server crash"
+                    },
+                    "answer": "A",
+                    "solution": "Route Model Binding melempar `ModelNotFoundException` yang secara otomatis ditangkap exception handler Laravel menjadi respon JSON 404 Not Found."
+                },
+                {
+                    "num": 17,
+                    "topic": "Memvalidasi Request JSON Header",
+                    "question": "Header HTTP yang wajib dikirimkan oleh klien aplikasi mobile/frontend agar Laravel selalu mengembalikan respon error dalam format JSON (bukan halaman web HTML) adalah...",
+                    "options": {
+                        "A": "Accept: application/json",
+                        "B": "Content-Encoding: gzip",
+                        "C": "User-Agent: Mozilla",
+                        "D": "Cache-Control: no-cache",
+                        "E": "Connection: keep-alive"
+                    },
+                    "answer": "A",
+                    "solution": "Header `Accept: application/json` memberitahu server bahwa klien mengharapkan respon berupa data JSON murni."
+                },
+                {
+                    "num": 18,
+                    "topic": "Menyembunyikan Properti Sensitif",
+                    "question": "Pada model Eloquent, properti yang digunakan untuk otomatis menyembunyikan kolom password dan remember_token saat model diserialisasi ke JSON adalah...",
+                    "options": {
+                        "A": "protected $hidden = ['password', 'remember_token'];",
+                        "B": "protected $secret = [...];",
+                        "C": "protected $private = [...];",
+                        "D": "protected $invisible = [...];",
+                        "E": "protected $protect = [...];"
+                    },
+                    "answer": "A",
+                    "solution": "Array `$hidden` pada model menentukan kolom-kolom database yang tidak boleh disertakan saat model dikonversi menjadi array atau JSON."
+                },
+                {
+                    "num": 19,
+                    "topic": "Idempotent HTTP Methods",
+                    "question": "Di antara metode HTTP berikut, manakah metode yang berkarakter IDEMPOTENT (eksekusi berulang kali dengan payload yang sama menghasilkan status akhir resource yang identik di server)?",
+                    "options": {"A": "POST", "B": "PUT dan DELETE", "C": "PATCH saja", "D": "POST dan PATCH", "E": "Semua metode tidak idempotent"},
+                    "answer": "B",
+                    "solution": "GET, PUT, dan DELETE adalah metode idempotent. POST tidak idempotent karena pemanggilan berulang kali akan membuat duplikat record baru setiap kali dipanggil."
+                },
+                {
+                    "num": 20,
+                    "topic": "Dokumentasi API Standar",
+                    "question": "Spesifikasi standar industri berbasis format JSON/YAML yang paling luas digunakan untuk mendokumentasikan endpoint RESTful API adalah...",
+                    "options": {"A": "OpenAPI / Swagger", "B": "Markdown biasa", "C": "Microsoft Word docx", "D": "Notepad text", "E": "UML Diagram"},
+                    "answer": "A",
+                    "solution": "Spesifikasi OpenAPI (Swagger) adalah standar global untuk mendokumentasikan skema, parameter, dan respon RESTful API secara interaktif."
+                }
+            ]
+        },
+        {
+            "id": "web_security_hardening",
+            "title": "Web Security Hardening (OWASP Top 10)",
+            "description": "Proteksi Serangan CSRF, XSS Auto-escaping, SQL Injection Parameterized Queries, Mass Assignment, Gates & Policies",
+            "questions": [
+                {
+                    "num": 1,
+                    "topic": "Cross-Site Request Forgery (CSRF)",
+                    "question": "Bagaimana framework Laravel secara otomatis memproteksi aplikasi web dari serangan pemalsuan permintaan lintas situs (CSRF)?",
+                    "options": {
+                        "A": "Dengan memblokir semua form input",
+                        "B": "Melalui middleware `VerifyCsrfToken` yang memvalidasi token rahasia per-sesi pada setiap request POST/PUT/DELETE via direktif `@csrf`",
+                        "C": "Dengan mematikan koneksi internet klien",
+                        "D": "Dengan mewajibkan pengguna login setiap 5 menit",
+                        "E": "Melalui enkripsi gambar"
+                    },
+                    "answer": "B",
+                    "solution": "Setiap form HTML wajib memuat token CSRF acak yang cocok dengan token sesi server. Penyerang dari website pihak ketiga tidak dapat membaca atau menebak token ini."
+                },
+                {
+                    "num": 2,
+                    "topic": "Cross-Site Scripting (XSS)",
+                    "question": "Bahaya penggunaan sintaks Blade `{!! $content !!}` tanpa pembersihan (*unfiltered raw output*) adalah membuka celah...",
+                    "options": {
+                        "A": "SQL Injection",
+                        "B": "Stored / Reflected Cross-Site Scripting (XSS)",
+                        "C": "Denial of Service (DoS)",
+                        "D": "DNS Spoofing",
+                        "E": "Man in the Middle"
+                    },
+                    "answer": "B",
+                    "solution": "`{!! $content !!}` merender HTML mentah tanpa fungsi `htmlspecialchars()`. Jika konten memuat tag jahat seperti `<script>stealCookie()</script>`, skrip tersebut akan dieksekusi langsung di browser korban."
+                },
+                {
+                    "num": 3,
+                    "topic": "SQL Injection Prevention",
+                    "question": "Manakah di antara potongan kode query berikut yang RENTAN terhadap serangan SQL Injection?",
+                    "options": {
+                        "A": "User::where('email', $request->email)->first();",
+                        "B": "DB::table('users')->where('id', $id)->get();",
+                        "C": "DB::select(\"SELECT * FROM users WHERE email = '\" . $request->email . \"'\");",
+                        "D": "DB::select(\"SELECT * FROM users WHERE email = ?\", [$request->email]);",
+                        "E": "User::find($id);"
+                    },
+                    "answer": "C",
+                    "solution": "Potongan C menggabungkan (*concatenation*) string input mentah pengguna langsung ke query SQL tanpa parameter binding, memungkinkan penyerang menyisipkan payload seperti `' OR '1'='1`."
+                },
+                {
+                    "num": 4,
+                    "topic": "Mass Assignment Vulnerability",
+                    "question": "Celah keamanan Mass Assignment terjadi ketika penyerang memanipulasi form request untuk mengubah kolom sensitif (seperti `is_admin = true`). Fitur Eloquent yang mencegah celah ini adalah...",
+                    "options": {
+                        "A": "Mendeklarasikan array properti `$fillable` secara eksplisit pada model",
+                        "B": "Mengatur `$guarded = [];`",
+                        "C": "Menonaktifkan database",
+                        "D": "Menghapus file migration",
+                        "E": "Menggunakan PHP 7"
+                    },
+                    "answer": "A",
+                    "solution": "Properti `$fillable` mendefinisikan whitelist atribut yang boleh diisi secara massal via `create()` atau `update()`. Atribut di luar daftar ini otomatis diabaikan."
+                },
+                {
+                    "num": 5,
+                    "topic": "Hashing Password Aman",
+                    "question": "Fungsi bawaan Laravel yang digunakan untuk mengenkripsi kata sandi menggunakan algoritma hashing satu arah yang aman (Bcrypt / Argon2id) adalah...",
+                    "options": {
+                        "A": "md5($password);",
+                        "B": "sha1($password);",
+                        "C": "Hash::make($password);",
+                        "D": "base64_encode($password);",
+                        "E": "crypt_string($password);"
+                    },
+                    "answer": "C",
+                    "solution": "`Hash::make()` menggunakan Bcrypt/Argon2id dengan salting acak dan *work factor* yang dapat diatur, menjamin ketahanan terhadap serangan kamus dan rainbow tables (tidak seperti MD5/SHA1 yang usang)."
+                },
+                {
+                    "num": 6,
+                    "topic": "Otorisasi via Laravel Policy",
+                    "question": "Perintah artisan untuk membuat class Policy baru yang terikat pada model `Post` adalah...",
+                    "options": {
+                        "A": "php artisan make:policy PostPolicy --model=Post",
+                        "B": "php artisan make:guard PostPolicy",
+                        "C": "php artisan create:policy PostPolicy",
+                        "D": "php artisan make:rule PostPolicy",
+                        "E": "php artisan auth:policy PostPolicy"
+                    },
+                    "answer": "A",
+                    "solution": "`make:policy PostPolicy --model=Post` menghasilkan class policy dengan boilerplate method lengkap (`view`, `create`, `update`, `delete`)."
+                },
+                {
+                    "num": 7,
+                    "topic": "Pengecekan Otorisasi di Controller",
+                    "question": "Di dalam controller, cara mengeksekusi otorisasi agar hanya pemilik artikel yang boleh mengedit postingannya adalah...",
+                    "options": {
+                        "A": "$this->authorize('update', $post);",
+                        "B": "if (Auth::user()->id != $post->user_id) { abort(403); }",
+                        "C": "Gate::check('update');",
+                        "D": "Jawaban A dan B benar",
+                        "E": "Hanya B yang benar"
+                    },
+                    "answer": "D",
+                    "solution": "Keduanya benar, namun `$this->authorize('update', $post)` adalah *best practice* berbasis Policy yang melempar exception 403 secara otomatis."
+                },
+                {
+                    "num": 8,
+                    "topic": "Direktif Blade @can",
+                    "question": "Untuk menyembunyikan tombol 'Hapus Post' di tampilan Blade jika user tidak memiliki izin otorisasi, direktif yang digunakan adalah...",
+                    "options": {
+                        "A": "@can('delete', $post) ... @endcan",
+                        "B": "@auth ... @endauth",
+                        "C": "@admin ... @endadmin",
+                        "D": "@protect ... @endprotect",
+                        "E": "@check ... @endcheck"
+                    },
+                    "answer": "A",
+                    "solution": "`@can('ability', $model)` mengevaluasi policy secara deklaratif di template Blade."
+                },
+                {
+                    "num": 9,
+                    "topic": "Brute Force Attack Mitigation",
+                    "question": "Mekanisme pengamanan yang diterapkan Laravel Fortify / Breeze pada formulir login untuk mencegah serangan tebak password massal (*brute force*) adalah...",
+                    "options": {
+                        "A": "Menghapus akun user setelah 1 kali salah password",
+                        "B": "Rate limiting dengan penguncian sementara akun (*lockout throttle*) setelah 5 percobaan gagal berturut-turut",
+                        "C": "Mengirim SMS berbayar ke pengguna",
+                        "D": "Menutup website pada malam hari",
+                        "E": "Mengganti password secara acak"
+                    },
+                    "answer": "B",
+                    "solution": "Throttle limiter mengunci akses login dari IP/email tertentu selama 60 detik jika mendeteksi kegagalan berulang."
+                },
+                {
+                    "num": 10,
+                    "topic": "File Upload Security (MIME Spoofing)",
+                    "question": "Mengapa sekadar memeriksa ekstensi file (`.jpg` atau `.png`) TIDAK CUKUP aman saat menangani upload file?",
+                    "options": {
+                        "A": "Karena ekstensi file dapat dipalsukan oleh penyerang dengan menamai file skrip berbahaya menjadi `shell.php.jpg`",
+                        "B": "Karena gambar jpg tidak bisa ditampilkan di Chrome",
+                        "C": "Karena ekstensi file memakan memori server",
+                        "D": "Karena PHP tidak bisa membaca ekstensi",
+                        "E": "Karena Windows tidak mendukung ekstensi"
+                    },
+                    "answer": "A",
+                    "solution": "Penyerang dapat mengganti nama skrip berbahaya (webshell) dengan ekstensi `.jpg`. Validasi yang benar harus memeriksa MIME type biner asli menggunakan rule `image` atau pustaka FileInfo."
+                },
+                {
+                    "num": 11,
+                    "topic": "Strict Session Hijacking Prevention",
+                    "question": "Untuk mencegah pembajakan sesi (*session hijacking*) melalui jaringan yang tidak aman, cookie sesi di file `config/session.php` harus diatur dengan nilai...",
+                    "options": {
+                        "A": "'secure' => true, dan 'http_only' => true",
+                        "B": "'secure' => false",
+                        "C": "'http_only' => false",
+                        "D": "'encrypt' => false",
+                        "E": "'lifetime' => 999999"
+                    },
+                    "answer": "A",
+                    "solution": "`secure => true` memastikan cookie hanya ditransmisikan via protokol HTTPS terenkripsi. `http_only => true` mencegah skrip JavaScript berbahaya membaca cookie via XSS."
+                },
+                {
+                    "num": 12,
+                    "topic": "Celah Insecure Direct Object References (IDOR)",
+                    "question": "Celah keamanan di mana pengguna dapat melihat atau mengedit faktur transaksi pengguna lain hanya dengan mengganti ID pada URL (`/invoices/105` menjadi `/invoices/106`) disebut...",
+                    "options": {"A": "XSS", "B": "IDOR (Insecure Direct Object References)", "C": "SQL Injection", "D": "Phishing", "E": "Buffer Overflow"},
+                    "answer": "B",
+                    "solution": "IDOR terjadi ketika aplikasi menerima input ID dari pengguna dan langsung mengambil data dari database tanpa memverifikasi kepemilikan hak akses (*authorization check*)."
+                },
+                {
+                    "num": 13,
+                    "topic": "Enkripsi Simetris APP_KEY",
+                    "question": "Parameter `APP_KEY` di file `.env` Laravel digunakan untuk...",
+                    "options": {
+                        "A": "Kata sandi login admin utama",
+                        "B": "Kunci kriptografi 32 karakter untuk mengenkripsi cookie sesi, payload session, dan enkripsi simetris data sensitif",
+                        "C": "Lisensi berbayar ke perusahaan Laravel",
+                        "D": "Nomor seri prosesor komputer server",
+                        "E": "Nama database MySQL"
+                    },
+                    "answer": "B",
+                    "solution": "APP_KEY adalah kunci enkripsi AES-256-CBC yang digunakan oleh encrypter Laravel untuk mengamankan data terenkripsi dan token sesi."
+                },
+                {
+                    "num": 14,
+                    "topic": "Bahaya Mode Debug di Server Produksi",
+                    "question": "Mengapa pengaturan `APP_DEBUG=true` sangat dilarang dibiarkan aktif di server produksi?",
+                    "options": {
+                        "A": "Karena aplikasi tidak bisa dibuka pengguna",
+                        "B": "Karena saat terjadi error, sistem akan menampilkan stack trace lengkap yang membeberkan kredensial database, path file server, dan environment variables ke publik",
+                        "C": "Karena tampilan web menjadi hitam putih",
+                        "D": "Karena PHP akan otomatis terhapus",
+                        "E": "Karena website tidak bisa diakses lewat handphone"
+                    },
+                    "answer": "B",
+                    "solution": "Halaman error debug memaparkan informasi arsitektur internal yang sangat berharga bagi hacker untuk merancang eksploitasi terarah."
+                },
+                {
+                    "num": 15,
+                    "topic": "Content Security Policy (CSP)",
+                    "question": "Header keamanan HTTP `Content-Security-Policy` (CSP) berfungsi untuk...",
+                    "options": {
+                        "A": "Mengatur jam buka tutup website",
+                        "B": "Membatasi domain mana saja yang diizinkan memuat skrip, gaya, gambar, dan frame pada halaman web untuk menekan risiko XSS",
+                        "C": "Menghapus cache browser otomatis",
+                        "D": "Mempercepat loading font",
+                        "E": "Memblokir iklan televisi"
+                    },
+                    "answer": "B",
+                    "solution": "CSP adalah mekanisme pertahanan berlapis yang membatasi eksekusi resource yang tidak sah (*unauthorized scripts*)."
+                },
+                {
+                    "num": 16,
+                    "topic": "Gate vs Policy",
+                    "question": "Dalam sistem otorisasi Laravel, perbedaan fungsi utama antara Gate dan Policy adalah...",
+                    "options": {
+                        "A": "Gate biasanya untuk aksi umum non-model (misal: `access-admin-panel`), sedangkan Policy dikelompokkan secara khusus di sekitar Model tertentu (misal: `PostPolicy`)",
+                        "B": "Gate hanya berjalan di PHP 7",
+                        "C": "Policy tidak memerlukan class PHP",
+                        "D": "Gate hanya untuk menghapus user",
+                        "E": "Tidak ada perbedaan fungsi"
+                    },
+                    "answer": "A",
+                    "solution": "Gate ideal untuk izin independen berbasis peran umum, sedangkan Policy mengorganisir logika hak akses per model Eloquent."
+                },
+                {
+                    "num": 17,
+                    "topic": "Validasi Email DNS",
+                    "question": "Aturan validasi `'email' => 'required|email:rfc,dns'` di Laravel melakukan pengecekan...",
+                    "options": {
+                        "A": "Format sintaks email sesuai standar RFC DAN memeriksa keberadaan record MX DNS domain email tersebut secara online",
+                        "B": "Mengirim email verifikasi otomatis ke kotak masuk",
+                        "C": "Memaksa email harus berakhiran @gmail.com",
+                        "D": "Menghubungkan email ke akun media sosial",
+                        "E": "Memeriksa kata sandi email"
+                    },
+                    "answer": "A",
+                    "solution": "Opsi `dns` memverifikasi apakah domain email yang dimasukkan benar-benar memiliki mail server aktif (MX record)."
+                },
+                {
+                    "num": 18,
+                    "topic": "Sanitasi Input HTML Purifier",
+                    "question": "Jika sebuah aplikasi blog mewajibkan input teks berformat kaya (WYSIWYG/Rich Text Editor), cara paling aman menangani konten HTML dari user adalah...",
+                    "options": {
+                        "A": "Menyimpan dan menampilkannya langsung dengan `{!! $html !!}` tanpa filter",
+                        "B": "Memfilter konten menggunakan library pembersih HTML seperti HTMLPurifier untuk membersihkan tag berbahaya (*script, onerror, iframe*)",
+                        "C": "Menolak semua input yang memuat huruf vokal",
+                        "D": "Menyimpan data sebagai file teks biasa tanpa format",
+                        "E": "Mengubah semua huruf menjadi huruf kecil"
+                    },
+                    "answer": "B",
+                    "solution": "HTMLPurifier membersihkan tag dan atribut berbahaya (seperti `<img src=x onerror=alert(1)>`) sambil tetap mempertahankan tag format yang aman (`<b>, <i>, <p>`)."
+                },
+                {
+                    "num": 19,
+                    "topic": "Regenerasi ID Sesi Login",
+                    "question": "Mengapa method `Auth::attempt()` di Laravel secara otomatis meregenerasi session ID (`$request->session()->regenerate();`) saat login berhasil?",
+                    "options": {
+                        "A": "Untuk mencegah serangan *Session Fixation*",
+                        "B": "Untuk mempercepat transfer data",
+                        "C": "Agar memori browser bersih",
+                        "D": "Untuk menghapus database",
+                        "E": "Agar password tidak terlihat"
+                    },
+                    "answer": "A",
+                    "solution": "Session Fixation terjadi ketika penyerang memaksa korban menggunakan session ID tertentu sebelum login. Meregenerasi ID sesi baru saat login mematikan serangan ini."
+                },
+                {
+                    "num": 20,
+                    "topic": "Prinsip Least Privilege (Hak Istimewa Terkecil)",
+                    "question": "Prinsip keamanan *Least Privilege* dalam pengelolaan akun basis data aplikasi menyatakan bahwa...",
+                    "options": {
+                        "A": "Aplikasi web harus selalu menggunakan akun `root` MySQL agar tidak pernah kekurangan hak akses",
+                        "B": "Pengguna aplikasi web hanya boleh diberikan hak akses seminimal mungkin yang diperlukan untuk menjalankan fungsinya (misal: hanya SELECT, INSERT, UPDATE, DELETE; bukan DROP DATABASE atau GRANT)",
+                        "C": "Setiap pengguna berhak menjadi administrator",
+                        "D": "Password database boleh dibagikan ke seluruh karyawan",
+                        "E": "Database tidak perlu diberi password"
+                    },
+                    "answer": "B",
+                    "solution": "Least Privilege membatasi potensi dampak kerusakan jika terjadi kompromi sistem; aplikasi tidak boleh menjalankan hak administratif yang tidak dibutuhkan."
+                }
+            ]
+        },
+        {
+            "id": "testing_git_deployment",
+            "title": "Automated Testing, Git & Deployment Kompetisi",
+            "description": "Feature & Unit Tests (PHPUnit/Pest), Git Conventional Commits, Optimasi Server (config/route/view cache), Dokumen Asesi Asesor BNSP",
+            "questions": [
+                {
+                    "num": 1,
+                    "topic": "Feature Test HTTP Assertion",
+                    "question": "Dalam penulisan Feature Test di Laravel menggunakan PHPUnit, method untuk memastikan bahwa respon HTTP berstatus 200 OK dan memiliki struktur JSON tertentu adalah...",
+                    "options": {
+                        "A": "$response->assertStatus(200)->assertJsonStructure(['data' => ['id', 'name']]);",
+                        "B": "$response->checkStatus(200)->checkJson();",
+                        "C": "$response->isOk()->hasData();",
+                        "D": "$response->verify(200);",
+                        "E": "$response->equal(200);"
+                    },
+                    "answer": "A",
+                    "solution": "Laravel menyediakan assertion method intuitif: `assertStatus(200)` memvalidasi HTTP response code, dan `assertJsonStructure([...])` memvalidasi arsitektur payload response."
+                },
+                {
+                    "num": 2,
+                    "topic": "RefreshDatabase Trait",
+                    "question": "Fungsi menyertakan trait `use RefreshDatabase;` pada file class testing adalah...",
+                    "options": {
+                        "A": "Menghapus file migrasi secara permanen",
+                        "B": "Mereset database ke kondisi bersih sebelum setiap tes dijalankan agar data antar-pengujian tidak saling mengkontaminasi",
+                        "C": "Membuat koneksi internet baru",
+                        "D": "Memperbarui versi framework Laravel",
+                        "E": "Mengirim laporan email ke asesor"
+                    },
+                    "answer": "B",
+                    "solution": "`RefreshDatabase` menjalankan migrasi pada in-memory database (seperti SQLite) atau membalut pengujian dalam transaction rollback otomatis setelah tes selesai."
+                },
+                {
+                    "num": 3,
+                    "topic": "ActingAs Authentication Test",
+                    "question": "Cara mensimulasikan request dari pengguna yang sudah terotentikasi (*logged in user*) saat pengujian Feature Test adalah...",
+                    "options": {
+                        "A": "$this->actingAs($user)->getJson('/api/profile');",
+                        "B": "$this->login($user)->getJson('/api/profile');",
+                        "C": "$this->auth($user)->getJson('/api/profile');",
+                        "D": "$this->withUser($user)->getJson('/api/profile');",
+                        "E": "$this->asUser($user)->getJson('/api/profile');"
+                    },
+                    "answer": "A",
+                    "solution": "Helper `$this->actingAs($user)` mengautentikasi instansiasi model user yang diberikan sebagai pengguna saat ini untuk request yang diuji."
+                },
+                {
+                    "num": 4,
+                    "topic": "AssertDatabaseHas",
+                    "question": "Method testing untuk memastikan bahwa baris data dengan atribut tertentu benar-benar tersimpan di database adalah...",
+                    "options": {
+                        "A": "$this->assertDatabaseHas('posts', ['title' => 'Judul Artikel']);",
+                        "B": "$this->assertInTable('posts', ...);",
+                        "C": "$this->checkDatabaseRecord('posts', ...);",
+                        "D": "$this->assertRowExists('posts', ...);",
+                        "E": "$this->verifyDatabase('posts', ...);"
+                    },
+                    "answer": "A",
+                    "solution": "`assertDatabaseHas($table, array $data)` memeriksa tabel di database untuk membuktikan transaksi penyimpanan data berhasil secara fisik."
+                },
+                {
+                    "num": 5,
+                    "topic": "Git Conventional Commits",
+                    "question": "Format penulisan pesan commit standar industri (Conventional Commits) saat menambahkan fitur baru otentikasi API yang tepat adalah...",
+                    "options": {
+                        "A": "update kode lagi",
+                        "B": "feat(auth): implementasi register dan login menggunakan Laravel Sanctum",
+                        "C": "fix bugs di auth",
+                        "D": "commit baru bari",
+                        "E": "bismillah kelar"
+                    },
+                    "answer": "B",
+                    "solution": "Conventional Commits menggunakan format `<type>(<scope>): <description>`: `feat` (fitur baru), `fix` (perbaikan bug), `refactor`, `docs`, dll. sehingga riwayat git informatif."
+                },
+                {
+                    "num": 6,
+                    "topic": "Konfigurasi .gitignore Laravel",
+                    "question": "Folder dan file berikut yang WAJIB dimasukkan ke dalam file `.gitignore` agar tidak diunggah ke repository Git adalah...",
+                    "options": {
+                        "A": "Folder `vendor/`, folder `node_modules/`, dan file `.env`",
+                        "B": "Folder `app/` dan folder `routes/`",
+                        "C": "File `composer.json` dan `package.json`",
+                        "D": "Folder `resources/views/`",
+                        "E": "File `README.md`"
+                    },
+                    "answer": "A",
+                    "solution": "Dependencies (`vendor/`, `node_modules/`) dapat di-install ulang melalui lock file, sedangkan `.env` memuat rahasia server yang dilarang keras di-commit."
+                },
+                {
+                    "num": 7,
+                    "topic": "Optimasi Produksi: Config Cache",
+                    "question": "Perintah artisan yang menggabungkan seluruh file konfigurasi Laravel menjadi satu file flat untuk mempercepat waktu eksekusi di server produksi adalah...",
+                    "options": {
+                        "A": "php artisan config:cache",
+                        "B": "php artisan config:clear",
+                        "C": "php artisan optimize:clear",
+                        "D": "php artisan make:config",
+                        "E": "php artisan app:speed"
+                    },
+                    "answer": "A",
+                    "solution": "`config:cache` menggabungkan seluruh file konfigurasi ke dalam `bootstrap/cache/config.php` sehingga framework tidak perlu memuat puluhan file config terpisah pada setiap request."
+                },
+                {
+                    "num": 8,
+                    "topic": "Optimasi Produksi: Route Cache",
+                    "question": "Perintah `php artisan route:cache` berfungsi untuk...",
+                    "options": {
+                        "A": "Menghapus seluruh rute",
+                        "B": "Mengkompilasi seluruh registrasi route menjadi satu file serialisasi cepat untuk memotong overhead waktu routing",
+                        "C": "Menampilkan daftar seluruh URL di terminal",
+                        "D": "Memperbaiki rute yang error",
+                        "E": "Membuat rute baru otomatis"
+                    },
+                    "answer": "B",
+                    "solution": "`route:cache` mengurangi latensi pencocokan route secara drastis pada aplikasi dengan ratusan endpoint."
+                },
+                {
+                    "num": 9,
+                    "topic": "Menjalankan Test Suite",
+                    "question": "Perintah CLI untuk mengeksekusi seluruh rangkaian pengujian otomatis di proyek Laravel adalah...",
+                    "options": {
+                        "A": "php artisan test",
+                        "B": "./vendor/bin/phpunit",
+                        "C": "pest",
+                        "D": "Semua jawaban A, B, dan C benar",
+                        "E": "Hanya A yang benar"
+                    },
+                    "answer": "D",
+                    "solution": "Baik `php artisan test`, binary PHPUnit langsung, maupun Pest dapat digunakan untuk menjalankan automated test suite di Laravel."
+                },
+                {
+                    "num": 10,
+                    "topic": "Dokumen Asesmen Mandiri FR-APL.02",
+                    "question": "Dalam alur uji sertifikasi profesi BNSP, fungsi formulir **FR-APL.02 (Asesmen Mandiri)** adalah...",
+                    "options": {
+                        "A": "Kuitansi pembayaran biaya ujian",
+                        "B": "Formulir di mana asesi menyatakan dirinya Kompeten (K) atau Belum Kompeten (BK) terhadap seluruh kriteria unjuk kerja beserta bukti pendukung yang relevan",
+                        "C": "Surat izin tidak masuk sekolah",
+                        "D": "Daftar hadir peserta ujian",
+                        "E": "Ijazah sementara"
+                    },
+                    "answer": "B",
+                    "solution": "FR-APL.02 adalah instrumen asesmen mandiri di mana asesi melakukan refleksi kesiapan dan mencantumkan bukti kompetensi sebelum dinilai langsung oleh asesor."
+                },
+                {
+                    "num": 11,
+                    "topic": "Git Branching Workflow",
+                    "question": "Perintah Git untuk membuat branch baru bernama `feature/crud-product` sekaligus langsung berpindah ke branch tersebut adalah...",
+                    "options": {
+                        "A": "git branch feature/crud-product",
+                        "B": "git checkout -b feature/crud-product (atau git switch -c feature/crud-product)",
+                        "C": "git merge feature/crud-product",
+                        "D": "git commit -m feature/crud-product",
+                        "E": "git pull origin feature/crud-product"
+                    },
+                    "answer": "B",
+                    "solution": "`git checkout -b <branch>` atau `git switch -c <branch>` membuat cabang pengembangan baru dan beralih ke dalamnya."
+                },
+                {
+                    "num": 12,
+                    "topic": "Menyelesaikan Konflik Git (Merge Conflict)",
+                    "question": "Ketika terjadi merge conflict pada Git, langkah yang tepat untuk menyelesaikannya adalah...",
+                    "options": {
+                        "A": "Menghapus folder .git",
+                        "B": "Membuka file yang berkonflik, memilih bagian kode yang benar, menghapus penanda konflik (`<<<<<<<`, `=======`, `>>>>>>>`), lalu melakukan add dan commit",
+                        "C": "Mematikan komputer secara paksa",
+                        "D": "Membuat proyek baru dari awal",
+                        "E": "Mengabaikan konflik dan langsung melakukan push"
+                    },
+                    "answer": "B",
+                    "solution": "Konflik Git diselesaikan dengan meninjau penanda perbedaan kode, menyatukan versi terbaik, lalu menandai konflik telah tuntas via `git add` dan `git commit`."
+                },
+                {
+                    "num": 13,
+                    "topic": "Postman Collection Export",
+                    "question": "Dalam uji kompetensi kejuruan dan LKS, mengapa export Postman Collection (v2.1) sangat penting disiapkan peserta?",
+                    "options": {
+                        "A": "Agar asesor/juri dapat menguji seluruh endpoint API, parameter body, dan respon token secara instan dan efisien",
+                        "B": "Karena Postman adalah bagian dari sistem operasi Windows",
+                        "C": "Sebagai pengganti pembuatan kode backend",
+                        "D": "Agar database tidak penuh",
+                        "E": "Untuk mengunduh video tutorial"
+                    },
+                    "answer": "A",
+                    "solution": "Postman collection yang rapi memudahkan pengujian otomatis seluruh endpoint oleh asesor tanpa perlu konfigurasi manual yang memakan waktu."
+                },
+                {
+                    "num": 14,
+                    "topic": "Testing Mocking Service",
+                    "question": "Konsep *Mocking* dalam unit test digunakan untuk...",
+                    "options": {
+                        "A": "Mengejek programmer lain",
+                        "B": "Mensimulasikan perilaku layanan eksternal (seperti payment gateway atau server SMS) tanpa benar-benar mengirimkan request jaringan nyata",
+                        "C": "Membuat website tiruan",
+                        "D": "Mematikan koneksi internet",
+                        "E": "Mengubah kode PHP menjadi JavaScript"
+                    },
+                    "answer": "B",
+                    "solution": "Mocking membuat objek tiruan yang meniru respon API pihak ketiga, menjaga tes tetap cepat, independen, dan tidak bergantung pada kestabilan internet eksternal."
+                },
+                {
+                    "num": 15,
+                    "topic": "Virtual Host Apache XAMPP",
+                    "question": "Saat mengarahkan Virtual Host lokal untuk proyek Laravel di Apache, direktori `DocumentRoot` yang WAJIB dituju adalah...",
+                    "options": {
+                        "A": "C:/xampp/htdocs/nama-proyek",
+                        "B": "C:/xampp/htdocs/nama-proyek/public",
+                        "C": "C:/xampp/htdocs/nama-proyek/app",
+                        "D": "C:/xampp/htdocs/nama-proyek/resources",
+                        "E": "C:/xampp/htdocs/nama-proyek/storage"
+                    },
+                    "answer": "B",
+                    "solution": "DocumentRoot harus selalu mengarah ke folder `/public` agar file inti aplikasi (seperti `.env` dan direktori kode `app/`) berada di luar jangkauan akses langsung web server publik."
+                },
+                {
+                    "num": 16,
+                    "topic": "Build Asset Frontend untuk Produksi",
+                    "question": "Perintah NPM untuk mengkompilasi dan meminifikasi asset Tailwind CSS dan JavaScript (Vite) siap rilis produksi adalah...",
+                    "options": {"A": "npm run dev", "B": "npm run build", "C": "npm start", "D": "npm install", "E": "npm test"},
+                    "answer": "B",
+                    "solution": "`npm run build` mengaktifkan tree-shaking, purging CSS tak terpakai, dan menghasilkan file asset ter-minifikasi di direktori `public/build`."
+                },
+                {
+                    "num": 17,
+                    "topic": "Git Stash",
+                    "question": "Perintah Git yang digunakan untuk menyimpan sementara perubahan kode lokal yang belum selesai tanpa perlu melakukan commit, agar direktori kerja kembali bersih adalah...",
+                    "options": {"A": "git stash", "B": "git clean", "C": "git reset", "D": "git discard", "E": "git save"},
+                    "answer": "A",
+                    "solution": "`git stash` memarkir modifikasi lokal sementara di stash stack dan dapat dipulihkan kembali kapan saja dengan `git stash pop`."
+                },
+                {
+                    "num": 18,
+                    "topic": "View Cache",
+                    "question": "Perintah `php artisan view:cache` di Laravel berfungsi untuk...",
+                    "options": {
+                        "A": "Menghapus seluruh file Blade",
+                        "B": "Mengkonsolidasi dan mengkompilasi seluruh template Blade menjadi file PHP mentah di memori cache server",
+                        "C": "Menampilkan gambar di layar",
+                        "D": "Menguji warna tema",
+                        "E": "Mencetak laporan PDF"
+                    },
+                    "answer": "B",
+                    "solution": "`view:cache` meng-pra-kompilasi seluruh template Blade saat deployment sehingga tidak terjadi kompilasi on-the-fly yang memperlambat request pertama pengguna."
+                },
+                {
+                    "num": 19,
+                    "topic": "Test Driven Development (TDD)",
+                    "question": "Siklus kerja metodologi Test-Driven Development (TDD) yang benar adalah...",
+                    "options": {
+                        "A": "Red (tulis tes yang gagal) -> Green (tulis kode seminimal mungkin agar tes lulus) -> Refactor (rapikan kode tanpa merusak tes)",
+                        "B": "Tulis aplikasi -> Deploy -> Jika ada keluhan buat tes",
+                        "C": "Deploy -> Testing -> Coding",
+                        "D": "Refactor -> Green -> Red",
+                        "E": "Testing hanya dilakukan saat aplikasi sudah selesai 100%"
+                    },
+                    "answer": "A",
+                    "solution": "Prinsip TDD berpegang pada siklus RED - GREEN - REFACTOR: rancang tes terlebih dahulu, bangun implementasi hingga lolos, lalu rapikan arsitekturnya."
+                },
+                {
+                    "num": 20,
+                    "topic": "Pernyataan Asesmen 'Kompeten'",
+                    "question": "Kriteria seorang asesi dinyatakan meraih rekomendasi 'Kompeten (K)' dalam uji sertifikasi Junior Web Developer BNSP adalah...",
+                    "options": {
+                        "A": "Menguasai 1 dari 6 unit kompetensi",
+                        "B": "Memenuhi seluruh kriteria unjuk kerja pada seluruh unit kompetensi yang diujikan (100% kompeten pada seluruh unit SKKNI)",
+                        "C": "Hanya hadir saat sesi pembukaan",
+                        "D": "Membayar biaya tambahan kepada pengawas",
+                        "E": "Menyelesaikan ujian tercepat tanpa mempedulikan bug program"
+                    },
+                    "answer": "B",
+                    "solution": "Standar sertifikasi BNSP berbasis kompetensi mutlak: asesi harus membuktikan kemampuan pada seluruh unit kompetensi yang dipersyaratkan tanpa ada unit yang tertinggal."
+                }
+            ]
+        }
+    ]
+}

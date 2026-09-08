@@ -1,0 +1,292 @@
+[
+  {
+    "subject_id": "matematika_osn",
+    "subject_name": "Matematika OSN & Sinarmas Math Genius",
+    "subcategory_id": "aljabar",
+    "title": "Aljabar (Algebra Olympiad)",
+    "description": "Polinomial, Teorema Vieta, Pertidaksamaan AM-GM/Cauchy, Persamaan Fungsional Cauchy, Relasi Rekurensi",
+    "question_count": 20,
+    "pdf_url": "/practice/matematika_osn/aljabar.pdf",
+    "file_path": "D:\\Bari\\Study Tracker App\\gudy-web\\public\\practice\\matematika_osn\\aljabar.pdf"
+  },
+  {
+    "subject_id": "matematika_osn",
+    "subject_name": "Matematika OSN & Sinarmas Math Genius",
+    "subcategory_id": "geometri",
+    "title": "Geometri (Geometry Olympiad)",
+    "description": "Teorema Ceva & Menelaus, Segiempat Tali Busur, Power of a Point, Garis Kuasa, Garis Euler & Lingkaran Sembilan Titik",
+    "question_count": 20,
+    "pdf_url": "/practice/matematika_osn/geometri.pdf",
+    "file_path": "D:\\Bari\\Study Tracker App\\gudy-web\\public\\practice\\matematika_osn\\geometri.pdf"
+  },
+  {
+    "subject_id": "matematika_osn",
+    "subject_name": "Matematika OSN & Sinarmas Math Genius",
+    "subcategory_id": "teori_bilangan",
+    "title": "Teori Bilangan (Number Theory Olympiad)",
+    "description": "Keterbagian, Algoritma Euclidean, Kongruensi & CRT, Persamaan Diophantine, Euler Totient & LTE",
+    "question_count": 20,
+    "pdf_url": "/practice/matematika_osn/teori_bilangan.pdf",
+    "file_path": "D:\\Bari\\Study Tracker App\\gudy-web\\public\\practice\\matematika_osn\\teori_bilangan.pdf"
+  },
+  {
+    "subject_id": "matematika_osn",
+    "subject_name": "Matematika OSN & Sinarmas Math Genius",
+    "subcategory_id": "kombinatorika",
+    "title": "Kombinatorika (Combinatorics Olympiad)",
+    "description": "Prinsip Pencacahan, Stars and Bars, Pigeonhole Principle, Inklusi-Eksklusi, Invarian & Teori Permainan",
+    "question_count": 20,
+    "pdf_url": "/practice/matematika_osn/kombinatorika.pdf",
+    "file_path": "D:\\Bari\\Study Tracker App\\gudy-web\\public\\practice\\matematika_osn\\kombinatorika.pdf"
+  },
+  {
+    "subject_id": "matematika_osn",
+    "subject_name": "Matematika OSN & Sinarmas Math Genius",
+    "subcategory_id": "analisis_kalkulus",
+    "title": "Analisis / Kalkulus & Logika (Analysis & Proofs)",
+    "description": "Ekstremum Kontinu, Jensen via Turunan Kedua, Induksi Kuat, Infinite Descent",
+    "question_count": 15,
+    "pdf_url": "/practice/matematika_osn/analisis_kalkulus.pdf",
+    "file_path": "D:\\Bari\\Study Tracker App\\gudy-web\\public\\practice\\matematika_osn\\analisis_kalkulus.pdf"
+  },
+  {
+    "subject_id": "tka_matematika",
+    "subject_name": "TKA Wajib: Matematika",
+    "subcategory_id": "bilangan_operasi",
+    "title": "Bilangan & Operasi Lanjut",
+    "description": "Eksponen, Bentuk Akar, Logaritma, Barisan Aritmatika/Geometri, Deret Tak Hingga, Matematika Finansial",
+    "question_count": 20,
+    "pdf_url": "/practice/tka_matematika/bilangan_operasi.pdf",
+    "file_path": "D:\\Bari\\Study Tracker App\\gudy-web\\public\\practice\\tka_matematika\\bilangan_operasi.pdf"
+  },
+  {
+    "subject_id": "tka_matematika",
+    "subject_name": "TKA Wajib: Matematika",
+    "subcategory_id": "aljabar_pemodelan",
+    "title": "Aljabar & Pemodelan",
+    "description": "SPLDV/SPLTV, Persamaan/Pertidaksamaan Kuadrat, Rasional, Nilai Mutlak, Fungsi Komposisi/Invers, Matriks",
+    "question_count": 20,
+    "pdf_url": "/practice/tka_matematika/aljabar_pemodelan.pdf",
+    "file_path": "D:\\Bari\\Study Tracker App\\gudy-web\\public\\practice\\tka_matematika\\aljabar_pemodelan.pdf"
+  },
+  {
+    "subject_id": "tka_matematika",
+    "subject_name": "TKA Wajib: Matematika",
+    "subcategory_id": "geometri_dimensi_tiga",
+    "title": "Geometri & Dimensi Tiga",
+    "description": "Kedudukan & Jarak Titik/Garis/Bidang Kubus & Limas, Sudut Ruang Tiga Dimensi, Transformasi Geometri",
+    "question_count": 20,
+    "pdf_url": "/practice/tka_matematika/geometri_dimensi_tiga.pdf",
+    "file_path": "D:\\Bari\\Study Tracker App\\gudy-web\\public\\practice\\tka_matematika\\geometri_dimensi_tiga.pdf"
+  },
+  {
+    "subject_id": "tka_matematika",
+    "subject_name": "TKA Wajib: Matematika",
+    "subcategory_id": "trigonometri",
+    "title": "Trigonometri",
+    "description": "Sudut Istimewa & Relasi Kuadran, Identitas Trigonometri & Sudut Ganda, Aturan Sinus & Cosinus, Persamaan Trigonometri",
+    "question_count": 20,
+    "pdf_url": "/practice/tka_matematika/trigonometri.pdf",
+    "file_path": "D:\\Bari\\Study Tracker App\\gudy-web\\public\\practice\\tka_matematika\\trigonometri.pdf"
+  },
+  {
+    "subject_id": "tka_matematika",
+    "subject_name": "TKA Wajib: Matematika",
+    "subcategory_id": "kalkulus_dasar",
+    "title": "Kalkulus Dasar",
+    "description": "Limit Fungsi Aljabar, Teorema L'Hopital, Turunan & Aplikasi Ekstremum/Gradien, Integral Luas Daerah Kurva",
+    "question_count": 20,
+    "pdf_url": "/practice/tka_matematika/kalkulus_dasar.pdf",
+    "file_path": "D:\\Bari\\Study Tracker App\\gudy-web\\public\\practice\\tka_matematika\\kalkulus_dasar.pdf"
+  },
+  {
+    "subject_id": "tka_matematika",
+    "subject_name": "TKA Wajib: Matematika",
+    "subcategory_id": "statistika_peluang",
+    "title": "Statistika & Peluang",
+    "description": "Ukuran Pemusatan & Penyebaran Data, Efek Transformasi Data, Kaidah Pencacahan, Permutasi/Kombinasi, Peluang Majemuk",
+    "question_count": 20,
+    "pdf_url": "/practice/tka_matematika/statistika_peluang.pdf",
+    "file_path": "D:\\Bari\\Study Tracker App\\gudy-web\\public\\practice\\tka_matematika\\statistika_peluang.pdf"
+  },
+  {
+    "subject_id": "bahasa_indonesia",
+    "subject_name": "TKA Wajib: Bahasa Indonesia",
+    "subcategory_id": "teks_informasi",
+    "title": "Keterampilan Membaca Teks Informasi",
+    "description": "Menemukan Informasi Tersurat 5W+1H, Gagasan Utama Paragraf Deduktif/Induktif, Analisis Data Tabel/Grafik",
+    "question_count": 20,
+    "pdf_url": "/practice/bahasa_indonesia/teks_informasi.pdf",
+    "file_path": "D:\\Bari\\Study Tracker App\\gudy-web\\public\\practice\\bahasa_indonesia\\teks_informasi.pdf"
+  },
+  {
+    "subject_id": "bahasa_indonesia",
+    "subject_name": "TKA Wajib: Bahasa Indonesia",
+    "subcategory_id": "refleksi_evaluasi_kritis",
+    "title": "Refleksi & Evaluasi Kritis Wacana",
+    "description": "Fakta vs Opini vs Asumsi Implisit, Bias Penulis, Logical Fallacies, Penarikan Simpulan Silogisme",
+    "question_count": 20,
+    "pdf_url": "/practice/bahasa_indonesia/refleksi_evaluasi_kritis.pdf",
+    "file_path": "D:\\Bari\\Study Tracker App\\gudy-web\\public\\practice\\bahasa_indonesia\\refleksi_evaluasi_kritis.pdf"
+  },
+  {
+    "subject_id": "bahasa_indonesia",
+    "subject_name": "TKA Wajib: Bahasa Indonesia",
+    "subcategory_id": "teks_sastra_fiksi",
+    "title": "Keterampilan Membaca Teks Sastra / Fiksi",
+    "description": "Unsur Intrinsik Cerpen & Prosa, Karakterisasi Tokoh, Makna Simbolik & Majas, Pesan Moral & Nilai Kehidupan",
+    "question_count": 20,
+    "pdf_url": "/practice/bahasa_indonesia/teks_sastra_fiksi.pdf",
+    "file_path": "D:\\Bari\\Study Tracker App\\gudy-web\\public\\practice\\bahasa_indonesia\\teks_sastra_fiksi.pdf"
+  },
+  {
+    "subject_id": "bahasa_indonesia",
+    "subject_name": "TKA Wajib: Bahasa Indonesia",
+    "subcategory_id": "kalimat_efektif_struktur",
+    "title": "Tata Kalimat & Kaidah Kalimat Efektif",
+    "description": "Pola Struktur SPOK, Kalimat Inversi, 5 Syarat Kalimat Efektif, Konjungsi Antarklausa vs Antarkalimat",
+    "question_count": 20,
+    "pdf_url": "/practice/bahasa_indonesia/kalimat_efektif_struktur.pdf",
+    "file_path": "D:\\Bari\\Study Tracker App\\gudy-web\\public\\practice\\bahasa_indonesia\\kalimat_efektif_struktur.pdf"
+  },
+  {
+    "subject_id": "bahasa_indonesia",
+    "subject_name": "TKA Wajib: Bahasa Indonesia",
+    "subcategory_id": "eyd_v_ejaan",
+    "title": "Pedoman Ejaan Bahasa Indonesia (EYD V / PUEBI)",
+    "description": "Penulisan Huruf Kapital & Miring, Tanda Baca Koma/Titik Dua/Petik, Bentuk Terikat & Peluluhan Fonem KTSP",
+    "question_count": 20,
+    "pdf_url": "/practice/bahasa_indonesia/eyd_v_ejaan.pdf",
+    "file_path": "D:\\Bari\\Study Tracker App\\gudy-web\\public\\practice\\bahasa_indonesia\\eyd_v_ejaan.pdf"
+  },
+  {
+    "subject_id": "bahasa_indonesia",
+    "subject_name": "TKA Wajib: Bahasa Indonesia",
+    "subcategory_id": "keterpaduan_paragraf",
+    "title": "Keterpaduan Paragraf & Wacana",
+    "description": "Kohesi Leksikal/Gramatikal, Koherensi Gagasan, Deteksi Kalimat Sumbang, Mengurutkan Kalimat Acak & Melengkapi Teks Rumpang",
+    "question_count": 20,
+    "pdf_url": "/practice/bahasa_indonesia/keterpaduan_paragraf.pdf",
+    "file_path": "D:\\Bari\\Study Tracker App\\gudy-web\\public\\practice\\bahasa_indonesia\\keterpaduan_paragraf.pdf"
+  },
+  {
+    "subject_id": "bahasa_inggris",
+    "subject_name": "TKA Wajib: Bahasa Inggris",
+    "subcategory_id": "reading_academic",
+    "title": "Reading Informational & Academic Texts",
+    "description": "Main Idea & Thesis Statement, Locating Explicit Factual Details, Paraphrasing, Drawing Logical Inferences",
+    "question_count": 20,
+    "pdf_url": "/practice/bahasa_inggris/reading_academic.pdf",
+    "file_path": "D:\\Bari\\Study Tracker App\\gudy-web\\public\\practice\\bahasa_inggris\\reading_academic.pdf"
+  },
+  {
+    "subject_id": "bahasa_inggris",
+    "subject_name": "TKA Wajib: Bahasa Inggris",
+    "subcategory_id": "reading_vocational",
+    "title": "Reading Vocational & Everyday Texts",
+    "description": "Technical Manuals, Procedures & Troubleshooting, Business Correspondence, Job Ads, Announcements & Schedules",
+    "question_count": 20,
+    "pdf_url": "/practice/bahasa_inggris/reading_vocational.pdf",
+    "file_path": "D:\\Bari\\Study Tracker App\\gudy-web\\public\\practice\\bahasa_inggris\\reading_vocational.pdf"
+  },
+  {
+    "subject_id": "bahasa_inggris",
+    "subject_name": "TKA Wajib: Bahasa Inggris",
+    "subcategory_id": "vocabulary_context",
+    "title": "Vocabulary in Context & Lexical Nuance",
+    "description": "Context Clues (Definition, Contrast, Example), Word Formation (Prefixes/Suffixes), High-Frequency Academic Vocabulary",
+    "question_count": 20,
+    "pdf_url": "/practice/bahasa_inggris/vocabulary_context.pdf",
+    "file_path": "D:\\Bari\\Study Tracker App\\gudy-web\\public\\practice\\bahasa_inggris\\vocabulary_context.pdf"
+  },
+  {
+    "subject_id": "bahasa_inggris",
+    "subject_name": "TKA Wajib: Bahasa Inggris",
+    "subcategory_id": "author_craft_tone",
+    "title": "Author's Purpose, Tone & Critical Stance",
+    "description": "Identifying Author's Tone, Differentiating Fact from Opinion & Bias, Recognizing Target Audience and Rhetorical Goals",
+    "question_count": 20,
+    "pdf_url": "/practice/bahasa_inggris/author_craft_tone.pdf",
+    "file_path": "D:\\Bari\\Study Tracker App\\gudy-web\\public\\practice\\bahasa_inggris\\author_craft_tone.pdf"
+  },
+  {
+    "subject_id": "bahasa_inggris",
+    "subject_name": "TKA Wajib: Bahasa Inggris",
+    "subcategory_id": "discourse_cohesion",
+    "title": "Discourse Cohesion & Text Organization",
+    "description": "Transitional Signals (Contrast, Cause, Addition), Pronoun Reference, Paragraph Structure & Sentence Insertion",
+    "question_count": 20,
+    "pdf_url": "/practice/bahasa_inggris/discourse_cohesion.pdf",
+    "file_path": "D:\\Bari\\Study Tracker App\\gudy-web\\public\\practice\\bahasa_inggris\\discourse_cohesion.pdf"
+  },
+  {
+    "subject_id": "bahasa_inggris",
+    "subject_name": "TKA Wajib: Bahasa Inggris",
+    "subcategory_id": "grammar_mechanics",
+    "title": "Applied Grammar & Sentence Mechanics",
+    "description": "Tenses & Subject-Verb Agreement, Passive Voice & Reduced Relative Clauses, Conditionals & Modals",
+    "question_count": 20,
+    "pdf_url": "/practice/bahasa_inggris/grammar_mechanics.pdf",
+    "file_path": "D:\\Bari\\Study Tracker App\\gudy-web\\public\\practice\\bahasa_inggris\\grammar_mechanics.pdf"
+  },
+  {
+    "subject_id": "serkom",
+    "subject_name": "Sertifikasi Kompetensi (BNSP) JWD & LKS RPL Laravel",
+    "subcategory_id": "skkni_core_units",
+    "title": "Standar Unit Kompetensi SKKNI BNSP",
+    "description": "6 Unit Kompetensi J.620100: UI Web, Eksekusi Pemrograman, Organisasi File MVC, Panduan PSR-12, OOP, Composer Libraries",
+    "question_count": 20,
+    "pdf_url": "/practice/serkom/skkni_core_units.pdf",
+    "file_path": "D:\\Bari\\Study Tracker App\\gudy-web\\public\\practice\\serkom\\skkni_core_units.pdf"
+  },
+  {
+    "subject_id": "serkom",
+    "subject_name": "Sertifikasi Kompetensi (BNSP) JWD & LKS RPL Laravel",
+    "subcategory_id": "laravel_routing_requests",
+    "title": "Laravel Core, Routing & Request Handling",
+    "description": "RESTful Resource Controllers, Route Model Binding, Form Request Validation, Custom Error Messages, Middleware Pipeline",
+    "question_count": 20,
+    "pdf_url": "/practice/serkom/laravel_routing_requests.pdf",
+    "file_path": "D:\\Bari\\Study Tracker App\\gudy-web\\public\\practice\\serkom\\laravel_routing_requests.pdf"
+  },
+  {
+    "subject_id": "serkom",
+    "subject_name": "Sertifikasi Kompetensi (BNSP) JWD & LKS RPL Laravel",
+    "subcategory_id": "database_eloquent_orm",
+    "title": "Database, Migrations & Eloquent ORM",
+    "description": "Database Schema Design, Foreign Keys, Relasi Eloquent (1:1, 1:N, N:M), Eager Loading N+1 Prevention, Seeding & Factories",
+    "question_count": 20,
+    "pdf_url": "/practice/serkom/database_eloquent_orm.pdf",
+    "file_path": "D:\\Bari\\Study Tracker App\\gudy-web\\public\\practice\\serkom\\database_eloquent_orm.pdf"
+  },
+  {
+    "subject_id": "serkom",
+    "subject_name": "Sertifikasi Kompetensi (BNSP) JWD & LKS RPL Laravel",
+    "subcategory_id": "rest_api_sanctum",
+    "title": "RESTful API & Sanctum Authentication",
+    "description": "Eloquent API Resources, Sanctum Bearer Token Auth, HTTP Status Codes (200, 201, 401, 404, 422), Multipart Form Uploads",
+    "question_count": 20,
+    "pdf_url": "/practice/serkom/rest_api_sanctum.pdf",
+    "file_path": "D:\\Bari\\Study Tracker App\\gudy-web\\public\\practice\\serkom\\rest_api_sanctum.pdf"
+  },
+  {
+    "subject_id": "serkom",
+    "subject_name": "Sertifikasi Kompetensi (BNSP) JWD & LKS RPL Laravel",
+    "subcategory_id": "web_security_hardening",
+    "title": "Web Security Hardening (OWASP Top 10)",
+    "description": "Proteksi Serangan CSRF, XSS Auto-escaping, SQL Injection Parameterized Queries, Mass Assignment, Gates & Policies",
+    "question_count": 20,
+    "pdf_url": "/practice/serkom/web_security_hardening.pdf",
+    "file_path": "D:\\Bari\\Study Tracker App\\gudy-web\\public\\practice\\serkom\\web_security_hardening.pdf"
+  },
+  {
+    "subject_id": "serkom",
+    "subject_name": "Sertifikasi Kompetensi (BNSP) JWD & LKS RPL Laravel",
+    "subcategory_id": "testing_git_deployment",
+    "title": "Automated Testing, Git & Deployment Kompetisi",
+    "description": "Feature & Unit Tests (PHPUnit/Pest), Git Conventional Commits, Optimasi Server (config/route/view cache), Dokumen Asesi Asesor BNSP",
+    "question_count": 20,
+    "pdf_url": "/practice/serkom/testing_git_deployment.pdf",
+    "file_path": "D:\\Bari\\Study Tracker App\\gudy-web\\public\\practice\\serkom\\testing_git_deployment.pdf"
+  }
+]

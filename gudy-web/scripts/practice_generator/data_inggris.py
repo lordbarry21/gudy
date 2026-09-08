@@ -1,0 +1,1305 @@
+# -*- coding: utf-8 -*-
+"""
+Practice Question Bank: TKA Wajib Bahasa Inggris (Standar Pusmendik & CEFR Level B1/A2)
+6 Subcategories:
+- Reading Informational & Academic Texts (20 questions)
+- Reading Vocational & Everyday Texts (20 questions)
+- Vocabulary in Context & Lexical Nuance (20 questions)
+- Author's Purpose, Tone & Critical Stance (20 questions)
+- Discourse Cohesion & Text Organization (20 questions)
+- Applied Grammar & Sentence Mechanics (20 questions)
+Total: 120 Questions with Detailed Solutions
+"""
+
+BAHASA_INGGRIS_DATA = {
+    "subject_id": "bahasa_inggris",
+    "subject_name": "TKA Wajib: Bahasa Inggris",
+    "icon": "🌐",
+    "color": "#B86877",
+    "subcategories": [
+        {
+            "id": "reading_academic",
+            "title": "Reading Informational & Academic Texts",
+            "description": "Main Idea & Thesis Statement, Locating Explicit Factual Details, Paraphrasing, Drawing Logical Inferences",
+            "questions": [
+                {
+                    "num": 1,
+                    "topic": "Main Idea",
+                    "question": "Read the passage below:\n'Artificial intelligence is profoundly reshaping modern educational methodologies. Intelligent tutoring systems can now diagnose individual student learning gaps in real time, adapting pedagogical content to accommodate varying cognitive paces. Furthermore, automated grading frameworks relieve instructors of repetitive administrative duties, enabling them to dedicate greater attention to individualized mentorship.'\n\nWhat is the main idea of the passage?",
+                    "options": {
+                        "A": "Teachers are gradually being replaced by computerized robots",
+                        "B": "Artificial intelligence is significantly transforming modern education practices",
+                        "C": "Grading frameworks are the most critical component of teaching",
+                        "D": "Students prefer learning from software rather than human mentors",
+                        "E": "Administrative duties have increased in modern institutions"
+                    },
+                    "answer": "B",
+                    "solution": "The first sentence presents the primary thesis statement: AI is reshaping educational methodologies, which is then substantiated by adaptive tutoring and automated assessment in subsequent sentences."
+                },
+                {
+                    "num": 2,
+                    "topic": "Explicit Fact Scanning",
+                    "question": "According to the passage in Question 1, how do intelligent tutoring systems assist learners?",
+                    "options": {
+                        "A": "By calculating end-of-year tuition discounts",
+                        "B": "By identifying learning gaps and adapting content to their individual pace",
+                        "C": "By eliminating the requirement for standardized examinations",
+                        "D": "By monitoring students' physical activities in the classroom",
+                        "E": "By scheduling social extracurricular activities"
+                    },
+                    "answer": "B",
+                    "solution": "Explicitly stated in sentence 2: 'Intelligent tutoring systems can now diagnose individual student learning gaps in real time, adapting pedagogical content...'"
+                },
+                {
+                    "num": 3,
+                    "topic": "Inference Question",
+                    "question": "It can be inferred from the passage in Question 1 that before AI automation, teachers...",
+                    "options": {
+                        "A": "Did not care about mentoring their students",
+                        "B": "Spent a substantial portion of their working hours on repetitive assessment tasks",
+                        "C": "Never experienced difficulties diagnosing student progress",
+                        "D": "Refused to adopt digital computer technology",
+                        "E": "Had significantly shorter working days"
+                    },
+                    "answer": "B",
+                    "solution": "The statement that automated grading 'relieves instructors of repetitive administrative duties' logically implies teachers previously spent significant time on those manual grading tasks."
+                },
+                {
+                    "num": 4,
+                    "topic": "Primary Purpose",
+                    "question": "What is the author's primary purpose in writing the passage in Question 1?",
+                    "options": {
+                        "A": "To warn against the catastrophic dangers of classroom automation",
+                        "B": "To inform readers about the positive impacts of AI on educational methods",
+                        "C": "To advertise a commercial intelligent tutoring software brand",
+                        "D": "To criticize traditional teachers for their slow grading methods",
+                        "E": "To demand immediate school curriculum overhauls"
+                    },
+                    "answer": "B",
+                    "solution": "The passage maintains an informative, balanced expository tone describing the technological advancements and educational benefits of AI."
+                },
+                {
+                    "num": 5,
+                    "topic": "Paraphrasing Verification",
+                    "question": "Which statement best paraphrases: 'Automated grading frameworks relieve instructors of repetitive administrative duties'?",
+                    "options": {
+                        "A": "Teachers no longer have any work left to complete in school",
+                        "B": "Automated scoring systems free educators from monotonous evaluation tasks",
+                        "C": "Instructors refuse to grade students' homework assignments manually",
+                        "D": "Repetitive duties are preferred by computer algorithms",
+                        "E": "Administrative staff must be trained to replace classroom teachers"
+                    },
+                    "answer": "B",
+                    "solution": "'Relieve instructors of repetitive administrative duties' is accurately restated as 'free educators from monotonous evaluation tasks'."
+                },
+                {
+                    "num": 6,
+                    "topic": "Supporting Detail",
+                    "question": "The term 'pedagogical content' in the passage refers to...",
+                    "options": {
+                        "A": "Financial accounting ledgers",
+                        "B": "Instructional teaching and learning materials",
+                        "C": "Campus security protocols",
+                        "D": "Hardware maintenance guides",
+                        "E": "Athletic training routines"
+                    },
+                    "answer": "B",
+                    "solution": "Pedagogical relates to the theory and practice of education/teaching; hence pedagogical content means educational instruction material."
+                },
+                {
+                    "num": 7,
+                    "topic": "Fact vs Distortion",
+                    "question": "Which of the following is NOT true according to the passage in Question 1?",
+                    "options": {
+                        "A": "AI systems can adapt content to different learning speeds",
+                        "B": "AI tools enable teachers to provide more individualized mentorship",
+                        "C": "AI will completely eliminate the need for human teachers by next year",
+                        "D": "AI can evaluate diagnostic medical and educational patterns",
+                        "E": "Intelligent tutoring software operates in real-time"
+                    },
+                    "answer": "C",
+                    "solution": "The text never claims AI will eliminate human teachers; on the contrary, it emphasizes that AI enables teachers to focus more on personal mentorship."
+                },
+                {
+                    "num": 8,
+                    "topic": "Scientific Passage Inference",
+                    "question": "Passage: 'Coral reefs occupy less than 0.1 percent of the ocean's surface area, yet they harbor approximately 25 percent of all marine species. Rising sea surface temperatures disrupt the symbiotic relationship between corals and zooxanthellae algae, triggering widespread coral bleaching.'\n\nWhat would most likely happen if sea temperatures continue to climb indefinitely?",
+                    "options": {
+                        "A": "Coral reefs will expand rapidly across all oceans",
+                        "B": "A catastrophic collapse of ocean biodiversity affecting a quarter of marine life",
+                        "C": "Zooxanthellae algae will begin hunting deep-sea fish",
+                        "D": "The percentage of the ocean covered by coral will reach 25 percent",
+                        "E": "Marine species will adapt immediately without any losses"
+                    },
+                    "answer": "B",
+                    "solution": "Since 25% of marine species depend on corals and warm waters cause fatal bleaching, prolonged temperature rises would collapse that marine biodiversity."
+                },
+                {
+                    "num": 9,
+                    "topic": "Identifying Thesis Placement",
+                    "question": "In an academic analytical exposition essay, the thesis statement is conventionally positioned...",
+                    "options": {
+                        "A": "In the middle of the bibliography list",
+                        "B": "At the end of the introductory paragraph",
+                        "C": "Inside an appendix table",
+                        "D": "As the caption of the first illustration",
+                        "E": "In the acknowledgments section"
+                    },
+                    "answer": "B",
+                    "solution": "Academic convention places the central thesis statement at or near the end of the introductory paragraph."
+                },
+                {
+                    "num": 10,
+                    "topic": "Cause and Effect Analysis",
+                    "question": "Based on the coral passage in Question 8, what directly triggers coral bleaching?",
+                    "options": {
+                        "A": "Commercial overfishing of pelagic sharks",
+                        "B": "The breakdown of the symbiotic relationship with photosynthetic algae due to warm waters",
+                        "C": "The expansion of marine sanctuaries",
+                        "D": "Excessive rainfall along coastal estuaries",
+                        "E": "Sudden freezing of surface waves"
+                    },
+                    "answer": "B",
+                    "solution": "The passage explicitly links elevated temperatures to the disruption of symbiosis between corals and zooxanthellae, causing bleaching."
+                },
+                {
+                    "num": 11,
+                    "topic": "Data Synthesis",
+                    "question": "According to the coral passage, what proportion of marine species relies upon coral reefs?",
+                    "options": {"A": "0.1 percent", "B": "2.5 percent", "C": "25 percent", "D": "50 percent", "E": "75 percent"},
+                    "answer": "C",
+                    "solution": "Explicit text: '...yet they harbor approximately 25 percent of all marine species.'"
+                },
+                {
+                    "num": 12,
+                    "topic": "Identifying Analogy",
+                    "question": "When an author compares the function of a computer CPU to a human brain, what rhetorical technique is being employed?",
+                    "options": {"A": "Irony", "B": "Analogy", "C": "Understatement", "D": "Hyperbole", "E": "Euphemism"},
+                    "answer": "B",
+                    "solution": "An analogy explains an unfamiliar or technical concept by demonstrating its functional similarity to something familiar."
+                },
+                {
+                    "num": 13,
+                    "topic": "Fact Identification in Academic Writing",
+                    "question": "Which of the following sentences represents an empirical FACT?",
+                    "options": {
+                        "A": "Quantum computers are undeniably the greatest human invention ever built",
+                        "B": "Water freezes at zero degrees Celsius at standard atmospheric pressure",
+                        "C": "Python is far more enjoyable to learn than any other coding language",
+                        "D": "Working remotely is undoubtedly superior to working in a corporate office",
+                        "E": "Electric cars are boring compared to vintage muscle cars"
+                    },
+                    "answer": "B",
+                    "solution": "Sentence B is an empirically verifiable, measurable scientific fact. The others contain subjective opinion markers (*undeniably greatest, enjoyable, superior, boring*)."
+                },
+                {
+                    "num": 14,
+                    "topic": "Tone in Academic Journals",
+                    "question": "The tone of a peer-reviewed academic journal article investigating vaccine efficacy is typically...",
+                    "options": {"A": "Sarcastic and theatrical", "B": "Objective, empirical, and measured", "C": "Angry and confrontational", "D": "Whimsical and humorous", "E": "Mysterious and suspenseful"},
+                    "answer": "B",
+                    "solution": "Scientific research papers maintain an objective, empirical, neutral, and methodologically measured tone."
+                },
+                {
+                    "num": 15,
+                    "topic": "Summarizing a Text Segment",
+                    "question": "A paragraph explains that sleep deprivation causes micro-sleep episodes, slower neural reaction times, and impaired memory retention. The best summary title for this section is...",
+                    "options": {
+                        "A": "The History of Bedtime Alarms",
+                        "B": "Cognitive and Physiological Consequences of Sleep Deficit",
+                        "C": "How to Purchase Memory Pills",
+                        "D": "The Advantages of Midnight Coding Sessions",
+                        "E": "Dreams and REM Sleep Stages"
+                    },
+                    "answer": "B",
+                    "solution": "The title comprehensively encapsulates both the mental (cognitive) and bodily (physiological) repercussions of insufficient sleep."
+                },
+                {
+                    "num": 16,
+                    "topic": "Deducing Unstated Conclusions",
+                    "question": "Passage: 'Countries investing heavily in fiber-optic telecommunications and high-tech STEM education consistently achieve higher GDP growth than those dependent exclusively on raw mineral extraction.'\n\nWhat can be reasonably concluded?",
+                    "options": {
+                        "A": "Mineral extraction should be made illegal immediately",
+                        "B": "Technological infrastructure and knowledge-based training are vital drivers of economic growth",
+                        "C": "Fiber-optic cables are made from rare minerals",
+                        "D": "Education has no measurable influence on national prosperity",
+                        "E": "All developed countries have zero natural resources"
+                    },
+                    "answer": "B",
+                    "solution": "The correlation between STEM/fiber-optic investment and superior GDP performance demonstrates the primacy of a knowledge-based economy."
+                },
+                {
+                    "num": 17,
+                    "topic": "Expository Text Structure",
+                    "question": "An academic essay that presents a technical dilemma and subsequently details three methods to mitigate it follows which text structure?",
+                    "options": {"A": "Chronological order", "B": "Problem and Solution", "C": "Biography", "D": "Poetic narrative", "E": "Spatial description"},
+                    "answer": "B",
+                    "solution": "Presenting a complication followed by mitigation techniques is the classic Problem-Solution text framework."
+                },
+                {
+                    "num": 18,
+                    "topic": "Contextual Contrast",
+                    "question": "Sentence: 'Unlike renewable wind and solar energy, fossil fuel combustion generates substantial greenhouse gases that accelerate global climate change.'\n\nWhat is the primary point of contrast?",
+                    "options": {
+                        "A": "The financial cost of manufacturing turbines",
+                        "B": "The emission of climate-altering greenhouse gases during energy production",
+                        "C": "The physical weight of coal versus sunlight",
+                        "D": "The geographical location of power grids",
+                        "E": "The popularity of electric vehicles"
+                    },
+                    "answer": "B",
+                    "solution": "The contrast hinges directly on the generation of greenhouse gas emissions versus renewable clean alternatives."
+                },
+                {
+                    "num": 19,
+                    "topic": "Statistical Reading",
+                    "question": "A chart shows smartphone sales rising from 200 million units in 2010 to 1.4 billion units in 2020. This indicates a...",
+                    "options": {"A": "Minor dip", "B": "Sevenfold increase in annual sales volume", "C": "Stagnant market", "D": "Decrease in consumer adoption", "E": "Fifty percent decline"},
+                    "answer": "B",
+                    "solution": "1.4 billion divided by 200 million = 7. Thus it represents a sevenfold growth."
+                },
+                {
+                    "num": 20,
+                    "topic": "Academic Reading Strategy",
+                    "question": "When taking a timed standardized reading examination, which strategy is most effective for long technical passages?",
+                    "options": {
+                        "A": "Reading each word three times slowly before looking at questions",
+                        "B": "Skimming the passage for the main thesis, reviewing questions, and scanning back for specific keywords",
+                        "C": "Translating the entire English text into Indonesian on rough paper",
+                        "D": "Guessing option C for all questions without reading",
+                        "E": "Reading only the last sentence of the entire article"
+                    },
+                    "answer": "B",
+                    "solution": "Skimming for structure followed by targeted scanning for question keywords is the scientifically validated high-scoring reading strategy."
+                }
+            ]
+        },
+        {
+            "id": "reading_vocational",
+            "title": "Reading Vocational & Everyday Texts",
+            "description": "Technical Manuals, Procedures & Troubleshooting, Business Correspondence, Job Ads, Announcements & Schedules",
+            "questions": [
+                {
+                    "num": 1,
+                    "topic": "Software Installation Manual",
+                    "question": "Read the instruction snippet:\n'Step 3: Ensure your MySQL database service is active before running `php artisan migrate`. If connection errors occur, verify your DB_HOST and DB_PORT credentials in the `.env` file.'\n\nWhat should a developer do if the migration command fails to connect?",
+                    "options": {
+                        "A": "Reinstall Windows operating system",
+                        "B": "Check DB_HOST and DB_PORT configuration values in the `.env` file",
+                        "C": "Delete the entire application code",
+                        "D": "Buy a new laptop keyboard",
+                        "E": "Disable the internet router"
+                    },
+                    "answer": "B",
+                    "solution": "Explicitly instructed: 'If connection errors occur, verify your DB_HOST and DB_PORT credentials in the `.env` file.'"
+                },
+                {
+                    "num": 2,
+                    "topic": "Troubleshooting Condition",
+                    "question": "According to the manual in Question 1, what prerequisite must be satisfied BEFORE running `php artisan migrate`?",
+                    "options": {
+                        "A": "The Apache web server must be uninstalled",
+                        "B": "The MySQL database service must be active and running",
+                        "C": "The user must restart their computer twice",
+                        "D": "All PHP files must be renamed to .html",
+                        "E": "The `.env` file must be deleted"
+                    },
+                    "answer": "B",
+                    "solution": "Prerequisite stated in the manual: 'Ensure your MySQL database service is active before running...'"
+                },
+                {
+                    "num": 3,
+                    "topic": "Formal Email Purpose",
+                    "question": "Email excerpt:\n'Dear Ms. Johnson,\nThank you for considering our consulting firm. We have reviewed your architectural specifications and would like to formally request an extension until this Friday to finalize the cost estimation breakdown.'\n\nWhat is the main objective of this email?",
+                    "options": {
+                        "A": "To reject the client's proposal entirely",
+                        "B": "To ask for additional time (extension) until Friday to complete the quotation",
+                        "C": "To complain about architectural errors",
+                        "D": "To resign from the consulting company",
+                        "E": "To invite Ms. Johnson to a holiday party"
+                    },
+                    "answer": "B",
+                    "solution": "The core communicative act: '...formally request an extension until this Friday to finalize the cost estimation breakdown.'"
+                },
+                {
+                    "num": 4,
+                    "topic": "Job Qualifications Analysis",
+                    "question": "Job advertisement:\n'Position: Junior Web Developer (Laravel)\nRequirements:\n- Vocational High School (SMK RPL) or Bachelor's in Computer Science.\n- Proven competency in PHP, Laravel framework, and MySQL database.\n- Familiarity with Git version control is advantageous.'\n\nWhich candidate best matches the mandatory requirements?",
+                    "options": {
+                        "A": "An accountant with no coding background",
+                        "B": "A vocational high school RPL graduate with hands-on Laravel and MySQL skills",
+                        "C": "A graphic designer who only knows Adobe Photoshop",
+                        "D": "A civil engineer with experience in bridge maintenance",
+                        "E": "A high school student who has never written code"
+                    },
+                    "answer": "B",
+                    "solution": "The SMK RPL graduate with Laravel and MySQL skills satisfies both education and technical proficiency requirements."
+                },
+                {
+                    "num": 5,
+                    "topic": "Mandatory vs Preferred",
+                    "question": "In the job ad in Question 4, what does 'Familiarity with Git version control is advantageous' imply?",
+                    "options": {
+                        "A": "Applicants without Git will be fined",
+                        "B": "Git skill is a welcome plus/benefit, though not the primary baseline requirement",
+                        "C": "Git is strictly prohibited by the company",
+                        "D": "The company does not use version control",
+                        "E": "Git is only used by senior executives"
+                    },
+                    "answer": "B",
+                    "solution": "'Advantageous' or 'preferred' indicates a bonus qualification that gives an applicant a competitive edge."
+                },
+                {
+                    "num": 6,
+                    "topic": "Public Notice Warning",
+                    "question": "Public notice: 'Attention all passengers: Scheduled maintenance on the northbound rail line will commence at 22:00. Commuters are advised to utilize the shuttle bus service located at Exit B.'\n\nWhere should travelers go after 22:00 to continue their journey?",
+                    "options": {
+                        "A": "To Platform 1 on the train tracks",
+                        "B": "To the shuttle bus pickup area at Exit B",
+                        "C": "To the airport terminal",
+                        "D": "To the ticket refund counter at Exit A",
+                        "E": "To the parking basement"
+                    },
+                    "answer": "B",
+                    "solution": "Commuters are instructed to take shuttle buses stationed at Exit B during maintenance."
+                },
+                {
+                    "num": 7,
+                    "topic": "Customer Complaint Resolution",
+                    "question": "Customer service response: 'We sincerely apologize for the delayed dispatch of order #4082. A replacement unit has been shipped via priority courier at no additional charge.'\n\nHow did the company resolve the issue?",
+                    "options": {
+                        "A": "By charging the customer double the delivery fee",
+                        "B": "By sending a replacement unit via priority courier free of charge",
+                        "C": "By canceling the order permanently without notice",
+                        "D": "By offering a store coupon valid only next year",
+                        "E": "By refusing liability"
+                    },
+                    "answer": "B",
+                    "solution": "The company sent a replacement with expedited courier without extra fees."
+                },
+                {
+                    "num": 8,
+                    "topic": "Equipment Safety Warning",
+                    "question": "Warning label on a laser cutter: 'DANGER: High-voltage components inside. Disconnect power cord before removing protective casing. Do not operate without safety goggles.'\n\nWhat action must be performed FIRST before opening the case?",
+                    "options": {
+                        "A": "Wiping the lens with water",
+                        "B": "Disconnecting the electrical power cord",
+                        "C": "Turning the cutting power to maximum",
+                        "D": "Removing safety goggles",
+                        "E": "Calling customer support"
+                    },
+                    "answer": "B",
+                    "solution": "The instruction specifically mandates: 'Disconnect power cord before removing protective casing.'"
+                },
+                {
+                    "num": 9,
+                    "topic": "Meeting Agenda Timeline",
+                    "question": "Meeting Schedule:\n- 09:00 - 09:30: Welcome & Project Overview\n- 09:30 - 10:45: Database Migration & API Integration\n- 10:45 - 11:00: Coffee Break\n- 11:00 - 12:00: UI/UX Presentation\n\nAt what time will the discussion regarding API Integration conclude?",
+                    "options": {"A": "09:30", "B": "10:45", "C": "11:00", "D": "12:00", "E": "09:00"},
+                    "answer": "B",
+                    "solution": "The agenda slot for Database Migration & API Integration spans 09:30 to 10:45."
+                },
+                {
+                    "num": 10,
+                    "topic": "Office Policy Memorandum",
+                    "question": "Memorandum excerpt: 'Effective immediately, all leave requests exceeding three consecutive days must be submitted through the portal at least two weeks in advance.'\n\nIf an employee plans a 5-day holiday, when must they submit their request?",
+                    "options": {
+                        "A": "On the morning of the holiday",
+                        "B": "At least two weeks prior to the intended leave date",
+                        "C": "One day after returning to work",
+                        "D": "At the end of the calendar year",
+                        "E": "No submission is necessary"
+                    },
+                    "answer": "B",
+                    "solution": "The memo specifies: '...at least two weeks in advance' for leaves over 3 days."
+                },
+                {
+                    "num": 11,
+                    "topic": "Product Warranty Terms",
+                    "question": "Warranty card: 'This warranty covers manufacturer defects for 12 months. Damages caused by liquid spill, drop impact, or unauthorized tampering are strictly excluded.'\n\nWhich scenario is covered under this warranty?",
+                    "options": {
+                        "A": "The laptop screen broke after falling onto a tiled floor",
+                        "B": "Coffee spilled across the keyboard causing a short circuit",
+                        "C": "The internal motherboard failed due to a defective factory capacitor",
+                        "D": "An unauthorized repair shop replaced the battery",
+                        "E": "The user cracked the chassis with a screwdriver"
+                    },
+                    "answer": "C",
+                    "solution": "Factory component flaws are 'manufacturer defects', which are protected, whereas drops, spills, and tampering are explicitly excluded."
+                },
+                {
+                    "num": 12,
+                    "topic": "Formal Salutation",
+                    "question": "When writing a formal business inquiry to an organization where the recipient's name is unknown, the most appropriate opening salutation is...",
+                    "options": {
+                        "A": "Hey guys,",
+                        "B": "Dear Sir or Madam, / Dear Hiring Manager,",
+                        "C": "What's up,",
+                        "D": "Yo,",
+                        "E": "Hello buddy,"
+                    },
+                    "answer": "B",
+                    "solution": "'Dear Sir or Madam,' or 'Dear Hiring Manager,' is the standard polite business salutation for unnamed recipients."
+                },
+                {
+                    "num": 13,
+                    "topic": "Software Version Changelog",
+                    "question": "Changelog v2.4.0:\n- Fixed CSRF vulnerability in profile upload form.\n- Accelerated database querying by adding indexes to user_id.\n- Deprecated legacy PHP 7.4 compatibility.\n\nWhat security improvement was made in version 2.4.0?",
+                    "options": {
+                        "A": "Added new video games",
+                        "B": "Patched a CSRF vulnerability in the profile upload form",
+                        "C": "Lowered server processor requirements",
+                        "D": "Restored PHP 7.4 support",
+                        "E": "Removed user authentication"
+                    },
+                    "answer": "B",
+                    "solution": "First bullet point explicitly notes: 'Fixed CSRF vulnerability in profile upload form.'"
+                },
+                {
+                    "num": 14,
+                    "topic": "Flight Itinerary Interpretation",
+                    "question": "Flight Itinerary:\n- Flight GA-402: Depart CGK Jakarta 14:15 WIB -> Arrive DPS Bali 17:05 WITA.\nWhat is the scheduled departure time in Jakarta local time?",
+                    "options": {"A": "14:15 WIB", "B": "17:05 WITA", "C": "12:00 WIB", "D": "15:15 WIB", "E": "18:05 WITA"},
+                    "answer": "A",
+                    "solution": "Departure is listed as 14:15 WIB from CGK Jakarta."
+                },
+                {
+                    "num": 15,
+                    "topic": "Conference RSVP Deadline",
+                    "question": "Invitation: 'We cordially invite you to the National Web Tech Summit. Please RSVP by September 15th to guarantee your seat and dietary preferences.'\nWhat will happen if a participant registers after September 15th?",
+                    "options": {
+                        "A": "They will be fined by the organizers",
+                        "B": "Seat availability and dietary arrangements cannot be guaranteed",
+                        "C": "The conference will be rescheduled",
+                        "D": "They must deliver the keynote address",
+                        "E": "They are given VIP admission"
+                    },
+                    "answer": "B",
+                    "solution": "The deadline exists specifically to guarantee seating and meal accommodations."
+                },
+                {
+                    "num": 16,
+                    "topic": "Bank Statement Terms",
+                    "question": "Bank notice: 'A service fee of Rp15,000 will be debited monthly from accounts maintaining an average balance below the minimum threshold of Rp1,000,000.'\nHow can an account holder avoid this fee?",
+                    "options": {
+                        "A": "By closing their email account",
+                        "B": "By keeping their average balance at or above Rp1,000,000",
+                        "C": "By visiting the branch daily",
+                        "D": "By depositing foreign currency only",
+                        "E": "By changing their ATM PIN"
+                    },
+                    "answer": "B",
+                    "solution": "Maintaining an average balance equal to or higher than the minimum threshold avoids the monthly penalty."
+                },
+                {
+                    "num": 17,
+                    "topic": "Workplace Health & Safety (K3)",
+                    "question": "Safety directive: 'In the event of an earthquake, execute Drop, Cover, and Hold On under a sturdy desk. Do not use elevators under any circumstances.'\nWhy are elevators prohibited during an earthquake?",
+                    "options": {
+                        "A": "Elevators travel too fast",
+                        "B": "Risk of power disruption and entrapment inside elevator shafts",
+                        "C": "Elevators require coins to operate",
+                        "D": "Elevators are reserved for fire drills only",
+                        "E": "It is inconvenient for security guards"
+                    },
+                    "answer": "B",
+                    "solution": "Power outages and cable/shaft misalignment during tremors can trap occupants inside elevators."
+                },
+                {
+                    "num": 18,
+                    "topic": "API Documentation Endpoint",
+                    "question": "API Reference:\n`POST /api/v1/auth/login`\nHeader: `Content-Type: application/json`\nBody: `{\"email\": \"string\", \"password\": \"string\"}`\nResponse: `200 OK -> {\"token\": \"...\"}`\n\nWhat HTTP method is required to submit login credentials?",
+                    "options": {"A": "GET", "B": "POST", "C": "PUT", "D": "DELETE", "E": "PATCH"},
+                    "answer": "B",
+                    "solution": "The documentation specifies the `POST` method for the login route."
+                },
+                {
+                    "num": 19,
+                    "topic": "Package Delivery Note",
+                    "question": "Delivery receipt: 'Signature required upon delivery. If recipient is unavailable, package will be retained at the local hub for 5 business days.'\nHow long will the depot store the parcel before taking further action?",
+                    "options": {"A": "24 hours", "B": "3 calendar days", "C": "5 business days", "D": "2 weeks", "E": "1 month"},
+                    "answer": "C",
+                    "solution": "Explicitly declared: '...retained at the local hub for 5 business days.'"
+                },
+                {
+                    "num": 20,
+                    "topic": "Closing Salutation in Business Email",
+                    "question": "Which of the following represents an acceptable formal sign-off in a professional business letter?",
+                    "options": {
+                        "A": "Sincerely yours, / Best regards,",
+                        "B": "Catch ya later,",
+                        "C": "XOXO,",
+                        "D": "Cheers mate,",
+                        "E": "Peace out,"
+                    },
+                    "answer": "A",
+                    "solution": "'Sincerely yours,' and 'Best regards,' are the established polite and formal sign-offs in business writing."
+                }
+            ]
+        },
+        {
+            "id": "vocabulary_context",
+            "title": "Vocabulary in Context & Lexical Nuance",
+            "description": "Context Clues (Definition, Contrast, Example), Word Formation (Prefixes/Suffixes), High-Frequency Academic Vocabulary",
+            "questions": [
+                {
+                    "num": 1,
+                    "topic": "Context Clue Contrast",
+                    "question": "Sentence: 'Unlike his gregarious brother who thrived in massive social gatherings, Daniel was quite introverted, preferring quiet solitary evenings.'\nWhat does the word 'gregarious' mean in this context?",
+                    "options": {"A": "Shy and timid", "B": "Sociable and fond of company", "C": "Aggressive and hostile", "D": "Selfish and greedy", "E": "Clumsy and slow"},
+                    "answer": "B",
+                    "solution": "The contrast signaled by 'Unlike...' juxtaposes Daniel's introversion with his brother's 'gregarious' personality, which thrived in social gatherings (sociable)."
+                },
+                {
+                    "num": 2,
+                    "topic": "Academic Word 'Implement'",
+                    "question": "In the sentence 'The engineering team will implement the new caching strategy next week,' the word 'implement' is closest in meaning to...",
+                    "options": {"A": "Carry out / put into effect", "B": "Cancel permanently", "C": "Debate endlessly", "D": "Disassemble", "E": "Photograph"},
+                    "answer": "A",
+                    "solution": "To implement a strategy means to execute, carry out, or put it into active operation."
+                },
+                {
+                    "num": 3,
+                    "topic": "Prefix 'Sub-'",
+                    "question": "The prefix 'sub-' in words like 'subcategory', 'submarine', and 'subordinate' denotes...",
+                    "options": {"A": "Above / superior", "B": "Under / below / secondary", "C": "Against / opposed", "D": "Before / prior", "E": "Without / absent"},
+                    "answer": "B",
+                    "solution": "The Latin prefix 'sub-' means under, below, or subordinate/secondary."
+                },
+                {
+                    "num": 4,
+                    "topic": "Suffix Word Class Shift",
+                    "question": "Adding the suffix '-tion' to the verb 'migrate' produces 'migration', which transforms the word into a/an...",
+                    "options": {"A": "Adjective", "B": "Adverb", "C": "Noun", "D": "Preposition", "E": "Interjection"},
+                    "answer": "C",
+                    "solution": "The suffix '-tion' creates abstract nouns denoting action or condition (*migrate -> migration, innovate -> innovation*)."
+                },
+                {
+                    "num": 5,
+                    "topic": "Phrasal Verb 'Account for'",
+                    "question": "Sentence: 'Electronic component shortages account for nearly 40% of recent production delays.' What does 'account for' mean here?",
+                    "options": {"A": "Audit financial books", "B": "Explain or constitute the cause of", "C": "Hide criminal evidence", "D": "Deny responsibility", "E": "Calculate bank interest"},
+                    "answer": "B",
+                    "solution": "In statistical and causal contexts, 'account for' means to represent, constitute, or explain the proportion of something."
+                },
+                {
+                    "num": 6,
+                    "topic": "Synonym in Context 'Comprehensive'",
+                    "question": "In the phrase 'a comprehensive syllabus covering all competition topics', the word 'comprehensive' means...",
+                    "options": {"A": "Incomplete and brief", "B": "Thorough and all-inclusive", "C": "Confusing and illegible", "D": "Outdated and obsolete", "E": "Extremely expensive"},
+                    "answer": "B",
+                    "solution": "Comprehensive means complete, thorough, and including all essential aspects."
+                },
+                {
+                    "num": 7,
+                    "topic": "Antonym in Context 'Volatile'",
+                    "question": "The cryptocurrency market is notoriously **volatile**, whereas government treasury bonds remain remarkably...",
+                    "options": {"A": "Unpredictable", "B": "Stable / steady", "C": "Explosive", "D": "Risky", "E": "Temporary"},
+                    "answer": "B",
+                    "solution": "'Volatile' means rapidly changing and unpredictable; its natural antonym in financial contexts is 'stable' or 'steady'."
+                },
+                {
+                    "num": 8,
+                    "topic": "Context Clue Definition",
+                    "question": "Sentence: 'The botanist discovered an **epiphyte**, a plant that derives moisture and nutrients from the air and rain and usually grows upon another plant without being parasitic.'\nWhat type of context clue is used to define 'epiphyte'?",
+                    "options": {"A": "Direct definition appositive phrase", "B": "Irony", "C": "Metaphor", "D": "Rhyme", "E": "Rhetorical question"},
+                    "answer": "A",
+                    "solution": "The definition is provided directly between commas immediately following the term."
+                },
+                {
+                    "num": 9,
+                    "topic": "Academic Collocation",
+                    "question": "Which verb naturally collocates with the noun 'research' in formal academic writing?",
+                    "options": {"A": "Make", "B": "Conduct / undertake", "C": "Cook", "D": "Invent", "E": "Draw"},
+                    "answer": "B",
+                    "solution": "Standard academic collocation is 'to conduct research' or 'to undertake research'."
+                },
+                {
+                    "num": 10,
+                    "topic": "Prefix 'Mis-'",
+                    "question": "The prefix 'mis-' in 'misleading', 'miscalculation', and 'misconception' signifies...",
+                    "options": {"A": "Badly / wrongly / incorrectly", "B": "Very quickly", "C": "Double", "D": "Again", "E": "Together"},
+                    "answer": "A",
+                    "solution": "'Mis-' denotes bad, erroneous, or wrong action (*miscalculate = calculate wrongly*)."
+                },
+                {
+                    "num": 11,
+                    "topic": "Phrasal Verb 'Carry out'",
+                    "question": "In the sentence 'The students carried out the chemistry experiment meticulously,' 'carried out' is closest to...",
+                    "options": {"A": "Transported outside the building", "B": "Executed / performed", "C": "Dropped accidentally", "D": "Postponed", "E": "Photocopied"},
+                    "answer": "B",
+                    "solution": "To 'carry out an experiment' means to perform, conduct, or execute it."
+                },
+                {
+                    "num": 12,
+                    "topic": "Technical Term 'Robust'",
+                    "question": "In computer software engineering, a 'robust architecture' is one that...",
+                    "options": {"A": "Crashes easily under stress", "B": "Is resilient, sturdy, and handles errors gracefully", "C": "Requires no electrical power", "D": "Has a red user interface", "E": "Contains zero lines of code"},
+                    "answer": "B",
+                    "solution": "In software, robust refers to resilience, reliability, and fault-tolerance under demanding conditions."
+                },
+                {
+                    "num": 13,
+                    "topic": "Suffix '-able'",
+                    "question": "The adjective suffix '-able' (as in 'scalable', 'maintainable', 'usable') conveys the meaning of...",
+                    "options": {"A": "Capable of being / worthy of", "B": "In the past", "C": "Belonging to a person", "D": "Without fear", "E": "Excessive amount"},
+                    "answer": "A",
+                    "solution": "'-able' forms adjectives indicating ability or capacity (*maintainable = capable of being maintained*)."
+                },
+                {
+                    "num": 14,
+                    "topic": "Nuance Between 'Ensure' vs 'Insure'",
+                    "question": "Sentence: 'Developers must [...] that all passwords are encrypted before database insertion.' The correct word is...",
+                    "options": {"A": "ensure", "B": "insure", "C": "assure", "D": "inshore", "E": "ensue"},
+                    "answer": "A",
+                    "solution": "'Ensure' means to make certain that something happens. 'Insure' relates to financial insurance policies, and 'assure' means to convince a person."
+                },
+                {
+                    "num": 15,
+                    "topic": "Negative Connotation Word",
+                    "question": "Which of the following words carries a decidedly NEGATIVE connotation?",
+                    "options": {"A": "Innovative", "B": "Meticulous", "C": "Dilapidated", "D": "Harmonious", "E": "Resourceful"},
+                    "answer": "C",
+                    "solution": "'Dilapidated' means decayed, broken down, or in state of ruin (negative). The others are positive qualities."
+                },
+                {
+                    "num": 16,
+                    "topic": "Phrasal Verb 'Call off'",
+                    "question": "Sentence: 'Due to severe torrential rains, the outdoor sports festival was called off.' 'Called off' means...",
+                    "options": {"A": "Postponed until evening", "B": "Canceled", "C": "Broadcast live on TV", "D": "Moved indoors", "E": "Celebrated loudly"},
+                    "answer": "B",
+                    "solution": "The idiomatic phrasal verb 'call off' means to cancel."
+                },
+                {
+                    "num": 17,
+                    "topic": "High-Frequency Academic Word 'Subsequent'",
+                    "question": "The word 'subsequent' is synonymous with...",
+                    "options": {"A": "Following / ensuing", "B": "Preceding / prior", "C": "Simultaneous", "D": "Ancient", "E": "Irrelevant"},
+                    "answer": "A",
+                    "solution": "Subsequent means happening afterward or following in sequence."
+                },
+                {
+                    "num": 18,
+                    "topic": "Prefix 'Hyper-'",
+                    "question": "In medical and scientific terms like 'hypertension' and 'hypersensitive', the prefix 'hyper-' means...",
+                    "options": {"A": "Over / excessive / above normal", "B": "Below / deficient", "C": "Equal", "D": "Slow", "E": "Cold"},
+                    "answer": "A",
+                    "solution": "'Hyper-' signifies over, above, or excessive (*hyperactive, hypertension*)."
+                },
+                {
+                    "num": 19,
+                    "topic": "Context Clue Example",
+                    "question": "Sentence: 'The chef utilized various condiments, such as mustard, mayonnaise, relish, and barbecue sauce.' The examples illustrate that condiments are...",
+                    "options": {"A": "Cooking utensils", "B": "Seasoning and flavor-enhancing sauces", "C": "Electrical appliances", "D": "Dining table furniture", "E": "Main meat courses"},
+                    "answer": "B",
+                    "solution": "Mustard, mayo, and relish are seasonings/sauces added to food to impart flavor."
+                },
+                {
+                    "num": 20,
+                    "topic": "Lexical Choice 'Complement' vs 'Compliment'",
+                    "question": "Sentence: 'The crisp salad serves as a perfect [...] to the rich steak.' The correct spelling is...",
+                    "options": {"A": "compliment", "B": "complement", "C": "complament", "D": "complemint", "E": "complimant"},
+                    "answer": "B",
+                    "solution": "'Complement' (with 'e') means something that completes or goes well with something else. 'Compliment' (with 'i') is praise."
+                }
+            ]
+        },
+        {
+            "id": "author_craft_tone",
+            "title": "Author's Purpose, Tone & Critical Stance",
+            "description": "Identifying Author's Tone, Differentiating Fact from Opinion & Bias, Recognizing Target Audience and Rhetorical Goals",
+            "questions": [
+                {
+                    "num": 1,
+                    "topic": "Tone Identification",
+                    "question": "Passage: 'It is utterly absurd that in the twenty-first century, millions of citizens still lack access to potable drinking water while billions are squandered on corporate vanity projects.'\nWhat is the author's tone?",
+                    "options": {"A": "Indifferent", "B": "Indignant / outraged", "C": "Playful and whimsical", "D": "Joyful", "E": "Neutral"},
+                    "answer": "B",
+                    "solution": "Diction such as 'utterly absurd', 'squandered', and 'vanity projects' expresses righteous anger and indignation."
+                },
+                {
+                    "num": 2,
+                    "topic": "Target Audience",
+                    "question": "An article detailing the configuration of Docker container networks, kernel parameters, and YAML compose syntax is primarily intended for...",
+                    "options": {"A": "Elementary school pupils", "B": "Software engineers and DevOps specialists", "C": "Culinary pastry chefs", "D": "Fashion designers", "E": "History professors"},
+                    "answer": "B",
+                    "solution": "The technical domain knowledge directly targets systems engineers, developers, and DevOps practitioners."
+                },
+                {
+                    "num": 3,
+                    "topic": "Communicative Purpose",
+                    "question": "A brochure that describes the features of an eco-friendly water heater, presents customer testimonials, and offers a 20% discount coupon is written primarily to...",
+                    "options": {"A": "Narrate an autobiographical story", "B": "Persuade readers to purchase the product", "C": "Criticize government tax policies", "D": "Explain quantum physics", "E": "Entertain children"},
+                    "answer": "B",
+                    "solution": "Coupons, testimonials, and feature highlights are persuasive marketing tools designed to drive sales."
+                },
+                {
+                    "num": 4,
+                    "topic": "Subjective Bias Recognition",
+                    "question": "Which of the following statements reveals personal AUTHOR BIAS?",
+                    "options": {
+                        "A": "The speed limit on national highways is 100 kilometers per hour",
+                        "B": "Traditional brick-and-mortar shopping is infinitely superior to lazy online ordering",
+                        "C": "The transaction was recorded on September 4th, 2026",
+                        "D": "Water molecules consist of hydrogen and oxygen atoms",
+                        "E": "The company employs 250 full-time staff members"
+                    },
+                    "answer": "B",
+                    "solution": "Phrases like 'infinitely superior' and 'lazy online ordering' demonstrate subjective, emotional prejudice (bias)."
+                },
+                {
+                    "num": 5,
+                    "topic": "Skeptical Tone",
+                    "question": "Passage: 'The startup boldly promises that their new dietary pill burns fat while you sleep with zero physical exercise. However, independent clinical evidence remains conspicuously absent.'\nThe author's attitude toward the startup's claim is best described as...",
+                    "options": {"A": "Enthusiastic and gullible", "B": "Skeptical / doubtful", "C": "Hostile and violent", "D": "Terrified", "E": "Amused"},
+                    "answer": "B",
+                    "solution": "Pointing out the absence of independent verification indicates healthy scientific skepticism."
+                },
+                {
+                    "num": 6,
+                    "topic": "Objective Tone",
+                    "question": "Which sentence is written in an OBJECTIVE, UNBIASED tone?",
+                    "options": {
+                        "A": "The minister's ridiculous speech was a total embarrassment to the nation",
+                        "B": "The ministry reported that tax revenues increased by 4.2 percent in the third quarter",
+                        "C": "Only foolish people would invest in green energy technologies",
+                        "D": "The awful movie bored every single person in the cinema to tears",
+                        "E": "Our heroic team obliterated the pathetic opposition"
+                    },
+                    "answer": "B",
+                    "solution": "Sentence B reports official quantitative data dispassionately without editorial adjectives."
+                },
+                {
+                    "num": 7,
+                    "topic": "Author Stance Verification",
+                    "question": "If an author repeatedly presents both the economic advantages of urban expansion and its environmental toll with equal gravity, the author's stance is...",
+                    "options": {"A": "Completely biased toward real estate", "B": "Balanced and analytical", "C": "Sarcastic", "D": "Aggressive", "E": "Dismissive"},
+                    "answer": "B",
+                    "solution": "Weighing positive and negative impacts with methodological parity exemplifies a balanced stance."
+                },
+                {
+                    "num": 8,
+                    "topic": "Recognizing Satire",
+                    "question": "When an author writes an article playfully suggesting that teenagers be forced to communicate exclusively in Morse code to reduce screen time, the author is using...",
+                    "options": {"A": "Literal scientific prescription", "B": "Satire / irony to make a point", "C": "Technical manual formatting", "D": "Historical biography", "E": "Legal contract phrasing"},
+                    "answer": "B",
+                    "solution": "Satire employs absurdity and humor to comment upon contemporary social phenomena."
+                },
+                {
+                    "num": 9,
+                    "topic": "Informative Purpose",
+                    "question": "An encyclopedia entry defining the life cycle of a monarch butterfly is written primarily to...",
+                    "options": {"A": "Entertain with fictional drama", "B": "Provide factual information / educate", "C": "Sell butterfly farming equipment", "D": "Persuade readers to catch insects", "E": "Argue against evolutionary biology"},
+                    "answer": "B",
+                    "solution": "Encyclopedic entries are informative expository texts intended to educate."
+                },
+                {
+                    "num": 10,
+                    "topic": "Tone: Optimistic",
+                    "question": "Passage: 'Despite past setbacks in battery chemistry, recent breakthroughs in solid-state cells promise to make affordable, zero-emission aviation a reality within our decade.'\nThe tone here is...",
+                    "options": {"A": "Pessimistic", "B": "Optimistic / hopeful", "C": "Nostalgic", "D": "Sarcastic", "E": "Fearful"},
+                    "answer": "B",
+                    "solution": "'Promise to make affordable... a reality' conveys forward-looking technological optimism."
+                },
+                {
+                    "num": 11,
+                    "topic": "Author Assumption",
+                    "question": "'Since city dwellers are glued to smartphones, public transit authorities should abandon paper timetables immediately.' What assumption does the author make?",
+                    "options": {
+                        "A": "Every single transit rider possesses a functional digital smartphone and internet data",
+                        "B": "Paper is made from recycled fibers",
+                        "C": "Buses travel faster without schedules",
+                        "D": "Smartphone batteries never run out of power",
+                        "E": "Both A and D"
+                    },
+                    "answer": "E",
+                    "solution": "The recommendation presumes universal smartphone possession, cellular connectivity, and continuous battery charge among all passengers."
+                },
+                {
+                    "num": 12,
+                    "topic": "Tone: Melancholic",
+                    "question": "Passage: 'The abandoned playground lay silent under the grey autumn sky, its rusted swings swaying gently in the lonely wind, echoing memories of children long grown and departed.'\nThe prevailing tone is...",
+                    "options": {"A": "Melancholic / nostalgic", "B": "Humorous", "C": "Scientific", "D": "Business-like", "E": "Hostile"},
+                    "answer": "A",
+                    "solution": "Images of rust, autumn grey, silence, and departed youth evoke nostalgic melancholy."
+                },
+                {
+                    "num": 13,
+                    "topic": "Detecting Hyperbolic Assertion",
+                    "question": "Which sentence contains an exaggerated HYPERBOLIC assertion?",
+                    "options": {
+                        "A": "The library closes at 20:00 on weekdays",
+                        "B": "I have told you a billion times to back up your database before running migrations!",
+                        "C": "The server response latency was measured at 120 milliseconds",
+                        "D": "The conference takes place in Singapore next month",
+                        "E": "Three new pull requests were merged into the main branch"
+                    },
+                    "answer": "B",
+                    "solution": "'Told you a billion times' is a figurative, exaggerated hyperbole."
+                },
+                {
+                    "num": 14,
+                    "topic": "Author Rhetorical Strategy: Repetition",
+                    "question": "In a speech, repeating the phrase 'We shall not falter; we shall not surrender; we shall not yield' serves to...",
+                    "options": {"A": "Confuse listeners", "B": "Emphasize resolute determination and inspire emotional conviction", "C": "Waste speech time", "D": "Hide a grammatical error", "E": "Test microphone audio levels"},
+                    "answer": "B",
+                    "solution": "Anaphora (rhetorical repetition at the start of clauses) powerfully intensifies emotional resolve and persuasion."
+                },
+                {
+                    "num": 15,
+                    "topic": "Author Perspective in Debate",
+                    "question": "In a debate on nuclear power, an author who highlights zero carbon emissions while dismissing nuclear waste management concerns is demonstrating...",
+                    "options": {"A": "Total objectivity", "B": "Selective bias / one-sided advocacy", "C": "Complete ignorance of chemistry", "D": "A purely comedic purpose", "E": "Historical neutrality"},
+                    "answer": "B",
+                    "solution": "Highlighting advantages while deliberately omitting major counterarguments constitutes one-sided bias."
+                },
+                {
+                    "num": 16,
+                    "topic": "Urgent Tone",
+                    "question": "Passage: 'Immediate evacuation of coastal zones is mandatory. The category 5 cyclone is projected to make landfall within three hours with catastrophic storm surges.'\nWhat is the tone?",
+                    "options": {"A": "Urgent / alarmist / critical", "B": "Relaxed", "C": "Curious", "D": "Hesitant", "E": "Philosophical"},
+                    "answer": "A",
+                    "solution": "Directives like 'mandatory', 'immediate', and 'catastrophic' project life-saving urgency."
+                },
+                {
+                    "num": 17,
+                    "topic": "Identifying Understatement",
+                    "question": "After winning a national gold medal with a flawless score of 100, the contestant remarked: 'I suppose I did okay.' This remark is an example of...",
+                    "options": {"A": "Understatement / litotes", "B": "Arrogant bragging", "C": "Slander", "D": "Statistical modeling", "E": "Fabrication"},
+                    "answer": "A",
+                    "solution": "Deliberately minimizing a stellar achievement is classic rhetorical understatement (litotes)."
+                },
+                {
+                    "num": 18,
+                    "topic": "Tone: Didactic",
+                    "question": "A passage written explicitly to instruct readers on moral rectitude and civic duty is described as...",
+                    "options": {"A": "Didactic / instructional", "B": "Picaresque", "C": "Gothic", "D": "Satirical", "E": "Melodramatic"},
+                    "answer": "A",
+                    "solution": "Didactic literature intends to instruct or impart ethical/moral lessons."
+                },
+                {
+                    "num": 19,
+                    "topic": "Author Point of View in Argument",
+                    "question": "If an editorial asserts 'We must hold our municipal council accountable for polluted waterways,' the pronoun 'We' functions to...",
+                    "options": {"A": "Create solidarity and shared civic responsibility between author and readers", "B": "Avoid signing the author's name", "C": "Show uncertainty", "D": "Refer solely to the mayor", "E": "Exclude the public"},
+                    "answer": "A",
+                    "solution": "The inclusive 'We' fosters collective civic solidarity between writer and readership."
+                },
+                {
+                    "num": 20,
+                    "topic": "Evaluating Conclusion Appropriateness",
+                    "question": "A report presenting data on rising childhood obesity should conclude by...",
+                    "options": {
+                        "A": "Recommending actionable nutritional and physical activity interventions",
+                        "B": "Listing unrelated car prices",
+                        "C": "Claiming obesity is entirely imaginary",
+                        "D": "Insulting pediatricians",
+                        "E": "Predicting the weather for tomorrow"
+                    },
+                    "answer": "A",
+                    "solution": "A well-structured academic health report concludes with targeted, actionable public policy and lifestyle recommendations."
+                }
+            ]
+        },
+        {
+            "id": "discourse_cohesion",
+            "title": "Discourse Cohesion & Text Organization",
+            "description": "Transitional Signals (Contrast, Cause, Addition), Pronoun Reference, Paragraph Structure & Sentence Insertion",
+            "questions": [
+                {
+                    "num": 1,
+                    "topic": "Contrast Connector",
+                    "question": "Sentence: 'The software passed all automated unit tests. [...], several critical bugs were uncovered during live beta testing with real users.'\nThe most appropriate transitional signal is...",
+                    "options": {"A": "Consequently", "B": "However / Nevertheless", "C": "Furthermore", "D": "Similarly", "E": "In conclusion"},
+                    "answer": "B",
+                    "solution": "'However' or 'Nevertheless' introduces an unexpected contrast to the preceding sentence about passing automated tests."
+                },
+                {
+                    "num": 2,
+                    "topic": "Cause and Effect Connector",
+                    "question": "Sentence: 'The server experienced an unprecedented distributed denial-of-service attack. [...], the administration temporarily suspended all inbound external traffic.'\nThe best connector is...",
+                    "options": {"A": "Therefore / As a result", "B": "On the other hand", "C": "Despite", "D": "Although", "E": "In contrast"},
+                    "answer": "A",
+                    "solution": "Suspending external traffic was the direct consequence of the attack; 'Therefore' or 'As a result' expresses this causal link."
+                },
+                {
+                    "num": 3,
+                    "topic": "Pronoun Reference Resolution",
+                    "question": "Passage: 'Researchers synthesized a novel titanium alloy and compared it with standard carbon fiber. **It** exhibited remarkable resilience under high temperatures.'\nWhat does the pronoun '**It**' refer to?",
+                    "options": {
+                        "A": "The research team",
+                        "B": "The novel titanium alloy",
+                        "C": "Standard carbon fiber",
+                        "D": "High temperatures",
+                        "E": "The laboratory building"
+                    },
+                    "answer": "B",
+                    "solution": "'It' is the grammatical subject following the comparison, referring back to the primary subject 'a novel titanium alloy'."
+                },
+                {
+                    "num": 4,
+                    "topic": "Additive Transition",
+                    "question": "Sentence: 'Regular cardiovascular exercise strengthens the heart muscle. [...], it stimulates the release of endorphins that reduce anxiety.'\nWhich linker best indicates addition?",
+                    "options": {"A": "Moreover / Furthermore", "B": "Whereas", "C": "Nonetheless", "D": "Conversely", "E": "Instead"},
+                    "answer": "A",
+                    "solution": "'Moreover' or 'Furthermore' adds a complementary positive health benefit to the previous point."
+                },
+                {
+                    "num": 5,
+                    "topic": "Concession Connector 'Despite' vs 'Although'",
+                    "question": "Sentence: '[...] the heavy monsoon downpour, the construction team completed the bridge ahead of schedule.'\nThe correct grammatical choice is...",
+                    "options": {"A": "Although", "B": "Despite / In spite of", "C": "Even though", "D": "Because", "E": "Since"},
+                    "answer": "B",
+                    "solution": "'The heavy monsoon downpour' is a noun phrase without a finite verb. Prepositions like 'Despite' or 'In spite of' precede noun phrases, whereas conjunctions (*Although, Even though*) require a full clause."
+                },
+                {
+                    "num": 6,
+                    "topic": "Paragraph Relationship",
+                    "question": "Paragraph 1 outlines the theoretical principles of blockchain cryptography. Paragraph 2 details specific vulnerabilities encountered when implementing smart contracts. The relationship between Paragraph 1 and 2 is best described as...",
+                    "options": {
+                        "A": "Paragraph 2 repeats Paragraph 1 word for word",
+                        "B": "Paragraph 2 presents practical complications and limitations of the concept introduced in Paragraph 1",
+                        "C": "Paragraph 2 refutes that computers exist",
+                        "D": "Paragraph 2 provides a biography of the author",
+                        "E": "Paragraph 2 is entirely unrelated to Paragraph 1"
+                    },
+                    "answer": "B",
+                    "solution": "Paragraph 2 shifts from theoretical ideals to practical operational pitfalls."
+                },
+                {
+                    "num": 7,
+                    "topic": "Sentence Insertion Clue",
+                    "question": "Where should the sentence 'Such unprecedented measures, however, drew sharp condemnation from civil liberties advocates' be inserted in an article?",
+                    "options": {
+                        "A": "Immediately after a sentence describing the drastic emergency restrictions implemented by authorities",
+                        "B": "At the very beginning of the introductory paragraph",
+                        "C": "Inside a footnote explaining a Latin word",
+                        "D": "Before the title of the article",
+                        "E": "Inside the author's biography"
+                    },
+                    "answer": "A",
+                    "solution": "The demonstrative phrase 'Such unprecedented measures' requires an immediately preceding sentence that specifies those drastic measures."
+                },
+                {
+                    "num": 8,
+                    "topic": "Demonstrative Reference 'These'",
+                    "question": "Sentence: 'Solar, wind, and geothermal power require substantial upfront capital. Nevertheless, **these** generate zero operational carbon emissions.'\n'**These**' refers to...",
+                    "options": {
+                        "A": "Capital investments",
+                        "B": "Renewable energy sources (solar, wind, geothermal)",
+                        "C": "Fossil fuels",
+                        "D": "Carbon emissions",
+                        "E": "Financial debts"
+                    },
+                    "answer": "B",
+                    "solution": "'These' plural demonstrative pronoun refers to the renewable energy sources enumerated in the first clause."
+                },
+                {
+                    "num": 9,
+                    "topic": "Transitional Signal of Exemplification",
+                    "question": "To introduce specific illustrative evidence supporting a broad claim, which discourse marker is most suitable?",
+                    "options": {"A": "For instance / For example", "B": "In brief", "C": "Otherwise", "D": "On the contrary", "E": "Nevertheless"},
+                    "answer": "A",
+                    "solution": "'For instance' and 'For example' introduce concrete evidentiary illustrations."
+                },
+                {
+                    "num": 10,
+                    "topic": "Transitional Signal of Summary",
+                    "question": "Which transitional phrase appropriately signals the final synthesis or summary of an essay?",
+                    "options": {"A": "To sum up / In conclusion", "B": "Initially", "C": "First and foremost", "D": "For one thing", "E": "Incidentally"},
+                    "answer": "A",
+                    "solution": "'To sum up' or 'In conclusion' alerts readers that the text has entered its concluding synthesis."
+                },
+                {
+                    "num": 11,
+                    "topic": "Chronological Sequence",
+                    "question": "In narrative and process descriptions, words like 'initially', 'subsequently', 'meanwhile', and 'ultimately' establish...",
+                    "options": {"A": "Alphabetical order", "B": "Chronological / temporal sequence", "C": "Financial value", "D": "Mathematical equality", "E": "Color contrasts"},
+                    "answer": "B",
+                    "solution": "These adverbs denote progression across time (temporal order)."
+                },
+                {
+                    "num": 12,
+                    "topic": "Cohesion: Substitution",
+                    "question": "Sentence: 'I wanted to purchase an ultra-wide monitor, but there were no good **ones** in stock.' The word '**ones**' substitutes for...",
+                    "options": {"A": "Stores", "B": "Ultra-wide monitors", "C": "Customers", "D": "Price tags", "E": "Deliveries"},
+                    "answer": "B",
+                    "solution": "'Ones' is an anaphoric substitute pronoun replacing the repeated noun 'ultra-wide monitors'."
+                },
+                {
+                    "num": 13,
+                    "topic": "Punctuation with 'However'",
+                    "question": "Which sentence is correctly punctuated when using 'however' as a conjunctive adverb between two independent clauses?",
+                    "options": {
+                        "A": "The flight was delayed however we arrived on time.",
+                        "B": "The flight was delayed; however, we arrived on time.",
+                        "C": "The flight was delayed, however we, arrived on time.",
+                        "D": "The flight, was delayed however; we arrived on time.",
+                        "E": "The flight was delayed however; we arrived, on time."
+                    },
+                    "answer": "B",
+                    "solution": "When joining two independent clauses, a conjunctive adverb requires a semicolon before it and a comma after it: `; however,`."
+                },
+                {
+                    "num": 14,
+                    "topic": "Tracing 'The Latter'",
+                    "question": "Sentence: 'The developer evaluated both Vue and React. She ultimately selected **the latter** for its extensive corporate ecosystem.' Which framework was selected?",
+                    "options": {"A": "Vue", "B": "React", "C": "Angular", "D": "Svelte", "E": "Both equally"},
+                    "answer": "B",
+                    "solution": "'The former' refers to the first of two (Vue); 'the latter' refers to the second mentioned item (React)."
+                },
+                {
+                    "num": 15,
+                    "topic": "Cohesion via Lexical Reiteration",
+                    "question": "Repeating the core term 'cybersecurity' across successive paragraphs serves to...",
+                    "options": {"A": "Demonstrate a lack of vocabulary", "B": "Maintain thematic thread and lexical cohesion throughout the discourse", "C": "Confuse automated translation tools", "D": "Fill empty word count requirements", "E": "Make reading slower"},
+                    "answer": "B",
+                    "solution": "Lexical reiteration anchors readers to the central subject across complex argumentative shifts."
+                },
+                {
+                    "num": 16,
+                    "topic": "Condition Marker 'Unless'",
+                    "question": "Sentence: '[...] the server receives a valid cryptographic token, API access will be denied.' The appropriate word is...",
+                    "options": {"A": "If", "B": "Unless", "C": "Because", "D": "Whereas", "E": "Since"},
+                    "answer": "B",
+                    "solution": "'Unless' means 'if not'. Sentence meaning: 'If the server does NOT receive a valid token, access will be denied.'"
+                },
+                {
+                    "num": 17,
+                    "topic": "Clarification Connector",
+                    "question": "Which phrase is used to rephrase or clarify a preceding statement in more accessible terms?",
+                    "options": {"A": "In other words / That is to say", "B": "On the contrary", "C": "Never", "D": "Out of the blue", "E": "By surprise"},
+                    "answer": "A",
+                    "solution": "'In other words' signals an explanatory rephrasing for clarity."
+                },
+                {
+                    "num": 18,
+                    "topic": "Logical Organization: General to Specific",
+                    "question": "A paragraph begins with: 'Modern web frameworks streamline backend development.' The most logical next sentence is...",
+                    "options": {
+                        "A": "Dinosaurs went extinct millions of years ago",
+                        "B": "For example, Laravel automates routine tasks such as authentication, database migrations, and routing",
+                        "C": "Cooking pasta requires boiling salted water",
+                        "D": "The Moon revolves around the Earth",
+                        "E": "Automobiles require regular oil changes"
+                    },
+                    "answer": "B",
+                    "solution": "Sentence B provides the concrete specific example (Laravel) directly illustrating the broad opening assertion."
+                },
+                {
+                    "num": 19,
+                    "topic": "Cohesive Chain",
+                    "question": "A cohesive chain composed of 'developer -> programmer -> software engineer -> coder' is an example of...",
+                    "options": {"A": "Antonymy", "B": "Synonymy / near-synonymy", "C": "Alliteration", "D": "Rhyme", "E": "Oxymoron"},
+                    "answer": "B",
+                    "solution": "These terms are semantic synonyms referring to the same professional role."
+                },
+                {
+                    "num": 20,
+                    "topic": "Sentence Fragment Detection",
+                    "question": "Which of the following is a grammatically INCOMPLETE sentence fragment?",
+                    "options": {
+                        "A": "Although the team worked around the clock to finish the project.",
+                        "B": "The team worked around the clock to finish the project.",
+                        "C": "Working around the clock, the team finished the project.",
+                        "D": "Did the team finish the project?",
+                        "E": "The project was finished ahead of schedule."
+                    },
+                    "answer": "A",
+                    "solution": "Clause A begins with the subordinating conjunction 'Although' without any accompanying main/independent clause, making it a dependent fragment."
+                }
+            ]
+        },
+        {
+            "id": "grammar_mechanics",
+            "title": "Applied Grammar & Sentence Mechanics",
+            "description": "Tenses & Subject-Verb Agreement, Passive Voice & Reduced Relative Clauses, Conditionals & Modals",
+            "questions": [
+                {
+                    "num": 1,
+                    "topic": "Subject-Verb Agreement with Intervening Phrase",
+                    "question": "Sentence: 'The collection of rare antique books [...] auctioned yesterday.' The correct verb form is...",
+                    "options": {"A": "was", "B": "were", "C": "are", "D": "have been", "E": "being"},
+                    "answer": "A",
+                    "solution": "The head noun of the subject is 'The collection' (singular). The prepositional phrase 'of rare antique books' does not alter the singular agreement: 'was auctioned'."
+                },
+                {
+                    "num": 2,
+                    "topic": "Present Perfect Tense",
+                    "question": "Sentence: 'She [...] for this technology company since she graduated from university in 2022.' The correct verb is...",
+                    "options": {"A": "worked", "B": "has worked / has been working", "C": "is working", "D": "works", "E": "had worked"},
+                    "answer": "B",
+                    "solution": "Action starting in the past and continuing to the present signaled by 'since + time point' requires Present Perfect: 'has worked' or 'has been working'."
+                },
+                {
+                    "num": 3,
+                    "topic": "Conditional Type 2 (Unreal Present)",
+                    "question": "Sentence: 'If I [...] more spare time, I would contribute to open-source software repositories.' The correct form is...",
+                    "options": {"A": "have", "B": "had", "C": "will have", "D": "had had", "E": "am having"},
+                    "answer": "B",
+                    "solution": "Second Conditional (hypothetical present): If + Past Simple, would + V1. The past of have is 'had'."
+                },
+                {
+                    "num": 4,
+                    "topic": "Conditional Type 3 (Unreal Past)",
+                    "question": "Sentence: 'If the backup server had been configured properly, the data loss [...] during the power outage.'",
+                    "options": {
+                        "A": "would not happen",
+                        "B": "would not have happened",
+                        "C": "will not happen",
+                        "D": "had not happened",
+                        "E": "does not happen"
+                    },
+                    "answer": "B",
+                    "solution": "Third Conditional (hypothetical past regret): If + Past Perfect (`had been`), would have + V3 (`would not have happened`)."
+                },
+                {
+                    "num": 5,
+                    "topic": "Passive Voice Across Tenses",
+                    "question": "Active: 'The technician is inspecting the fiber-optic cables right now.' Passive: 'The fiber-optic cables [...] right now.'",
+                    "options": {
+                        "A": "are inspected",
+                        "B": "are being inspected",
+                        "C": "have been inspected",
+                        "D": "were inspected",
+                        "E": "will be inspected"
+                    },
+                    "answer": "B",
+                    "solution": "Present Continuous passive requires: am/is/are + being + V3 (`are being inspected`)."
+                },
+                {
+                    "num": 6,
+                    "topic": "Reduced Relative Clause (Active Participle)",
+                    "question": "Sentence: 'The engineer [...] beside the server rack is the lead network architect.'",
+                    "options": {"A": "stands", "B": "standing", "C": "stood", "D": "is standing", "E": "has stood"},
+                    "answer": "B",
+                    "solution": "Reduced relative clause of 'who is standing': the active participle '-ing' (`standing`) functions as a concise adjective phrase modifying 'The engineer'."
+                },
+                {
+                    "num": 7,
+                    "topic": "Reduced Relative Clause (Passive Participle)",
+                    "question": "Sentence: 'The software update [...] yesterday fixed several critical vulnerabilities.'",
+                    "options": {"A": "releasing", "B": "released", "C": "was released", "D": "releases", "E": "has released"},
+                    "answer": "B",
+                    "solution": "Reduced relative clause of 'which was released': the passive past participle `released` modifies 'The software update'."
+                },
+                {
+                    "num": 8,
+                    "topic": "Relative Pronouns: 'Who' vs 'Whom'",
+                    "question": "Sentence: 'The senior programmer [...] you interviewed this morning has accepted our job offer.'",
+                    "options": {"A": "who", "B": "whom", "C": "whose", "D": "which", "E": "where"},
+                    "answer": "B",
+                    "solution": "The pronoun functions as the grammatical object of the verb 'interviewed' (you interviewed HIM/HER), thus requiring the objective relative pronoun `whom`."
+                },
+                {
+                    "num": 9,
+                    "topic": "Relative Pronoun of Possession 'Whose'",
+                    "question": "Sentence: 'We selected the designer [...] portfolio demonstrated extraordinary typography and UI finesse.'",
+                    "options": {"A": "who", "B": "whom", "C": "whose", "D": "which", "E": "that's"},
+                    "answer": "C",
+                    "solution": "Possessive relative pronoun denoting ownership ('the designer's portfolio') is `whose`."
+                },
+                {
+                    "num": 10,
+                    "topic": "Modal of Past Deduction 'Must Have + V3'",
+                    "question": "Sentence: 'The office lights are off and the front gates are locked. The staff [...] home.'",
+                    "options": {
+                        "A": "must have gone",
+                        "B": "should go",
+                        "C": "can go",
+                        "D": "might go",
+                        "E": "would have gone"
+                    },
+                    "answer": "A",
+                    "solution": "'Must have + V3' conveys near-certain logical deduction regarding a completed past action based on clear physical evidence."
+                },
+                {
+                    "num": 11,
+                    "topic": "Modal of Past Regret 'Should Have + V3'",
+                    "question": "Sentence: 'I failed the certification exam because I did not study enough. I [...] harder.'",
+                    "options": {
+                        "A": "must study",
+                        "B": "should have studied",
+                        "C": "could study",
+                        "D": "might study",
+                        "E": "will have studied"
+                    },
+                    "answer": "B",
+                    "solution": "'Should have + V3' expresses regret or unfulfilled moral/practical obligation in the past."
+                },
+                {
+                    "num": 12,
+                    "topic": "Subject-Verb Agreement with 'Neither... Nor'",
+                    "question": "Sentence: 'Neither the team manager nor the software developers [...] satisfied with the client's revised deadline.'",
+                    "options": {"A": "was", "B": "were", "C": "is", "D": "has been", "E": "being"},
+                    "answer": "B",
+                    "solution": "With correlatives like 'neither... nor...', the verb agrees with the closer subject. 'The software developers' is plural, so the plural verb `were` is required."
+                },
+                {
+                    "num": 13,
+                    "topic": "Quantifiers: 'Every' and 'Each'",
+                    "question": "Sentence: 'Every student and teacher in the school [...] given a digital access badge.'",
+                    "options": {"A": "was", "B": "were", "C": "are", "D": "have been", "E": "being"},
+                    "answer": "A",
+                    "solution": "Subjects preceded by 'every' or 'each' take a singular verb regardless of compound conjunctions: `was given`."
+                },
+                {
+                    "num": 14,
+                    "topic": "Gerund vs Infinitive After 'Avoid'",
+                    "question": "Sentence: 'Developers should avoid [...] credentials directly in client-side JavaScript code.'",
+                    "options": {"A": "to store", "B": "storing", "C": "stored", "D": "store", "E": "having stored"},
+                    "answer": "B",
+                    "solution": "The verb 'avoid' is strictly followed by a gerund (-ing form): `avoid storing`."
+                },
+                {
+                    "num": 15,
+                    "topic": "Subjunctive Mood in That-Clauses",
+                    "question": "Sentence: 'The security auditor recommended that the administrator [...] all default root passwords immediately.'",
+                    "options": {"A": "changes", "B": "change", "C": "changed", "D": "must change", "E": "is changing"},
+                    "answer": "B",
+                    "solution": "Verbs of recommendation, demand, and insistence (*recommend, demand, suggest, insist*) trigger the subjunctive mood in the that-clause, using the base infinitive without -s: `change`."
+                },
+                {
+                    "num": 16,
+                    "topic": "Parallel Structure in Series",
+                    "question": "Sentence: 'An effective web application must be secure, responsive, and [...].'",
+                    "options": {"A": "maintainability", "B": "maintainable", "C": "to maintain", "D": "maintaining", "E": "maintain"},
+                    "answer": "B",
+                    "solution": "Parallel grammatical series of adjectives: secure (adj), responsive (adj), and `maintainable` (adj)."
+                },
+                {
+                    "num": 17,
+                    "topic": "Preposition Collocation 'Capable of'",
+                    "question": "Sentence: 'This modern cloud server is capable [...] handling over 50,000 concurrent requests.'",
+                    "options": {"A": "to", "B": "of", "C": "for", "D": "with", "E": "at"},
+                    "answer": "B",
+                    "solution": "The adjective 'capable' is followed by the preposition `of` + gerund: 'capable of handling'."
+                },
+                {
+                    "num": 18,
+                    "topic": "Inversion After Negative Adverbial",
+                    "question": "Sentence: 'Rarely [...] such an elegant and computationally efficient algorithm.'",
+                    "options": {"A": "we have seen", "B": "have we seen", "C": "we saw", "D": "we had seen", "E": "saw we"},
+                    "answer": "B",
+                    "solution": "When a sentence begins with a negative or restrictive adverbial (*Rarely, Seldom, Scarcely, Never*), auxiliary inversion is required: `Rarely have we seen...`."
+                },
+                {
+                    "num": 19,
+                    "topic": "Comparative Form",
+                    "question": "Sentence: 'Of the two cloud providers evaluated, Amazon Web Services proved to be [...] for our high-throughput requirements.'",
+                    "options": {"A": "the most suitable", "B": "the more suitable", "C": "more suitably", "D": "most suitable", "E": "suitable"},
+                    "answer": "B",
+                    "solution": "When comparing exactly two items ('of the two...'), formal grammatical convention uses the comparative degree with the definite article: `the more suitable`."
+                },
+                {
+                    "num": 20,
+                    "topic": "Used to vs Be Used to",
+                    "question": "Sentence: 'The junior developer is not used to [...] with complex microservice architectures yet.'",
+                    "options": {"A": "work", "B": "working", "C": "worked", "D": "to work", "E": "be working"},
+                    "answer": "B",
+                    "solution": "'Be used to' (meaning accustomed to) is followed by a gerund (-ing) or noun: `is not used to working`."
+                }
+            ]
+        }
+    ]
+}

@@ -10,6 +10,40 @@ import '../features/profile/profile_screen.dart';
 import '../core/theme/app_colors.dart';
 import '../core/theme/app_theme.dart';
 
+/// Custom page transition with bounce effect
+CustomTransitionPage<void> _buildPageWithBounceTransition({
+  required BuildContext context,
+  required GoRouterState state,
+  required Widget child,
+}) {
+  return CustomTransitionPage<void>(
+    key: state.pageKey,
+    child: child,
+    transitionDuration: const Duration(milliseconds: 400),
+    reverseTransitionDuration: const Duration(milliseconds: 300),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      final curvedAnimation = CurvedAnimation(
+        parent: animation,
+        curve: Curves.easeOutCubic,
+        reverseCurve: Curves.easeInCubic,
+      );
+      return SlideTransition(
+        position: Tween<Offset>(
+          begin: const Offset(0.0, 0.05),
+          end: Offset.zero,
+        ).animate(curvedAnimation),
+        child: FadeTransition(
+          opacity: Tween<double>(begin: 0.0, end: 1.0).animate(curvedAnimation),
+          child: ScaleTransition(
+            scale: Tween<double>(begin: 0.95, end: 1.0).animate(curvedAnimation),
+            child: child,
+          ),
+        ),
+      );
+    },
+  );
+}
+
 /// App Router Configuration
 final appRouter = GoRouter(
   initialLocation: '/',
@@ -22,54 +56,82 @@ final appRouter = GoRouter(
       routes: [
         GoRoute(
           path: '/',
-          pageBuilder: (context, state) => const NoTransitionPage(
-            child: HomeScreen(),
+          pageBuilder: (context, state) => CustomTransitionPage<void>(
+            key: state.pageKey,
+            child: const HomeScreen(),
+            transitionDuration: const Duration(milliseconds: 300),
+            transitionsBuilder: (context, animation, secondaryAnimation, child) {
+              return FadeTransition(opacity: animation, child: child);
+            },
           ),
         ),
         GoRoute(
           path: '/learn',
-          pageBuilder: (context, state) => const NoTransitionPage(
-            child: LearnScreen(),
+          pageBuilder: (context, state) => CustomTransitionPage<void>(
+            key: state.pageKey,
+            child: const LearnScreen(),
+            transitionDuration: const Duration(milliseconds: 300),
+            transitionsBuilder: (context, animation, secondaryAnimation, child) {
+              return FadeTransition(opacity: animation, child: child);
+            },
           ),
         ),
         GoRoute(
           path: '/progress',
-          pageBuilder: (context, state) => const NoTransitionPage(
-            child: ProgressScreen(),
+          pageBuilder: (context, state) => CustomTransitionPage<void>(
+            key: state.pageKey,
+            child: const ProgressScreen(),
+            transitionDuration: const Duration(milliseconds: 300),
+            transitionsBuilder: (context, animation, secondaryAnimation, child) {
+              return FadeTransition(opacity: animation, child: child);
+            },
           ),
         ),
         GoRoute(
           path: '/practice',
-          pageBuilder: (context, state) => const NoTransitionPage(
-            child: PracticeScreen(),
+          pageBuilder: (context, state) => CustomTransitionPage<void>(
+            key: state.pageKey,
+            child: const PracticeScreen(),
+            transitionDuration: const Duration(milliseconds: 300),
+            transitionsBuilder: (context, animation, secondaryAnimation, child) {
+              return FadeTransition(opacity: animation, child: child);
+            },
           ),
         ),
         GoRoute(
           path: '/profile',
-          pageBuilder: (context, state) => const NoTransitionPage(
-            child: ProfileScreen(),
+          pageBuilder: (context, state) => CustomTransitionPage<void>(
+            key: state.pageKey,
+            child: const ProfileScreen(),
+            transitionDuration: const Duration(milliseconds: 300),
+            transitionsBuilder: (context, animation, secondaryAnimation, child) {
+              return FadeTransition(opacity: animation, child: child);
+            },
           ),
         ),
       ],
     ),
-    // Detail routes (outside shell)
+    // Detail routes with bounce transition
     GoRoute(
       path: '/learn/:subjectId',
-      builder: (context, state) {
-        final subjectId = state.pathParameters['subjectId']!;
-        return SubjectDetailScreen(subjectId: subjectId);
-      },
+      pageBuilder: (context, state) => _buildPageWithBounceTransition(
+        context: context,
+        state: state,
+        child: SubjectDetailScreen(
+          subjectId: state.pathParameters['subjectId']!,
+        ),
+      ),
       routes: [
         GoRoute(
           path: 'topic/:topicId',
-          builder: (context, state) {
-            final subjectId = state.pathParameters['subjectId']!;
-            final topicId = state.pathParameters['topicId']!;
-            return TopicDetailScreen(
-              subjectId: subjectId,
-              topicId: topicId,
-            );
-          },
+          pageBuilder: (context, state) => _buildPageWithBounceTransition(
+            context: context,
+            state: state,
+            child: TopicDetailScreen(
+              subjectId: state.pathParameters['subjectId']!,
+              topicId: state.pathParameters['topicId']!,
+            ),
+          ),
         ),
       ],
     ),
