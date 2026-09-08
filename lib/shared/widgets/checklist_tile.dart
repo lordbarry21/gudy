@@ -5,7 +5,7 @@ import '../../core/theme/app_typography.dart';
 import '../../core/theme/app_theme.dart';
 import '../../data/models/checklist_item.dart';
 
-/// Checklist tile widget with animation
+/// Checklist tile widget - Beautiful Design
 class ChecklistTile extends StatefulWidget {
   final ChecklistItem item;
   final ValueChanged<bool>? onChanged;
@@ -66,60 +66,82 @@ class _ChecklistTileState extends State<ChecklistTile>
   Widget build(BuildContext context) {
     return ScaleTransition(
       scale: _scaleAnimation,
-      child: InkWell(
-        onTap: _handleTap,
-        borderRadius: BorderRadius.circular(AppTheme.buttonRadius),
-        child: Container(
-          padding: const EdgeInsets.symmetric(
-            horizontal: AppTheme.spacingMd,
-            vertical: AppTheme.spacingSm,
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 8),
+        decoration: BoxDecoration(
+          color: AppColors.cardLight,
+          borderRadius: BorderRadius.circular(14),
+          boxShadow: AppColors.getSoftShadow(),
+          border: Border.all(
+            color: widget.item.isChecked
+                ? AppColors.accentSuccess.withValues(alpha: 0.3)
+                : AppColors.border,
           ),
-          child: Row(
-            children: [
-              // Checkbox
-              _buildCheckbox(),
-              const SizedBox(width: AppTheme.spacingMd),
+        ),
+        child: Material(
+          color: Colors.transparent,
+          child: InkWell(
+            onTap: _handleTap,
+            borderRadius: BorderRadius.circular(14),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16,
+                vertical: 14,
+              ),
+              child: Row(
+                children: [
+                  // Beautiful Checkbox
+                  _buildCheckbox(),
+                  const SizedBox(width: 14),
 
-              // Title
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      widget.item.title,
-                      style: AppTypography.body.copyWith(
-                        color: widget.item.isChecked
-                            ? AppColors.textSecondary
-                            : AppColors.textPrimary,
-                        decoration: widget.item.isChecked
-                            ? TextDecoration.lineThrough
-                            : null,
+                  // Title
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          widget.item.title,
+                          style: AppTypography.body.copyWith(
+                            color: widget.item.isChecked
+                                ? AppColors.textSecondary
+                                : AppColors.textPrimary,
+                            decoration: widget.item.isChecked
+                                ? TextDecoration.lineThrough
+                                : null,
+                          ),
+                        ),
+                        if (widget.item.checkedAt != null) ...[
+                          const SizedBox(height: 4),
+                          Text(
+                            _formatTime(widget.item.checkedAt!),
+                            style: AppTypography.caption.copyWith(
+                              color: AppColors.textMuted,
+                            ),
+                          ),
+                        ],
+                      ],
+                    ),
+                  ),
+
+                  // Delete button
+                  if (widget.onDelete != null)
+                    Container(
+                      decoration: BoxDecoration(
+                        color: AppColors.cardElevated,
+                        shape: BoxShape.circle,
+                      ),
+                      child: IconButton(
+                        icon: Icon(
+                          Icons.close,
+                          size: 18,
+                          color: AppColors.textMuted,
+                        ),
+                        onPressed: widget.onDelete,
                       ),
                     ),
-                    if (widget.item.checkedAt != null) ...[
-                      const SizedBox(height: 2),
-                      Text(
-                        _formatTime(widget.item.checkedAt!),
-                        style: AppTypography.caption.copyWith(
-                          color: AppColors.textTertiary,
-                        ),
-                      ),
-                    ],
-                  ],
-                ),
+                ],
               ),
-
-              // Delete button
-              if (widget.onDelete != null)
-                IconButton(
-                  icon: const Icon(
-                    Icons.close,
-                    size: 18,
-                    color: AppColors.textTertiary,
-                  ),
-                  onPressed: widget.onDelete,
-                ),
-            ],
+            ),
           ),
         ),
       ),
@@ -129,19 +151,31 @@ class _ChecklistTileState extends State<ChecklistTile>
   Widget _buildCheckbox() {
     return AnimatedContainer(
       duration: AppTheme.animMicro,
-      width: 24,
-      height: 24,
+      width: 28,
+      height: 28,
       decoration: BoxDecoration(
-        color: widget.item.isChecked
-            ? AppColors.accentSuccess
-            : AppColors.cardBackground,
-        borderRadius: BorderRadius.circular(6),
+        gradient: widget.item.isChecked
+            ? const LinearGradient(
+                colors: [AppColors.accentEmerald, AppColors.accentCyan],
+              )
+            : null,
+        color: widget.item.isChecked ? null : AppColors.cardLight,
+        borderRadius: BorderRadius.circular(8),
         border: Border.all(
           color: widget.item.isChecked
-              ? AppColors.accentSuccess
+              ? Colors.transparent
               : AppColors.border,
           width: 2,
         ),
+        boxShadow: widget.item.isChecked
+            ? [
+                BoxShadow(
+                  color: AppColors.accentEmerald.withValues(alpha: 0.3),
+                  blurRadius: 8,
+                  offset: const Offset(0, 2),
+                ),
+              ]
+            : null,
       ),
       child: widget.item.isChecked
           ? AnimatedBuilder(
@@ -151,8 +185,8 @@ class _ChecklistTileState extends State<ChecklistTile>
                   opacity: _checkAnimation.value,
                   child: const Icon(
                     Icons.check,
-                    size: 16,
-                    color: AppColors.primaryBackground,
+                    size: 18,
+                    color: Colors.white,
                   ),
                 );
               },

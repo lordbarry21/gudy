@@ -12,9 +12,9 @@ import '../../../data/repositories/subject_repository.dart';
 import '../../../data/repositories/progress_repository.dart';
 import '../../shared/widgets/progress_bar.dart';
 import '../../shared/widgets/checklist_tile.dart';
-import '../../shared/widgets/animated_button.dart';
+import '../../shared/widgets/modern_cards.dart';
 
-/// Topic Detail Screen - Checklist & AI Prompt
+/// Topic Detail Screen - Beautiful Gradient Design
 class TopicDetailScreen extends ConsumerStatefulWidget {
   final String subjectId;
   final String topicId;
@@ -29,7 +29,8 @@ class TopicDetailScreen extends ConsumerStatefulWidget {
   ConsumerState<TopicDetailScreen> createState() => _TopicDetailScreenState();
 }
 
-class _TopicDetailScreenState extends ConsumerState<TopicDetailScreen> {
+class _TopicDetailScreenState extends ConsumerState<TopicDetailScreen>
+    with SingleTickerProviderStateMixin {
   final _subjectRepo = SubjectRepository();
   final _progressRepo = ProgressRepository();
 
@@ -44,31 +45,63 @@ class _TopicDetailScreenState extends ConsumerState<TopicDetailScreen> {
       );
     }
 
+    final subjectGradient = AppColors.getSubjectGradient(widget.subjectId);
+    final accentColor = subjectGradient.colors.first;
+
     return Scaffold(
-      backgroundColor: AppColors.primaryBackground,
+      backgroundColor: AppColors.backgroundLight,
       appBar: AppBar(
-        backgroundColor: AppColors.primaryBackground,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () => context.pop(),
+        backgroundColor: Colors.transparent,
+        leading: Container(
+          margin: const EdgeInsets.all(8),
+          decoration: BoxDecoration(
+            color: AppColors.cardLight,
+            borderRadius: BorderRadius.circular(12),
+            boxShadow: AppColors.getSoftShadow(),
+          ),
+          child: IconButton(
+            icon: const Icon(Icons.arrow_back, size: 20),
+            onPressed: () => context.pop(),
+          ),
         ),
         title: Text(
           topic.title,
-          style: AppTypography.heading4,
+          style: AppTypography.titleMedium,
         ),
         actions: [
           PopupMenuButton<String>(
-            icon: const Icon(Icons.more_vert),
-            color: AppColors.cardBackground,
+            icon: Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: AppColors.cardLight,
+                borderRadius: BorderRadius.circular(12),
+                boxShadow: AppColors.getSoftShadow(),
+              ),
+              child: const Icon(Icons.more_vert, size: 20),
+            ),
+            color: AppColors.cardLight,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16),
+            ),
             onSelected: (value) => _handleMenuAction(value, topic),
             itemBuilder: (context) => [
               PopupMenuItem(
                 value: 'mark_mastered',
-                enabled: topic.status != MasteryStatus.mastered,
                 child: Row(
                   children: [
-                    const Icon(Icons.check_circle, size: 20),
-                    const SizedBox(width: 8),
+                    Container(
+                      padding: const EdgeInsets.all(6),
+                      decoration: BoxDecoration(
+                        gradient: subjectGradient,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: const Icon(
+                        Icons.check_circle,
+                        size: 16,
+                        color: Colors.white,
+                      ),
+                    ),
+                    const SizedBox(width: 12),
                     Text(
                       topic.status == MasteryStatus.mastered
                           ? 'Already Mastered'
@@ -81,14 +114,15 @@ class _TopicDetailScreenState extends ConsumerState<TopicDetailScreen> {
                 value: 'reset',
                 child: Row(
                   children: [
-                    Icon(Icons.refresh, size: 20),
-                    SizedBox(width: 8),
+                    Icon(Icons.refresh, size: 18),
+                    SizedBox(width: 12),
                     Text('Reset Progress'),
                   ],
                 ),
               ),
             ],
           ),
+          const SizedBox(width: 8),
         ],
       ),
       body: SingleChildScrollView(
@@ -97,80 +131,89 @@ class _TopicDetailScreenState extends ConsumerState<TopicDetailScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Progress card
-            _buildProgressCard(topic),
-
-            const SizedBox(height: AppTheme.spacingLg),
+            _buildProgressCard(topic, subjectGradient),
+            const SizedBox(height: 24),
 
             // Checklist section
-            _buildChecklistSection(topic),
-
-            const SizedBox(height: AppTheme.spacingLg),
+            _buildChecklistSection(topic, subjectGradient),
+            const SizedBox(height: 24),
 
             // AI Prompt section
-            _buildAiPromptSection(topic, subject),
+            _buildAiPromptSection(topic, subject, subjectGradient),
 
-            const SizedBox(height: AppTheme.spacingLg),
-
-            // Actions
-            _buildActionsSection(topic),
-
-            const SizedBox(height: AppTheme.spacingXxl),
+            const SizedBox(height: 100),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildProgressCard(Topic topic) {
+  Widget _buildProgressCard(Topic topic, LinearGradient gradient) {
     return Container(
-      padding: const EdgeInsets.all(AppTheme.cardPadding),
       decoration: BoxDecoration(
-        color: AppColors.cardBackground,
-        borderRadius: BorderRadius.circular(AppTheme.cardRadius),
+        color: AppColors.cardLight,
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: AppColors.getSoftShadow(),
         border: Border.all(color: AppColors.border),
       ),
+      padding: const EdgeInsets.all(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('Mastery', style: AppTypography.label),
+              Text('Mastery', style: AppTypography.titleMedium),
               Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
                 decoration: BoxDecoration(
-                  color: Color(topic.status.colorValue).withOpacity(0.15),
-                  borderRadius: BorderRadius.circular(12),
+                  gradient: gradient,
+                  borderRadius: BorderRadius.circular(20),
                 ),
                 child: Text(
                   topic.status.displayName,
-                  style: AppTypography.caption.copyWith(
-                    color: Color(topic.status.colorValue),
+                  style: AppTypography.labelMedium.copyWith(
+                    color: Colors.white,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
               ),
             ],
           ),
-          const SizedBox(height: AppTheme.spacingMd),
-          ProgressBar(
-            percentage: topic.completionPercentage,
+          const SizedBox(height: 20),
+          Container(
             height: 10,
+            decoration: BoxDecoration(
+              color: gradient.colors.first.withValues(alpha: 0.1),
+              borderRadius: BorderRadius.circular(5),
+            ),
+            child: FractionallySizedBox(
+              alignment: Alignment.centerLeft,
+              widthFactor: topic.completionPercentage / 100,
+              child: Container(
+                decoration: BoxDecoration(
+                  gradient: gradient,
+                  borderRadius: BorderRadius.circular(5),
+                ),
+              ),
+            ),
           ),
-          const SizedBox(height: AppTheme.spacingSm),
+          const SizedBox(height: 16),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 '${topic.checkedItemsCount}/${topic.checklist.length} completed',
-                style: AppTypography.bodySmall,
+                style: AppTypography.bodyMedium,
               ),
-              Text(
-                '${topic.completionPercentage.toStringAsFixed(0)}%',
-                style: AppTypography.stats.copyWith(
-                  color: AppColors.accentSuccess,
-                  fontSize: 18,
+              ShaderMask(
+                shaderCallback: (bounds) => gradient.createShader(bounds),
+                child: Text(
+                  '${topic.completionPercentage.toStringAsFixed(0)}%',
+                  style: AppTypography.statsSmall.copyWith(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
               ),
             ],
@@ -180,50 +223,92 @@ class _TopicDetailScreenState extends ConsumerState<TopicDetailScreen> {
     );
   }
 
-  Widget _buildChecklistSection(Topic topic) {
+  Widget _buildChecklistSection(Topic topic, LinearGradient gradient) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text('Checklist', style: AppTypography.heading4),
+            Row(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    gradient: gradient,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: const Icon(Icons.checklist, color: Colors.white, size: 18),
+                ),
+                const SizedBox(width: 12),
+                Text('Checklist', style: AppTypography.titleMedium),
+              ],
+            ),
             TextButton.icon(
               onPressed: () => _showAddChecklistDialog(topic),
-              icon: const Icon(Icons.add, size: 18),
-              label: const Text('Add'),
+              icon: ShaderMask(
+                shaderCallback: (bounds) => gradient.createShader(bounds),
+                child: const Icon(Icons.add, size: 16, color: Colors.white),
+              ),
+              label: ShaderMask(
+                shaderCallback: (bounds) => gradient.createShader(bounds),
+                child: Text(
+                  'Add',
+                  style: AppTypography.labelMedium.copyWith(color: Colors.white),
+                ),
+              ),
             ),
           ],
         ),
-        const SizedBox(height: AppTheme.spacingSm),
+        const SizedBox(height: 12),
 
         if (topic.checklist.isEmpty)
           Container(
-            padding: const EdgeInsets.all(AppTheme.cardPadding),
             decoration: BoxDecoration(
-              color: AppColors.cardBackground,
-              borderRadius: BorderRadius.circular(AppTheme.cardRadius),
+              color: AppColors.cardLight,
+              borderRadius: BorderRadius.circular(20),
+              boxShadow: AppColors.getSoftShadow(),
               border: Border.all(color: AppColors.border),
             ),
+            padding: const EdgeInsets.all(32),
             child: Center(
               child: Column(
                 children: [
-                  const Icon(
-                    Icons.checklist,
-                    size: 48,
-                    color: AppColors.textTertiary,
-                  ),
-                  const SizedBox(height: AppTheme.spacingSm),
-                  Text(
-                    'No checklist items yet',
-                    style: AppTypography.body.copyWith(
-                      color: AppColors.textSecondary,
+                  Container(
+                    padding: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [
+                          gradient.colors.first.withValues(alpha: 0.1),
+                          gradient.colors.last.withValues(alpha: 0.1),
+                        ],
+                      ),
+                      shape: BoxShape.circle,
+                    ),
+                    child: Icon(
+                      Icons.checklist,
+                      size: 48,
+                      color: AppColors.textMuted,
                     ),
                   ),
-                  const SizedBox(height: AppTheme.spacingSm),
-                  TextButton(
+                  const SizedBox(height: 16),
+                  Text(
+                    'No items yet',
+                    style: AppTypography.titleMedium,
+                  ),
+                  const SizedBox(height: 8),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.transparent,
+                    ),
                     onPressed: () => _showAddChecklistDialog(topic),
-                    child: const Text('Add your first item'),
+                    child: ShaderMask(
+                      shaderCallback: (bounds) => gradient.createShader(bounds),
+                      child: Text(
+                        'Add first item',
+                        style: AppTypography.labelMedium.copyWith(color: Colors.white),
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -232,140 +317,124 @@ class _TopicDetailScreenState extends ConsumerState<TopicDetailScreen> {
         else
           Container(
             decoration: BoxDecoration(
-              color: AppColors.cardBackground,
-              borderRadius: BorderRadius.circular(AppTheme.cardRadius),
+              color: AppColors.cardLight,
+              borderRadius: BorderRadius.circular(20),
+              boxShadow: AppColors.getSoftShadow(),
               border: Border.all(color: AppColors.border),
             ),
             child: Column(
-              children: topic.checklist
-                  .asMap()
-                  .entries
-                  .map((entry) => ChecklistTile(
-                        item: entry.value,
-                        onChanged: (checked) {
-                          _toggleChecklistItem(topic, entry.value.id);
-                        },
-                      ))
-                  .toList(),
+              children: topic.checklist.asMap().entries.map((entry) {
+                return ChecklistTile(
+                  item: entry.value,
+                  onChanged: (checked) {
+                    _toggleChecklistItem(topic, entry.value.id);
+                  },
+                );
+              }).toList(),
             ),
           ),
       ],
     );
   }
 
-  Widget _buildAiPromptSection(Topic topic, subject) {
+  Widget _buildAiPromptSection(Topic topic, subject, LinearGradient gradient) {
     final prompt = _subjectRepo.generateAiPrompt(topic.title);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('AI Learning Assistant', style: AppTypography.heading4),
-        const SizedBox(height: AppTheme.spacingSm),
+        Row(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                gradient: gradient,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: const Text('🤖', style: TextStyle(fontSize: 18)),
+            ),
+            const SizedBox(width: 12),
+            Text('AI Prompt', style: AppTypography.titleMedium),
+          ],
+        ),
+        const SizedBox(height: 12),
         Container(
-          padding: const EdgeInsets.all(AppTheme.cardPadding),
           decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                AppColors.accentInfo.withOpacity(0.15),
-                AppColors.accentHighlight.withOpacity(0.1),
-              ],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            ),
-            borderRadius: BorderRadius.circular(AppTheme.cardRadius),
-            border: Border.all(
-              color: AppColors.accentInfo.withOpacity(0.3),
-            ),
+            color: AppColors.cardLight,
+            borderRadius: BorderRadius.circular(20),
+            boxShadow: AppColors.getSoftShadow(),
+            border: Border.all(color: AppColors.border),
           ),
+          padding: const EdgeInsets.all(20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                children: [
-                  Container(
-                    padding: const EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      color: AppColors.accentInfo.withOpacity(0.2),
-                      shape: BoxShape.circle,
-                    ),
-                    child: const Text('🤖', style: TextStyle(fontSize: 20)),
-                  ),
-                  const SizedBox(width: AppTheme.spacingMd),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Generate AI Prompt',
-                          style: AppTypography.label,
-                        ),
-                        Text(
-                          'Copy this prompt to ChatGPT, Gemini, etc.',
-                          style: AppTypography.caption,
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: AppTheme.spacingMd),
               Container(
-                padding: const EdgeInsets.all(AppTheme.spacingMd),
+                width: double.infinity,
+                padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
-                  color: AppColors.primaryBackground.withOpacity(0.5),
-                  borderRadius: BorderRadius.circular(8),
+                  color: AppColors.surfaceLight,
+                  borderRadius: BorderRadius.circular(12),
                 ),
                 child: Text(
                   prompt,
                   style: AppTypography.bodySmall.copyWith(
                     fontFamily: 'monospace',
                     color: AppColors.textSecondary,
+                    height: 1.5,
                   ),
                 ),
               ),
-              const SizedBox(height: AppTheme.spacingMd),
+              const SizedBox(height: 16),
               Row(
                 children: [
                   Expanded(
-                    child: AnimatedButton(
-                      label: 'Copy to Clipboard',
-                      icon: Icons.copy,
-                      onPressed: () => _copyToClipboard(prompt),
+                    child: GestureDetector(
+                      onTap: () => _copyToClipboard(prompt),
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(vertical: 14),
+                        decoration: BoxDecoration(
+                          gradient: gradient,
+                          borderRadius: BorderRadius.circular(14),
+                          boxShadow: [
+                            BoxShadow(
+                              color: gradient.colors.first.withValues(alpha: 0.3),
+                              blurRadius: 12,
+                              offset: const Offset(0, 4),
+                            ),
+                          ],
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Icon(Icons.copy, color: Colors.white, size: 18),
+                            const SizedBox(width: 8),
+                            Text(
+                              'Copy',
+                              style: AppTypography.button.copyWith(color: Colors.white),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ),
-                  const SizedBox(width: AppTheme.spacingSm),
-                  AnimatedIconButton(
-                    icon: Icons.share,
-                    onPressed: () => _sharePrompt(prompt),
+                  const SizedBox(width: 12),
+                  GestureDetector(
+                    onTap: () => _sharePrompt(prompt),
+                    child: Container(
+                      padding: const EdgeInsets.all(14),
+                      decoration: BoxDecoration(
+                        color: AppColors.cardElevated,
+                        borderRadius: BorderRadius.circular(14),
+                        border: Border.all(color: AppColors.border),
+                      ),
+                      child: Icon(Icons.share, color: AppColors.textPrimary, size: 20),
+                    ),
                   ),
                 ],
               ),
             ],
           ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildActionsSection(Topic topic) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text('Actions', style: AppTypography.heading4),
-        const SizedBox(height: AppTheme.spacingSm),
-        Row(
-          children: [
-            Expanded(
-              child: AnimatedButton(
-                label: 'Practice Questions',
-                icon: Icons.quiz,
-                isPrimary: false,
-                onPressed: () {
-                  // TODO: Navigate to practice
-                },
-              ),
-            ),
-          ],
         ),
       ],
     );
@@ -383,10 +452,10 @@ class _TopicDetailScreenState extends ConsumerState<TopicDetailScreen> {
   }
 
   void _toggleChecklistItem(Topic topic, String itemId) {
+    HapticFeedback.lightImpact();
     _subjectRepo.toggleChecklistItem(topic.id, itemId);
     setState(() {});
 
-    // Check if topic is now mastered
     final updatedTopic = _subjectRepo.getTopic(topic.id);
     if (updatedTopic != null &&
         updatedTopic.status == MasteryStatus.mastered &&
@@ -398,6 +467,7 @@ class _TopicDetailScreenState extends ConsumerState<TopicDetailScreen> {
   }
 
   void _markAsMastered(Topic topic) {
+    HapticFeedback.mediumImpact();
     _subjectRepo.markAsMastered(topic.id);
     _progressRepo.addCompletedTopic();
     _subjectRepo.refreshSubjectCounts();
@@ -409,7 +479,20 @@ class _TopicDetailScreenState extends ConsumerState<TopicDetailScreen> {
     _subjectRepo.resetTopicProgress(topic.id);
     setState(() {});
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Progress reset')),
+      SnackBar(
+        content: Row(
+          children: [
+            const Icon(Icons.check_circle, color: Colors.white),
+            const SizedBox(width: 10),
+            const Text('Progress reset'),
+          ],
+        ),
+        backgroundColor: AppColors.textPrimary,
+        behavior: SnackBarBehavior.floating,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
+      ),
     );
   }
 
@@ -418,42 +501,99 @@ class _TopicDetailScreenState extends ConsumerState<TopicDetailScreen> {
 
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        backgroundColor: AppColors.cardBackground,
-        title: const Text('Add Checklist Item'),
-        content: TextField(
-          controller: controller,
-          autofocus: true,
-          decoration: const InputDecoration(
-            hintText: 'Enter item title',
+      builder: (context) => Dialog(
+        backgroundColor: AppColors.cardLight,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                'Add Checklist Item',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+              const SizedBox(height: 20),
+              Container(
+                decoration: BoxDecoration(
+                  color: AppColors.surfaceLight,
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: AppColors.border),
+                ),
+                child: TextField(
+                  controller: controller,
+                  autofocus: true,
+                  decoration: const InputDecoration(
+                    hintText: 'Enter item title',
+                    border: InputBorder.none,
+                    contentPadding: EdgeInsets.all(16),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 24),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  TextButton(
+                    onPressed: () => Navigator.pop(context),
+                    child: Text(
+                      'Cancel',
+                      style: TextStyle(color: AppColors.textMuted),
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  Container(
+                    decoration: BoxDecoration(
+                      gradient: AppColors.mainGradient,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.transparent,
+                        shadowColor: Colors.transparent,
+                      ),
+                      onPressed: () {
+                        if (controller.text.isNotEmpty) {
+                          _subjectRepo.addChecklistItem(topic.id, controller.text);
+                          setState(() {});
+                          Navigator.pop(context);
+                        }
+                      },
+                      child: const Text('Add'),
+                    ),
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('Cancel'),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              if (controller.text.isNotEmpty) {
-                _subjectRepo.addChecklistItem(topic.id, controller.text);
-                setState(() {});
-                Navigator.pop(context);
-              }
-            },
-            child: const Text('Add'),
-          ),
-        ],
       ),
     );
   }
 
   void _copyToClipboard(String text) {
     Clipboard.setData(ClipboardData(text: text));
+    HapticFeedback.lightImpact();
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Prompt copied to clipboard!'),
-        duration: Duration(seconds: 2),
+      SnackBar(
+        content: Row(
+          children: [
+            const Icon(Icons.check_circle, color: Colors.white),
+            const SizedBox(width: 10),
+            const Text('Copied to clipboard!'),
+          ],
+        ),
+        backgroundColor: AppColors.accentEmerald,
+        behavior: SnackBarBehavior.floating,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
       ),
     );
   }
@@ -467,24 +607,34 @@ class _TopicDetailScreenState extends ConsumerState<TopicDetailScreen> {
       SnackBar(
         content: Row(
           children: [
-            const Text('🎉 '),
+            const Text('🎉', style: TextStyle(fontSize: 20)),
+            const SizedBox(width: 12),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Text('Topic Mastered!'),
+                  const Text(
+                    'Topic Mastered!',
+                    style: TextStyle(fontWeight: FontWeight.w600),
+                  ),
                   Text(
                     'Keep up the great work!',
-                    style: AppTypography.caption,
+                    style: AppTypography.bodySmall.copyWith(
+                      color: Colors.white.withValues(alpha: 0.8),
+                    ),
                   ),
                 ],
               ),
             ),
           ],
         ),
-        backgroundColor: AppColors.accentSuccess,
+        backgroundColor: AppColors.accentEmerald,
         duration: const Duration(seconds: 3),
+        behavior: SnackBarBehavior.floating,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
       ),
     );
   }

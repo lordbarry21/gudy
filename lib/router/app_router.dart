@@ -8,6 +8,7 @@ import '../features/progress/progress_screen.dart';
 import '../features/practice/practice_screen.dart';
 import '../features/profile/profile_screen.dart';
 import '../core/theme/app_colors.dart';
+import '../core/theme/app_theme.dart';
 
 /// App Router Configuration
 final appRouter = GoRouter(
@@ -75,7 +76,7 @@ final appRouter = GoRouter(
   ],
 );
 
-/// Main Shell - Bottom Navigation
+/// Main Shell - Bottom Navigation (Modern Design)
 class MainShell extends StatefulWidget {
   final Widget child;
 
@@ -85,10 +86,35 @@ class MainShell extends StatefulWidget {
   State<MainShell> createState() => _MainShellState();
 }
 
-class _MainShellState extends State<MainShell> {
+class _MainShellState extends State<MainShell>
+    with SingleTickerProviderStateMixin {
   int _currentIndex = 0;
+  late AnimationController _animationController;
 
   final _routes = ['/', '/learn', '/progress', '/practice', '/profile'];
+
+  final _navItems = [
+    _NavItem(icon: Icons.home_outlined, activeIcon: Icons.home, label: 'Home'),
+    _NavItem(icon: Icons.menu_book_outlined, activeIcon: Icons.menu_book, label: 'Learn'),
+    _NavItem(icon: Icons.bar_chart_outlined, activeIcon: Icons.bar_chart, label: 'Progress'),
+    _NavItem(icon: Icons.quiz_outlined, activeIcon: Icons.quiz, label: 'Practice'),
+    _NavItem(icon: Icons.person_outline, activeIcon: Icons.person, label: 'Profile'),
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(
+      duration: const Duration(milliseconds: 200),
+      vsync: this,
+    );
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -100,31 +126,31 @@ class _MainShellState extends State<MainShell> {
     return Scaffold(
       body: widget.child,
       bottomNavigationBar: Container(
-        decoration: const BoxDecoration(
-          color: AppColors.secondaryBackground,
-          border: Border(
+        decoration: BoxDecoration(
+          color: AppColors.backgroundLight,
+          border: const Border(
             top: BorderSide(
               color: AppColors.border,
               width: 1,
             ),
           ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withValues(alpha: 0.08),
+              blurRadius: 20,
+              offset: const Offset(0, -4),
+            ),
+          ],
         ),
         child: SafeArea(
-          child: SizedBox(
-            height: 64,
+          child: Container(
+            height: 72,
+            padding: const EdgeInsets.symmetric(horizontal: 8),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                _buildNavItem(0, Icons.home_outlined, Icons.home, 'Home'),
-                _buildNavItem(1, Icons.menu_book_outlined,
-                    Icons.menu_book, 'Learn'),
-                _buildNavItem(
-                    2, Icons.bar_chart_outlined, Icons.bar_chart, 'Progress'),
-                _buildNavItem(
-                    3, Icons.quiz_outlined, Icons.quiz, 'Practice'),
-                _buildNavItem(
-                    4, Icons.person_outline, Icons.person, 'Profile'),
-              ],
+              children: List.generate(_navItems.length, (index) {
+                return _buildNavItem(index, _navItems[index]);
+              }),
             ),
           ),
         ),
@@ -132,52 +158,69 @@ class _MainShellState extends State<MainShell> {
     );
   }
 
-  Widget _buildNavItem(
-      int index, IconData icon, IconData activeIcon, String label) {
+  Widget _buildNavItem(int index, _NavItem item) {
     final isSelected = _currentIndex == index;
 
     return Expanded(
-      child: InkWell(
+      child: GestureDetector(
         onTap: () {
           setState(() {
             _currentIndex = index;
           });
           context.go(_routes[index]);
         },
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            AnimatedContainer(
-              duration: const Duration(milliseconds: 200),
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-              decoration: BoxDecoration(
-                color: isSelected
-                    ? AppColors.accentSuccess.withOpacity(0.15)
-                    : Colors.transparent,
-                borderRadius: BorderRadius.circular(16),
-              ),
-              child: Icon(
-                isSelected ? activeIcon : icon,
-                color: isSelected
-                    ? AppColors.accentSuccess
-                    : AppColors.textTertiary,
+        behavior: HitTestBehavior.opaque,
+        child: AnimatedContainer(
+          duration: AppTheme.animMicro,
+          margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 4),
+          padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+          decoration: BoxDecoration(
+            gradient: isSelected ? AppColors.mainGradient : null,
+            color: isSelected ? null : Colors.transparent,
+            borderRadius: BorderRadius.circular(16),
+            boxShadow: isSelected
+                ? [
+                    BoxShadow(
+                      color: AppColors.accentPurple.withValues(alpha: 0.3),
+                      blurRadius: 12,
+                      offset: const Offset(0, 2),
+                    ),
+                  ]
+                : null,
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(
+                isSelected ? item.activeIcon : item.icon,
+                color: isSelected ? Colors.white : AppColors.textMuted,
                 size: 24,
               ),
-            ),
-            const SizedBox(height: 4),
-            Text(
-              label,
-              style: TextStyle(
-                fontSize: 11,
-                fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
-                color: isSelected
-                    ? AppColors.accentSuccess
-                    : AppColors.textTertiary,
+              const SizedBox(height: 4),
+              Text(
+                item.label,
+                style: TextStyle(
+                  fontSize: 11,
+                  fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
+                  color: isSelected ? Colors.white : AppColors.textMuted,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
   }
+}
+
+class _NavItem {
+  final IconData icon;
+  final IconData activeIcon;
+  final String label;
+
+  _NavItem({
+    required this.icon,
+    required this.activeIcon,
+    required this.label,
+  });
 }

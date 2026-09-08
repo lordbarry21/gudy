@@ -3,8 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'app_colors.dart';
 
-/// Gudy Theme Configuration
-/// Dark modern theme optimized for low-end devices
+/// Gudy Theme Configuration - Beautiful Light Mode Design
 class AppTheme {
   AppTheme._();
 
@@ -12,12 +11,25 @@ class AppTheme {
   // SPACING (8-Point Grid System)
   // ============================================
 
-  static const double spacingXs = 4.0;
-  static const double spacingSm = 8.0;
-  static const double spacingMd = 16.0;
-  static const double spacingLg = 24.0;
-  static const double spacingXl = 32.0;
-  static const double spacingXxl = 48.0;
+  static const double spacing2 = 2.0;
+  static const double spacing4 = 4.0;
+  static const double spacing6 = 6.0;
+  static const double spacing8 = 8.0;
+  static const double spacing12 = 12.0;
+  static const double spacing16 = 16.0;
+  static const double spacing20 = 20.0;
+  static const double spacing24 = 24.0;
+  static const double spacing32 = 32.0;
+  static const double spacing40 = 40.0;
+  static const double spacing48 = 48.0;
+
+  // Aliases
+  static const double spacingXs = spacing2;
+  static const double spacingSm = spacing8;
+  static const double spacingMd = spacing16;
+  static const double spacingLg = spacing24;
+  static const double spacingXl = spacing32;
+  static const double spacingXxl = spacing48;
 
   /// Screen horizontal padding
   static const double screenPadding = 20.0;
@@ -26,59 +38,50 @@ class AppTheme {
   static const double cardPadding = 16.0;
 
   /// Card border radius
-  static const double cardRadius = 16.0;
+  static const double cardRadius = 20.0;
 
   /// Button border radius
-  static const double buttonRadius = 12.0;
+  static const double buttonRadius = 14.0;
 
   // ============================================
-  // ANIMATION DURATIONS (Lightweight)
+  // ANIMATION DURATIONS
   // ============================================
 
-  /// Micro animations - button press, toggle
   static const Duration animMicro = Duration(milliseconds: 150);
-
-  /// Standard animations - card expand, modal
   static const Duration animStandard = Duration(milliseconds: 250);
-
-  /// Emphasis animations - page transitions, celebrations
-  static const Duration animEmphasis = Duration(milliseconds: 400);
+  static const Duration animEmphasis = Duration(milliseconds: 350);
 
   // ============================================
   // ANIMATION CURVES
   // ============================================
 
-  /// Default easing
   static const Curve animDefault = Curves.easeOut;
-
-  /// Bounce easing (for celebrations)
   static const Curve animBounce = Curves.elasticOut;
-
-  /// Smooth easing
   static const Curve animSmooth = Curves.easeInOutCubic;
+  static const Curve animSpring = Curves.fastOutSlowIn;
 
   // ============================================
   // MAIN THEME DATA
   // ============================================
 
-  static ThemeData get darkTheme {
+  static ThemeData get lightTheme {
     return ThemeData(
       useMaterial3: true,
-      brightness: Brightness.dark,
+      brightness: Brightness.light,
 
       // Colors
-      scaffoldBackgroundColor: AppColors.primaryBackground,
-      primaryColor: AppColors.accentSuccess,
-      colorScheme: const ColorScheme.dark(
-        primary: AppColors.accentSuccess,
-        secondary: AppColors.accentWarning,
-        tertiary: AppColors.accentInfo,
-        surface: AppColors.secondaryBackground,
-        error: Color(0xFFEF4444),
-        onPrimary: AppColors.primaryBackground,
-        onSecondary: AppColors.primaryBackground,
+      scaffoldBackgroundColor: AppColors.backgroundLight,
+      primaryColor: AppColors.accentPurple,
+      colorScheme: const ColorScheme.light(
+        primary: AppColors.accentPurple,
+        secondary: AppColors.accentPink,
+        tertiary: AppColors.accentCyan,
+        surface: AppColors.surfaceLight,
+        error: AppColors.accentRose,
+        onPrimary: Colors.white,
+        onSecondary: Colors.white,
         onSurface: AppColors.textPrimary,
-        onError: AppColors.textPrimary,
+        onError: Colors.white,
       ),
 
       // Text
@@ -94,66 +97,70 @@ class AppTheme {
           titleMedium: TextStyle(color: AppColors.textPrimary),
           titleSmall: TextStyle(color: AppColors.textPrimary),
           bodyLarge: TextStyle(color: AppColors.textPrimary),
-          bodyMedium: TextStyle(color: AppColors.textPrimary),
-          bodySmall: TextStyle(color: AppColors.textSecondary),
+          bodyMedium: TextStyle(color: AppColors.textSecondary),
+          bodySmall: TextStyle(color: AppColors.textMuted),
           labelLarge: TextStyle(color: AppColors.textPrimary),
           labelMedium: TextStyle(color: AppColors.textSecondary),
-          labelSmall: TextStyle(color: AppColors.textTertiary),
+          labelSmall: TextStyle(color: AppColors.textMuted),
         ),
       ),
 
       // AppBar
       appBarTheme: const AppBarTheme(
-        backgroundColor: AppColors.primaryBackground,
+        backgroundColor: Colors.transparent,
         foregroundColor: AppColors.textPrimary,
         elevation: 0,
         centerTitle: false,
         systemOverlayStyle: SystemUiOverlayStyle(
           statusBarColor: Colors.transparent,
-          statusBarIconBrightness: Brightness.light,
-          statusBarBrightness: Brightness.dark,
+          statusBarIconBrightness: Brightness.dark,
+          statusBarBrightness: Brightness.light,
         ),
       ),
 
-      // Bottom Navigation
-      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-        backgroundColor: AppColors.secondaryBackground,
-        selectedItemColor: AppColors.accentSuccess,
-        unselectedItemColor: AppColors.textTertiary,
+      // Bottom Navigation - Modern with gradient accent
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        backgroundColor: AppColors.backgroundLight,
+        selectedItemColor: AppColors.accentPurple,
+        unselectedItemColor: AppColors.textMuted,
         type: BottomNavigationBarType.fixed,
         elevation: 0,
         showUnselectedLabels: true,
+        selectedLabelStyle: GoogleFonts.inter(
+          fontSize: 11,
+          fontWeight: FontWeight.w600,
+        ),
+        unselectedLabelStyle: GoogleFonts.inter(
+          fontSize: 11,
+          fontWeight: FontWeight.w400,
+        ),
       ),
 
-      // Cards
+      // Cards - Modern with shadow
       cardTheme: CardTheme(
-        color: AppColors.cardBackground,
+        color: AppColors.cardLight,
         elevation: 0,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(cardRadius),
-          side: const BorderSide(
-            color: AppColors.border,
-            width: 1,
-          ),
         ),
         margin: EdgeInsets.zero,
       ),
 
-      // Elevated Buttons
+      // Elevated Buttons - Gradient style
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.accentSuccess,
-          foregroundColor: AppColors.primaryBackground,
+          backgroundColor: AppColors.accentPurple,
+          foregroundColor: Colors.white,
           elevation: 0,
           padding: const EdgeInsets.symmetric(
-            horizontal: spacingLg,
-            vertical: spacingMd,
+            horizontal: spacing24,
+            vertical: spacing16,
           ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(buttonRadius),
           ),
           textStyle: GoogleFonts.inter(
-            fontSize: 16,
+            fontSize: 14,
             fontWeight: FontWeight.w600,
           ),
         ),
@@ -162,10 +169,10 @@ class AppTheme {
       // Text Buttons
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
-          foregroundColor: AppColors.accentSuccess,
+          foregroundColor: AppColors.accentPurple,
           textStyle: GoogleFonts.inter(
             fontSize: 14,
-            fontWeight: FontWeight.w500,
+            fontWeight: FontWeight.w600,
           ),
         ),
       ),
@@ -176,8 +183,8 @@ class AppTheme {
           foregroundColor: AppColors.textPrimary,
           side: const BorderSide(color: AppColors.border),
           padding: const EdgeInsets.symmetric(
-            horizontal: spacingLg,
-            vertical: spacingMd,
+            horizontal: spacing24,
+            vertical: spacing16,
           ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(buttonRadius),
@@ -188,7 +195,7 @@ class AppTheme {
       // Input Fields
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        fillColor: AppColors.cardBackground,
+        fillColor: AppColors.surfaceLight,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(buttonRadius),
           borderSide: const BorderSide(color: AppColors.border),
@@ -199,21 +206,21 @@ class AppTheme {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(buttonRadius),
-          borderSide: const BorderSide(color: AppColors.accentSuccess, width: 2),
+          borderSide: const BorderSide(color: AppColors.accentPurple, width: 2),
         ),
         contentPadding: const EdgeInsets.symmetric(
-          horizontal: spacingMd,
-          vertical: spacingMd,
+          horizontal: spacing16,
+          vertical: spacing16,
         ),
         hintStyle: GoogleFonts.inter(
-          color: AppColors.textTertiary,
-          fontSize: 16,
+          color: AppColors.textMuted,
+          fontSize: 14,
         ),
       ),
 
       // Progress Indicators
       progressIndicatorTheme: const ProgressIndicatorThemeData(
-        color: AppColors.accentSuccess,
+        color: AppColors.accentPurple,
         linearTrackColor: AppColors.border,
       ),
 
@@ -221,31 +228,31 @@ class AppTheme {
       dividerTheme: const DividerThemeData(
         color: AppColors.border,
         thickness: 1,
-        space: 0,
+        space: 1,
       ),
 
       // Checkbox
       checkboxTheme: CheckboxThemeData(
         fillColor: WidgetStateProperty.resolveWith((states) {
           if (states.contains(WidgetState.selected)) {
-            return AppColors.accentSuccess;
+            return AppColors.accentPurple;
           }
-          return AppColors.cardBackground;
+          return AppColors.surfaceLight;
         }),
-        checkColor: WidgetStateProperty.all(AppColors.primaryBackground),
+        checkColor: WidgetStateProperty.all(Colors.white),
         side: const BorderSide(color: AppColors.border, width: 2),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(4),
+          borderRadius: BorderRadius.circular(6),
         ),
       ),
 
       // List Tiles
       listTileTheme: const ListTileThemeData(
         contentPadding: EdgeInsets.symmetric(
-          horizontal: spacingMd,
-          vertical: spacingSm,
+          horizontal: spacing16,
+          vertical: spacing8,
         ),
-        minVerticalPadding: spacingSm,
+        minVerticalPadding: spacing8,
       ),
 
       // Icon Theme
@@ -256,15 +263,33 @@ class AppTheme {
 
       // Snackbar
       snackBarTheme: SnackBarThemeData(
-        backgroundColor: AppColors.cardBackground,
+        backgroundColor: AppColors.textPrimary,
         contentTextStyle: GoogleFonts.inter(
-          color: AppColors.textPrimary,
+          color: Colors.white,
           fontSize: 14,
         ),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(buttonRadius),
         ),
         behavior: SnackBarBehavior.floating,
+      ),
+
+      // Dialog
+      dialogTheme: DialogTheme(
+        backgroundColor: AppColors.backgroundLight,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(cardRadius),
+        ),
+      ),
+
+      // Bottom Sheet
+      bottomSheetTheme: const BottomSheetThemeData(
+        backgroundColor: AppColors.backgroundLight,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            top: Radius.circular(24),
+          ),
+        ),
       ),
     );
   }

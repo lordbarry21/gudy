@@ -51,7 +51,7 @@ class ProgressBar extends StatelessWidget {
                     decoration: BoxDecoration(
                       gradient: fillColor != null
                           ? LinearGradient(colors: [fillColor!, fillColor!])
-                          : AppColors.successGradient,
+                          : const LinearGradient(colors: [AppColors.accentEmerald, AppColors.accentEmerald]),
                       borderRadius: BorderRadius.circular(height / 2),
                       boxShadow: clampedPercentage > 0
                           ? [

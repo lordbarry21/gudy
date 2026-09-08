@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../../data/repositories/subject_repository.dart';
 import '../../../data/repositories/progress_repository.dart';
-import '../../shared/widgets/progress_bar.dart';
+import '../../shared/widgets/modern_cards.dart';
 
-/// Home Dashboard Screen
+/// Home Dashboard Screen - Beautiful Gradient Design
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
 
@@ -15,9 +16,32 @@ class HomeScreen extends ConsumerStatefulWidget {
   ConsumerState<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends ConsumerState<HomeScreen> {
+class _HomeScreenState extends ConsumerState<HomeScreen>
+    with SingleTickerProviderStateMixin {
   final _subjectRepo = SubjectRepository();
   final _progressRepo = ProgressRepository();
+  late AnimationController _animationController;
+  late Animation<double> _fadeAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(
+      duration: const Duration(milliseconds: 600),
+      vsync: this,
+    );
+    _fadeAnimation = CurvedAnimation(
+      parent: _animationController,
+      curve: Curves.easeOut,
+    );
+    _animationController.forward();
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,123 +56,119 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         totalTopics > 0 ? (completedTopics / totalTopics) * 100 : 0.0;
 
     return Scaffold(
-      backgroundColor: AppColors.primaryBackground,
+      backgroundColor: AppColors.backgroundLight,
       body: SafeArea(
-        child: CustomScrollView(
-          slivers: [
-            // Header
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: const EdgeInsets.all(AppTheme.screenPadding),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    _buildHeader(progress),
-                    const SizedBox(height: AppTheme.spacingLg),
-                    _buildStreakCard(progress),
-                    const SizedBox(height: AppTheme.spacingLg),
-                    _buildOverallProgress(overallProgress, completedTopics, totalTopics),
-                  ],
+        child: FadeTransition(
+          opacity: _fadeAnimation,
+          child: CustomScrollView(
+            slivers: [
+              // Beautiful Gradient Header
+              SliverToBoxAdapter(
+                child: _buildHeader(progress),
+              ),
+
+              // Streak Card with Gradient
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: AppTheme.screenPadding),
+                  child: _buildStreakCard(progress),
                 ),
               ),
-            ),
 
-            // Today's Goals Section
-            SliverToBoxAdapter(
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: AppTheme.screenPadding),
-                child: Text(
-                  "Today's Goals",
-                  style: AppTypography.heading3,
+              const SliverToBoxAdapter(child: SizedBox(height: 20)),
+
+              // Overall Progress with Gradient
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: AppTheme.screenPadding),
+                  child: _buildOverallProgress(
+                      overallProgress, completedTopics, totalTopics),
                 ),
               ),
-            ),
 
-            const SliverToBoxAdapter(
-              child: SizedBox(height: AppTheme.spacingMd),
-            ),
+              const SliverToBoxAdapter(child: SizedBox(height: 24)),
 
-            // Goals list
-            SliverPadding(
-              padding: const EdgeInsets.symmetric(
-                  horizontal: AppTheme.screenPadding),
-              sliver: SliverList(
-                delegate: SliverChildBuilderDelegate(
-                  (context, index) {
-                    final inProgressSubjects = subjects
-                        .where((s) => s.progressPercentage > 0 && s.progressPercentage < 100)
-                        .take(3)
-                        .toList();
-
-                    if (index >= inProgressSubjects.length) {
-                      // Show a suggestion card if no in-progress subjects
-                      if (index == inProgressSubjects.length &&
-                          inProgressSubjects.isEmpty) {
-                        return _buildSuggestionCard();
-                      }
-                      return const SizedBox.shrink();
-                    }
-
-                    final subject = inProgressSubjects[index];
-                    return Padding(
-                      padding: const EdgeInsets.only(bottom: AppTheme.spacingSm),
-                      child: _buildGoalCard(subject),
-                    );
-                  },
-                  childCount: subjects
-                          .where((s) => s.progressPercentage > 0 && s.progressPercentage < 100)
-                          .length +
-                      1,
+              // Quick Stats
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: AppTheme.screenPadding),
+                  child: _buildQuickStats(progress),
                 ),
               ),
-            ),
 
-            const SliverToBoxAdapter(
-              child: SizedBox(height: AppTheme.spacingLg),
-            ),
+              const SliverToBoxAdapter(child: SizedBox(height: 28)),
 
-            // Recent Activity Section
-            SliverToBoxAdapter(
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: AppTheme.screenPadding),
-                child: Text(
-                  'Quick Access',
-                  style: AppTypography.heading3,
+              // Subjects Section with gradient title
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: AppTheme.screenPadding),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      ShaderMask(
+                        shaderCallback: (bounds) =>
+                            AppColors.mainGradient.createShader(bounds),
+                        child: Text(
+                          'Your Subjects',
+                          style: AppTypography.headlineSmall.copyWith(
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () => context.go('/learn'),
+                        child: ShaderMask(
+                          shaderCallback: (bounds) =>
+                              AppColors.mainGradient.createShader(bounds),
+                          child: Text(
+                            'See all',
+                            style: AppTypography.labelMedium.copyWith(
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
 
-            const SliverToBoxAdapter(
-              child: SizedBox(height: AppTheme.spacingMd),
-            ),
-
-            // Quick access grid
-            SliverPadding(
-              padding: const EdgeInsets.symmetric(
-                  horizontal: AppTheme.screenPadding),
-              sliver: SliverGrid(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  mainAxisSpacing: AppTheme.spacingSm,
-                  crossAxisSpacing: AppTheme.spacingSm,
-                  childAspectRatio: 1.5,
+              // Subject cards with beautiful design
+              SliverPadding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: AppTheme.screenPadding,
                 ),
-                delegate: SliverChildBuilderDelegate(
-                  (context, index) {
-                    if (index >= subjects.length) return const SizedBox.shrink();
-                    return _buildQuickAccessCard(subjects[index]);
-                  },
-                  childCount: subjects.length.clamp(0, 4),
+                sliver: SliverList(
+                  delegate: SliverChildBuilderDelegate(
+                    (context, index) {
+                      final subject = subjects[index];
+                      return Padding(
+                        padding:
+                            const EdgeInsets.only(bottom: AppTheme.spacing16),
+                        child: SubjectCardModern(
+                          icon: subject.icon,
+                          title: subject.name,
+                          subtitle: subject.subtitle,
+                          progress: subject.progressPercentage,
+                          completedTopics: subject.completedTopics,
+                          totalTopics: subject.totalTopics,
+                          gradient: AppColors.getSubjectGradient(subject.id),
+                          onTap: () => context.push('/learn/${subject.id}'),
+                        ),
+                      );
+                    },
+                    childCount: subjects.length.clamp(0, 3),
+                  ),
                 ),
               ),
-            ),
 
-            const SliverToBoxAdapter(
-              child: SizedBox(height: AppTheme.spacingXxl),
-            ),
-          ],
+              const SliverToBoxAdapter(child: SizedBox(height: 100)),
+            ],
+          ),
         ),
       ),
     );
@@ -165,98 +185,177 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       greeting = 'Good evening';
     }
 
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              '$greeting! 👋',
-              style: AppTypography.bodyLarge.copyWith(
-                color: AppColors.textSecondary,
+    return Container(
+      padding: const EdgeInsets.all(AppTheme.screenPadding),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+            AppColors.accentPurple.withValues(alpha: 0.08),
+            AppColors.accentPink.withValues(alpha: 0.05),
+          ],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      '$greeting 👋',
+                      style: AppTypography.bodyMedium.copyWith(
+                        color: AppColors.textSecondary,
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    ShaderMask(
+                      shaderCallback: (bounds) =>
+                          AppColors.mainGradient.createShader(bounds),
+                      child: Text(
+                        progress.userName,
+                        style: AppTypography.headlineLarge.copyWith(
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            const SizedBox(height: 4),
-            Text(
-              progress.userName,
-              style: AppTypography.heading1,
-            ),
-          ],
-        ),
-        Row(
-          children: [
-            IconButton(
-              icon: const Icon(Icons.notifications_outlined),
-              color: AppColors.textSecondary,
-              onPressed: () {},
-            ),
-            IconButton(
-              icon: const Icon(Icons.settings_outlined),
-              color: AppColors.textSecondary,
-              onPressed: () {},
-            ),
-          ],
-        ),
-      ],
+              // Decorative gradient circle
+              Container(
+                width: 60,
+                height: 60,
+                decoration: BoxDecoration(
+                  gradient: AppColors.mainGradient,
+                  shape: BoxShape.circle,
+                  boxShadow: [
+                    BoxShadow(
+                      color: AppColors.accentPurple.withValues(alpha: 0.3),
+                      blurRadius: 20,
+                      offset: const Offset(0, 8),
+                    ),
+                  ],
+                ),
+                child: Center(
+                  child: Text(
+                    progress.userName.isNotEmpty
+                        ? progress.userName[0].toUpperCase()
+                        : '?',
+                    style: AppTypography.statsMedium.copyWith(
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 
   Widget _buildStreakCard(progress) {
     return Container(
-      padding: const EdgeInsets.all(AppTheme.cardPadding),
       decoration: BoxDecoration(
-        gradient: progress.streak > 0 ? AppColors.fireGradient : null,
-        color: progress.streak > 0 ? null : AppColors.cardBackground,
-        borderRadius: BorderRadius.circular(AppTheme.cardRadius),
-        border: Border.all(
-          color: progress.streak > 0
-              ? AppColors.streakFire.withOpacity(0.5)
-              : AppColors.border,
-        ),
+        gradient: progress.streak > 0
+            ? const LinearGradient(
+                colors: [Color(0xFFFB923C), Color(0xFFF472B6)],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              )
+            : null,
+        color: progress.streak > 0 ? null : AppColors.cardLight,
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: progress.streak > 0
+            ? [
+                BoxShadow(
+                  color: AppColors.accentOrange.withValues(alpha: 0.3),
+                  blurRadius: 20,
+                  offset: const Offset(0, 8),
+                ),
+              ]
+            : AppColors.getSoftShadow(),
       ),
+      padding: const EdgeInsets.all(16),
       child: Row(
         children: [
-          const Text('🔥', style: TextStyle(fontSize: 32)),
-          const SizedBox(width: AppTheme.spacingMd),
+          // Fire icon
+          Container(
+            width: 56,
+            height: 56,
+            decoration: BoxDecoration(
+              color: progress.streak > 0
+                  ? Colors.white.withValues(alpha: 0.2)
+                  : AppColors.cardElevated,
+              shape: BoxShape.circle,
+            ),
+            child: Center(
+              child: Text(
+                '🔥',
+                style: TextStyle(
+                  fontSize: 28,
+                  color: progress.streak > 0 ? null : Colors.grey,
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(width: 16),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  '${progress.streak} day streak!',
-                  style: AppTypography.heading4.copyWith(
-                    color: progress.streak > 0
-                        ? AppColors.textPrimary
-                        : AppColors.textSecondary,
-                  ),
+                Row(
+                  children: [
+                    Text(
+                      '${progress.streak}',
+                      style: AppTypography.statsSmall.copyWith(
+                        color: progress.streak > 0
+                            ? Colors.white
+                            : AppColors.textSecondary,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    const SizedBox(width: 6),
+                    Text(
+                      'day streak',
+                      style: AppTypography.bodyMedium.copyWith(
+                        color: progress.streak > 0
+                            ? Colors.white.withValues(alpha: 0.9)
+                            : AppColors.textSecondary,
+                      ),
+                    ),
+                  ],
                 ),
-                const SizedBox(height: 4),
+                const SizedBox(height: 2),
                 Text(
-                  progress.streak > 0
-                      ? "Keep it up! You're doing great!"
-                      : 'Start your streak today!',
+                  progress.streak > 0 ? "Keep it up!" : 'Start your learning today',
                   style: AppTypography.bodySmall.copyWith(
                     color: progress.streak > 0
-                        ? AppColors.textPrimary.withOpacity(0.8)
-                        : AppColors.textTertiary,
+                        ? Colors.white.withValues(alpha: 0.8)
+                        : AppColors.textMuted,
                   ),
                 ),
               ],
             ),
           ),
-          if (progress.longestStreak > 0)
+          // Decorative element
+          if (progress.streak > 0)
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+              width: 40,
+              height: 40,
               decoration: BoxDecoration(
-                color: AppColors.whiteMedium,
-                borderRadius: BorderRadius.circular(16),
+                color: Colors.white.withValues(alpha: 0.2),
+                shape: BoxShape.circle,
               ),
-              child: Text(
-                'Best: ${progress.longestStreak}',
-                style: AppTypography.caption.copyWith(
-                  fontWeight: FontWeight.w600,
-                ),
+              child: const Icon(
+                Icons.local_fire_department,
+                color: Colors.white,
+                size: 24,
               ),
             ),
         ],
@@ -264,14 +363,16 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     );
   }
 
-  Widget _buildOverallProgress(double progress, int completed, int total) {
+  Widget _buildOverallProgress(
+      double progress, int completed, int total) {
     return Container(
-      padding: const EdgeInsets.all(AppTheme.cardPadding),
       decoration: BoxDecoration(
-        color: AppColors.cardBackground,
-        borderRadius: BorderRadius.circular(AppTheme.cardRadius),
+        color: AppColors.cardLight,
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: AppColors.getSoftShadow(),
         border: Border.all(color: AppColors.border),
       ),
+      padding: const EdgeInsets.all(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -280,155 +381,117 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             children: [
               Text(
                 'Overall Progress',
-                style: AppTypography.heading4,
+                style: AppTypography.titleMedium,
               ),
-              Text(
-                '${progress.toStringAsFixed(0)}%',
-                style: AppTypography.stats.copyWith(
-                  color: AppColors.accentSuccess,
+              ShaderMask(
+                shaderCallback: (bounds) =>
+                    AppColors.mainGradient.createShader(bounds),
+                child: Text(
+                  '${progress.toStringAsFixed(0)}%',
+                  style: AppTypography.statsSmall.copyWith(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
               ),
             ],
           ),
-          const SizedBox(height: AppTheme.spacingMd),
-          ProgressBar(
-            percentage: progress,
+          const SizedBox(height: 16),
+          // Gradient progress bar
+          Container(
             height: 10,
+            decoration: BoxDecoration(
+              color: AppColors.border,
+              borderRadius: BorderRadius.circular(5),
+            ),
+            child: FractionallySizedBox(
+              alignment: Alignment.centerLeft,
+              widthFactor: progress / 100,
+              child: Container(
+                decoration: BoxDecoration(
+                  gradient: AppColors.mainGradient,
+                  borderRadius: BorderRadius.circular(5),
+                  boxShadow: [
+                    BoxShadow(
+                      color: AppColors.accentPurple.withValues(alpha: 0.3),
+                      blurRadius: 8,
+                      offset: const Offset(0, 2),
+                    ),
+                  ],
+                ),
+              ),
+            ),
           ),
-          const SizedBox(height: AppTheme.spacingSm),
-          Text(
-            '$completed of $total topics completed',
-            style: AppTypography.bodySmall,
+          const SizedBox(height: 16),
+          Row(
+            children: [
+              _buildProgressChip('$completed', 'done', AppColors.accentEmerald),
+              const SizedBox(width: 12),
+              _buildProgressChip('${total - completed}', 'remaining', AppColors.textMuted),
+            ],
           ),
         ],
       ),
     );
   }
 
-  Widget _buildGoalCard(subject) {
+  Widget _buildProgressChip(String value, String label, Color color) {
     return Container(
-      padding: const EdgeInsets.all(AppTheme.cardPadding),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
       decoration: BoxDecoration(
-        color: AppColors.cardBackground,
-        borderRadius: BorderRadius.circular(AppTheme.cardRadius),
-        border: Border.all(color: AppColors.border),
+        color: color.withValues(alpha: 0.1),
+        borderRadius: BorderRadius.circular(20),
       ),
       child: Row(
+        mainAxisSize: MainAxisSize.min,
         children: [
-          Container(
-            width: 40,
-            height: 40,
-            decoration: BoxDecoration(
-              color: subject.color.withOpacity(0.15),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Center(
-              child: Text(subject.icon, style: const TextStyle(fontSize: 20)),
+          Text(
+            value,
+            style: AppTypography.labelMedium.copyWith(
+              color: color,
+              fontWeight: FontWeight.w700,
             ),
           ),
-          const SizedBox(width: AppTheme.spacingMd),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  subject.name,
-                  style: AppTypography.label,
-                ),
-                const SizedBox(height: 4),
-                ProgressBar(
-                  percentage: subject.progressPercentage,
-                  height: 4,
-                  fillColor: subject.color,
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(width: AppTheme.spacingMd),
-          Icon(
-            Icons.arrow_forward_ios,
-            size: 16,
-            color: AppColors.textTertiary,
+          const SizedBox(width: 4),
+          Text(
+            label,
+            style: AppTypography.bodySmall.copyWith(color: color),
           ),
         ],
       ),
     );
   }
 
-  Widget _buildSuggestionCard() {
-    return Container(
-      padding: const EdgeInsets.all(AppTheme.cardPadding),
-      decoration: BoxDecoration(
-        color: AppColors.accentSuccess.withOpacity(0.1),
-        borderRadius: BorderRadius.circular(AppTheme.cardRadius),
-        border: Border.all(color: AppColors.accentSuccess.withOpacity(0.3)),
-      ),
-      child: Row(
-        children: [
-          Container(
-            width: 40,
-            height: 40,
-            decoration: BoxDecoration(
-              color: AppColors.accentSuccess.withOpacity(0.2),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: const Center(
-              child: Text('🎯', style: TextStyle(fontSize: 20)),
-            ),
+  Widget _buildQuickStats(progress) {
+    return Row(
+      children: [
+        Expanded(
+          child: StatCard(
+            emoji: '📚',
+            value: '${progress.totalTopicsCompleted}',
+            label: 'Topics\nCompleted',
+            gradient: AppColors.mintGradient,
           ),
-          const SizedBox(width: AppTheme.spacingMd),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Start your journey!',
-                  style: AppTypography.label.copyWith(
-                    color: AppColors.accentSuccess,
-                  ),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  'Pick a subject to begin learning',
-                  style: AppTypography.bodySmall,
-                ),
-              ],
-            ),
+        ),
+        const SizedBox(width: 12),
+        Expanded(
+          child: StatCard(
+            emoji: '⏱️',
+            value: progress.totalStudyTimeFormatted,
+            label: 'Study\nTime',
+            gradient: AppColors.oceanGradient,
           ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildQuickAccessCard(subject) {
-    return Container(
-      padding: const EdgeInsets.all(AppTheme.spacingMd),
-      decoration: BoxDecoration(
-        color: AppColors.cardBackground,
-        borderRadius: BorderRadius.circular(AppTheme.cardRadius),
-        border: Border.all(color: AppColors.border),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(subject.icon, style: const TextStyle(fontSize: 24)),
-          const Spacer(),
-          Text(
-            subject.name,
-            style: AppTypography.label,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
+        ),
+        const SizedBox(width: 12),
+        Expanded(
+          child: StatCard(
+            emoji: '🏆',
+            value: '${progress.longestStreak}',
+            label: 'Best\nStreak',
+            gradient: AppColors.sunsetGradient,
           ),
-          const SizedBox(height: 4),
-          Text(
-            '${subject.progressPercentage.toInt()}%',
-            style: AppTypography.caption.copyWith(
-              color: subject.color,
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

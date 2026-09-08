@@ -4,8 +4,9 @@ import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../../data/repositories/subject_repository.dart';
+import '../../shared/widgets/modern_cards.dart';
 
-/// Practice Screen - Question Bank
+/// Practice Screen - Beautiful Gradient Design
 class PracticeScreen extends ConsumerStatefulWidget {
   const PracticeScreen({super.key});
 
@@ -22,22 +23,41 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
     final subjects = _subjectRepo.getAllSubjects();
 
     return Scaffold(
-      backgroundColor: AppColors.primaryBackground,
+      backgroundColor: AppColors.backgroundLight,
       body: SafeArea(
         child: CustomScrollView(
           slivers: [
-            // Header
+            // Beautiful Header
             SliverToBoxAdapter(
-              child: Padding(
+              child: Container(
                 padding: const EdgeInsets.all(AppTheme.screenPadding),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      AppColors.accentPurple.withValues(alpha: 0.08),
+                      AppColors.accentPink.withValues(alpha: 0.05),
+                    ],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Practice', style: AppTypography.heading1),
-                    const SizedBox(height: 4),
+                    ShaderMask(
+                      shaderCallback: (bounds) =>
+                          AppColors.mainGradient.createShader(bounds),
+                      child: Text(
+                        'Practice',
+                        style: AppTypography.displayMedium.copyWith(
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 8),
                     Text(
-                      'Test your knowledge with practice questions',
-                      style: AppTypography.bodyLarge.copyWith(
+                      'Test your knowledge and level up',
+                      style: AppTypography.bodyMedium.copyWith(
                         color: AppColors.textSecondary,
                       ),
                     ),
@@ -46,10 +66,12 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
               ),
             ),
 
-            // Subject filter
+            const SliverToBoxAdapter(child: SizedBox(height: 20)),
+
+            // Subject filter with beautiful chips
             SliverToBoxAdapter(
               child: SizedBox(
-                height: 40,
+                height: 50,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   padding: const EdgeInsets.symmetric(
@@ -58,17 +80,18 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
                   itemBuilder: (context, index) {
                     if (index == 0) {
                       return Padding(
-                        padding: const EdgeInsets.only(right: AppTheme.spacingSm),
-                        child: _buildFilterChip('all', 'All', _selectedSubject),
+                        padding: const EdgeInsets.only(right: 10),
+                        child: _buildFilterChip('all', '✨ All', _selectedSubject, null),
                       );
                     }
                     final subject = subjects[index - 1];
                     return Padding(
-                      padding: const EdgeInsets.only(right: AppTheme.spacingSm),
+                      padding: const EdgeInsets.only(right: 10),
                       child: _buildFilterChip(
                         subject.id,
                         '${subject.icon} ${subject.name}',
                         _selectedSubject,
+                        AppColors.getSubjectGradient(subject.id),
                       ),
                     );
                   },
@@ -76,9 +99,7 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
               ),
             ),
 
-            const SliverToBoxAdapter(
-              child: SizedBox(height: AppTheme.spacingLg),
-            ),
+            const SliverToBoxAdapter(child: SizedBox(height: 24)),
 
             // Practice cards
             SliverPadding(
@@ -94,7 +115,7 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
                     final item = practiceItems[index];
                     return Padding(
                       padding:
-                          const EdgeInsets.only(bottom: AppTheme.spacingMd),
+                          const EdgeInsets.only(bottom: AppTheme.spacing16),
                       child: _buildPracticeCard(item),
                     );
                   },
@@ -103,16 +124,14 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
               ),
             ),
 
-            const SliverToBoxAdapter(
-              child: SizedBox(height: AppTheme.spacingXxl),
-            ),
+            const SliverToBoxAdapter(child: SizedBox(height: 100)),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildFilterChip(String id, String label, String selectedId) {
+  Widget _buildFilterChip(String id, String label, String selectedId, LinearGradient? gradient) {
     final isSelected = id == selectedId;
 
     return GestureDetector(
@@ -122,21 +141,30 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
         });
       },
       child: AnimatedContainer(
-        duration: AppTheme.animMicro,
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        duration: const Duration(milliseconds: 200),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
         decoration: BoxDecoration(
-          color: isSelected ? AppColors.accentSuccess : AppColors.cardBackground,
-          borderRadius: BorderRadius.circular(20),
-          border: Border.all(
-            color: isSelected ? AppColors.accentSuccess : AppColors.border,
-          ),
+          gradient: isSelected && gradient != null ? gradient : null,
+          color: isSelected && gradient == null ? AppColors.accentPurple : null,
+          borderRadius: BorderRadius.circular(25),
+          boxShadow: isSelected
+              ? [
+                  BoxShadow(
+                    color: (isSelected && gradient != null
+                            ? gradient.colors.first
+                            : AppColors.accentPurple)
+                        .withValues(alpha: 0.3),
+                    blurRadius: 12,
+                    offset: const Offset(0, 4),
+                  ),
+                ]
+              : null,
         ),
         child: Text(
           label,
-          style: AppTypography.label.copyWith(
-            color: isSelected
-                ? AppColors.primaryBackground
-                : AppColors.textSecondary,
+          style: AppTypography.labelMedium.copyWith(
+            color: isSelected ? Colors.white : AppColors.textSecondary,
+            fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
           ),
         ),
       ),
@@ -145,68 +173,90 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
 
   Widget _buildPracticeCard(PracticeItem item) {
     return Container(
-      padding: const EdgeInsets.all(AppTheme.cardPadding),
       decoration: BoxDecoration(
-        color: AppColors.cardBackground,
-        borderRadius: BorderRadius.circular(AppTheme.cardRadius),
+        color: AppColors.cardLight,
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: AppColors.getSoftShadow(),
         border: Border.all(color: AppColors.border),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              Container(
-                width: 48,
-                height: 48,
-                decoration: BoxDecoration(
-                  color: item.color.withOpacity(0.15),
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Center(
-                  child: Text(item.icon, style: const TextStyle(fontSize: 24)),
-                ),
-              ),
-              const SizedBox(width: AppTheme.spacingMd),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(item.title, style: AppTypography.heading4),
-                    const SizedBox(height: 4),
-                    Text(
-                      item.subtitle,
-                      style: AppTypography.bodySmall,
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: () {},
+          borderRadius: BorderRadius.circular(20),
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Row(
+              children: [
+                Container(
+                  width: 60,
+                  height: 60,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        item.color.withValues(alpha: 0.15),
+                        item.color.withValues(alpha: 0.05),
+                      ],
                     ),
-                  ],
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  child: Center(
+                    child: Text(item.icon, style: const TextStyle(fontSize: 30)),
+                  ),
                 ),
-              ),
-              Icon(
-                Icons.arrow_forward_ios,
-                size: 16,
-                color: AppColors.textTertiary,
-              ),
-            ],
+                const SizedBox(width: 16),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        item.title,
+                        style: AppTypography.titleMedium.copyWith(
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        item.subtitle,
+                        style: AppTypography.bodySmall,
+                      ),
+                      const SizedBox(height: 12),
+                      Row(
+                        children: [
+                          _buildInfoChip('📝', '${item.questionCount}'),
+                          const SizedBox(width: 10),
+                          _buildInfoChip('⭐', item.difficulty),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: item.color.withValues(alpha: 0.1),
+                    shape: BoxShape.circle,
+                  ),
+                  child: Icon(
+                    Icons.play_arrow_rounded,
+                    color: item.color,
+                    size: 28,
+                  ),
+                ),
+              ],
+            ),
           ),
-          const SizedBox(height: AppTheme.spacingMd),
-          Row(
-            children: [
-              _buildInfoChip('📝', '${item.questionCount} questions'),
-              const SizedBox(width: AppTheme.spacingSm),
-              _buildInfoChip('⭐', item.difficulty),
-            ],
-          ),
-        ],
+        ),
       ),
     );
   }
 
   Widget _buildInfoChip(String icon, String text) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
       decoration: BoxDecoration(
-        color: AppColors.border.withOpacity(0.5),
-        borderRadius: BorderRadius.circular(8),
+        color: AppColors.surfaceLight,
+        borderRadius: BorderRadius.circular(20),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -215,7 +265,9 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
           const SizedBox(width: 4),
           Text(
             text,
-            style: AppTypography.caption,
+            style: AppTypography.labelSmall.copyWith(
+              color: AppColors.textSecondary,
+            ),
           ),
         ],
       ),
@@ -229,23 +281,24 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
     for (final subject in subjects) {
       if (_selectedSubject != 'all' && subject.id != _selectedSubject) continue;
 
+      final gradient = AppColors.getSubjectGradient(subject.id);
+
       items.add(PracticeItem(
         id: '${subject.id}_practice',
         title: 'Practice ${subject.name}',
         subtitle: 'Test your knowledge',
         icon: subject.icon,
-        color: subject.color,
+        color: gradient.colors.first,
         questionCount: subject.totalTopics * 5,
         difficulty: _getDifficultyText(subject.progressPercentage),
       ));
 
-      // Add specific practice types
       items.add(PracticeItem(
         id: '${subject.id}_quick',
         title: 'Quick Quiz',
-        subtitle: '5 questions • 2 minutes',
+        subtitle: '5 questions • Fast paced',
         icon: '⚡',
-        color: subject.color,
+        color: gradient.colors.first,
         questionCount: 5,
         difficulty: 'Quick',
       ));

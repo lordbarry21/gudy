@@ -5,9 +5,9 @@ import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../../data/repositories/subject_repository.dart';
-import '../../shared/widgets/subject_card.dart';
+import '../../shared/widgets/modern_cards.dart';
 
-/// Learn Screen - Subject List
+/// Learn Screen - Beautiful Gradient Design
 class LearnScreen extends ConsumerStatefulWidget {
   const LearnScreen({super.key});
 
@@ -15,69 +15,118 @@ class LearnScreen extends ConsumerStatefulWidget {
   ConsumerState<LearnScreen> createState() => _LearnScreenState();
 }
 
-class _LearnScreenState extends ConsumerState<LearnScreen> {
+class _LearnScreenState extends ConsumerState<LearnScreen>
+    with SingleTickerProviderStateMixin {
   final _subjectRepo = SubjectRepository();
+  late AnimationController _animationController;
+  late Animation<double> _fadeAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(
+      duration: const Duration(milliseconds: 600),
+      vsync: this,
+    );
+    _fadeAnimation = CurvedAnimation(
+      parent: _animationController,
+      curve: Curves.easeOut,
+    );
+    _animationController.forward();
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     final subjects = _subjectRepo.getAllSubjects();
 
     return Scaffold(
-      backgroundColor: AppColors.primaryBackground,
+      backgroundColor: AppColors.backgroundLight,
       body: SafeArea(
-        child: CustomScrollView(
-          slivers: [
-            // Header
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: const EdgeInsets.all(AppTheme.screenPadding),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Learn',
-                      style: AppTypography.heading1,
+        child: FadeTransition(
+          opacity: _fadeAnimation,
+          child: CustomScrollView(
+            slivers: [
+              // Beautiful Header with Gradient
+              SliverToBoxAdapter(
+                child: Container(
+                  padding: const EdgeInsets.all(AppTheme.screenPadding),
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        AppColors.accentPurple.withValues(alpha: 0.08),
+                        AppColors.accentPink.withValues(alpha: 0.05),
+                      ],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
                     ),
-                    const SizedBox(height: 4),
-                    Text(
-                      'Select a subject to start learning',
-                      style: AppTypography.bodyLarge.copyWith(
-                        color: AppColors.textSecondary,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ShaderMask(
+                        shaderCallback: (bounds) =>
+                            AppColors.mainGradient.createShader(bounds),
+                        child: Text(
+                          'Learn',
+                          style: AppTypography.displayMedium.copyWith(
+                            color: Colors.white,
+                          ),
+                        ),
                       ),
-                    ),
-                  ],
+                      const SizedBox(height: 8),
+                      Text(
+                        'Choose your path to success',
+                        style: AppTypography.bodyMedium.copyWith(
+                          color: AppColors.textSecondary,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
 
-            // Subject list
-            SliverPadding(
-              padding: const EdgeInsets.symmetric(
-                  horizontal: AppTheme.screenPadding),
-              sliver: SliverList(
-                delegate: SliverChildBuilderDelegate(
-                  (context, index) {
-                    final subject = subjects[index];
-                    return Padding(
-                      padding:
-                          const EdgeInsets.only(bottom: AppTheme.spacingMd),
-                      child: SubjectCard(
-                        subject: subject,
-                        onTap: () {
-                          context.push('/learn/${subject.id}');
-                        },
-                      ),
-                    );
-                  },
-                  childCount: subjects.length,
+              const SliverToBoxAdapter(child: SizedBox(height: 24)),
+
+              // Subject list with beautiful cards
+              SliverPadding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: AppTheme.screenPadding,
+                ),
+                sliver: SliverList(
+                  delegate: SliverChildBuilderDelegate(
+                    (context, index) {
+                      final subject = subjects[index];
+                      return Padding(
+                        padding:
+                            const EdgeInsets.only(bottom: AppTheme.spacing16),
+                        child: SubjectCardModern(
+                          icon: subject.icon,
+                          title: subject.name,
+                          subtitle: subject.description.isNotEmpty
+                              ? subject.description
+                              : subject.subtitle,
+                          progress: subject.progressPercentage,
+                          completedTopics: subject.completedTopics,
+                          totalTopics: subject.totalTopics,
+                          gradient: AppColors.getSubjectGradient(subject.id),
+                          onTap: () => context.push('/learn/${subject.id}'),
+                        ),
+                      );
+                    },
+                    childCount: subjects.length,
+                  ),
                 ),
               ),
-            ),
 
-            const SliverToBoxAdapter(
-              child: SizedBox(height: AppTheme.spacingXxl),
-            ),
-          ],
+              const SliverToBoxAdapter(child: SizedBox(height: 100)),
+            ],
+          ),
         ),
       ),
     );
