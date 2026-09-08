@@ -17,7 +17,10 @@ import {
   CaretRight,
   Star,
   Lightbulb,
+  Eye,
+  EyeSlash,
 } from '@phosphor-icons/react'
+import { MathRenderer } from '@/components/quiz/MathRenderer'
 
 interface TopicExplanationPanelProps {
   selectedNode: GraphNode | null
@@ -39,6 +42,7 @@ export function TopicExplanationPanel({
   const router = useRouter()
   const { toggleChecklistItem, markAsMastered, toggleTopicMasteredCascade, subjects } = useAppStore()
   const [copied, setCopied] = useState(false)
+  const [showMathSymbols, setShowMathSymbols] = useState(false)
 
   const currentSubject = subjects.find(s => s.id === subjectId)
   const leafTopics = topics.filter(t => t.isLeaf)
@@ -371,15 +375,52 @@ export function TopicExplanationPanel({
                 </div>
               )}
 
-              {currentTopic.memoryBooster && (
-                <div className="mt-2 p-2 rounded-lg bg-surface border border-border text-[10px] font-mono text-text-secondary overflow-x-auto whitespace-pre-wrap">
-                  <div className="flex items-center gap-1 text-warning font-sans font-semibold text-[10px] mb-1">
-                    <Lightbulb size={12} weight="fill" />
-                    <span>Pemantik Ingatan</span>
+              {currentTopic.memoryBooster && (() => {
+                const hasMath = /[\d]+[\/√²³⁴⁵⁶⁷⁸⁹⁰]|[²³⁴⁵⁶⁷⁸⁹⁰]log|√|\^|π|∞|≤|≥|≠|±|°|∈|∉|⊂|⊃|∪|∩|∅|→|←|⇔|⇒|⇐|∑|∫|∘/.test(currentTopic.memoryBooster)
+
+                return (
+                  <div className="mt-2 p-2.5 rounded-lg bg-surface border border-border">
+                    <div className="flex items-center justify-between mb-2">
+                      <div className="flex items-center gap-1.5 text-warning font-sans font-semibold text-[10px]">
+                        <Lightbulb size={12} weight="fill" />
+                        <span>Pemantik Ingatan</span>
+                      </div>
+                      {hasMath && (
+                        <button
+                          type="button"
+                          onClick={() => setShowMathSymbols(!showMathSymbols)}
+                          className="flex items-center gap-1 text-[10px] font-medium text-text-muted hover:text-accent transition-colors px-1.5 py-0.5 rounded hover:bg-accent/10"
+                        >
+                          {showMathSymbols ? (
+                            <>
+                              <EyeSlash size={11} />
+                              <span>Sembunyikan Simbol</span>
+                            </>
+                          ) : (
+                            <>
+                              <Eye size={11} />
+                              <span>Tampilkan Simbol</span>
+                            </>
+                          )}
+                        </button>
+                      )}
+                    </div>
+                    {showMathSymbols ? (
+                      <div className="font-serif text-[10px] text-text-secondary leading-relaxed space-y-1">
+                        {currentTopic.memoryBooster.split('\n').map((line, idx) => (
+                          <p key={idx}>
+                            <MathRenderer text={line} inline={true} />
+                          </p>
+                        ))}
+                      </div>
+                    ) : (
+                      <div className="font-sans text-[10px] font-mono text-text-secondary leading-relaxed whitespace-pre-wrap">
+                        {currentTopic.memoryBooster}
+                      </div>
+                    )}
                   </div>
-                  {currentTopic.memoryBooster}
-                </div>
-              )}
+                )
+              })()}
             </div>
 
             {/* Interactive Checklist */}

@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { Target } from '@phosphor-icons/react'
 import { QuizQuestion } from '@/types'
 import { AnswerOption } from './AnswerOption'
+import { MathRenderer } from './MathRenderer'
 
 interface QuestionCardProps {
   question: QuizQuestion
@@ -35,23 +36,24 @@ export function QuestionCard({
       <div className="flex items-start justify-between gap-4">
         <div className="flex-1">
           {/* Topic Badge */}
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-surface-elevated text-xs font-medium text-text-secondary mb-3">
-            <Target size={12} weight="bold" className="text-accent" />
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface-elevated font-sans text-xs font-semibold text-text-secondary mb-4">
+            <Target size={13} weight="bold" className="text-accent" />
             <span>{question.topic}</span>
           </div>
 
-          {/* Question Number */}
-          <div className="flex items-center gap-2 mb-2">
-            <span className="text-xs font-semibold text-accent">
+          {/* Question Number - Elegant styling */}
+          <div className="flex items-center gap-3 mb-4">
+            <span className="font-display text-sm font-bold text-accent tracking-wide">
               SOAL {questionNumber} DARI {totalQuestions}
             </span>
+            <div className="h-px flex-1 bg-border max-w-[100px]" />
           </div>
 
-          {/* Question Text */}
-          <div className="text-text-primary text-base leading-relaxed whitespace-pre-wrap">
+          {/* Question Text - Serif for reading */}
+          <div className="font-serif text-lg text-text-primary leading-relaxed">
             {question.question.split('\n').map((line, idx, arr) => (
               <p key={idx} className={idx === arr.length - 1 ? '' : 'mb-3'}>
-                {line}
+                <MathRenderer text={line} inline={true} />
               </p>
             ))}
           </div>
@@ -59,7 +61,7 @@ export function QuestionCard({
       </div>
 
       {/* Answer Options */}
-      <div className="space-y-3">
+      <div className="space-y-3 pt-2">
         {optionKeys.map((key) => (
           <AnswerOption
             key={key}

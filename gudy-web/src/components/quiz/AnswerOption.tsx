@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { CheckCircle, XCircle, Circle } from '@phosphor-icons/react'
+import { MathRenderer } from './MathRenderer'
 
 interface AnswerOptionProps {
   optionKey: string
@@ -89,7 +90,7 @@ export function AnswerOption({
 
       {/* Option Text */}
       <span className="flex-1 text-sm font-medium leading-relaxed">
-        {text}
+        <MathRenderer text={text} inline={true} />
       </span>
 
       {/* Status Icon */}

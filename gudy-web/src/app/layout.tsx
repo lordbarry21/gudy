@@ -1,13 +1,32 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Fraunces, Source_Serif_4, Plus_Jakarta_Sans } from 'next/font/google'
 import { AuthProvider } from '@/contexts/AuthContext'
 import { Navigation } from '@/components/navigation/navigation'
 import { ThemeProvider } from '@/components/theme-provider'
 import '@/styles/globals.css'
 
-const inter = Inter({
+// Fraunces - Quirky editorial serif for headings (like Apple's typography choices)
+const fraunces = Fraunces({
+  subsets: ['latin'],
+  variable: '--font-display',
+  display: 'swap',
+  axes: ['SOFT', 'WONK', 'opsz'], // Variable axes for optical sizing
+})
+
+// Source Serif 4 - Adobe's masterpiece for long-form reading
+const sourceSerif = Source_Serif_4({
+  subsets: ['latin'],
+  variable: '--font-serif',
+  display: 'swap',
+  weight: ['200', '300', '400', '600', '700'],
+})
+
+// Plus Jakarta Sans - Warm geometric sans for UI elements
+const plusJakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
   variable: '--font-sans',
+  display: 'swap',
+  weight: ['400', '500', '600', '700', '800'],
 })
 
 export const metadata: Metadata = {
@@ -38,7 +57,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${inter.variable} font-sans antialiased bg-background text-text-primary min-h-screen`}>
+      <body className={`${fraunces.variable} ${sourceSerif.variable} ${plusJakarta.variable} font-serif antialiased bg-background text-text-primary min-h-screen`}>
         <ThemeProvider>
           <AuthProvider>
             <Navigation>{children}</Navigation>

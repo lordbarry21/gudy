@@ -206,28 +206,31 @@ export default function PracticePage() {
       <div className="max-w-5xl mx-auto px-4 lg:px-8 pt-8">
         {/* Header */}
         <motion.div
-          className="mb-6"
+          className="mb-8"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
         >
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
             <div>
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-accent/10 text-accent mb-2">
-                <Sparkle size={13} weight="fill" />
+              {/* Label Badge */}
+              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-sans font-semibold tracking-wide bg-accent/10 text-accent mb-3">
+                <Sparkle size={12} weight="fill" />
                 <span>Bank Soal & Ujian Mandiri Resmi (Target 100)</span>
               </div>
-              <h1 className="text-3xl lg:text-4xl font-bold text-text-primary tracking-tight">
+              {/* Main Title - Fraunces Display */}
+              <h1 className="font-display text-4xl lg:text-5xl font-bold text-text-primary tracking-tight leading-tight mb-2 text-shadow-soft">
                 Latihan Soal & Ujian
               </h1>
-              <p className="text-text-secondary text-sm mt-1">
+              {/* Subtitle - Source Serif for reading */}
+              <p className="font-serif text-lg text-text-secondary leading-relaxed max-w-xl">
                 Kumpulkan dan asah kemampuan dengan soal-soal interaktif per subkategori
               </p>
             </div>
             <div className="flex items-center gap-3">
               {/* User Status */}
               {user ? (
-                <div className="flex items-center gap-2 text-xs font-medium text-text-muted bg-surface border border-border rounded-xl px-3.5 py-2">
+                <div className="flex items-center gap-2 font-sans text-xs font-medium text-text-muted bg-surface border border-border rounded-xl px-3.5 py-2.5">
                   <div className="w-6 h-6 rounded-full bg-accent/20 flex items-center justify-center">
                     <User size={14} className="text-accent" />
                   </div>
@@ -236,7 +239,7 @@ export default function PracticePage() {
               ) : (
                 <button
                   onClick={() => setShowAuthModal(true)}
-                  className="flex items-center gap-2 text-xs font-medium text-text-muted bg-surface border border-border rounded-xl px-3.5 py-2 hover:text-accent hover:border-accent/50 transition-colors"
+                  className="flex items-center gap-2 font-sans text-xs font-medium text-text-muted bg-surface border border-border rounded-xl px-3.5 py-2.5 hover:text-accent hover:border-accent/50 transition-colors"
                 >
                   <SignIn size={14} />
                   <span>Login untuk simpan progress</span>
@@ -244,7 +247,7 @@ export default function PracticePage() {
               )}
 
               {/* Stats */}
-              <div className="flex items-center gap-2 text-xs font-medium text-text-muted bg-surface border border-border rounded-xl px-3.5 py-2">
+              <div className="flex items-center gap-2 font-sans text-xs font-medium text-text-muted bg-surface border border-border rounded-xl px-3.5 py-2.5">
                 <Books size={16} className="text-accent" />
                 <span>{practiceList.length} Paket Tersedia</span>
               </div>
@@ -257,49 +260,49 @@ export default function PracticePage() {
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="grid grid-cols-3 gap-3 mb-6"
+            className="grid grid-cols-3 gap-4 mb-8"
           >
-            <div className="bg-surface border border-border rounded-xl p-4 text-center">
-              <Trophy size={20} className="text-warning mx-auto mb-1" />
-              <p className="text-lg font-bold text-text-primary">
+            <div className="bg-surface border border-border rounded-xl p-5 text-center">
+              <Trophy size={22} className="text-warning mx-auto mb-2" />
+              <p className="font-display text-2xl font-bold text-text-primary tracking-tight">
                 {quizProgress.averageScore}%
               </p>
-              <p className="text-xs text-text-muted">Rata-rata Skor</p>
+              <p className="font-sans text-xs text-text-muted mt-1 font-medium">Rata-rata Skor</p>
             </div>
-            <div className="bg-surface border border-border rounded-xl p-4 text-center">
-              <CheckCircle size={20} className="text-success mx-auto mb-1" />
-              <p className="text-lg font-bold text-text-primary">
+            <div className="bg-surface border border-border rounded-xl p-5 text-center">
+              <CheckCircle size={22} className="text-success mx-auto mb-2" />
+              <p className="font-display text-2xl font-bold text-text-primary tracking-tight">
                 {quizProgress.totalQuizzesTaken}
               </p>
-              <p className="text-xs text-text-muted">Quiz Dikerjakan</p>
+              <p className="font-sans text-xs text-text-muted mt-1 font-medium">Quiz Dikerjakan</p>
             </div>
-            <div className="bg-surface border border-border rounded-xl p-4 text-center">
-              <Sparkle size={20} className="text-accent mx-auto mb-1" />
-              <p className="text-lg font-bold text-text-primary">
+            <div className="bg-surface border border-border rounded-xl p-5 text-center">
+              <Sparkle size={22} className="text-accent mx-auto mb-2" />
+              <p className="font-display text-2xl font-bold text-text-primary tracking-tight">
                 {Object.keys(quizProgress.bestScores).length}
               </p>
-              <p className="text-xs text-text-muted">Kategori Dimainkan</p>
+              <p className="font-sans text-xs text-text-muted mt-1 font-medium">Kategori Dimainkan</p>
             </div>
           </motion.div>
         )}
 
         {/* Search Bar */}
-        <div className="relative mb-6">
+        <div className="relative mb-8">
           <MagnifyingGlass
             size={18}
-            className="absolute left-3.5 top-1/2 -translate-y-1/2 text-text-muted"
+            className="absolute left-4 top-1/2 -translate-y-1/2 text-text-muted"
           />
           <input
             type="text"
             placeholder="Cari paket latihan soal (misal: Aljabar, Vieta, Sanctum, Limit, Reading)..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-surface border border-border text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:border-accent transition-colors"
+            className="w-full pl-11 pr-12 py-3.5 rounded-xl bg-surface border border-border font-sans text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all"
           />
           {searchQuery && (
             <button
               onClick={() => setSearchQuery('')}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-text-muted hover:text-text-primary text-xs"
+              className="absolute right-4 top-1/2 -translate-y-1/2 font-sans text-xs font-medium text-text-muted hover:text-text-primary transition-colors"
             >
               Hapus
             </button>
@@ -315,9 +318,9 @@ export default function PracticePage() {
         >
           <button
             onClick={() => setSelectedSubject('all')}
-            className={`flex-shrink-0 px-4 py-2 rounded-xl text-xs font-medium transition-colors ${
+            className={`flex-shrink-0 px-4 py-2.5 rounded-xl font-sans text-xs font-semibold tracking-wide transition-all ${
               selectedSubject === 'all'
-                ? 'bg-accent text-white shadow-sm'
+                ? 'bg-accent text-white shadow-md'
                 : 'bg-surface border border-border text-text-secondary hover:text-text-primary hover:bg-surface-elevated'
             }`}
           >
@@ -329,9 +332,9 @@ export default function PracticePage() {
               <button
                 key={subject.id}
                 onClick={() => setSelectedSubject(subject.id)}
-                className={`flex-shrink-0 flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-medium transition-colors border ${
+                className={`flex-shrink-0 flex items-center gap-2 px-4 py-2.5 rounded-xl font-sans text-xs font-semibold tracking-wide transition-all border ${
                   selectedSubject === subject.id
-                    ? 'border-transparent text-white shadow-sm'
+                    ? 'border-transparent text-white shadow-md'
                     : 'bg-surface border-border text-text-secondary hover:text-text-primary hover:bg-surface-elevated'
                 }`}
                 style={
