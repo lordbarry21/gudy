@@ -176,7 +176,7 @@ export function QuizModal({
 
           {/* Question Navigator (optional) */}
           {!isSubmitted && (
-            <div className="px-5 py-2 border-b border-border/50 bg-surface-elevated/50 shrink-0">
+            <div className="px-5 py-2 border-b border-border bg-surface-elevated shrink-0">
               <div className="flex items-center gap-2 overflow-x-auto custom-scrollbar pb-1">
                 <ListBullets size={14} className="text-text-muted shrink-0" />
                 {questions.map((q, idx) => {

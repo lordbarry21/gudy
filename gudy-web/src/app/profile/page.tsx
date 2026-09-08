@@ -2,35 +2,41 @@
 
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
+import Image from 'next/image'
 import { useAppStore } from '@/lib/store'
 import { formatDate } from '@/lib/utils'
+import { useAuth } from '@/contexts/AuthContext'
 import {
   Fire,
   Books,
   Trophy,
-  Pencil,
   Target,
   Bell,
-  Download,
   Trash,
   CaretRight,
+  Lightning,
+  ChartLineUp,
+  SignOut,
 } from '@phosphor-icons/react'
 
 export default function ProfilePage() {
   const {
     progress,
     achievements,
-    updateUserName,
     updateDailyGoal,
     resetAllProgress,
     initialize,
     isInitialized,
   } = useAppStore()
+  const { user, signOut } = useAuth()
   const [mounted, setMounted] = useState(false)
-  const [showEditName, setShowEditName] = useState(false)
   const [showDailyGoal, setShowDailyGoal] = useState(false)
   const [showReset, setShowReset] = useState(false)
-  const [nameInput, setNameInput] = useState('')
+  const [quizStats, setQuizStats] = useState({
+    averageScore: 0,
+    totalQuizzesTaken: 0,
+    categoriesPlayed: 0,
+  })
 
   useEffect(() => {
     setMounted(true)
@@ -38,6 +44,28 @@ export default function ProfilePage() {
       initialize()
     }
   }, [initialize, isInitialized])
+
+  // Load quiz stats
+  useEffect(() => {
+    if (!user) return
+
+    try {
+      const stored = localStorage.getItem('gudy_quiz_progress')
+      if (stored) {
+        const parsed = JSON.parse(stored)
+        const progressData = parsed.state?.progress
+        if (progressData) {
+          setQuizStats({
+            averageScore: progressData.averageScore || 0,
+            totalQuizzesTaken: progressData.totalQuizzesTaken || 0,
+            categoriesPlayed: Object.keys(progressData.bestScores || {}).length,
+          })
+        }
+      }
+    } catch {
+      // Ignore
+    }
+  }, [user])
 
   if (!mounted) {
     return (
@@ -63,13 +91,6 @@ export default function ProfilePage() {
       title: 'Pengingat Belajar',
       subtitle: 'Notifikasi jadwal belajar',
       color: '#D99B26',
-      onClick: () => {},
-    },
-    {
-      icon: Download,
-      title: 'Cadangkan Data',
-      subtitle: 'Ekspor / Impor progres belajar',
-      color: '#3A92A6',
       onClick: () => {},
     },
     {
@@ -105,31 +126,48 @@ export default function ProfilePage() {
           transition={{ duration: 0.4, delay: 0.05 }}
         >
           <div className="flex items-center gap-4 mb-6">
-            <div className="w-16 h-16 rounded-2xl bg-accent text-white flex items-center justify-center shadow-sm shrink-0">
-              <span className="text-2xl font-bold font-mono">
-                {progress.userName[0]?.toUpperCase() || 'S'}
-              </span>
-            </div>
-            <div className="flex-1 min-w-0">
-              <div className="flex items-center gap-2">
-                <h2 className="text-lg font-bold text-text-primary truncate">
-                  {progress.userName}
-                </h2>
-                <button
-                  onClick={() => {
-                    setNameInput(progress.userName)
-                    setShowEditName(true)
-                  }}
-                  className="p-1 rounded-md hover:bg-surface-elevated transition-colors text-text-muted hover:text-text-primary"
-                  title="Ubah Nama"
-                >
-                  <Pencil size={15} />
-                </button>
+            {/* Profile Picture */}
+            {user?.photoURL ? (
+              <div className="w-16 h-16 rounded-2xl overflow-hidden shadow-sm shrink-0 border-2 border-border">
+                <Image
+                  src={user.photoURL}
+                  alt={user.displayName || 'Profile'}
+                  width={64}
+                  height={64}
+                  className="w-full h-full object-cover"
+                />
               </div>
+            ) : (
+              <div className="w-16 h-16 rounded-2xl bg-accent text-white flex items-center justify-center shadow-sm shrink-0">
+                <span className="text-2xl font-bold font-mono">
+                  {user?.displayName?.[0]?.toUpperCase() || 'U'}
+                </span>
+              </div>
+            )}
+            <div className="flex-1 min-w-0">
+              <h2 className="text-lg font-bold text-text-primary truncate">
+                {user?.displayName || 'Pengguna'}
+              </h2>
               <p className="text-xs text-text-muted mt-0.5">
-                Mulai belajar sejak {formatDate(progress.createdAt)}
+                {user?.email}
               </p>
+              {user && (
+                <p className="text-[10px] text-text-muted mt-0.5">
+                  Bergabung {formatDate(user.metadata.creationTime || new Date().toISOString())}
+                </p>
+              )}
             </div>
+            <button
+              onClick={() => {
+                signOut().then(() => {
+                  window.location.href = '/'
+                })
+              }}
+              className="p-2.5 rounded-xl bg-surface-elevated border border-border text-text-secondary hover:text-danger hover:border-danger/50 transition-all"
+              title="Keluar"
+            >
+              <SignOut size={18} />
+            </button>
           </div>
 
           {/* Stats */}
@@ -157,6 +195,41 @@ export default function ProfilePage() {
             </div>
           </div>
         </motion.div>
+
+        {/* Quiz Stats Card */}
+        {user && quizStats.totalQuizzesTaken > 0 && (
+          <motion.div
+            className="bg-surface border border-border rounded-2xl p-6 mb-6 shadow-card"
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.1 }}
+          >
+            <h3 className="font-semibold text-text-primary text-sm mb-4">Statistik Quiz</h3>
+            <div className="grid grid-cols-3 gap-3">
+              <div className="bg-surface-elevated rounded-xl p-3.5 text-center border border-border">
+                <ChartLineUp size={22} weight="fill" className="mx-auto mb-1.5 text-warning" />
+                <p className="text-xl font-bold text-text-primary font-mono">
+                  {quizStats.averageScore}%
+                </p>
+                <p className="text-[10px] text-text-muted uppercase tracking-wider">Rata-rata</p>
+              </div>
+              <div className="bg-surface-elevated rounded-xl p-3.5 text-center border border-border">
+                <Lightning size={22} weight="fill" className="mx-auto mb-1.5 text-accent" />
+                <p className="text-xl font-bold text-text-primary font-mono">
+                  {quizStats.totalQuizzesTaken}
+                </p>
+                <p className="text-[10px] text-text-muted uppercase tracking-wider">Dikerjakan</p>
+              </div>
+              <div className="bg-surface-elevated rounded-xl p-3.5 text-center border border-border">
+                <Target size={22} weight="fill" className="mx-auto mb-1.5 text-success" />
+                <p className="text-xl font-bold text-text-primary font-mono">
+                  {quizStats.categoriesPlayed}
+                </p>
+                <p className="text-[10px] text-text-muted uppercase tracking-wider">Kategori</p>
+              </div>
+            </div>
+          </motion.div>
+        )}
 
         {/* Settings */}
         <motion.div
@@ -217,56 +290,6 @@ export default function ProfilePage() {
           </div>
         </motion.div>
       </div>
-
-      {/* Edit Name Modal */}
-      <AnimatePresence>
-        {showEditName && (
-          <motion.div
-            className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50 p-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setShowEditName(false)}
-          >
-            <motion.div
-              className="bg-surface border border-border rounded-2xl p-6 w-full max-w-sm shadow-card"
-              initial={{ scale: 0.95, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.95, opacity: 0 }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <h3 className="text-base font-bold text-text-primary mb-3">Ubah Nama Profil</h3>
-              <input
-                type="text"
-                value={nameInput}
-                onChange={(e) => setNameInput(e.target.value)}
-                className="w-full px-3.5 py-2.5 bg-surface-elevated border border-border rounded-xl text-text-primary placeholder-text-muted text-xs focus:outline-none focus:border-accent mb-4"
-                placeholder="Masukkan nama Anda"
-                autoFocus
-              />
-              <div className="flex gap-2.5">
-                <button
-                  onClick={() => setShowEditName(false)}
-                  className="flex-1 px-4 py-2 bg-surface-elevated text-text-secondary hover:text-text-primary text-xs font-medium rounded-xl border border-border transition-colors"
-                >
-                  Batal
-                </button>
-                <button
-                  onClick={() => {
-                    if (nameInput.trim()) {
-                      updateUserName(nameInput.trim())
-                      setShowEditName(false)
-                    }
-                  }}
-                  className="flex-1 px-4 py-2 bg-accent hover:bg-accent-dark text-white text-xs font-medium rounded-xl transition-colors shadow-sm"
-                >
-                  Simpan
-                </button>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
 
       {/* Daily Goal Modal */}
       <AnimatePresence>

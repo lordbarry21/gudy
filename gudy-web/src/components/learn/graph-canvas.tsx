@@ -174,7 +174,7 @@ export function GraphCanvas({
       } else if (isHovered) {
         ctx.beginPath()
         ctx.arc(node.x, node.y, node.radius + 3.0, 0, Math.PI * 2)
-        ctx.strokeStyle = isDark ? 'rgba(255, 255, 255, 0.65)' : 'rgba(0, 0, 0, 0.45)'
+        ctx.strokeStyle = isDark ? 'rgba(217, 119, 87, 0.45)' : 'rgba(0, 0, 0, 0.15)'
         ctx.lineWidth = 1.5
         ctx.stroke()
       }
@@ -486,7 +486,7 @@ export function GraphCanvas({
         onPointerUp={handlePointerUp}
         onDoubleClick={handleDoubleClick}
       />
-      <div className="absolute bottom-3 left-4 text-[11px] text-text-muted pointer-events-none bg-surface/70 backdrop-blur-sm px-2 py-1 rounded-md border border-border/50">
+      <div className="absolute bottom-3 left-4 text-[11px] text-text-muted pointer-events-none bg-[#FAF7F0]/85 dark:bg-[#22211E]/85 backdrop-blur-sm px-2.5 py-1 rounded-md border border-border/80 dark:border-border/60 shadow-sm">
         Scroll untuk zoom • Drag untuk menggeser klaster • Klik materi untuk detail
       </div>
     </div>

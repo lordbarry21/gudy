@@ -7,6 +7,7 @@ import { useAppStore } from '@/lib/store'
 import { calculateProgress } from '@/lib/utils'
 import Link from 'next/link'
 import { Check, Copy, ArrowLeft, Trophy, Star, Lightbulb, BookOpen, Sparkle } from '@phosphor-icons/react'
+import { formatMathSymbols } from '@/lib/math-symbols'
 
 export default function TopicDetailPage() {
   const params = useParams()
@@ -207,22 +208,50 @@ export default function TopicDetailPage() {
         )}
 
         {/* Pemantik Ingatan / Memory Booster */}
-        {topic.memoryBooster && (
-          <motion.div
-            className="bg-surface border border-border rounded-2xl p-5 mb-6 shadow-card"
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.1 }}
-          >
-            <div className="flex items-center gap-2 mb-2 text-text-primary font-semibold text-xs">
-              <Lightbulb size={16} className="text-warning" weight="fill" />
-              <span>Pemantik Ingatan & Formula Kunci</span>
-            </div>
-            <div className="bg-surface-elevated rounded-xl p-3.5 border border-border font-mono text-xs text-text-primary overflow-x-auto whitespace-pre-wrap leading-relaxed">
-              {topic.memoryBooster}
-            </div>
-          </motion.div>
-        )}
+        {topic.memoryBooster && (() => {
+          const formattedFormula = formatMathSymbols(topic.memoryBooster)
+
+          return (
+            <motion.div
+              className="bg-surface border border-border rounded-2xl p-5 mb-6 shadow-card"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.1 }}
+            >
+              <div className="flex items-center justify-between mb-2.5">
+                <div className="flex items-center gap-2 text-text-primary font-semibold text-xs">
+                  <Lightbulb size={16} className="text-warning" weight="fill" />
+                  <span>Pemantik Ingatan &amp; Formula Kunci</span>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    navigator.clipboard.writeText(formattedFormula)
+                    setCopied(true)
+                    setTimeout(() => setCopied(false), 2000)
+                  }}
+                  className="flex items-center gap-1.5 text-xs text-text-muted hover:text-text-primary px-2.5 py-1 rounded-lg hover:bg-surface-elevated transition-colors"
+                  title="Salin formula"
+                >
+                  {copied ? (
+                    <>
+                      <Check size={14} className="text-success" weight="bold" />
+                      <span className="text-success text-xs font-medium">Tersalin</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy size={14} />
+                      <span className="text-xs">Salin Formula</span>
+                    </>
+                  )}
+                </button>
+              </div>
+              <div className="bg-surface-elevated rounded-xl p-4 border border-border/80 dark:border-border/60 font-sans text-xs sm:text-sm text-text-primary overflow-x-auto whitespace-pre-wrap leading-relaxed tracking-normal select-all">
+                {formattedFormula}
+              </div>
+            </motion.div>
+          )
+        })()}
 
         {/* Checklist */}
         {topic.checklist.length > 0 && (
@@ -247,7 +276,7 @@ export default function TopicDetailPage() {
                   className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl transition-colors text-left ${
                     item.isChecked
                       ? 'bg-success/10 text-text-secondary'
-                      : 'bg-surface-elevated hover:bg-border/60 text-text-primary'
+                      : 'bg-surface-elevated hover:bg-border text-text-primary'
                   }`}
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}

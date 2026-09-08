@@ -17,10 +17,8 @@ import {
   CaretRight,
   Star,
   Lightbulb,
-  Eye,
-  EyeSlash,
 } from '@phosphor-icons/react'
-import { MathRenderer } from '@/components/quiz/MathRenderer'
+import { formatMathSymbols } from '@/lib/math-symbols'
 
 interface TopicExplanationPanelProps {
   selectedNode: GraphNode | null
@@ -42,7 +40,7 @@ export function TopicExplanationPanel({
   const router = useRouter()
   const { toggleChecklistItem, markAsMastered, toggleTopicMasteredCascade, subjects } = useAppStore()
   const [copied, setCopied] = useState(false)
-  const [showMathSymbols, setShowMathSymbols] = useState(false)
+  const [formulaCopied, setFormulaCopied] = useState(false)
 
   const currentSubject = subjects.find(s => s.id === subjectId)
   const leafTopics = topics.filter(t => t.isLeaf)
@@ -60,6 +58,12 @@ export function TopicExplanationPanel({
     navigator.clipboard.writeText(prompt)
     setCopied(true)
     setTimeout(() => setCopied(false), 2000)
+  }
+
+  const handleCopyFormula = (formula: string) => {
+    navigator.clipboard.writeText(formula)
+    setFormulaCopied(true)
+    setTimeout(() => setFormulaCopied(false), 2000)
   }
 
   // Branch category data
@@ -376,48 +380,37 @@ export function TopicExplanationPanel({
               )}
 
               {currentTopic.memoryBooster && (() => {
-                const hasMath = /[\d]+[\/√²³⁴⁵⁶⁷⁸⁹⁰]|[²³⁴⁵⁶⁷⁸⁹⁰]log|√|\^|π|∞|≤|≥|≠|±|°|∈|∉|⊂|⊃|∪|∩|∅|→|←|⇔|⇒|⇐|∑|∫|∘/.test(currentTopic.memoryBooster)
+                const formattedBooster = formatMathSymbols(currentTopic.memoryBooster)
 
                 return (
                   <div className="mt-2 p-2.5 rounded-lg bg-surface border border-border">
-                    <div className="flex items-center justify-between mb-2">
+                    <div className="flex items-center justify-between mb-1.5">
                       <div className="flex items-center gap-1.5 text-warning font-sans font-semibold text-[10px]">
                         <Lightbulb size={12} weight="fill" />
-                        <span>Pemantik Ingatan</span>
+                        <span>Pemantik Ingatan &amp; Formula Kunci</span>
                       </div>
-                      {hasMath && (
-                        <button
-                          type="button"
-                          onClick={() => setShowMathSymbols(!showMathSymbols)}
-                          className="flex items-center gap-1 text-[10px] font-medium text-text-muted hover:text-accent transition-colors px-1.5 py-0.5 rounded hover:bg-accent/10"
-                        >
-                          {showMathSymbols ? (
-                            <>
-                              <EyeSlash size={11} />
-                              <span>Sembunyikan Simbol</span>
-                            </>
-                          ) : (
-                            <>
-                              <Eye size={11} />
-                              <span>Tampilkan Simbol</span>
-                            </>
-                          )}
-                        </button>
-                      )}
+                      <button
+                        type="button"
+                        onClick={() => handleCopyFormula(formattedBooster)}
+                        className="flex items-center gap-1 text-[10px] font-medium text-text-muted hover:text-text-primary transition-colors px-1.5 py-0.5 rounded hover:bg-surface-elevated"
+                        title="Salin formula"
+                      >
+                        {formulaCopied ? (
+                          <>
+                            <Check size={11} className="text-success" weight="bold" />
+                            <span className="text-success text-[10px]">Tersalin</span>
+                          </>
+                        ) : (
+                          <>
+                            <Copy size={11} />
+                            <span>Salin</span>
+                          </>
+                        )}
+                      </button>
                     </div>
-                    {showMathSymbols ? (
-                      <div className="font-serif text-[10px] text-text-secondary leading-relaxed space-y-1">
-                        {currentTopic.memoryBooster.split('\n').map((line, idx) => (
-                          <p key={idx}>
-                            <MathRenderer text={line} inline={true} />
-                          </p>
-                        ))}
-                      </div>
-                    ) : (
-                      <div className="font-sans text-[10px] font-mono text-text-secondary leading-relaxed whitespace-pre-wrap">
-                        {currentTopic.memoryBooster}
-                      </div>
-                    )}
+                    <div className="font-sans text-[11px] text-text-primary bg-surface-elevated p-2.5 rounded-lg border border-border/80 dark:border-border/60 leading-relaxed overflow-x-auto whitespace-pre-wrap select-all tracking-normal">
+                      {formattedBooster}
+                    </div>
                   </div>
                 )
               })()}

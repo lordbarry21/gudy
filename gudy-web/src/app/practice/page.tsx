@@ -1,32 +1,26 @@
 'use client'
 
-import { useEffect, useState, useCallback } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
+import { useRouter } from 'next/navigation'
 import { useAppStore } from '@/lib/store'
-import { useQuizStore, useActiveQuiz, useQuizProgress } from '@/lib/quiz-store'
 import { loadQuizData } from '@/lib/quiz-data'
 import { AuthModal } from '@/components/auth/AuthModal'
 import {
   QuizCard,
-  QuizModal,
 } from '@/components/quiz'
 import {
-  FilePdf,
-  DownloadSimple,
-  ArrowSquareOut,
-  X,
   MagnifyingGlass,
-  Clock,
-  CheckCircle,
   Books,
   Sparkle,
   Lightning,
   User,
   SignIn,
   Trophy,
+  CheckCircle,
 } from '@phosphor-icons/react'
 import { useAuth } from '@/contexts/AuthContext'
-import { QuizData, QuizQuestion, QuizAttempt } from '@/types'
+import { QuizData } from '@/types'
 
 type PracticeExam = {
   subjectId: string
@@ -41,6 +35,7 @@ type PracticeExam = {
 }
 
 export default function PracticePage() {
+  const router = useRouter()
   const { subjects, initialize, isInitialized } = useAppStore()
   const { user, loading: authLoading } = useAuth()
   const [mounted, setMounted] = useState(false)
@@ -49,11 +44,11 @@ export default function PracticePage() {
   const [showAuthModal, setShowAuthModal] = useState(false)
   const [quizData, setQuizData] = useState<Record<string, QuizData>>({})
   const [practiceList, setPracticeList] = useState<PracticeExam[]>([])
-
-  // Quiz state from store
-  const activeQuiz = useActiveQuiz()
-  const quizProgress = useQuizProgress()
-  const { startQuiz, selectAnswer, nextQuestion, prevQuestion, goToQuestion, submitQuiz, cancelQuiz } = useQuizStore()
+  const [quizStats, setQuizStats] = useState({
+    averageScore: 0,
+    totalQuizzesTaken: 0,
+    categoriesPlayed: 0,
+  })
 
   useEffect(() => {
     setMounted(true)
@@ -62,7 +57,7 @@ export default function PracticePage() {
     }
   }, [initialize, isInitialized])
 
-  // Load quiz data
+  // Load quiz data and stats
   useEffect(() => {
     const loadData = async () => {
       const subjectIds = [
@@ -105,6 +100,28 @@ export default function PracticePage() {
     loadData()
   }, [])
 
+  // Load quiz progress stats from localStorage
+  useEffect(() => {
+    if (!user) return
+
+    try {
+      const stored = localStorage.getItem('gudy_quiz_progress')
+      if (stored) {
+        const parsed = JSON.parse(stored)
+        const progress = parsed.state?.progress
+        if (progress) {
+          setQuizStats({
+            averageScore: progress.averageScore || 0,
+            totalQuizzesTaken: progress.totalQuizzesTaken || 0,
+            categoriesPlayed: Object.keys(progress.bestScores || {}).length,
+          })
+        }
+      }
+    } catch {
+      // Ignore errors
+    }
+  }, [user])
+
   // Filter exams based on subject & search query
   const filteredExams = practiceList.filter((exam) => {
     const matchesSubject =
@@ -132,65 +149,43 @@ export default function PracticePage() {
 
   // Get best score for a subcategory
   const getBestScore = (subcategoryId: string) => {
-    return quizProgress.bestScores[subcategoryId] || null
+    if (!user) return null
+    try {
+      const stored = localStorage.getItem('gudy_quiz_progress')
+      if (stored) {
+        const parsed = JSON.parse(stored)
+        const bestScores = parsed.state?.progress?.bestScores
+        return bestScores?.[subcategoryId]?.bestScore || null
+      }
+    } catch {
+      // Ignore
+    }
+    return null
   }
 
-  // Handle starting a quiz
+  // Get total attempts for a subcategory
+  const getBestAttempts = (subcategoryId: string) => {
+    if (!user) return 0
+    try {
+      const stored = localStorage.getItem('gudy_quiz_progress')
+      if (stored) {
+        const parsed = JSON.parse(stored)
+        const bestScores = parsed.state?.progress?.bestScores
+        return bestScores?.[subcategoryId]?.totalAttempts || 0
+      }
+    } catch {
+      // Ignore
+    }
+    return 0
+  }
+
+  // Handle starting a quiz - navigate to dedicated quiz page
   const handleStartQuiz = (exam: PracticeExam) => {
     if (!user) {
       setShowAuthModal(true)
       return
     }
-
-    const data = quizData[exam.subjectId]
-    const subcategory = data?.subcategories.find((s) => s.id === exam.subcategoryId)
-
-    if (subcategory) {
-      startQuiz(
-        exam.subjectId,
-        exam.subcategoryId,
-        exam.title,
-        subcategory.questions
-      )
-    }
-  }
-
-  // Handle quiz submission
-  const handleSubmitQuiz = useCallback(() => {
-    return submitQuiz()
-  }, [submitQuiz])
-
-  // Handle quiz completion (for showing results)
-  const [submittedAttempt, setSubmittedAttempt] = useState<QuizAttempt | null>(null)
-
-  const handleNextQuestion = useCallback(() => {
-    if (activeQuiz) {
-      const nextIndex = activeQuiz.currentIndex + 1
-      if (nextIndex >= activeQuiz.questions.length) {
-        // Last question - submit
-        const attempt = submitQuiz()
-        setSubmittedAttempt(attempt)
-      } else {
-        nextQuestion()
-      }
-    }
-  }, [activeQuiz, nextQuestion, submitQuiz])
-
-  // Handle retry
-  const handleRetry = () => {
-    if (activeQuiz) {
-      const data = quizData[activeQuiz.subjectId]
-      const subcategory = data?.subcategories.find((s) => s.id === activeQuiz.subcategoryId)
-      if (subcategory) {
-        setSubmittedAttempt(null)
-        startQuiz(
-          activeQuiz.subjectId,
-          activeQuiz.subcategoryId,
-          activeQuiz.subcategoryTitle,
-          subcategory.questions
-        )
-      }
-    }
+    router.push(`/quiz/${exam.subjectId}/${exam.subcategoryId}`)
   }
 
   if (!mounted) {
@@ -256,7 +251,7 @@ export default function PracticePage() {
         </motion.div>
 
         {/* Stats Cards (for logged in users) */}
-        {user && quizProgress.totalQuizzesTaken > 0 && (
+        {user && quizStats.totalQuizzesTaken > 0 && (
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -265,21 +260,21 @@ export default function PracticePage() {
             <div className="bg-surface border border-border rounded-xl p-5 text-center">
               <Trophy size={22} className="text-warning mx-auto mb-2" />
               <p className="font-display text-2xl font-bold text-text-primary tracking-tight">
-                {quizProgress.averageScore}%
+                {quizStats.averageScore}%
               </p>
               <p className="font-sans text-xs text-text-muted mt-1 font-medium">Rata-rata Skor</p>
             </div>
             <div className="bg-surface border border-border rounded-xl p-5 text-center">
               <CheckCircle size={22} className="text-success mx-auto mb-2" />
               <p className="font-display text-2xl font-bold text-text-primary tracking-tight">
-                {quizProgress.totalQuizzesTaken}
+                {quizStats.totalQuizzesTaken}
               </p>
               <p className="font-sans text-xs text-text-muted mt-1 font-medium">Quiz Dikerjakan</p>
             </div>
             <div className="bg-surface border border-border rounded-xl p-5 text-center">
               <Sparkle size={22} className="text-accent mx-auto mb-2" />
               <p className="font-display text-2xl font-bold text-text-primary tracking-tight">
-                {Object.keys(quizProgress.bestScores).length}
+                {quizStats.categoriesPlayed}
               </p>
               <p className="font-sans text-xs text-text-muted mt-1 font-medium">Kategori Dimainkan</p>
             </div>
@@ -362,7 +357,6 @@ export default function PracticePage() {
           {filteredExams.map((exam, index) => {
             const color = getSubjectColor(exam.subjectId)
             const icon = getSubjectIcon(exam.subjectId)
-            const bestScore = getBestScore(exam.subcategoryId)
 
             return (
               <QuizCard
@@ -374,7 +368,8 @@ export default function PracticePage() {
                 subjectColor={color}
                 subjectIcon={icon}
                 subjectName={exam.subjectName}
-                bestScore={bestScore || undefined}
+                bestScore={getBestScore(exam.subcategoryId)}
+                bestAttempts={getBestAttempts(exam.subcategoryId)}
                 onStartQuiz={() => handleStartQuiz(exam)}
                 onOpenPdf={() => window.open(exam.pdfUrl, '_blank')}
                 index={index}
@@ -395,30 +390,6 @@ export default function PracticePage() {
           </div>
         )}
       </div>
-
-      {/* Quiz Modal */}
-      {activeQuiz && (
-        <QuizModal
-          isOpen={true}
-          onClose={() => {
-            cancelQuiz()
-            setSubmittedAttempt(null)
-          }}
-          subjectName={subjects.find((s) => s.id === activeQuiz.subjectId)?.name || ''}
-          subcategoryTitle={activeQuiz.subcategoryTitle}
-          questions={activeQuiz.questions}
-          currentIndex={activeQuiz.currentIndex}
-          answers={activeQuiz.answers}
-          isSubmitted={activeQuiz.isSubmitted}
-          submittedAttempt={submittedAttempt || undefined}
-          onSelectAnswer={(questionNum, answer) => selectAnswer(questionNum, answer)}
-          onNext={handleNextQuestion}
-          onPrev={prevQuestion}
-          onGoToQuestion={goToQuestion}
-          onSubmit={handleSubmitQuiz}
-          onRetry={handleRetry}
-        />
-      )}
 
       {/* Auth Modal */}
       <AuthModal

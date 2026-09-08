@@ -100,4 +100,49 @@ export const STORAGE_KEYS = {
   TOPICS: 'gudy_topics',
   ACHIEVEMENTS: 'gudy_achievements',
   CURRICULUM_VERSION: 'gudy_curriculum_version',
+  STUDY_SESSIONS: 'gudy_study_sessions',
+} as const
+
+// Pomodoro Timer Presets (in minutes)
+export const POMODORO_PRESETS = {
+  FOCUS_25: 25,
+  FOCUS_45: 45,
+  FOCUS_60: 60,
+  FOCUS_90: 90,
+} as const
+
+// Break Durations (in minutes)
+export const BREAK_PRESETS = {
+  SHORT: 5,
+  LONG: 10,
+  EXTENDED: 15,
+} as const
+
+// Break Messages & Quotes
+export const BREAK_MESSAGES = [
+  "Waktu istirahat! Otakmu butuh refresh.",
+  "Istirahat sebentar, nanti lanjut lebih fokus!",
+  "Great work! Saatnya recharge.",
+  "Kamu sudah hebat! Beri waktu untuk dirimu.",
+]
+
+export const MOTIVATIONAL_QUOTES = [
+  { text: "Konsistensi mengalahkan bakat.", author: "Unknown" },
+  { text: "Progress, bukan sempurna.", author: "Unknown" },
+  { text: "Setiap menit belajat berarti.", author: "Unknown" },
+  { text: "Kamu lebih kuat dari yang kau kira.", author: "Unknown" },
+  { text: "Sedikit-sedikit, lama-lama menjadi bukit.", author: "Pepatah" },
+  { text: "Gagal adalah bumbu успеха.", author: "Unknown" },
+  { text: "Hari ini sulit, besok lebih mudah.", author: "Unknown" },
+  { text: "Fokus pada proses, bukan hasil.", author: "Unknown" },
+  { text: "Belajar hari ini untuk masa depan yang lebih baik.", author: "Unknown" },
+  { text: "Setiap usaha akan berbuah hasil.", author: "Unknown" },
+]
+
+// Daily Goal Targets (in minutes)
+export const DAILY_STUDY_TARGETS = {
+  MINIMUM: 30,
+  MODERATE: 60,
+  INTENSIVE: 90,
+  EXTREME: 120,
 } as const

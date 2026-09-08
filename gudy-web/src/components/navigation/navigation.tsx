@@ -1,7 +1,8 @@
 'use client'
 
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion } from 'motion/react'
 import {
   House,
@@ -9,13 +10,13 @@ import {
   ChartLineUp,
   Lightning,
   User,
-  Sparkle,
   Sun,
   Moon,
 } from '@phosphor-icons/react'
 import { NAV_ITEMS } from '@/lib/constants'
 import { cn } from '@/lib/utils'
 import { useTheme } from '@/components/theme-provider'
+import { useAuth } from '@/contexts/AuthContext'
 
 const iconMap: Record<string, React.ElementType> = {
   house: House,
@@ -27,39 +28,74 @@ const iconMap: Record<string, React.ElementType> = {
 
 export function Navigation({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
+  const router = useRouter()
   const { theme, toggleTheme } = useTheme()
+  const { user, loading } = useAuth()
+
+  // Hide navigation on login page
+  const isLoginPage = pathname === '/login'
+
+  const handleProfileClick = (e: React.MouseEvent) => {
+    // If not logged in and clicking profile, redirect to login
+    if (!loading && !user) {
+      e.preventDefault()
+      router.push('/login?from=' + encodeURIComponent(pathname))
+    }
+  }
+
+  if (isLoginPage) {
+    // On login page, just render children without navigation
+    return <>{children}</>
+  }
 
   return (
     <>
       {/* Desktop Sidebar */}
       <aside className="hidden lg:flex fixed left-0 top-0 h-screen w-64 bg-surface-sidebar border-r border-border flex-col p-6 z-50 transition-colors duration-200">
         {/* Logo */}
-        <div className="flex items-center gap-3 mb-8">
+        <Link href="/" className="flex items-center gap-3 mb-8 group">
           <motion.div
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
-            className="w-10 h-10 rounded-xl bg-accent text-white flex items-center justify-center shadow-sm"
+            className="w-10 h-10 relative shrink-0 rounded-xl overflow-hidden shadow-sm border border-border/40"
           >
-            <Sparkle size={20} weight="fill" />
+            <Image
+              src="/logo.png"
+              alt="Gudy Logo"
+              width={40}
+              height={40}
+              className="w-full h-full object-cover hidden dark:block"
+              priority
+            />
+            <Image
+              src="/logo-white-512.png"
+              alt="Gudy Logo"
+              width={40}
+              height={40}
+              className="w-full h-full object-cover block dark:hidden"
+              priority
+            />
           </motion.div>
           <div>
-            <h1 className="font-bold text-xl text-text-primary tracking-tight">
+            <h1 className="font-bold text-xl text-text-primary tracking-tight group-hover:text-accent transition-colors">
               Gudy
             </h1>
             <p className="text-xs text-text-muted">Study Tracker</p>
           </div>
-        </div>
+        </Link>
 
         {/* Nav Items */}
         <nav className="flex-1 space-y-1.5">
           {NAV_ITEMS.map((item) => {
             const Icon = iconMap[item.icon]
             const isActive = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href))
+            const isProfile = item.href === '/profile'
 
             return (
               <Link
                 key={item.href}
                 href={item.href}
+                onClick={isProfile ? handleProfileClick : undefined}
                 className={cn(
                   'relative flex items-center gap-3 px-3.5 py-2.5 rounded-xl transition-colors duration-150 outline-none focus:outline-none focus-visible:outline-none',
                   isActive
@@ -92,7 +128,7 @@ export function Navigation({ children }: { children: React.ReactNode }) {
           <button
             type="button"
             onClick={toggleTheme}
-            className="w-full flex items-center justify-between px-3.5 py-2 rounded-xl bg-surface-elevated hover:bg-border/60 text-text-secondary hover:text-text-primary text-xs font-medium transition-colors border border-border"
+            className="w-full flex items-center justify-between px-3.5 py-2 rounded-xl bg-surface-elevated hover:bg-border text-text-secondary hover:text-text-primary text-xs font-medium transition-colors border border-border"
           >
             <span className="flex items-center gap-2">
               {theme === 'dark' ? <Moon size={16} weight="fill" className="text-accent" /> : <Sun size={16} weight="fill" className="text-accent" />}
@@ -111,12 +147,27 @@ export function Navigation({ children }: { children: React.ReactNode }) {
 
       {/* Mobile Top Header (with Theme Toggle) */}
       <header className="lg:hidden sticky top-0 left-0 right-0 h-14 bg-surface-sidebar/95 backdrop-blur-md border-b border-border flex items-center justify-between px-4 z-40">
-        <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-lg bg-accent text-white flex items-center justify-center shadow-sm">
-            <Sparkle size={16} weight="fill" />
+        <Link href="/" className="flex items-center gap-2.5">
+          <div className="w-8 h-8 relative shrink-0 rounded-lg overflow-hidden shadow-sm border border-border/40">
+            <Image
+              src="/logo.png"
+              alt="Gudy Logo"
+              width={32}
+              height={32}
+              className="w-full h-full object-cover hidden dark:block"
+              priority
+            />
+            <Image
+              src="/logo-white-512.png"
+              alt="Gudy Logo"
+              width={32}
+              height={32}
+              className="w-full h-full object-cover block dark:hidden"
+              priority
+            />
           </div>
           <span className="font-bold text-lg text-text-primary tracking-tight">Gudy</span>
-        </div>
+        </Link>
         <button
           type="button"
           onClick={toggleTheme}
@@ -133,11 +184,13 @@ export function Navigation({ children }: { children: React.ReactNode }) {
           {NAV_ITEMS.map((item) => {
             const Icon = iconMap[item.icon]
             const isActive = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href))
+            const isProfile = item.href === '/profile'
 
             return (
               <Link
                 key={item.href}
                 href={item.href}
+                onClick={isProfile ? handleProfileClick : undefined}
                 className={cn(
                   'relative flex flex-col items-center gap-0.5 px-3 py-1.5 rounded-lg transition-colors outline-none focus:outline-none focus-visible:outline-none',
                   isActive ? 'text-accent font-semibold' : 'text-text-muted hover:text-text-secondary'

@@ -34,7 +34,7 @@ export const bahasaInggrisTopics: Topic[] = [
     description: 'Locating thesis statement and topic sentences, formulating the central theme, eliminating broad/narrow choices.',
     scope: 'Locating thesis statement / topic sentences in expository, report, and analytical exposition texts (usually paragraph 1 or final concluding sentence), formulating the overall central theme, eliminating overly broad or narrow answer choices.',
     targetCriteria: 'Check the first 2 sentences and the last sentence of each paragraph to construct the aggregate main idea.',
-    memoryBooster: '\\text{Main Idea} \\approx \\text{Topic (Subject)} + \\text{Controlling Idea (Author\'s Core Claim)}',
+    memoryBooster: "Main Idea ≈ Topic (Subject) + Controlling Idea (Author's Core Claim)",
     aiPrompt: 'Explain the strategy to quickly determine the main idea and primary purpose of academic passages without reading every single word, including how to eliminate trick choices.',
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_4_1_1`, [
@@ -55,7 +55,7 @@ export const bahasaInggrisTopics: Topic[] = [
     description: 'Scanning proper nouns, dates, terms; answering according to the passage; avoiding the verbatim trap.',
     scope: 'Scanning for proper nouns, numbers, dates, technical terms; answering "According to the passage, ...", True/False/Not Mentioned statements, paraphrasing verification.',
     targetCriteria: 'Beware of the "Verbatim Trap" (options that copy exact words from the passage but distort the logical relationship or negate the statement).',
-    memoryBooster: '\\text{Beware: Verbatim Words} \\neq \\text{Correct Meaning (Check negation & causal distortion)}',
+    memoryBooster: 'Beware: Verbatim Words ≠ Correct Meaning (Check negation & causal distortion)',
     aiPrompt: 'How to spot "Verbatim Traps" in English reading comprehension tests where the answer choice uses words from the text but has an opposite meaning?',
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_4_1_2`, [
@@ -76,7 +76,7 @@ export const bahasaInggrisTopics: Topic[] = [
     description: 'Answering implicit queries, combining premises with context logic, avoiding unwarranted extrapolation.',
     scope: 'Answering "It can be inferred that...", "The passage implies that..."; combining stated premises with contextual logic to deduce unstated facts; avoiding unwarranted extrapolation.',
     targetCriteria: 'An inference must be 100% strictly supported by the text clues — never rely on outside knowledge that contradicts or goes beyond the text.',
-    memoryBooster: '\\text{Valid Inference} = \\text{Text Clues} + \\text{Strict Logical Deduction (Zero wild assumptions)}',
+    memoryBooster: 'Valid Inference = Text Clues + Strict Logical Deduction (Zero wild assumptions)',
     aiPrompt: 'Teach me how to master "Inference" questions in English proficiency exams: what distinguishes a valid inference from an overgeneralized assumption?',
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_4_1_3`, [
@@ -110,7 +110,7 @@ export const bahasaInggrisTopics: Topic[] = [
     description: 'Sequential connectors, imperative verbs in user guides/troubleshooting, conditional clauses and warnings.',
     scope: 'Sequential order connectors (first, subsequently, prior to, finally), imperative verb forms in user guides/troubleshooting steps, cause-and-effect in hardware/software manuals.',
     targetCriteria: 'Pay close attention to conditional clauses ("Unless the power light turns green, do not...") and precautionary warnings.',
-    memoryBooster: '\\text{Sequential Linkers: Prior to} \\to \\text{Subsequently} \\to \\text{Simultaneously} \\to \\text{Ultimately}',
+    memoryBooster: 'Sequential Linkers: Prior to → Subsequently → Simultaneously → Ultimately',
     aiPrompt: 'Provide a guide on analyzing procedural and technical troubleshooting texts in English vocational assessments, focusing on sequencing and condition clauses.',
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_4_2_1`, [
@@ -131,7 +131,7 @@ export const bahasaInggrisTopics: Topic[] = [
     description: 'Sender, recipient, formal salutations/sign-offs, communicative intent, required action deliverables.',
     scope: 'Sender, recipient, formal salutations and sign-offs, purpose of communication ("I am writing to inquire...", "We regret to inform you..."), complaint handling, job application cover letters.',
     targetCriteria: 'Identify the action required by the recipient at the end of the letter/email ("Please RSVP by Friday").',
-    memoryBooster: '\\text{Email Anatomy: Salutation} \\to \\text{Purpose Line} \\to \\text{Action Required / Deadline} \\to \\text{Sign-off}',
+    memoryBooster: 'Email Anatomy: Salutation → Purpose Line → Action Required / Deadline → Sign-off',
     aiPrompt: 'How to quickly extract key deliverables, deadlines, and intent from formal business correspondence and email threads in English exams?',
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_4_2_2`, [
@@ -152,7 +152,7 @@ export const bahasaInggrisTopics: Topic[] = [
     description: 'Mandatory vs preferred qualifications, public notices, schedule tables, pie/bar chart descriptions.',
     scope: 'Interpreting job qualification requirements (qualifications, experience, responsibilities), public notices, schedule tables, bar/pie charts paired with descriptive paragraphs.',
     targetCriteria: 'Differentiate between mandatory requirements ("must possess") and preferred qualifications ("advantageous / preferred").',
-    memoryBooster: '\\text{Mandatory: ' + 'Must have / Required' + '} \\quad \\text{vs} \\quad \\text{Preferred: ' + 'Advantageous / Preferred' + '}',
+    memoryBooster: 'Mandatory: Must have / Required  vs  Preferred: Advantageous / Preferred',
     aiPrompt: 'Give strategies for reading English job ads, public announcements, and associated infographics with 100% accuracy.',
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_4_2_3`, [
@@ -186,7 +186,7 @@ export const bahasaInggrisTopics: Topic[] = [
     description: '4 types: Definition/Restatement, Synonym, Contrast/Antonym, Example/Illustration clues; substitution test.',
     scope: '4 Context clue types: (1) Definition/Restatement clues ("or", "that is"), (2) Synonym clues, (3) Contrast/Antonym clues ("unlike", "whereas"), (4) Example/Illustration clues ("such as", "for instance").',
     targetCriteria: 'Substitute the chosen answer choice back into the sentence to ensure both syntactic and semantic compatibility.',
-    memoryBooster: '\\text{Context Clues: Definition, Synonym, Contrast (whereas/unlike), Example (such as)}',
+    memoryBooster: 'Context Clues: Definition, Synonym, Contrast (whereas/unlike), Example (such as)',
     aiPrompt: 'Explain the 4 types of context clues in English reading passages and how to deduce the meaning of difficult technical terms without a dictionary.',
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_4_3_1`, [
@@ -207,7 +207,7 @@ export const bahasaInggrisTopics: Topic[] = [
     description: 'Roots, common prefixes (un-, dis-, re-, sub-), noun/adj/verb suffixes (-tion, -ment, -able), role prediction.',
     scope: 'Roots, common prefixes (un-, dis-, mis-, re-, pre-, post-, sub-, hyper-), common noun/adjective/verb suffixes (-tion, -ment, -able, -ive, -ize), shifting word classes.',
     targetCriteria: 'Master grammatical role prediction (e.g., after an article and before a noun, the missing slot MUST be an adjective).',
-    memoryBooster: '\\text{Prefix = Meaning Shift (un-, sub-, re-)} \\quad | \\quad \\text{Suffix = Class Shift (-tion, -able, -ize)}',
+    memoryBooster: 'Prefix = Meaning Shift (un-, sub-, re-)  |  Suffix = Class Shift (-tion, -able, -ize)',
     aiPrompt: 'Provide a cheat sheet of high-frequency English prefixes and suffixes that change word class, along with examples from academic texts.',
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_4_3_2`, [
@@ -228,7 +228,7 @@ export const bahasaInggrisTopics: Topic[] = [
     description: '3,000 Academic Word List tokens, essential phrasal verbs, collocations (conduct an experiment, account for).',
     scope: '3,000 Common Academic Word List (AWL) tokens (indicate, significant, implement, subsequent, preliminary, comprehensive), essential phrasal verbs (carry out, point out, bring about, account for).',
     targetCriteria: 'Learn words in collocation pairs (e.g., "conduct an experiment", "account for the difference").',
-    memoryBooster: '\\text{Academic Collocations: Carry out an inquiry} \\quad | \\quad \\text{Account for discrepancies}',
+    memoryBooster: 'Academic Collocations: Carry out an inquiry  |  Account for discrepancies',
     aiPrompt: 'List the top 50 academic vocabulary words and 25 phrasal verbs most commonly tested on Indonesian high school English standardized tests.',
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_4_3_3`, [
@@ -262,7 +262,7 @@ export const bahasaInggrisTopics: Topic[] = [
     description: 'Tone categories: Objective/Neutral, Critical/Skeptical, Optimistic, Concerned; emotive and evaluative adjectives.',
     scope: 'Distinguishing tone categories: Objective / Neutral, Critical / Skeptical, Optimistic / Enthusiastic, Humorous / Sarcastic, Concerned / Urgent; identifying emotive adjectives.',
     targetCriteria: 'An objective scientific text has an informative/neutral tone; if the author uses words like "surprisingly, unfortunately, questionable", the tone shifts to critical/skeptical.',
-    memoryBooster: '\\text{Tone Spectrum: Objective (Neutral)} \\leftrightarrow \\text{Skeptical / Critical} \\leftrightarrow \\text{Urgent / Concerned}',
+    memoryBooster: 'Tone Spectrum: Objective (Neutral) ↔ Skeptical / Critical ↔ Urgent / Concerned',
     aiPrompt: "How to determine the author's tone (objective, cynical, cautious, optimistic) through word choice and rhetorical devices in English passages?",
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_4_4_1`, [
@@ -283,7 +283,7 @@ export const bahasaInggrisTopics: Topic[] = [
     description: 'Infinitives of purpose (to inform, persuade, evaluate, criticize), identifying intended readership.',
     scope: 'Verb infinitives denoting purpose: to inform, to persuade, to criticize, to explain, to illustrate, to advocate; determining intended readership (general public, policymakers, students, engineers).',
     targetCriteria: 'If the text presents both pros and cons evenly, the purpose is to evaluate/inform; if it advocates one side with persuasive arguments, it is to persuade/convince.',
-    memoryBooster: '\\text{Purpose: Balanced Pros/Cons} \\implies \\text{To Evaluate} \\quad | \\quad \\text{One-Sided Arguments} \\implies \\text{To Persuade}',
+    memoryBooster: 'Purpose: Balanced Pros/Cons ⇒ To Evaluate | One-Sided Arguments ⇒ To Persuade',
     aiPrompt: "Explain how to accurately choose between 'to inform', 'to persuade', 'to evaluate', and 'to criticize' as the author's primary intent.",
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_4_4_2`, [
@@ -304,7 +304,7 @@ export const bahasaInggrisTopics: Topic[] = [
     description: 'Empirical measurable facts vs subjective assertions, emotional appeals, recognizing author bias.',
     scope: 'Identifying statements of objective fact (empirical, measurable) vs opinion (value judgments, subjective assertions); recognizing emotional appeals and unsupported claims.',
     targetCriteria: 'Sentences containing adjectives like "the greatest", "unacceptable", "evidently" indicate opinion rather than hard fact.',
-    memoryBooster: '\\text{Hard Fact: Empirically verifiable data} \\quad \\text{vs} \\quad \\text{Opinion: Subjective value judgments}',
+    memoryBooster: 'Hard Fact: Empirically verifiable data vs Opinion: Subjective value judgments',
     aiPrompt: 'How to differentiate factual statements from author bias and value judgments in analytical reading comprehension?',
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_4_4_3`, [
@@ -338,7 +338,7 @@ export const bahasaInggrisTopics: Topic[] = [
     description: 'Contrast (However, Whereas, Although), Cause/Effect (Therefore, Due to), Addition (Furthermore), Concession (Despite).',
     scope: 'Contrast (However, Nevertheless, Whereas, Although), Cause/Effect (Therefore, Consequently, Due to), Addition (Furthermore, Moreover), Concession (Despite, In spite of); clause vs noun connector syntax.',
     targetCriteria: 'Distinguish between conjunctions connecting clauses (Although + Clause) vs prepositions connecting nouns (Despite + Noun Phrase).',
-    memoryBooster: '\\text{Although / Even though} + \\text{Clause} \\quad \\text{vs} \\quad \\text{Despite / In spite of} + \\text{Noun Phrase}',
+    memoryBooster: 'Although / Even though + Clause vs Despite / In spite of + Noun Phrase',
     aiPrompt: 'Create a complete matrix of English transitional signals categorized by function (contrast, cause, addition, concession) with punctuation rules.',
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_4_5_1`, [
@@ -359,7 +359,7 @@ export const bahasaInggrisTopics: Topic[] = [
     description: 'Tracing referents of it, they, this, which; resolving ambiguity across preceding compound noun phrases.',
     scope: 'Identifying the exact referent of pronouns (it, they, them, this, these, that, those, which, such); resolving ambiguity when multiple candidate nouns exist in the prior sentence.',
     targetCriteria: 'Match both singular/plural number and semantic agency (animate vs inanimate) with the preceding referent noun.',
-    memoryBooster: '\\text{Pronoun Tracing: Match Number (singular/plural) } + \\text{ Agency (animate/inanimate)}',
+    memoryBooster: 'Pronoun Tracing: Match Number (singular/plural) + Agency (animate/inanimate)',
     aiPrompt: "Give a foolproof method to trace pronoun references ('it', 'they', 'the former', 'the latter') in dense multi-clause sentences.",
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_4_5_2`, [
@@ -380,7 +380,7 @@ export const bahasaInggrisTopics: Topic[] = [
     description: 'Paragraph relations (elaboration, counterpoint), optimal sentence insertion using cohesion anchor words.',
     scope: 'Relationship between paragraphs (paragraph 2 elaborates on an example, paragraph 3 offers an opposing viewpoint); inserting a sentence into the optimal location based on cohesion clues.',
     targetCriteria: 'Look for bridging words ("This phenomenon...", "Such measures...") to anchor sentence insertion questions.',
-    memoryBooster: '\\text{Sentence Insertion: Look for demonstrative anchors (' + 'This finding / These problems' + ')}',
+    memoryBooster: 'Sentence Insertion: Look for demonstrative anchors (This finding / These problems)',
     aiPrompt: 'How to solve "Which of the following best reflects the relationship between paragraph 1 and 2?" and sentence insertion questions efficiently.',
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_4_5_3`, [
@@ -414,7 +414,7 @@ export const bahasaInggrisTopics: Topic[] = [
     description: 'Past/Present Perfect, future structures; SV agreement across intervening prepositional phrases, singular quantifiers.',
     scope: 'Simple Present/Past, Present/Past Perfect, Future forms; Subject-Verb agreement across intervening prepositional phrases, singular quantifiers (every, each, neither).',
     targetCriteria: 'Ignore prepositional phrases between the subject and verb to correctly identify the real subject head noun!',
-    memoryBooster: '\\text{The collection } [\\text{of rare books}] \\text{ WAS sold (Ignore prepositional phrases!)}',
+    memoryBooster: 'The collection [of rare books] WAS sold (Ignore prepositional phrases!)',
     aiPrompt: "Summarize the 10 most common Subject-Verb Agreement traps in English exams, especially involving phrases like 'along with', 'as well as', and compound subjects.",
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_4_6_1`, [
@@ -435,7 +435,7 @@ export const bahasaInggrisTopics: Topic[] = [
     description: 'Active to passive transformation, defining vs non-defining relative clauses, reduced participle clauses (-ing vs -ed).',
     scope: 'Active to passive transformation (be + V3 across all tenses), impersonal passive; Defining vs non-defining relative clauses (who, whom, which, whose, that); reduced relative clauses (Active -ing vs Passive -ed).',
     targetCriteria: 'In reduced clauses, active verbs become V-ing ("The man sitting there"), while passive verbs become V3 ("The car repaired yesterday").',
-    memoryBooster: '\\text{Reduced Clause: Active} \\implies V\\text{-ing} \\quad | \\quad \\text{Passive} \\implies V_3',
+    memoryBooster: 'Reduced Clause: Active ⇒ V-ing | Passive ⇒ V₃',
     aiPrompt: "Explain relative pronouns ('who' vs 'whom' vs 'whose') and how to master reduced relative clauses (participle clauses) in reading and grammar tests.",
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_4_6_2`, [
@@ -456,7 +456,7 @@ export const bahasaInggrisTopics: Topic[] = [
     description: 'Types 0, 1, 2, 3 conditionals, subjunctive were, modal verbs, modal perfect deductions (must have + V3).',
     scope: 'Zero Conditional, Type 1 (Real future), Type 2 (Unreal present: If + Past, Would + V1), Type 3 (Unreal past: If + Past Perfect, Would have + V3); Modal verbs and Modal perfect (should have + V3, must have + V3).',
     targetCriteria: 'In Type 2 conditional, the verb be is always were ("If I were you..."); must have + V3 means a logical certainty about the past.',
-    memoryBooster: '\\text{Type 2: If + Past, Would + V1} \\quad | \\quad \\text{Type 3: If + Had V3, Would have + V3} \\quad | \\quad \\text{Must have V3 = Past Certainty}',
+    memoryBooster: 'Type 2: If + Past, Would + V₁ | Type 3: If + Had V₃, Would have + V₃ | Must have V₃ = Past Certainty',
     aiPrompt: "Provide a comprehensive table of Conditional Sentences Types 0, 1, 2, 3, and Mixed Conditionals, plus past modal deductions ('must have', 'should have').",
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_4_6_3`, [

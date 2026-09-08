@@ -5,6 +5,7 @@ import { useParams } from 'next/navigation'
 import { motion, AnimatePresence } from 'motion/react'
 import { useAppStore } from '@/lib/store'
 import { calculateProgress } from '@/lib/utils'
+import { AuthPrompt } from '@/components/auth/AuthPrompt'
 import Link from 'next/link'
 import {
   ArrowLeft,
@@ -28,6 +29,8 @@ export default function SubjectDetailPage() {
   const [mounted, setMounted] = useState(false)
   const [expandedTopics, setExpandedTopics] = useState<Set<string>>(new Set())
   const [viewMode, setViewMode] = useState<ViewMode>('list')
+  const [showAuthPrompt, setShowAuthPrompt] = useState(false)
+  const [pendingTopicId, setPendingTopicId] = useState<string | null>(null)
 
   useEffect(() => {
     setMounted(true)
@@ -35,6 +38,12 @@ export default function SubjectDetailPage() {
       initialize()
     }
   }, [initialize, isInitialized])
+
+  // Handle marking topic - will show auth prompt for guests
+  const handleToggleTopic = (topicId: string) => {
+    setPendingTopicId(topicId)
+    setShowAuthPrompt(true)
+  }
 
   if (!mounted) {
     return (
@@ -122,7 +131,7 @@ export default function SubjectDetailPage() {
               type="button"
               onClick={(e) => {
                 e.stopPropagation()
-                toggleTopicMasteredCascade(topic.id)
+                handleToggleTopic(topic.id)
               }}
               className="p-0.5 rounded hover:scale-110 active:scale-95 transition-all outline-none focus:outline-none"
               title={
@@ -166,7 +175,7 @@ export default function SubjectDetailPage() {
               type="button"
               onClick={(e) => {
                 e.stopPropagation()
-                toggleTopicMasteredCascade(topic.id)
+                handleToggleTopic(topic.id)
               }}
               className="p-0.5 rounded hover:scale-110 active:scale-95 transition-all outline-none focus:outline-none"
               title={
@@ -362,6 +371,16 @@ export default function SubjectDetailPage() {
           )}
         </AnimatePresence>
       </div>
+
+      {/* Auth Prompt Modal */}
+      <AuthPrompt
+        isOpen={showAuthPrompt}
+        onClose={() => {
+          setShowAuthPrompt(false)
+          setPendingTopicId(null)
+        }}
+        message="Untuk menyimpan progress, silakan login atau daftar akun dulu ya!"
+      />
     </main>
   )
 }

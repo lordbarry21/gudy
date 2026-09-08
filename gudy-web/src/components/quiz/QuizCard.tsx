@@ -8,7 +8,6 @@ import {
   Books,
   Clock,
 } from '@phosphor-icons/react'
-import { QuizBestScore } from '@/types'
 
 interface QuizCardProps {
   title: string
@@ -18,7 +17,8 @@ interface QuizCardProps {
   subjectColor: string
   subjectIcon: string
   subjectName: string
-  bestScore?: QuizBestScore
+  bestScore?: number // just the score percentage
+  bestAttempts?: number // total attempts
   onStartQuiz: () => void
   onOpenPdf?: () => void
   index: number
@@ -33,6 +33,7 @@ export function QuizCard({
   subjectIcon,
   subjectName,
   bestScore,
+  bestAttempts,
   onStartQuiz,
   onOpenPdf,
   index,
@@ -70,10 +71,10 @@ export function QuizCard({
           </div>
 
           {/* Best Score Badge */}
-          {bestScore && bestScore.totalAttempts > 0 && (
+          {bestScore !== undefined && bestScore > 0 && (
             <div className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-warning/15 text-warning font-sans text-xs font-bold shadow-sm">
               <Trophy size={11} weight="fill" />
-              <span>{bestScore.bestScore}%</span>
+              <span>{bestScore}%</span>
             </div>
           )}
         </div>
@@ -93,17 +94,17 @@ export function QuizCard({
             <Clock size={12} className="text-warning" />
             {duration} Menit
           </span>
-          {bestScore && bestScore.totalAttempts > 0 && (
+          {bestAttempts !== undefined && bestAttempts > 0 && (
             <span className="inline-flex items-center gap-1.5 font-sans text-[11px] font-bold bg-accent/10 text-accent px-2.5 py-1.5 rounded-lg">
               <Trophy size={12} weight="fill" />
-              {bestScore.totalAttempts}x尝试
+              {bestAttempts}x Dicoba
             </span>
           )}
         </div>
       </div>
 
       {/* Actions */}
-      <div className="pt-4 border-t border-border/60 flex items-center gap-2">
+      <div className="pt-4 border-t border-border flex items-center gap-2">
         <button
           onClick={onStartQuiz}
           className="flex-1 inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl font-sans text-sm font-bold bg-accent text-white hover:bg-accent-hover transition-all shadow-md hover:shadow-lg"

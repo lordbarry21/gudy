@@ -1,0 +1,7 @@
+functions
+dataconnect
+practice_bank
+firebase-debug.log*
+.firebase
+firestore.rules
+firestore.indexes.json

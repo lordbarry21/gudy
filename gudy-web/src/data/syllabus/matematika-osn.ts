@@ -34,7 +34,7 @@ export const matematikaOsnTopics: Topic[] = [
     description: 'Pembagian suku banyak, Teorema Sisa, Teorema Faktor, Teorema Vieta derajat n >= 3, transformasi akar, akar simetris, dan faktorisasi bentuk siklik.',
     scope: 'Pembagian suku banyak, Teorema Sisa, Teorema Faktor, Teorema Vieta untuk derajat n >= 3, transformasi akar, akar-akar simetris (s1, s2, s3), faktorisasi bentuk siklik dan homogen.',
     targetCriteria: 'Mampu menyelesaikan sistem persamaan berderajat tinggi dalam waktu < 6 menit, mampu mengkonstruksi polinomial dari sifat akar tanpa trial-error.',
-    memoryBooster: 'x^3 - s_1 x^2 + s_2 x - s_3 = 0, \\quad \\sum x_i = s_1, \\quad \\sum x_i x_j = s_2, \\quad \\prod x_i = s_3',
+    memoryBooster: 'x³ - s₁x² + s₂x - s₃ = 0  •  ∑xᵢ = s₁  •  ∑xᵢxⱼ = s₂  •  ∏xᵢ = s₃',
     aiPrompt: 'Bertindaklah sebagai pelatih Olimpiade Matematika OSN/IMO. Berikan penjelasan mendalam mengenai Teorema Vieta derajat tinggi dan teknik faktorisasi bentuk simetris, diikuti 2 soal setara OSN-P beserta pembahasan langkah per langkah dengan penulisan pembuktian yang ketat.',
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_1_1_1`, [
@@ -56,7 +56,7 @@ export const matematikaOsnTopics: Topic[] = [
     description: 'AM-GM, Cauchy-Schwarz (aljabar & Engel/Sedrakyan), Chebyshev, Jensen, Rearrangement, homogenisasi & normalisasi.',
     scope: 'AM-GM (Arithmetic Mean - Geometric Mean), Cauchy-Schwarz Inequality (bentuk aljabar & bentuk Engel / Cauchy-Schwarz Sedrakyan), Chebyshev, Jensen, Rearrangement Inequality, teknik homogenisasi & normalisasi.',
     targetCriteria: 'Mampu menentukan equality condition (kondisi kesamaan) secara presisi dan memilih pertidaksamaan pembanding tanpa trial berkepanjangan.',
-    memoryBooster: '\\frac{a_1 + a_2 + \\dots + a_n}{n} \\ge \\sqrt[n]{a_1 a_2 \\dots a_n} \\quad (\\text{Equality iff } a_1 = a_2 = \\dots = a_n)',
+    memoryBooster: '(a₁ + a₂ + … + aₙ) / n ≥ ⁿ√(a₁ a₂ … aₙ)  •  (Sama dengan ⇔ a₁ = a₂ = … = aₙ)',
     aiPrompt: "Jelaskan penerapan Titu's Lemma (Engel's form of Cauchy-Schwarz) untuk membuktikan pertidaksamaan pecahan simetris 3 variabel. Berikan contoh soal yang sering muncul di seleksi OSN provinsi dan trik mengidentifikasi kapan harus menggunakan AM-GM vs Cauchy-Schwarz.",
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_1_1_2`, [
@@ -78,7 +78,7 @@ export const matematikaOsnTopics: Topic[] = [
     description: 'Injektif, surjektif, bijektif, Persamaan Cauchy pada domain Q dan R, substitusi variabel khusus, invarian, fungsi periodik, fixed point.',
     scope: 'Sifat fungsi (injektif, surjektif, bijektif), Persamaan Cauchy f(x+y) = f(x) + f(y) pada domain Q dan R, teknik substitusi variabel nol/khusus, invarian, fungsi periodik dan titik tetap (fixed point).',
     targetCriteria: 'Mampu menemukan seluruh solusi fungsi yang memenuhi tanpa ada solusi yang terlewat, serta menguji kembali (check back) setiap solusi yang didapat ke persamaan awal.',
-    memoryBooster: 'f(x+y)=f(x)+f(y) \\implies f(x)=cx \\quad (\\forall x \\in \\mathbb{Q}, \\text{atau dengan kontinuitas/monotonisitas di } \\mathbb{R})',
+    memoryBooster: 'f(x + y) = f(x) + f(y) ⇒ f(x) = cx  (∀x ∈ ℚ, atau dengan kontinuitas di ℝ)',
     aiPrompt: 'Ajarkan saya strategi sistematis menyelesaikan persamaan fungsional untuk olimpiade matematika. Mulai dari substitusi titik x=0, y=0, membuktikan injektivitas/surjektivitas, hingga menguji kemungkinan solusi linear f(x)=kx atau nol.',
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_1_1_3`, [
@@ -100,7 +100,7 @@ export const matematikaOsnTopics: Topic[] = [
     description: 'Barisan bertingkat, relasi rekurensi linear homogen via persamaan karakteristik, rekurensi non-homogen, deret teleskopik, fungsi pembangkit.',
     scope: 'Barisan aritmatika & geometri bertingkat, relasi rekurensi linear homogen berderajat dua (a_n = p a_{n-1} + q a_{n-2}) via persamaan karakteristik, rekurensi non-homogen, deret teleskopik, fungsi pembangkit (generating function) dasar.',
     targetCriteria: 'Mampu menurunkan rumus eksplisit (closed-form formula) dari relasi rekurensi sembarang secara analitis tanpa tebak-tebakan induksi.',
-    memoryBooster: 'a_n = A r_1^n + B r_2^n \\quad (\\text{di mana } r_1, r_2 \\text{ adalah akar dari } r^2 - pr - q = 0)',
+    memoryBooster: 'aₙ = A·r₁ⁿ + B·r₂ⁿ  (di mana r₁, r₂ adalah akar dari r² - pr - q = 0)',
     aiPrompt: 'Berikan panduan menurunkan rumus eksplisit relasi rekurensi tingkat 2 baik yang memiliki 2 akar real berbeda, akar kembar, maupun kasus non-homogen. Sertakan 2 contoh soal aplikasi di OSN matematika.',
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_1_1_4`, [
@@ -135,7 +135,7 @@ export const matematikaOsnTopics: Topic[] = [
     description: '4 Titik Istimewa Segitiga (I, O, H, G), Garis Euler, Lingkaran 9 Titik Euler, Teorema Ceva, Teorema Menelaus, Teorema Stewart.',
     scope: '4 Titik Istimewa Segitiga (Incenter I, Circumcenter O, Orthocenter H, Centroid G), Garis Euler (O, G, H segaris dengan HG:GO = 2:1), Lingkaran 9 Titik Euler, Teorema Ceva (bentuk trigonometri & panjang segmen), Teorema Menelaus, Teorema Stewart.',
     targetCriteria: 'Mampu membuktikan kesegaran (collinearity) dan kebertitikpusatan (concurrency) menggunakan Ceva/Menelaus secara formal tanpa asumsi visual.',
-    memoryBooster: '\\text{Ceva: } \\frac{AF}{FB} \\cdot \\frac{BD}{DC} \\cdot \\frac{CE}{EA} = 1, \\quad \\text{Menelaus: } \\frac{AF}{FB} \\cdot \\frac{BD}{DC} \\cdot \\frac{CE}{EA} = -1',
+    memoryBooster: 'Ceva: (AF/FB) · (BD/DC) · (CE/EA) = 1  •  Menelaus: (AF/FB) · (BD/DC) · (CE/EA) = -1',
     aiPrompt: 'Jelaskan cara penggunaan Teorema Ceva dan Teorema Menelaus beserta diagram relasionalnya. Berikan contoh pembuktian konkurensi 3 cevian dalam segitiga sembarang untuk soal kompetisi Sinarmas Math Genius / OSN.',
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_1_2_1`, [
@@ -157,7 +157,7 @@ export const matematikaOsnTopics: Topic[] = [
     description: 'Sifat segiempat siklik, Teorema Ptolemy, Power of a Point, Garis Kuasa, Titik Kuasa, Garis Simson.',
     scope: 'Sifat segiempat tali busur, Teorema Ptolemy (AC*BD = AB*CD + BC*AD), Power of a Point (Teorema Secant-Tangent), Garis Kuasa (Radical Axis), Titik Kuasa (Radical Center), Garis Simson.',
     targetCriteria: 'Cepat mengenali titik-titik konsiklis (concyclic points) baru dalam diagram yang kompleks dan melakukan angle-chasing dengan presisi mutlak.',
-    memoryBooster: '\\text{Power of Point } P \\text{ thd lingkaran } (O, R): \\text{Pow}(P) = d^2 - R^2 = PA \\cdot PB',
+    memoryBooster: 'Kuasa Titik P thd (O, R): Pow(P) = d² - R² = PA · PB = PT²',
     aiPrompt: "Berikan modul intensif teknik 'Angle Chasing' dan 'Power of a Point' untuk membuktikan 4 titik terletak pada satu lingkaran (cyclic). Berikan 1 soal geometri OSN yang diselesaikan dengan mencari titik konsiklis tersembunyi.",
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_1_2_2`, [
@@ -179,7 +179,7 @@ export const matematikaOsnTopics: Topic[] = [
     description: 'Homoteti, Inversi lingkaran, Aturan Sinus & Cosinus, Heron & Luas Brahmagupta, koordinat Kartesius & Vektor.',
     scope: 'Homoteti (dilatasi dengan pusat sembarang), Inversi lingkaran, Aturan Sinus & Cosinus dalam pembuktian geometri, rumus luas segitiga Heron & Luas Brahmagupta (segiempat siklik), koordinat Kartesius & Vektor untuk soal geometri.',
     targetCriteria: 'Mampu menggunakan metode analitis/vektor ketika pendekatan sintetis menemui jalan buntu tanpa membuat kesalahan aljabar.',
-    memoryBooster: '\\text{Brahmagupta: } K_{\\text{cyclic}} = \\sqrt{(s-a)(s-b)(s-c)(s-d)}, \\quad s = \\frac{a+b+c+d}{2}',
+    memoryBooster: 'Brahmagupta: Luas = √[(s - a)(s - b)(s - c)(s - d)]  •  s = (a + b + c + d) / 2',
     aiPrompt: 'Bagaimana cara memutuskan kapan harus menggunakan geometri sintetis murni vs koordinat analitis (Cartesian Bashing) pada soal OSN matematika? Berikan contoh perbandingan efisiensi keduanya.',
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_1_2_3`, [
@@ -213,7 +213,7 @@ export const matematikaOsnTopics: Topic[] = [
     description: 'Relasi keterbagian, Algoritma Pembagian Euclid, Identitas Bezout, Lemma Euclid, Faktorisasi Prima Unik.',
     scope: 'Relasi keterbagian a | b, sifat-sifat keterbagian, Algoritma Pembagian Euclid, Identitas Bezout (ax + by = gcd(a,b)), Lemma Euclid, Faktorisasi Prima Unik (Teorema Fundamental Aritmatika).',
     targetCriteria: 'Mampu membuktikan klaim keterbagian untuk semua bilangan bulat positif n dan mencari FPB polinomial variabel n.',
-    memoryBooster: '\\gcd(a, b) = \\gcd(b, a \\pmod b), \\quad \\exists x,y \\in \\mathbb{Z} : ax + by = \\gcd(a, b)',
+    memoryBooster: 'FPB(a, b) = FPB(b, a mod b)  •  ∃ x, y ∈ ℤ : ax + by = FPB(a, b)',
     aiPrompt: 'Jelaskan penerapan Identitas Bezout dan Algoritma Euclidean Lanjutan untuk membuktikan bahwa dua bentuk aljabar selalu relatif prima. Berikan 2 contoh soal OSN tingkat kabupaten dan provinsi.',
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_1_3_1`, [
@@ -234,7 +234,7 @@ export const matematikaOsnTopics: Topic[] = [
     description: 'Aritmatika modulo, Teorema Kecil Fermat, Teorema Euler, Teorema Wilson, Chinese Remainder Theorem (CRT).',
     scope: 'Aritmatika modulo, invers modulo, Teorema Kecil Fermat (a^(p-1) = 1 mod p), Teorema Euler (a^phi(m) = 1 mod m), Teorema Wilson ((p-1)! = -1 mod p), Chinese Remainder Theorem (CRT).',
     targetCriteria: 'Mampu menghitung digit satuan, digit puluhan, serta menyelesaikan sistem kongruensi serentak dalam hitungan menit tanpa kesalahan aritmatika.',
-    memoryBooster: 'a^p \\equiv a \\pmod p, \\quad a^{\\phi(m)} \\equiv 1 \\pmod m \\quad (\\gcd(a, m) = 1)',
+    memoryBooster: 'aᵖ ≡ a (mod p)  •  a^φ(m) ≡ 1 (mod m)  [FPB(a, m) = 1]',
     aiPrompt: 'Jelaskan cara menyelesaikan sistem persamaan kongruensi menggunakan Chinese Remainder Theorem (CRT) langkah demi langkah, termasuk cara menangani kondisi ketika modulo tidak saling prima. Berikan contoh soal konkret.',
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_1_3_2`, [
@@ -256,7 +256,7 @@ export const matematikaOsnTopics: Topic[] = [
     description: 'Linear Diophantine, Tripel Pythagoras primitif, SFFT, Persamaan Pell, pembatasan (bounding) dan modulo penolakan.',
     scope: "Persamaan linear Diophantine ax + by = c, Persamaan Pythagoras, Faktorisasi Diophantine (Simon's Favorite Factoring Trick - SFFT), Persamaan Pell, metode bounding dan modulo penolakan.",
     targetCriteria: 'Cermat memilih modulus yang tepat untuk membuktikan ketidakmungkinan solusi (no integer solution proof) dan mampu melakukan faktorisasi aljabar non-trivial.',
-    memoryBooster: 'x^2 + y^2 = z^2 \\iff x = k(m^2 - n^2), \\quad y = k(2mn), \\quad z = k(m^2 + n^2)',
+    memoryBooster: 'x² + y² = z² ⇔ x = k(m² - n²),  y = k(2mn),  z = k(m² + n²)',
     aiPrompt: "Ajarkan metode 'Modular Bounding' dan faktorisasi SFFT untuk menyelesaikan persamaan Diophantine non-linear. Berikan 3 soal olimpiade dari tingkat dasar hingga tingkat provinsi.",
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_1_3_3`, [
@@ -278,7 +278,7 @@ export const matematikaOsnTopics: Topic[] = [
     description: 'Totient Euler, jumlah dan banyak pembagi, sifat fungsi multiplikatif, ordo modulo, akar primitif, Lifting The Exponent Lemma (LTE).',
     scope: 'Fungsi Totient Euler phi(n), Jumlah Pembagi sigma(n), Banyak Pembagi tau(n), sifat multiplikatif fungsi, Ordo modulo, Akar Primitif, Teorema Lifting The Exponent Lemma (LTE).',
     targetCriteria: 'Mampu menerapkan LTE pada soal bernilai eksponensial tinggi yang melibatkan v_p(x^n - y^n) tanpa keraguan.',
-    memoryBooster: 'v_p(x^n - y^n) = v_p(x - y) + v_p(n) \\quad (\\text{LTE untuk } p > 2, p \\mid x - y, p \\nmid x, y)',
+    memoryBooster: 'vₚ(xⁿ - yⁿ) = vₚ(x - y) + vₚ(n)  (LTE: p > 2, p | x - y, p ∤ x, y)',
     aiPrompt: 'Jelaskan konsep Lifting The Exponent Lemma (LTE) secara lengkap, syarat-syarat berlakunya untuk bilangan prima ganjil dan prima genap (p=2), serta contoh soal OSN yang dapat diselesaikan seketika dengan LTE.',
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_1_3_4`, [
@@ -313,7 +313,7 @@ export const matematikaOsnTopics: Topic[] = [
     description: 'Permutasi, kombinasi, Stars and Bars, koefisien multinomial, Double Counting, pembuktian kombinatorik identitas aljabar.',
     scope: 'Kaidah Penjumlahan & Perkalian, Permutasi, Kombinasi, Permutasi Siklis, Metode Stars and Bars, Koefisien Multinomial, Double Counting, Pembuktian Kombinatorik Identitas Aljabar.',
     targetCriteria: 'Mampu mengidentifikasi pemodelan Stars and Bars pada soal pembagian barang dan melakukan pembuktian identitas binomial dengan argumen kombinatorik.',
-    memoryBooster: 'x_1 + x_2 + \\dots + x_k = n, \\quad x_i \\ge 0 \\implies \\binom{n+k-1}{k-1} \\text{ cara}',
+    memoryBooster: 'x₁ + x₂ + … + xₖ = n,  xᵢ ≥ 0  ⇒  C(n + k - 1, k - 1) cara',
     aiPrompt: "Jelaskan teknik 'Stars and Bars' (Bintang dan Batang) untuk menyelesaikan masalah pembagian objek identik ke dalam wadah berbeda dengan berbagai batasan. Berikan 3 variasi soal dan pembahasannya.",
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_1_4_1`, [
@@ -335,7 +335,7 @@ export const matematikaOsnTopics: Topic[] = [
     description: 'PHP Dasar, Generalized PHP, aplikasi PHP pada geometri, keterbagian, barisan bilangan bulat, Teorema Erdős-Szekeres.',
     scope: 'Prinsip Dasar PHP, Generalized PHP, aplikasi PHP pada geometri, aplikasi PHP pada keterbagian dan barisan bilangan bulat, Teorema Erdős-Szekeres.',
     targetCriteria: 'Mampu menentukan dengan tepat apa yang menjadi merpati (pigeons) dan sarang (holes) dalam soal yang tidak eksplisit.',
-    memoryBooster: '\\text{Jika } n \\text{ objek dimasukkan ke } k \\text{ kotak, ada kotak dengan } \\ge \\lceil n/k \\rceil \\text{ objek.}',
+    memoryBooster: 'Prinsip PHP: Jika n objek dimasukkan ke k kotak ⇒ ada kotak dengan ≥ ⌈n/k⌉ objek',
     aiPrompt: "Bagaimana cara melatih intuisi untuk menemukan 'pigeon' dan 'hole' pada soal-soal olimpiade matematika yang tampaknya tidak berkaitan dengan pengelompokan? Berikan contoh kasus geometri dan kasus barisan bilangan.",
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_1_4_2`, [
@@ -356,7 +356,7 @@ export const matematikaOsnTopics: Topic[] = [
     description: 'PIE n himpunan, Derangement (!n), konsep invarian dan monovarian, pewarnaan grid catur, Teori Permainan Kombinatorik (Nim Game, XOR).',
     scope: 'Prinsip Inklusi-Eksklusi, Derangement (!n), Konsep Invarian & Monovarian, Pewarnaan Papan Catur / Grid, Teori Permainan Kombinatorik (Nim Game, Nim-Sum, Posisi P dan N).',
     targetCriteria: 'Mampu membuktikan ketidakmungkinan suatu konfigurasi menggunakan argumen paritas/invarian dan menentukan strategi menang permainan matematika.',
-    memoryBooster: '!n \\approx [n!/e], \\quad \\text{Nim-Sum: } x_1 \\oplus x_2 \\oplus \\dots \\oplus x_k = 0 \\iff \\text{P-position (Pemain kedua menang)}',
+    memoryBooster: '!n ≈ ⌊n!/e + ½⌋  •  Nim-Sum: x₁ ⊕ x₂ ⊕ … ⊕ xₖ = 0 ⇔ Posisi-P (Pemain 2 menang)',
     aiPrompt: "Ajarkan konsep 'Invariant Principle' dan 'Coloring Proofs' pada grid papan catur. Sertakan studi kasus pemecahan soal tetromino/tromino yang sering keluar di olimpiade matematika internasional.",
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_1_4_3`, [
@@ -391,7 +391,7 @@ export const matematikaOsnTopics: Topic[] = [
     description: 'Limit fungsi aljabar & trigonometri tingkat tinggi, kecekungan kurva, optimasi interval tertutup, Mean Value Theorem.',
     scope: 'Limit fungsi aljabar & trigonometri tingkat tinggi, konsep turunan untuk analisis kecekungan fungsi, menemukan nilai ekstremum interval tertutup, Mean Value Theorem, titik belok.',
     targetCriteria: 'Mampu memanfaatkan turunan sebagai alat verifikasi ekstremum pada pertidaksamaan dan menyelesaikan optimasi aljabar dengan efisien.',
-    memoryBooster: "f''(x) > 0 \\implies \\text{Konveks (Cekung ke atas)} \\implies f\\left(\\frac{\\sum x_i}{n}\\right) \\le \\frac{\\sum f(x_i)}{n}",
+    memoryBooster: "f''(x) > 0 ⇒ Konveks ⇒ f((∑xᵢ) / n) ≤ (∑f(xᵢ)) / n  (Teorema Jensen)",
     aiPrompt: 'Bagaimana cara mengombinasikan konsep turunan dan kecekungan kurva (konveksitas) untuk membuktikan ketidaksamaan aljabar tingkat olimpiade? Jelaskan kaitan antara turunan kedua dan Teorema Jensen.',
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_1_5_1`, [
@@ -411,7 +411,7 @@ export const matematikaOsnTopics: Topic[] = [
     description: 'Induksi Lemah, Induksi Kuat, Induksi Cauchy, Well-Ordering Principle (WOP), Fermat Infinite Descent.',
     scope: 'Induksi Matematika Lemah, Induksi Kuat, Induksi Cauchy, Prinsip Terurut Rapi (Well-Ordering Principle pada N), Metode Penurunan Tak Hingga Fermat (Infinite Descent).',
     targetCriteria: 'Mampu menyusun pembuktian induktif yang rapi tanpa kesalahan melingkar (circular reasoning), serta mampu menerapkan metode penurunan tak hingga untuk Diophantine.',
-    memoryBooster: '\\text{Infinite Descent: } s_0 \\in \\mathbb{Z}^+ \\implies \\exists s_1 < s_0 \\implies \\text{Kontradiksi dengan WOP!}',
+    memoryBooster: 'Infinite Descent: s₀ ∈ ℤ⁺ ⇒ ∃ s₁ < s₀ ⇒ Kontradiksi dengan Prinsip Terurut Rapi (WOP)',
     aiPrompt: "Jelaskan metode pembuktian 'Fermat's Method of Infinite Descent' dan hubungannya dengan Well-Ordering Principle. Tunjukkan contoh pembuktian klasiknya pada persamaan Diophantine.",
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_1_5_2`, [

@@ -4,29 +4,21 @@ import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { useAppStore } from '@/lib/store'
 import { getGreeting, formatStudyTime, calculateProgress } from '@/lib/utils'
+import { StudyTimer } from '@/components/study-timer'
 import {
   Books,
   Clock,
   TrendUp,
   ArrowRight,
-  Play,
-  Pause,
-  ArrowCounterClockwise,
   Sparkle,
-  Brain,
-  Confetti,
   Fire,
   Trophy,
 } from '@phosphor-icons/react'
 import Link from 'next/link'
 
 export default function HomePage() {
-  const { progress, subjects, initialize, isInitialized, updateStudyTime } = useAppStore()
+  const { progress, subjects, initialize, isInitialized } = useAppStore()
   const [mounted, setMounted] = useState(false)
-
-  // Study timer state
-  const [isStudying, setIsStudying] = useState(false)
-  const [studySeconds, setStudySeconds] = useState(0)
 
   useEffect(() => {
     setMounted(true)
@@ -34,45 +26,6 @@ export default function HomePage() {
       initialize()
     }
   }, [initialize, isInitialized])
-
-  // Study timer logic
-  useEffect(() => {
-    let interval: NodeJS.Timeout | null = null
-    if (isStudying) {
-      interval = setInterval(() => {
-        setStudySeconds((prev) => prev + 1)
-      }, 1000)
-    }
-    return () => {
-      if (interval) clearInterval(interval)
-    }
-  }, [isStudying])
-
-  const formatTimer = (seconds: number) => {
-    const hours = Math.floor(seconds / 3600)
-    const mins = Math.floor((seconds % 3600) / 60)
-    const secs = seconds % 60
-    if (hours > 0) {
-      return `${hours.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`
-    }
-    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`
-  }
-
-  const handleStartStudy = () => {
-    setIsStudying(true)
-  }
-
-  const handlePauseStudy = () => {
-    setIsStudying(false)
-  }
-
-  const handleResetStudy = () => {
-    if (studySeconds > 0) {
-      updateStudyTime(Math.ceil(studySeconds / 60))
-    }
-    setStudySeconds(0)
-    setIsStudying(false)
-  }
 
   if (!mounted) {
     return (
@@ -134,118 +87,10 @@ export default function HomePage() {
           className="space-y-6"
         >
           {/* Top Row: Study Timer & Streak */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Study Timer Card (spans 2 cols on md+) */}
-            <motion.div variants={itemVariants} className="md:col-span-2">
-              <div className="bg-surface border border-border rounded-2xl p-6 shadow-card hover:border-border-hover transition-colors h-full flex flex-col justify-between">
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center gap-3">
-                      <div
-                        className={`w-9 h-9 rounded-xl flex items-center justify-center transition-colors ${
-                          isStudying
-                            ? 'bg-success/15 text-success'
-                            : studySeconds > 0
-                            ? 'bg-accent/15 text-accent'
-                            : 'bg-surface-elevated text-text-secondary'
-                        }`}
-                      >
-                        <Brain size={20} weight="fill" />
-                      </div>
-                      <div>
-                        <span className="text-sm font-semibold text-text-primary block">
-                          Study Timer
-                        </span>
-                        <span className="text-[11px] text-text-muted">
-                          {isStudying ? 'Focus session active' : 'Ready when you are'}
-                        </span>
-                      </div>
-                    </div>
-
-                    {isStudying && (
-                      <div className="flex items-center gap-2 px-2.5 py-1 bg-success/10 border border-success/20 rounded-full">
-                        <span className="w-2 h-2 rounded-full bg-success animate-pulse" />
-                        <span className="text-xs text-success font-medium">Focusing</span>
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Timer Display */}
-                  <div
-                    className={`text-center py-5 rounded-xl mb-5 transition-colors ${
-                      isStudying
-                        ? 'bg-success/5 border border-success/15'
-                        : studySeconds > 0
-                        ? 'bg-accent/5 border border-accent/15'
-                        : 'bg-surface-elevated'
-                    }`}
-                  >
-                    <span
-                      className={`text-4xl lg:text-5xl font-bold font-mono tracking-tight ${
-                        isStudying ? 'text-success' : studySeconds > 0 ? 'text-accent' : 'text-text-primary'
-                      }`}
-                    >
-                      {formatTimer(studySeconds)}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Timer Controls */}
-                <div className="flex items-center justify-center gap-3">
-                  {!isStudying && studySeconds === 0 && (
-                    <motion.button
-                      whileTap={{ scale: 0.96 }}
-                      onClick={handleStartStudy}
-                      className="flex items-center gap-2 px-6 py-2.5 bg-accent hover:bg-accent-dark text-white text-sm font-medium rounded-xl shadow-sm transition-colors"
-                    >
-                      <Play size={16} weight="fill" />
-                      <span>Start Studying</span>
-                    </motion.button>
-                  )}
-
-                  {isStudying && (
-                    <>
-                      <button
-                        type="button"
-                        onClick={handlePauseStudy}
-                        className="flex items-center gap-1.5 px-4 py-2 bg-warning/10 hover:bg-warning/20 border border-warning/30 text-warning text-xs font-medium rounded-xl transition-colors"
-                      >
-                        <Pause size={16} weight="fill" />
-                        <span>Pause</span>
-                      </button>
-                      <button
-                        type="button"
-                        onClick={handleResetStudy}
-                        className="flex items-center gap-1.5 px-4 py-2 bg-accent hover:bg-accent-dark text-white text-xs font-medium rounded-xl transition-colors shadow-sm"
-                      >
-                        <Confetti size={16} weight="fill" />
-                        <span>Log Session</span>
-                      </button>
-                    </>
-                  )}
-
-                  {!isStudying && studySeconds > 0 && (
-                    <>
-                      <button
-                        type="button"
-                        onClick={handleStartStudy}
-                        className="flex items-center gap-1.5 px-4 py-2 bg-accent hover:bg-accent-dark text-white text-xs font-medium rounded-xl transition-colors shadow-sm"
-                      >
-                        <Play size={16} weight="fill" />
-                        <span>Resume</span>
-                      </button>
-                      <button
-                        type="button"
-                        onClick={handleResetStudy}
-                        className="flex items-center gap-1.5 px-4 py-2 bg-surface-elevated hover:bg-border text-text-secondary text-xs font-medium rounded-xl border border-border transition-colors"
-                      >
-                        <ArrowCounterClockwise size={16} />
-                        <span>Reset & Save</span>
-                      </button>
-                    </>
-                  )}
-                </div>
-              </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {/* New Study Timer Card */}
+            <motion.div variants={itemVariants}>
+              <StudyTimer />
             </motion.div>
 
             {/* Streak Card */}

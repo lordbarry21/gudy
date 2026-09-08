@@ -34,7 +34,7 @@ export const tkaMatematikaTopics: Topic[] = [
     description: 'Sifat perkalian/pembagian pangkat, eksponen rasional, merasionalkan penyebut pecahan akar, persamaan eksponen.',
     scope: 'Sifat perkalian/pembagian pangkat, eksponen rasional, merasionalkan penyebut pecahan akar, persamaan eksponen (a^f(x) = a^g(x), a^f(x) = b^f(x), bentuk kuadrat eksponen).',
     targetCriteria: 'Perhatikan syarat basis a = 1, a = -1, a = 0 pada persamaan [h(x)]^f(x) = [h(x)]^g(x) tanpa ada kasus terlewat.',
-    memoryBooster: 'a^{m/n} = \\sqrt[n]{a^m}, \\quad \\frac{a}{\\sqrt{b}+\\sqrt{c}} = \\frac{a(\\sqrt{b}-\\sqrt{c})}{b-c}',
+    memoryBooster: 'aᵐᐟⁿ = ⁿ√(aᵐ)  •  a / (√b + √c) = a(√b - √c) / (b - c)',
     aiPrompt: 'Berikan rangkuman komprehensif persamaan eksponen dengan basis fungsi beserta jebakan kasus khusus basis sama dengan 1, 0, atau -1, disertai 3 soal tipe HOTS TKA Matematika.',
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_2_1_1`, [
@@ -56,7 +56,7 @@ export const tkaMatematikaTopics: Topic[] = [
     description: 'Definisi logaritma, pergantian basis, persamaan dan pertidaksamaan logaritma, syarat numerus & basis.',
     scope: 'Definisi logaritma, sifat penjumlahan/pengurangan logaritma, pergantian basis (^a log b = log b / log a), persamaan dan pertidaksamaan logaritma, syarat numerus (f(x) > 0) dan basis (a > 0, a != 1).',
     targetCriteria: 'Jangan pernah lupa mengiris himpunan penyelesaian dengan syarat numerus! Ketelitian mutlak.',
-    memoryBooster: '^a\\log b = \\frac{\\log b}{\\log a}, \\quad ^a\\log(xy) = ^a\\log x + ^a\\log y, \\quad \\text{Syarat: Numerus } > 0, \\text{ Basis } > 0 \\land \\neq 1',
+    memoryBooster: 'ᵃlog b = (log b) / (log a)  •  ᵃlog(xy) = ᵃlog x + ᵃlog y  •  Syarat: numerus > 0, basis > 0 & basis ≠ 1',
     aiPrompt: 'Jelaskan seluruh sifat logaritma yang sering diuji pada TKA dan tunjukkan contoh kesalahan umum siswa saat lupa menguji syarat numerus pada pertidaksamaan logaritma.',
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_2_1_2`, [
@@ -78,7 +78,7 @@ export const tkaMatematikaTopics: Topic[] = [
     description: 'Suku ke-n, deret aritmatika/geometri, deret tak hingga konvergen, aplikasi finansial: bunga majemuk & anuitas.',
     scope: 'Suku ke-n (Un), jumlah n suku pertama (Sn), beda dan rasio, deret geometri tak hingga konvergen (-1 < r < 1, S_inf = a/(1-r)), aplikasi finansial: bunga majemuk, pertumbuhan, peluruhan, anuitas sederhana.',
     targetCriteria: 'Kuasai relasi Un = Sn - Sn-1 dan konsep deret tak hingga lintasan pantulan bola (S = h(1+r)/(1-r)) dalam tempo singkat.',
-    memoryBooster: 'U_n = S_n - S_{n-1}, \\quad S_\\infty = \\frac{a}{1-r}, \\quad S_{\\text{pantulan}} = h \\cdot \\frac{1+r}{1-r}',
+    memoryBooster: 'Uₙ = Sₙ - Sₙ₋₁  •  S_∞ = a / (1 - r)  •  S_pantulan = h · (1 + r) / (1 - r)',
     aiPrompt: 'Berikan formula cepat dan konsep dasar untuk soal barisan deret kontekstual TKA: pantulan bola, pertumbuhan bakteri, dan perhitungan bunga majemuk anuitas.',
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_2_1_3`, [
@@ -113,7 +113,7 @@ export const tkaMatematikaTopics: Topic[] = [
     description: 'Eliminasi, substitusi, determinan Cramer, jenis solusi (unik, tak hingga, inkonsisten), pemodelan soal cerita.',
     scope: 'Metode eliminasi, substitusi, determinan matriks (Aturan Cramer), jenis solusi (solusi tunggal, banyak solusi/tak terhingga, tidak ada solusi/inkonsisten), pemodelan masalah cerita ekonomi dan produksi.',
     targetCriteria: 'Gunakan substitusi cepat dan periksa kondisi rasio koefisien a1/a2 = b1/b2 != c1/c2 (tidak ada solusi) tanpa menghabiskan waktu.',
-    memoryBooster: '\\text{Determinan Cramer: } x = \\frac{D_x}{D}, \\quad y = \\frac{D_y}{D}, \\quad z = \\frac{D_z}{D}',
+    memoryBooster: 'Aturan Cramer: x = Dₓ/D  •  y = Dᵧ/D  •  z = D_z/D',
     aiPrompt: 'Bagaimana cara cepat menganalisis jumlah solusi pada SPLTV tanpa harus menghitung tuntas seluruh nilai variabel? Jelaskan kondisi determinan nol beserta contoh soal.',
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_2_2_1`, [
@@ -135,7 +135,7 @@ export const tkaMatematikaTopics: Topic[] = [
     description: 'Diskriminan, sifat akar Vieta, pertidaksamaan pecahan dan bentuk akar, pertidaksamaan nilai mutlak.',
     scope: 'Diskriminan (D = b^2 - 4ac), jenis-jenis akar, rumus Vieta (x1+x2 = -b/a, x1*x2 = c/a), pertidaksamaan pecahan dan bentuk akar, pertidaksamaan nilai mutlak (|x| < a <=> -a < x < a).',
     targetCriteria: 'Gunakan garis bilangan dengan titik uji dan perhatikan tanda bulat kosong vs bulat penuh pada penyebut pecahan (penyebut != 0).',
-    memoryBooster: '|f(x)| < g(x) \\iff -g(x) < f(x) < g(x) \\land g(x) > 0, \\quad D = b^2 - 4ac',
+    memoryBooster: '|f(x)| < g(x) ⇔ -g(x) < f(x) < g(x) dan g(x) > 0  •  D = b² - 4ac',
     aiPrompt: 'Berikan panduan menyelesaikan pertidaksamaan rasional dan irasional bertingkat beserta aturan garis bilangan dan syarat akar pada TKA Matematika.',
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_2_2_2`, [
@@ -157,7 +157,7 @@ export const tkaMatematikaTopics: Topic[] = [
     description: 'Domain, kodomain, range, komposisi (f o g)(x), sifat non-komutatif, invers aljabar & pecahan linear.',
     scope: 'Domain, kodomain, range fungsi, operasi aljabar fungsi, fungsi komposisi (f o g)(x), fungsi invers f^-1(x), invers pecahan linear f(x)=(ax+b)/(cx+d) => f^-1(x)=(-dx+b)/(cx-a), invers komposisi (f o g)^-1 = g^-1 o f^-1.',
     targetCriteria: 'Hafal formula invers pecahan linear di luar kepala; selesaikan soal invers komposisi dalam < 30 detik.',
-    memoryBooster: 'f(x) = \\frac{ax+b}{cx+d} \\implies f^{-1}(x) = \\frac{-dx+b}{cx-a}, \\quad (f \\circ g)^{-1} = g^{-1} \\circ f^{-1}',
+    memoryBooster: 'f(x) = (ax + b)/(cx + d) ⇒ f⁻¹(x) = (-dx + b)/(cx - a)  •  (f ∘ g)⁻¹ = g⁻¹ ∘ f⁻¹',
     aiPrompt: 'Tunjukkan trik cepat menentukan rumus invers fungsi aljabar dan pecahan linear, serta strategi menyelesaikan persamaan komposisi (f o g)(x) = h(x).',
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_2_2_3`, [
@@ -179,7 +179,7 @@ export const tkaMatematikaTopics: Topic[] = [
     description: 'Perkalian matriks, transpose, determinan 2x2 dan 3x3, sifat determinan, invers, AX = B => X = A^-1 B.',
     scope: 'Ordo matriks, perkalian matriks, transpos matriks, determinan 2x2 dan 3x3 (Sarrus), sifat determinan (det(AB)=det(A)det(B), det(A^T)=det(A), det(A^-1)=1/det(A)), invers matriks 2x2, persamaan matriks.',
     targetCriteria: 'Manfaatkan sifat-sifat determinan untuk menghindari perkalian matriks yang memakan waktu.',
-    memoryBooster: '\\det(AB) = \\det(A)\\det(B), \\quad A^{-1} = \\frac{1}{ad-bc}\\begin{pmatrix} d & -b \\\\ -c & a \\end{pmatrix}, \\quad AX=B \\implies X=A^{-1}B',
+    memoryBooster: 'det(AB) = det(A)·det(B)  •  A⁻¹ = 1/(ad - bc) · [[d, -b], [-c, a]]  •  AX = B ⇒ X = A⁻¹B',
     aiPrompt: 'Rangkum seluruh sifat determinan dan invers matriks yang paling sering menjadi jalan pintas menyelesaikan soal TKA Matematika.',
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_2_2_4`, [
@@ -214,7 +214,7 @@ export const tkaMatematikaTopics: Topic[] = [
     description: 'Geometri kubus dan limas, proyeksi ortogonal, jarak titik ke garis dan bidang via luas/volume.',
     scope: 'Geometri kubus dan balok, proyeksi tegak lurus, jarak titik ke titik, titik ke garis (menggunakan luas segitiga), jarak titik ke bidang (proyeksi atau perbandingan volume prisma/limas), jarak dua garis bersilangan.',
     targetCriteria: 'Visualisasikan bidang irisan 2 dimensi di dalam ruang 3 dimensi; gunakan perbandingan luas segitiga 1/2 a t1 = 1/2 b t2.',
-    memoryBooster: 'd(P, \\text{garis}) \\implies \\frac{1}{2} a t_1 = \\frac{1}{2} b t_2, \\quad \\text{Diagonal ruang kubus } = s\\sqrt{3}',
+    memoryBooster: 'Jarak titik ke garis: ½·a·t₁ = ½·b·t₂  •  Diagonal ruang kubus = s√3',
     aiPrompt: 'Berikan metode sistematis menentukan jarak titik ke bidang pada kubus/limas menggunakan pendekatan proyeksi segitiga dan metode volume.',
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_2_3_1`, [
@@ -236,7 +236,7 @@ export const tkaMatematikaTopics: Topic[] = [
     description: 'Sudut garis-garis, garis-bidang, bidang-bidang, aturan cosinus pada segitiga sudut.',
     scope: 'Sudut antara garis dan garis (menggeser garis hingga berpotongan), sudut antara garis dan bidang (dengan proyeksinya), sudut antara dua bidang (sudut tumpuan pada garis persekutuan), aturan cosinus.',
     targetCriteria: 'Buat segitiga bantuan yang memuat sudut target, lalu gunakan Aturan Cosinus: cos theta = (a^2+b^2-c^2)/(2ab).',
-    memoryBooster: '\\cos \\theta = \\frac{a^2 + b^2 - c^2}{2ab}, \\quad \\theta = \\angle(\\text{garis}, \\text{proyeksi pada bidang})',
+    memoryBooster: 'cos θ = (a² + b² - c²) / (2ab)  •  θ = ∠(garis, proyeksi pada bidang)',
     aiPrompt: 'Bagaimana menentukan garis proyeksi yang tepat saat mencari sudut antara garis dan bidang pada bangun ruang kubus dan limas segi empat beraturan?',
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_2_3_2`, [
@@ -257,7 +257,7 @@ export const tkaMatematikaTopics: Topic[] = [
     description: 'Translasi, refleksi sumbu/garis, rotasi pusat sembarang, dilatasi, komposisi matriks transformasi.',
     scope: 'Translasi T(a,b), Refleksi (terhadap sumbu X, Y, y=x, y=-x, asal, x=h, y=k), Rotasi terhadap (0,0) dan (a,b), Dilatasi [P(a,b), k], komposisi transformasi menggunakan matriks transformasi.',
     targetCriteria: 'Ingat bahwa komposisi transformasi T2 o T1 menggunakan perkalian matriks M2 * M1 (dikalikan dari kanan ke kiri).',
-    memoryBooster: 'M_{\\text{gabungan}} = M_2 \\cdot M_1, \\quad R_\\theta = \\begin{pmatrix} \\cos\\theta & -\\sin\\theta \\\\ \\sin\\theta & \\cos\\theta \\end{pmatrix}',
+    memoryBooster: 'M_gabungan = M₂ · M₁  •  Rotasi R_θ = [[cos θ, -sin θ], [sin θ, cos θ]]',
     aiPrompt: 'Buat tabel ringkas matriks transformasi geometri untuk refleksi, rotasi, dan dilatasi, beserta contoh soal menentukan bayangan kurva parabola setelah ditransformasikan bertingkat.',
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_2_3_3`, [
@@ -292,7 +292,7 @@ export const tkaMatematikaTopics: Topic[] = [
     description: 'Demi-sami-desa, nilai sudut istimewa 4 kuadran (ASTC), relasi sudut (90+-a), (180+-a), (360-a).',
     scope: 'Definisi sin, cos, tan, csc, sec, cot (demi, sami, desa), nilai sudut istimewa, tanda kuadran I s.d. IV (ASTC), relasi sudut (90+-a), (180+-a), (360-a).',
     targetCriteria: 'Perhatikan perubahan fungsi pada sudut (90+-a) dan (270+-a) di mana sin <-> cos, tan <-> cot.',
-    memoryBooster: '\\text{Kuadran: } I(\\text{All}+), II(\\text{Sin}+), III(\\text{Tan}+), IV(\\text{Cos}+), \\quad \\sin(90^\\circ - \\alpha) = \\cos\\alpha',
+    memoryBooster: 'Kuadran: I (Semua +), II (Sin +), III (Tan +), IV (Cos +)  •  sin(90° - α) = cos α',
     aiPrompt: 'Jelaskan konsep relasi sudut 4 kuadran dan mnemonic ASTC (All Students Take Calculus) beserta latihan konversi sudut tumpul/refleks ke sudut lancip.',
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_2_4_1`, [
@@ -313,7 +313,7 @@ export const tkaMatematikaTopics: Topic[] = [
     description: 'Identitas Pythagoras, rumus sin/cos/tan (A+-B), sudut ganda sin 2A & cos 2A, konversi perkalian ke jumlah.',
     scope: 'Identitas Pythagoras (sin^2 + cos^2 = 1, 1+tan^2 = sec^2), rumus sin(A+-B), cos(A+-B), tan(A+-B), sudut ganda (sin 2A, cos 2A = 2cos^2 A - 1 = 1 - 2sin^2 A), rumus konversi perkalian.',
     targetCriteria: 'Hafal 3 variasi rumus cos 2A untuk substitusi eliminasi angka 1: 1 - cos 2A = 2 sin^2 A.',
-    memoryBooster: '\\cos 2A = 1 - 2\\sin^2 A = 2\\cos^2 A - 1, \\quad \\sin(A \\pm B) = \\sin A \\cos B \\pm \\cos A \\sin B',
+    memoryBooster: 'cos 2A = 1 - 2 sin² A = 2 cos² A - 1  •  sin(A ± B) = sin A cos B ± cos A sin B',
     aiPrompt: 'Berikan cheatsheet lengkap rumus trigonometri analitis (jumlah/selisih, sudut ganda, perkalian ke jumlah) yang wajib dihafal untuk mendapatkan nilai 100 di TKA Matematika.',
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_2_4_2`, [
@@ -334,7 +334,7 @@ export const tkaMatematikaTopics: Topic[] = [
     description: 'Aturan Sinus, Aturan Cosinus, Luas Segitiga, persamaan dasar sin x = sin a, cos x = cos a pada interval tertentu.',
     scope: 'Aturan Sinus (a/sin A = b/sin B = c/sin C = 2R), Aturan Cosinus (a^2 = b^2 + c^2 - 2bc cos A), Luas Segitiga (1/2 ab sin C), persamaan trigonometri dasar interval tertentu.',
     targetCriteria: 'Ingat periodisitas solusi persamaan trigonometri (+ k * 360 atau + k * 180).',
-    memoryBooster: '\\frac{a}{\\sin A} = \\frac{b}{\\sin B} = \\frac{c}{\\sin C} = 2R, \\quad L = \\frac{1}{2}ab\\sin C, \\quad a^2 = b^2 + c^2 - 2bc\\cos A',
+    memoryBooster: 'a / sin A = b / sin B = c / sin C = 2R  •  Luas = ½ ab sin C  •  a² = b² + c² - 2bc cos A',
     aiPrompt: 'Kapan kita harus memakai aturan sinus vs aturan cosinus pada soal cerita navigasi/sudut elevasi? Berikan tips menentukan semua himpunan penyelesaian persamaan trigonometri dalam interval [0, 2pi].',
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_2_4_3`, [
@@ -368,7 +368,7 @@ export const tkaMatematikaTopics: Topic[] = [
     description: 'Substitusi langsung, faktorisasi, perkalian sekawan akar, Teorema L Hopital bentuk 0/0 dan tak hingga/tak hingga.',
     scope: "Konsep limit, metode faktorisasi, perkalian sekawan akar, Teorema L'Hôpital untuk bentuk tak tentu 0/0 dan inf/inf, limit menuju tak hingga fungsi rasional.",
     targetCriteria: "Gunakan Teorema L'Hôpital (turunkan pembilang dan penyebut secara terpisah) untuk menyelesaikan soal limit bentuk 0/0 dalam < 20 detik.",
-    memoryBooster: "\\lim_{x \\to a} \\frac{f(x)}{g(x)} = \\lim_{x \\to a} \\frac{f'(x)}{g'(x)} \\quad \\left(\\text{untuk bentuk } \\frac{0}{0} \\text{ atau } \\frac{\\infty}{\\infty}\\right)",
+    memoryBooster: "lim_{x→a} [f(x)/g(x)] = lim_{x→a} [f'(x)/g'(x)]  (untuk bentuk 0/0 atau ∞/∞ - L'Hôpital)",
     aiPrompt: "Bandingkan penyelesaian limit aljabar menggunakan metode aljabar murni (kali sekawan/faktorisasi) vs Teorema L'Hôpital. Berikan contoh soal di mana L'Hôpital jauh lebih efisien.",
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_2_5_1`, [
@@ -390,7 +390,7 @@ export const tkaMatematikaTopics: Topic[] = [
     description: 'Aturan turunan, perkalian (uv), pembagian (u/v), garis singgung kurva, fungsi naik/turun, nilai ekstremum optimasi.',
     scope: "Rumus turunan aljabar, aturan perkalian (uv)' = u'v + uv', pembagian (u/v)' = (u'v - uv')/v^2, aturan rantai, persamaan garis singgung kurva, fungsi naik/turun, stasioner dan optimasi.",
     targetCriteria: "Pada soal cerita optimasi (luas/biaya minimum), tentukan fungsi 1 variabel lalu turunkan sama dengan nol (f'(x) = 0).",
-    memoryBooster: "m = f'(x_1), \\quad y - y_1 = m(x - x_1), \\quad f'(x) = 0 \\implies \\text{Titik Stasioner / Ekstremum}",
+    memoryBooster: "m = f'(x₁)  •  y - y₁ = m(x - x₁)  •  f'(x) = 0 ⇒ Titik Stasioner / Ekstremum",
     aiPrompt: 'Jelaskan langkah sistematis menyelesaikan soal cerita optimasi aplikasi turunan (keuntungan maksimum, luas maksimum bahan kemasan) pada TKA Matematika.',
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_2_5_2`, [
@@ -412,7 +412,7 @@ export const tkaMatematikaTopics: Topic[] = [
     description: 'Anti-turunan aljabar, Teorema Dasar Kalkulus, teknik substitusi, luas daerah di bawah kurva dan antara dua kurva.',
     scope: 'Anti-turunan (integral tak tentu) fungsi aljabar, integral tentu Teorema Dasar Kalkulus F(b)-F(a), teknik substitusi aljabar, menghitung luas daerah di bawah kurva dan antara dua kurva.',
     targetCriteria: 'Rumus cepat luas daerah antara kurva parabola dan garis: L = (D*sqrt(D)) / (6a^2) di mana D adalah diskriminan persamaan gabungan.',
-    memoryBooster: '\\int x^n dx = \\frac{x^{n+1}}{n+1} + C, \\quad L_{\\text{parabola-garis}} = \\frac{D\\sqrt{D}}{6a^2}',
+    memoryBooster: '∫ xⁿ dx = [xⁿ⁺¹ / (n + 1)] + C  •  Luas parabola-garis = (D√D) / (6a²)',
     aiPrompt: 'Tunjukkan penurunan dan pembuktian rumus jalan pintas luas daerah kurva parabola L = (D*sqrt(D))/(6a^2) serta batasan kapan rumus ini boleh digunakan.',
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_2_5_3`, [
@@ -447,7 +447,7 @@ export const tkaMatematikaTopics: Topic[] = [
     description: 'Mean, median, modus, kuartil, IQR, variansi dan standar deviasi, efek transformasi data penjumlahan/perkalian.',
     scope: 'Rata-rata hitung (mean), median, modus, data tunggal & berkelompok, kuartil (Q1, Q3), jangkauan interkuartil (IQR), variansi dan simpangan baku, efek transformasi data.',
     targetCriteria: 'Pahami kaidah transformasi data: operasi tambah/kurang mengubah pemusatan (mean) TETAPI TIDAK mengubah penyebaran (simpangan baku). Perkalian mengubah keduanya!',
-    memoryBooster: 'x_i \\mapsto c \\cdot x_i + k \\implies \\bar{x} \\mapsto c\\bar{x} + k, \\quad \\sigma \\mapsto |c| \\cdot \\sigma',
+    memoryBooster: 'Transformasi: xᵢ → c·xᵢ + k ⇒ x̄ → c·x̄ + k  •  σ → |c|·σ',
     aiPrompt: 'Jelaskan efek operasi aritmatika (penambahan dan perkalian konstanta) terhadap ukuran pemusatan dan ukuran penyebaran data, sertakan 2 variasi soal jebakan TKA.',
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_2_6_1`, [
@@ -469,7 +469,7 @@ export const tkaMatematikaTopics: Topic[] = [
     description: 'Filling slots, permutasi, kombinasi, peluang teoritis, komplemen peluang, saling lepas, bebas, bersyarat.',
     scope: 'Aturan pengisian tempat (filling slots), permutasi (nPr), kombinasi (nCr), peluang teoritis tunggal, komplemen P(A)=1-P(A), peluang saling lepas, bebas, dan peluang bersyarat P(A|B).',
     targetCriteria: "Gunakan pendekatan komplemen 'setidaknya satu' (P(minimal 1) = 1 - P(tidak ada sama sekali)) untuk memotong perhitungan panjang.",
-    memoryBooster: 'P(A \\cup B) = P(A) + P(B) - P(A \\cap B), \\quad P(\\text{min 1}) = 1 - P(\\text{sama sekali tidak}), \\quad P(A|B) = \\frac{P(A \\cap B)}{P(B)}',
+    memoryBooster: 'P(A ∪ B) = P(A) + P(B) - P(A ∩ B)  •  P(min 1) = 1 - P(tidak sama sekali)  •  P(A|B) = P(A ∩ B) / P(B)',
     aiPrompt: "Kapan kita harus memakai aturan kombinasi vs permutasi pada soal pengambilan bola/pemilihan delegasi? Berikan strategi menghitung peluang komplemen 'paling sedikit satu'.",
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_2_6_2`, [

@@ -1,5 +1,5 @@
 import { STORAGE_KEYS } from './constants'
-import type { UserProgress, Subject, Topic, Achievement } from '@/types'
+import type { UserProgress, Subject, Topic, Achievement, StudySession, DailyStudySummary } from '@/types'
 
 // Get data from localStorage
 function getFromStorage<T>(key: string, defaultValue: T): T {
@@ -42,6 +42,61 @@ export function getProgress(): UserProgress {
 
 export function saveProgress(progress: UserProgress): void {
   setToStorage(STORAGE_KEYS.PROGRESS, progress)
+}
+
+// Study Sessions
+export function getStudySessions(): StudySession[] {
+  return getFromStorage(STORAGE_KEYS.STUDY_SESSIONS, [])
+}
+
+export function saveStudySessions(sessions: StudySession[]): void {
+  setToStorage(STORAGE_KEYS.STUDY_SESSIONS, sessions)
+}
+
+export function addStudySession(session: StudySession): void {
+  const sessions = getStudySessions()
+  sessions.push(session)
+  // Keep only last 100 sessions to prevent storage overflow
+  const trimmed = sessions.slice(-100)
+  saveStudySessions(trimmed)
+}
+
+export function getTodaySessions(): StudySession[] {
+  const sessions = getStudySessions()
+  const today = new Date().toISOString().split('T')[0]
+  return sessions.filter(s => s.date === today)
+}
+
+export function getDailySummaries(days: number = 7): DailyStudySummary[] {
+  const sessions = getStudySessions()
+  const summaries: Record<string, DailyStudySummary> = {}
+
+  // Get last N days
+  for (let i = 0; i < days; i++) {
+    const date = new Date()
+    date.setDate(date.getDate() - i)
+    const dateStr = date.toISOString().split('T')[0]
+    summaries[dateStr] = {
+      date: dateStr,
+      totalMinutes: 0,
+      sessions: [],
+      topicsCompleted: 0,
+      subjectBreakdown: {},
+    }
+  }
+
+  // Fill in session data
+  sessions.forEach(session => {
+    if (summaries[session.date]) {
+      const summary = summaries[session.date]
+      summary.totalMinutes += session.durationMinutes
+      summary.sessions.push(session)
+      summary.subjectBreakdown[session.subjectId] =
+        (summary.subjectBreakdown[session.subjectId] || 0) + session.durationMinutes
+    }
+  })
+
+  return Object.values(summaries).sort((a, b) => b.date.localeCompare(a.date))
 }
 
 // Subjects

@@ -186,3 +186,51 @@ export interface AppState {
   topics: Topic[]
   achievements: Achievement[]
 }
+
+// ============== STUDY TIMER TYPES ==============
+
+// Pomodoro Preset Durations
+export type PomodoroPreset = 25 | 45 | 60 | 90
+
+// Study Session (logged session)
+export interface StudySession {
+  id: string
+  subjectId: string
+  subjectName: string
+  subjectColor: string
+  durationMinutes: number
+  targetMinutes: number
+  completedAt: string
+  date: string // YYYY-MM-DD format for grouping
+}
+
+// Daily Study Summary
+export interface DailyStudySummary {
+  date: string
+  totalMinutes: number
+  sessions: StudySession[]
+  topicsCompleted: number
+  subjectBreakdown: Record<string, number> // subjectId -> minutes
+}
+
+// Study Timer State
+export interface StudyTimerState {
+  isActive: boolean
+  isPaused: boolean
+  selectedSubjectId: string | null
+  selectedPreset: PomodoroPreset
+  customDuration: number
+  remainingSeconds: number
+  totalSeconds: number
+  elapsedSeconds: number
+  currentMode: 'focus' | 'break'
+  sessionsToday: StudySession[]
+}
+
+// Break Suggestion
+export interface BreakSuggestion {
+  shouldBreak: boolean
+  message: string
+  duration: number // minutes
+  quote?: string
+}

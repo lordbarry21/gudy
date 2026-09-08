@@ -34,7 +34,7 @@ export const bahasaIndonesiaTopics: Topic[] = [
     description: 'Teknik membaca memindai kata kunci, membaca sekilas garis besar, menjawab pertanyaan literal 5W+1H.',
     scope: 'Teknik membaca memindai (scanning) kata kunci, teknik membaca sekilas (skimming) untuk garis besar, menjawab pertanyaan literal 5W+1H (Apa, Siapa, Kapan, Di mana, Mengapa, Bagaimana) tanpa distorsi makna teks.',
     targetCriteria: 'Jangan membaca seluruh teks kata-per-kata terlebih dahulu. Baca pertanyaan dulu, tandai kata kunci unik (nama, tahun, istilah), lalu lakukan scanning ke paragraf target.',
-    memoryBooster: '5W+1H \\implies \\text{Pindai kata kunci angka, nama, atau istilah teknis langsung pada wacana}',
+    memoryBooster: '5W+1H ⇒ Pindai kata kunci angka, nama, atau istilah teknis langsung pada wacana',
     aiPrompt: 'Berikan panduan teknik scanning dan skimming teks bacaan panjang (250-350 kata) untuk menemukan informasi faktual dalam waktu kurang dari 40 detik.',
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_3_1_1`, [
@@ -55,7 +55,7 @@ export const bahasaIndonesiaTopics: Topic[] = [
     description: 'Paragraf deduktif, induktif, campuran; membedakan gagasan utama dengan penjelas; eliminasi opsi terlalu luas/sempit.',
     scope: 'Paragraf deduktif (ide pokok di awal), paragraf induktif (di akhir), paragraf campuran, paragraf ineratif; membedakan gagasan utama dengan kalimat utama; mengeliminasi kalimat penjelas yang terlalu spesifik.',
     targetCriteria: 'Ide pokok tidak boleh terlalu sempit (hanya mencakup 1 kalimat) dan tidak boleh terlalu luas (melebihi bahasan paragraf).',
-    memoryBooster: '\\text{Deduktif} = \\text{Awal}, \\quad \\text{Induktif} = \\text{Akhir (Oleh karena itu, Dengan demikian)}, \\quad \\text{Campuran} = \\text{Awal & Akhir}',
+    memoryBooster: 'Deduktif = Awal  •  Induktif = Akhir (Oleh karena itu, Dengan demikian)  •  Campuran = Awal & Akhir',
     aiPrompt: "Bagaimana membedakan antara 'Gagasan Utama', 'Kalimat Utama', dan 'Simpulan Paragraf'? Tunjukkan cara mengeliminasi pilihan jawaban yang terlalu luas atau terlalu sempit.",
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_3_1_2`, [
@@ -77,7 +77,7 @@ export const bahasaIndonesiaTopics: Topic[] = [
     description: 'Membaca sumbu grafik, tren data, memvalidasi pernyataan sesuai vs tidak sesuai tabel/infografis.',
     scope: 'Membaca sumbu horizontal dan vertikal grafik, tren kenaikan/penurunan data, memvalidasi pernyataan yang sesuai vs tidak sesuai dengan isi tabel/infografis, menyintesis simpulan numerik dan teks.',
     targetCriteria: 'Perhatikan satuan pada grafik (misal: "dalam ribuan ton", "persentase") dan hindari asumsi yang tidak tercantum dalam data visual.',
-    memoryBooster: '\\text{Pernyataan Sesuai} \\iff \\text{Didukung data eksplisit sumbu/angka; abaikan spekulasi non-grafik}',
+    memoryBooster: 'Pernyataan Sesuai ⇔ Didukung data eksplisit sumbu/angka; abaikan spekulasi non-grafik',
     aiPrompt: "Berikan tips menganalisis pernyataan yang 'paling sesuai' dengan data tabel/grafik pada soal literasi membaca Bahasa Indonesia.",
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_3_1_3`, [
@@ -111,7 +111,7 @@ export const bahasaIndonesiaTopics: Topic[] = [
     description: 'Ciri kalimat fakta obyektif, ciri opini subjektif (kata modalitas/adjektiva relatif), asumsi implisit teks.',
     scope: 'Ciri kalimat fakta (objektif, terverifikasi, angka/data pasti, peristiwa nyata), ciri kalimat opini (subjektif, kata sifat relatif: sangat, cukup, dirasa, modalitas: mungkin, sebaiknya, tampaknya), asumsi yang mendasari argumen.',
     targetCriteria: 'Kalimat yang memuat kutipan pendapat seseorang tetap berstatus sebagai fakta bahwa orang tersebut berpendapat demikian, tetapi isi pendapatnya adalah opini.',
-    memoryBooster: '\\text{Fakta: Terukur & Objektif} \\quad \\text{vs} \\quad \\text{Opini: Relatif, Saran, & Pertimbangan Nilai}',
+    memoryBooster: 'Fakta: Terukur & Objektif  vs  Opini: Relatif, Saran, & Pertimbangan Nilai',
     aiPrompt: 'Jelaskan perbedaan mendasar antara Fakta, Opini, dan Asumsi implisit dalam sebuah artikel opini surat kabar, berikan 3 contoh soal evaluasi kritis.',
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_3_2_1`, [
@@ -133,7 +133,7 @@ export const bahasaIndonesiaTopics: Topic[] = [
     description: 'Logical fallacies dalam teks, deteksi nada/sikap penulis (author stance), tujuan penulisan artikel.',
     scope: "Mengidentifikasi kekeliruan berpikir (logical fallacies: ad hominem, false dilemma, overgeneralization), mendeteksi nada/sikap penulis (author's stance: netral, kritis, mendukung, pesimistis), tujuan penulisan artikel.",
     targetCriteria: 'Perhatikan pemilihan diksi konotatif penulis yang mencerminkan kecenderungan memihak atau menyudutkan salah satu pihak.',
-    memoryBooster: "\\text{Nada Penulis: Netral / Kritis / Optimis / Prihatin} \\implies \\text{Cek diksi konotatif teks}",
+    memoryBooster: 'Nada Penulis: Netral / Kritis / Optimis / Prihatin ⇒ Cek diksi konotatif teks',
     aiPrompt: "Bagaimana cara mendeteksi sikap (stance/bias) penulis dan tujuan penulisan pada teks editorial bahasa Indonesia? Berikan contoh analisis diksi.",
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_3_2_2`, [
@@ -154,7 +154,7 @@ export const bahasaIndonesiaTopics: Topic[] = [
     description: 'Silogisme kategorial, Modus Ponens/Tollens, generalisasi induktif, kausalitas sebab-akibat.',
     scope: 'Simpulan silogisme kategorial (Premis Mayor, Premis Minor, Konklusi), Modus Ponens, Modus Tollens, generalisasi induktif, kausalitas (sebab-akibat langsung vs korelasi kebetulan).',
     targetCriteria: 'Simpulan yang benar HARUS mencakup keseluruhan inti wacana dan tidak boleh memasukkan klausa eksternal yang tidak ada di teks.',
-    memoryBooster: '\\text{Ponens: } p \\to q, p \\vdash q \\quad | \\quad \\text{Tollens: } p \\to q, \\sim q \\vdash \\sim p',
+    memoryBooster: 'Modus Ponens: p → q, p ⊢ q  |  Modus Tollens: p → q, ~q ⊢ ~p',
     aiPrompt: 'Berikan aturan baku penarikan simpulan paragraf yang valid secara logika dan sesuai dengan standar tes Pusmendik Kemdikbud.',
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_3_2_3`, [
@@ -188,7 +188,7 @@ export const bahasaIndonesiaTopics: Topic[] = [
     description: 'Tema, penokohan analitik vs dramatik via dialog/tindakan, tahapan alur plot, latar, sudut pandang orang 1/3.',
     scope: 'Tema, tokoh dan penokohan (karakterisasi langsung/analitik vs tidak langsung/dramatik via dialog/tindakan), alur/plot (orientasi, komplikasi, klimaks, resolusi), latar (tempat, waktu, suasana), sudut pandang (aku vs serbatahu).',
     targetCriteria: 'Buktikan watak tokoh selalu berdasarkan bukti kutipan kalimat pada teks, bukan sekadar tebakan perasaan.',
-    memoryBooster: '\\text{Penokohan Dramatik: Tindakan, Dialog Tokoh, Reaksi Tokoh Lain, Pikiran Batin}',
+    memoryBooster: 'Penokohan Dramatik: Tindakan, Dialog Tokoh, Reaksi Tokoh Lain, Pikiran Batin',
     aiPrompt: 'Bagaimana menganalisis watak tokoh melalui metode dramatik (dialog, reaksi tokoh lain, tingkah laku) dalam kutipan novel/cerpen?',
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_3_3_1`, [
@@ -209,7 +209,7 @@ export const bahasaIndonesiaTopics: Topic[] = [
     description: 'Majas metafora, personifikasi, asosiasi, hiperbola, ironi/sarkasme, makna konotatif simbol, pesan moral.',
     scope: 'Majas perbandingan (metafora, personifikasi, asosiasi, hiperbola), majas sindiran (ironi, sinisme, sarkasme), makna konotatif simbol sastra, pesan moral/amanat tersurat dan tersirat.',
     targetCriteria: 'Amanat selalu berupa kalimat saran/anjuran positif yang relevan dengan penyelesaian konflik utama cerita.',
-    memoryBooster: '\\text{Amanat: Kalimat anjuran normatif positif berbasis solusi konflik utama}',
+    memoryBooster: 'Amanat: Kalimat anjuran normatif positif berbasis solusi konflik utama',
     aiPrompt: 'Berikan daftar majas yang paling sering keluar di ujian bahasa Indonesia dan cara mengidentifikasi pesan moral/amanat dari resolusi konflik cerpen.',
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_3_3_2`, [
@@ -230,7 +230,7 @@ export const bahasaIndonesiaTopics: Topic[] = [
     description: 'Nilai moral (akhlak), nilai sosial (kepedulian), nilai budaya (adat), nilai religius (ketuhanan), nilai edukasi.',
     scope: 'Nilai moral (akhlak/budi pekerti), nilai sosial (interaksi antarmanusia/kepedulian), nilai budaya (adat istiadat/tradisi), nilai religius (keagamaan), nilai edukasi; keterkaitan nilai sastra dengan kehidupan masa kini.',
     targetCriteria: 'Hubungkan tindakan konkret tokoh dengan definisi nilai sosial/moral yang relevan secara objektif.',
-    memoryBooster: '\\text{Nilai Sosial = Antarindividu/Masyarakat} \\quad | \\quad \\text{Nilai Moral = Budi Pekerti Pribadi}',
+    memoryBooster: 'Nilai Sosial = Antarindividu/Masyarakat  |  Nilai Moral = Budi Pekerti Pribadi',
     aiPrompt: 'Jelaskan perbedaan antara nilai moral, nilai sosial, dan nilai budaya dalam teks sastra beserta contoh kasus analisis kutipan cerpen.',
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_3_3_3`, [
@@ -264,7 +264,7 @@ export const bahasaIndonesiaTopics: Topic[] = [
     description: 'Fungsi S, P, O, Pel, Ket; membedakan Objek (bisa pasif) vs Pelengkap (tidak bisa pasif); pola tunggal & inversi.',
     scope: 'Unsur kalimat: Subjek (S), Predikat (P), Objek (O), Pelengkap (Pel), Keterangan (Ket); membedakan Objek dan Pelengkap; pola dasar kalimat tunggal (S-P, S-P-O, S-P-Pel, S-P-O-Pel, S-P-O-K); kalimat inversi.',
     targetCriteria: 'Pastikan kalimat memiliki minimal Subjek dan Predikat yang jelas tanpa didahului preposisi di awal subjek ("Dalam rapat itu membicarakan..." -> S hilang!).',
-    memoryBooster: '\\text{Objek} \\implies \\text{Bisa dipasifkan}, \\quad \\text{Pelengkap} \\implies \\text{Tidak bisa dipasifkan}',
+    memoryBooster: 'Objek ⇒ Bisa dipasifkan  |  Pelengkap ⇒ Tidak bisa dipasifkan',
     aiPrompt: 'Bagaimana cara membedakan Objek dan Pelengkap pada struktur kalimat bahasa Indonesia? Berikan contoh uji pasif dan analisis jabatan fungsi kalimat.',
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_3_4_1`, [
@@ -286,7 +286,7 @@ export const bahasaIndonesiaTopics: Topic[] = [
     description: 'Kesepadanan struktur, keparalelan bentuk imbuhan (me- vs di-), kehematan kata (anti-pleonasme), kelogisan makna.',
     scope: '5 Syarat kalimat efektif: (1) Kesepadanan struktur, (2) Keparalelan bentuk imbuhan, (3) Kehematan kata (menghindari pleonasme: adalah merupakan, para hadirin), (4) Kecermatan dan ketegasan, (5) Kelogisan makna.',
     targetCriteria: 'Cek langsung keparalelan imbuhan pada perincian dan buang kata-kata mubazir/pleonasme.',
-    memoryBooster: '\\text{Paralel: Imbuhan seragam (me- dengan me-, di- dengan di-)} \\quad | \\quad \\text{Anti-Pleonasme}',
+    memoryBooster: 'Paralel: Imbuhan seragam (me- dengan me-, di- dengan di-)  |  Anti-Pleonasme',
     aiPrompt: 'Buat ringkasan 5 pilar kalimat efektif beserta 10 contoh kalimat rancu/tidak efektif yang paling sering diujikan beserta perbaikannya.',
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_3_4_2`, [
@@ -307,7 +307,7 @@ export const bahasaIndonesiaTopics: Topic[] = [
     description: 'Konjungsi koordinatif, subordinatif, korelatif berpasangan, konjungsi antarkalimat wajib bertanda koma.',
     scope: 'Konjungsi koordinatif (dan, serta, tetapi), subordinatif (karena, jika, sehingga), konjungsi korelatif (tidak hanya... tetapi juga, baik... maupun), konjungsi antarkalimat (Oleh karena itu, Namun, Selain itu).',
     targetCriteria: 'Jangan pernah menggunakan konjungsi intrakalimat (sehingga, karena, sedangkan) di awal kalimat mandiri!',
-    memoryBooster: '\\text{Pasangan Baku: } \\text{bukan... melainkan...} \\quad | \\quad \\text{tidak... tetapi...} \\quad | \\quad \\text{baik... maupun...}',
+    memoryBooster: 'Pasangan Baku: bukan… melainkan…  |  tidak… tetapi…  |  baik… maupun…',
     aiPrompt: 'Jelaskan aturan penulisan dan fungsi konjungsi antarkalimat vs intrakalimat dalam PUEBI/EYD V, serta daftar konjungsi berpasangan yang baku.',
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_3_4_3`, [
@@ -341,7 +341,7 @@ export const bahasaIndonesiaTopics: Topic[] = [
     description: 'Nama geografi spesifik vs nama jenis (jeruk bali vs batik Solo), huruf miring istilah asing, judul buku dalam teks.',
     scope: 'Huruf kapital: awal kalimat, nama diri orang/gelar kehormatan, nama geografi spesifik (Sungai Mahakam vs pergi ke sungai), bangsa/suku/bahasa; Huruf miring: judul buku/majalah dalam teks, kata bahasa asing/daerah yang belum diserap.',
     targetCriteria: 'Nama jenis tidak memakai kapital (jeruk bali, kunci inggris), sedangkan nama asal geografi memakai kapital (batik Cirebon, gudeg Yogya).',
-    memoryBooster: '\\text{Nama Asal Geografi = Kapital (batik Pekalongan)} \\quad \\text{vs} \\quad \\text{Nama Jenis = Kecil (pisang ambon)}',
+    memoryBooster: 'Nama Asal Geografi = Kapital (batik Pekalongan)  vs  Nama Jenis = Kecil (pisang ambon)',
     aiPrompt: 'Rangkum seluruh aturan penulisan huruf kapital dan miring pada EYD V, terutama kasus nama jenis vs nama geografi dan penulisan kata bahasa asing.',
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_3_5_1`, [
@@ -362,7 +362,7 @@ export const bahasaIndonesiaTopics: Topic[] = [
     description: 'Tanda koma rincian, pemisah anak kalimat mendahului induk kalimat, titik dua perincian, titik koma kalimat setara.',
     scope: 'Tanda koma (,) untuk perincian >= 3 unsur, sebelum konjungsi pertentangan (tetapi, melainkan), setelah anak kalimat mendahului induk kalimat; Titik dua (:) perincian lengkap; Titik koma (;) kalimat setara; Tanda petik petikan langsung.',
     targetCriteria: 'Anak kalimat di belakang induk kalimat TIDAK boleh didahului koma ("Saya belajar giat karena ingin juara" -> tanpa koma!).',
-    memoryBooster: '\\text{Anak Kalimat di Awal = Pakai Koma} \\quad | \\quad \\text{Anak Kalimat di Belakang = Tanpa Koma}',
+    memoryBooster: 'Anak Kalimat di Awal = Pakai Koma  |  Anak Kalimat di Belakang = Tanpa Koma',
     aiPrompt: 'Berikan panduan penggunaan tanda koma (,), titik koma (;), dan titik dua (:) berdasarkan EYD Edisi Kelima beserta contoh kesalahan yang paling umum terjadi.',
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_3_5_2`, [
@@ -383,7 +383,7 @@ export const bahasaIndonesiaTopics: Topic[] = [
     description: 'Bentuk terikat (pascasarjana, antarkota), peluluhan bunyi KTSP pada meng- dan peng-, partikel pun serangkai/pisah.',
     scope: 'Bentuk terikat serangkai (pascasarjana, antarkota, subsektor, nonformal), aturan peluluhan bunyi K, T, S, P pada awalan meng- dan peng-, penulisan gabungan kata awalan-akhiran sekaligus, partikel pun.',
     targetCriteria: 'Peluluhan KTSP berlaku jika huruf kedua adalah vokal (memesona, bukan mempesona; memengaruhi, bukan mempengaruhi).',
-    memoryBooster: 'meN- + K/T/S/P + \\text{Vokal} \\implies \\text{Luluh (memesona, memengaruhi, menyukseskan, menaati)}',
+    memoryBooster: 'meN- + K/T/S/P + Vokal ⇒ Luluh (memesona, memengaruhi, menyukseskan, menaati)',
     aiPrompt: "Jelaskan kaidah peluluhan fonem KTSP pada imbuhan meN-, aturan penulisan bentuk terikat (antar-, pasca-, pra-), dan daftar 12 kata penulisan 'pun' yang digabung.",
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_3_5_3`, [
@@ -417,7 +417,7 @@ export const bahasaIndonesiaTopics: Topic[] = [
     description: 'Kohesi gramatikal (rujukan, elipsis, substitusi), kohesi leksikal (repetisi, sinonim), kelogisan urutan gagasan.',
     scope: 'Kohesi gramatikal (referensi/pengacuan, substitusi, elipsis/pelesapan, konjungsi), kohesi leksikal (repetisi kata kunci, sinonim, antonim, hiponim), koherensi (kelogisan urutan gagasan antarparagraf).',
     targetCriteria: 'Paragraf yang padu selalu memiliki satu kalimat topik dan kalimat penjelas yang saling mengikat tanpa melompat ke topik lain.',
-    memoryBooster: '\\text{Kohesi = Keterikatan Bentuk/Bahasa} \\quad \\text{vs} \\quad \\text{Koherensi = Keterikatan Makna/Gagasan Logis}',
+    memoryBooster: 'Kohesi = Keterikatan Bentuk/Bahasa  vs  Koherensi = Keterikatan Makna/Gagasan Logis',
     aiPrompt: 'Bagaimana cara menguji kohesi dan koherensi dalam sebuah paragraf? Jelaskan teknik memeriksa kata kunci berulang dan piranti penghubung kalimat.',
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_3_6_1`, [
@@ -438,7 +438,7 @@ export const bahasaIndonesiaTopics: Topic[] = [
     description: 'Mendeteksi kalimat melenceng dari topik utama, menghapus atau merevisi kalimat yang merusak keutuhan ide.',
     scope: 'Definisi kalimat sumbang (kalimat yang melenceng dari ide pokok paragraf), mendeteksi kalimat yang merusak kepaduan wacana, menghapus atau mengganti kalimat tidak padu agar teks utuh.',
     targetCriteria: 'Tentukan dulu kalimat utama paragraf, lalu uji setiap kalimat apakah masih mendukung kalimat utama tersebut.',
-    memoryBooster: '\\text{Kalimat Sumbang: Gagasan menyimpang dari ide pokok kalimat utama}',
+    memoryBooster: 'Kalimat Sumbang: Gagasan menyimpang dari ide pokok kalimat utama',
     aiPrompt: "Tunjukkan metode praktis menemukan 'kalimat sumbang' dalam paragraf soal bahasa Indonesia dengan teknik membaca kalimat utama terlebih dahulu.",
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_3_6_2`, [
@@ -459,7 +459,7 @@ export const bahasaIndonesiaTopics: Topic[] = [
     description: 'Kata rujukan kronologis/logis kalimat acak, konjungsi transisi pengisi bagian rumpang wacana.',
     scope: 'Menganalisis kata rujukan (hal ini, tersebut, mereka) untuk menentukan urutan kronologis/logis kalimat acak, memilih konjungsi dan kalimat yang tepat untuk mengisi bagian rumpang wacana.',
     targetCriteria: 'Cari kalimat pembuka yang tidak memuat kata rujukan atau konjungsi pengait; perhatikan kata transisi pada kalimat sebelum dan sesudah bagian rumpang.',
-    memoryBooster: '\\text{Kalimat Pertama: Kalimat umum mandiri (tanpa kata rujukan: ' + 'hal ini, tersebut, oleh sebab itu' + ')}',
+    memoryBooster: 'Kalimat Pertama: Kalimat umum mandiri (tanpa kata rujukan: hal ini, tersebut, oleh sebab itu)',
     aiPrompt: 'Berikan trik mengurutkan kalimat acak menjadi paragraf padu dengan memperhatikan kata rujukan demonstratif dan pengait leksikal.',
     status: 'notStarted',
     checklist: createChecklist(`${subjectId}_3_6_3`, [

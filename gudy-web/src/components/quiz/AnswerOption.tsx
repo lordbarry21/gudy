@@ -45,18 +45,18 @@ export function AnswerOption({
   const getIcon = () => {
     if (showResult) {
       if (isCorrect) {
-        return <CheckCircle size={20} weight="fill" className="text-success" />
+        return <CheckCircle size={24} weight="fill" className="text-success" />
       }
       if (isWrong) {
-        return <XCircle size={20} weight="fill" className="text-error" />
+        return <XCircle size={24} weight="fill" className="text-error" />
       }
     }
 
     if (isSelected) {
-      return <Circle size={20} weight="fill" className="text-accent" />
+      return <Circle size={24} weight="fill" className="text-accent" />
     }
 
-    return <Circle size={20} className="text-text-muted" />
+    return <Circle size={24} className="text-text-muted" />
   }
 
   return (
@@ -66,7 +66,7 @@ export function AnswerOption({
       onClick={onClick}
       disabled={disabled}
       className={`
-        w-full flex items-center gap-3 p-4 rounded-xl border-2
+        w-full flex items-center gap-4 lg:gap-5 p-5 lg:p-6 rounded-2xl border-2
         transition-all duration-200 text-left
         ${getStyles()}
         ${disabled ? 'cursor-default' : 'cursor-pointer'}
@@ -75,8 +75,8 @@ export function AnswerOption({
       {/* Option Key Badge */}
       <span
         className={`
-          w-8 h-8 rounded-lg flex items-center justify-center
-          font-bold text-sm shrink-0
+          w-10 h-10 lg:w-12 lg:h-12 rounded-xl flex items-center justify-center
+          font-bold text-base lg:text-lg shrink-0
           ${isSelected || isCorrect
             ? 'bg-accent text-white'
             : isWrong
@@ -88,8 +88,8 @@ export function AnswerOption({
         {optionKey}
       </span>
 
-      {/* Option Text */}
-      <span className="flex-1 text-sm font-medium leading-relaxed">
+      {/* Option Text - Larger for PC */}
+      <span className="flex-1 text-base lg:text-lg font-medium leading-relaxed">
         <MathRenderer text={text} inline={true} />
       </span>
 

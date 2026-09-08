@@ -34,7 +34,7 @@ export function GraphSettingsPanel({
   if (!isOpen) return null
 
   return (
-    <div className="absolute top-12 right-3 z-30 w-80 bg-surface/95 backdrop-blur-xl border border-border rounded-2xl shadow-card p-4 text-xs text-text-secondary animate-in fade-in zoom-in-95 duration-150">
+    <div className="absolute top-12 right-3 z-30 w-80 bg-[#FAF7F0]/95 dark:bg-[#22211E]/95 backdrop-blur-xl border border-border/80 dark:border-border/60 rounded-2xl shadow-card p-4 text-xs text-text-secondary animate-in fade-in zoom-in-95 duration-150">
       {/* Header */}
       <div className="flex items-center justify-between pb-3 mb-3 border-b border-border">
         <div className="flex items-center gap-2 font-semibold text-text-primary">
