@@ -62,7 +62,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={`${fraunces.variable} ${literata.variable} ${plusJakarta.variable} ${sourceSerif.variable}`}>
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -79,7 +79,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${fraunces.variable} ${literata.variable} ${plusJakarta.variable} ${sourceSerif.variable} font-body antialiased bg-background text-text-primary min-h-screen`}>
+      <body className={`${fraunces.variable} ${literata.variable} ${plusJakarta.variable} ${sourceSerif.variable} font-sans antialiased bg-background text-text-primary min-h-screen`}>
         <ThemeProvider>
           <AuthProvider>
             <Navigation>{children}</Navigation>

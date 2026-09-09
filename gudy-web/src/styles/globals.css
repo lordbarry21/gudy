@@ -27,9 +27,7 @@
  */
 
 :root {
-  --font-display: var(--font-display), Georgia, 'Times New Roman', serif;
-  --font-serif: var(--font-serif), Georgia, 'Times New Roman', serif;
-  --font-sans: var(--font-ui), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-sans: var(--font-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
 
   /* Claude Light Mode: Authentic Warm Paper & Sand (Not Bright White) */
   --background: #F3EFE6;
