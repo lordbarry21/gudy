@@ -68,7 +68,7 @@ export function Navigation({ children }: { children: React.ReactNode }) {
           <motion.div
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
-            className="w-10 h-10 relative shrink-0 rounded-xl overflow-hidden shadow-sm border border-border/40"
+            className="w-10 h-10 relative shrink-0 rounded-xl overflow-hidden shadow-sm"
           >
             <Image
               src="/logo.png"
@@ -162,7 +162,7 @@ export function Navigation({ children }: { children: React.ReactNode }) {
       {/* Mobile Top Header (with Theme Toggle) */}
       <header className="lg:hidden sticky top-0 left-0 right-0 h-14 bg-surface-sidebar/95 backdrop-blur-md border-b border-border flex items-center justify-between px-4 z-40">
         <Link href="/" className="flex items-center gap-2.5">
-          <div className="w-8 h-8 relative shrink-0 rounded-lg overflow-hidden shadow-sm border border-border/40">
+          <div className="w-8 h-8 relative shrink-0 rounded-lg overflow-hidden shadow-sm">
             <Image
               src="/logo.png"
               alt="Gudy Logo"

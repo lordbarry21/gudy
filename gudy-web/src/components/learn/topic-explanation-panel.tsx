@@ -202,7 +202,7 @@ export function TopicExplanationPanel({
             </div>
 
             {/* Navigation Tip */}
-            <div className="p-3 bg-accent/10 border border-accent/20 rounded-xl text-[11px] text-accent flex items-start gap-2">
+            <div className="p-3 bg-accent-subtle rounded-xl text-[11px] text-accent flex items-start gap-2">
               <Sparkle size={15} className="shrink-0 mt-0.5" />
               <span>
                 <strong>Tips:</strong> Drag bubble mana pun untuk mengatur posisinya di canvas, scroll untuk zoom, dan klik materi untuk mencentang target belajar!
@@ -370,7 +370,7 @@ export function TopicExplanationPanel({
               </p>
 
               {currentTopic.targetCriteria && (
-                <div className="mt-2 p-2.5 rounded-lg bg-amber-500/10 border border-amber-500/20 text-[11px] text-text-primary">
+                <div className="mt-2 p-2.5 rounded-lg bg-amber-500/10 text-[11px] text-text-primary">
                   <div className="flex items-center gap-1.5 text-amber-600 dark:text-amber-400 font-semibold text-[10px] mb-1">
                     <Star size={12} weight="fill" />
                     <span>Target Nilai 100</span>
@@ -408,7 +408,7 @@ export function TopicExplanationPanel({
                         )}
                       </button>
                     </div>
-                    <div className="font-sans text-[11px] text-text-primary bg-surface-elevated p-2.5 rounded-lg border border-border/80 dark:border-border/60 leading-relaxed overflow-x-auto whitespace-pre-wrap select-all tracking-normal">
+                    <div className="font-sans text-[11px] text-text-primary bg-surface-elevated p-2.5 rounded-lg border border-border leading-relaxed overflow-x-auto whitespace-pre-wrap select-all tracking-normal">
                       {formattedBooster}
                     </div>
                   </div>

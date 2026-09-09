@@ -133,7 +133,7 @@ export function TopicGraph({ topics, subjectId, subjectColor, subjectName }: Top
           />
 
           {/* Floating Controls Overlay */}
-          <div className="absolute top-3 right-3 flex items-center gap-1 bg-[#FAF7F0]/90 dark:bg-[#22211E]/90 backdrop-blur-md p-1 rounded-lg border border-border/80 dark:border-border/60 shadow-card z-20">
+          <div className="absolute top-3 right-3 flex items-center gap-1 bg-[#FAF7F0]/90 dark:bg-[#22211E]/90 backdrop-blur-md p-1 rounded-lg border border-border shadow-card z-20">
             <button
               type="button"
               title="Perbesar (Zoom In)"

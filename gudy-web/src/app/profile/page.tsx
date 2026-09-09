@@ -131,7 +131,7 @@ export default function ProfilePage() {
           <div className="flex items-center gap-4 mb-6">
             {/* Profile Picture */}
             {user?.photoURL && !imageError ? (
-              <div className="w-16 h-16 rounded-2xl overflow-hidden shadow-sm shrink-0 border-2 border-border">
+              <div className="w-16 h-16 rounded-2xl overflow-hidden shadow-sm shrink-0">
                 <Image
                   src={user.photoURL}
                   alt={user.displayName || 'Profile'}

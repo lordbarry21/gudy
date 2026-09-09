@@ -41,7 +41,7 @@ export function AuthPrompt({ isOpen, onClose, message }: AuthPromptProps) {
             transition={{ type: 'spring', stiffness: 400, damping: 30 }}
             className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none"
           >
-            <div className="bg-surface border border-border rounded-2xl p-6 w-full max-w-sm shadow-xl pointer-events-auto">
+            <div className="bg-surface rounded-2xl p-6 w-full max-w-sm shadow-2xl shadow-black/20 pointer-events-auto">
               {/* Header */}
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-2">
@@ -68,7 +68,7 @@ export function AuthPrompt({ isOpen, onClose, message }: AuthPromptProps) {
                 {/* Register Button */}
                 <button
                   onClick={() => handleRedirect('register')}
-                  className="w-full py-3 bg-accent hover:bg-accent-dark text-white text-sm font-medium rounded-xl transition-colors flex items-center justify-center gap-2"
+                  className="w-full py-3 bg-accent hover:bg-accent-dark text-white text-sm font-medium rounded-xl transition-colors flex items-center justify-center gap-2 shadow-sm"
                 >
                   <UserPlus size={18} weight="fill" />
                   <span>Daftar Akun Baru</span>
@@ -77,7 +77,7 @@ export function AuthPrompt({ isOpen, onClose, message }: AuthPromptProps) {
                 {/* Login Button */}
                 <button
                   onClick={() => handleRedirect('login')}
-                  className="w-full py-3 bg-surface-elevated hover:bg-border border border-border text-text-primary text-sm font-medium rounded-xl transition-colors flex items-center justify-center gap-2"
+                  className="w-full py-3 bg-surface-elevated hover:bg-surface-elevated/80 text-text-primary text-sm font-medium rounded-xl transition-colors flex items-center justify-center gap-2 shadow-sm"
                 >
                   <SignIn size={18} />
                   <span>Sudah Punya Akun? Masuk</span>

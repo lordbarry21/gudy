@@ -39,7 +39,7 @@ export function AnswerOption({
       return 'bg-accent/15 border-accent text-accent'
     }
 
-    return 'bg-surface border-border hover:border-accent/50 hover:bg-surface-elevated'
+    return 'bg-surface border-border hover:border-accent hover:bg-surface-elevated'
   }
 
   const getIcon = () => {

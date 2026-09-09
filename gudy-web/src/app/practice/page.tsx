@@ -236,7 +236,7 @@ export default function PracticePage() {
               ) : (
                 <button
                   onClick={() => setShowAuthModal(true)}
-                  className="flex items-center gap-2 font-sans text-xs font-medium text-text-muted bg-surface border border-border rounded-xl px-3.5 py-2.5 hover:text-accent hover:border-accent/50 transition-colors"
+                  className="flex items-center gap-2 font-sans text-xs font-medium text-text-muted bg-surface border border-border rounded-xl px-3.5 py-2.5 hover:text-accent hover:border-accent transition-colors"
                 >
                   <SignIn size={14} />
                   <span>{t.practice.loginToSave}</span>

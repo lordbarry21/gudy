@@ -431,9 +431,9 @@ export default function StudyTimer() {
         <div
           className={`text-center py-6 rounded-xl mb-5 transition-colors relative overflow-hidden ${
             timerState.isActive && !timerState.isPaused
-              ? 'bg-success/5 border border-success/15'
+              ? 'bg-success/10'
               : timerState.elapsedSeconds > 0
-              ? 'bg-accent/5 border border-accent/15'
+              ? 'bg-accent-subtle'
               : 'bg-surface-elevated'
           }`}
         >

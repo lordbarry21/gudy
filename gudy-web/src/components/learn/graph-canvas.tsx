@@ -486,7 +486,7 @@ export function GraphCanvas({
         onPointerUp={handlePointerUp}
         onDoubleClick={handleDoubleClick}
       />
-      <div className="absolute bottom-3 left-4 text-[11px] text-text-muted pointer-events-none bg-[#FAF7F0]/85 dark:bg-[#22211E]/85 backdrop-blur-sm px-2.5 py-1 rounded-md border border-border/80 dark:border-border/60 shadow-sm">
+      <div className="absolute bottom-3 left-4 text-[11px] text-text-muted pointer-events-none bg-[#FAF7F0]/85 dark:bg-[#22211E]/85 backdrop-blur-sm px-2.5 py-1 rounded-md border border-border shadow-sm">
         Scroll untuk zoom • Drag untuk menggeser klaster • Klik materi untuk detail
       </div>
     </div>

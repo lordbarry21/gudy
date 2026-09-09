@@ -111,7 +111,7 @@ export function AuthModal({
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="relative w-full max-w-md bg-surface/95 backdrop-blur-xl border border-border/30 rounded-3xl shadow-2xl shadow-black/10 overflow-hidden"
+          className="relative w-full max-w-md bg-surface/95 backdrop-blur-xl rounded-3xl shadow-2xl shadow-black/20 overflow-hidden"
         >
           {/* Subtle gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-transparent pointer-events-none" />
@@ -149,7 +149,7 @@ export function AuthModal({
             {/* Content */}
             <div className="p-6">
               {/* Tab Switcher */}
-              <div className="flex gap-2 p-1.5 bg-surface-elevated/70 backdrop-blur-sm rounded-2xl mb-5 border border-border/30">
+              <div className="flex gap-2 p-1.5 bg-surface-elevated/70 backdrop-blur-sm rounded-2xl mb-5">
                 <button
                   onClick={() => handleTabChange('login')}
                   className={`flex-1 py-2.5 px-4 rounded-xl text-sm font-semibold transition-all duration-300 ${
@@ -218,7 +218,7 @@ export function AuthModal({
                           value={displayName}
                           onChange={(e) => setDisplayName(e.target.value)}
                           placeholder="Nama lengkap kamu"
-                          className="w-full pl-12 pr-4 py-3.5 rounded-2xl bg-surface-elevated/50 backdrop-blur-sm border border-border/30 text-text-primary placeholder:text-text-muted focus:outline-none focus:border-accent focus:ring-4 focus:ring-accent/10 transition-all text-sm font-medium"
+                          className="w-full pl-12 pr-4 py-3.5 rounded-2xl bg-surface-elevated text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-accent/30 transition-all text-sm font-medium"
                         />
                       </div>
                     </motion.div>
@@ -237,7 +237,7 @@ export function AuthModal({
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Email aktif kamu"
-                    className="w-full pl-12 pr-4 py-3.5 rounded-2xl bg-surface-elevated/50 backdrop-blur-sm border border-border/30 text-text-primary placeholder:text-text-muted focus:outline-none focus:border-accent focus:ring-4 focus:ring-accent/10 transition-all text-sm font-medium"
+                    className="w-full pl-12 pr-4 py-3.5 rounded-2xl bg-surface-elevated text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-accent/30 transition-all text-sm font-medium"
                   />
                 </div>
 
@@ -253,7 +253,7 @@ export function AuthModal({
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Password (min. 6 karakter)"
-                    className="w-full pl-12 pr-12 py-3.5 rounded-2xl bg-surface-elevated/50 backdrop-blur-sm border border-border/30 text-text-primary placeholder:text-text-muted focus:outline-none focus:border-accent focus:ring-4 focus:ring-accent/10 transition-all text-sm font-medium"
+                    className="w-full pl-12 pr-12 py-3.5 rounded-2xl bg-surface-elevated text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-accent/30 transition-all text-sm font-medium"
                   />
                   <button
                     type="button"
@@ -307,7 +307,7 @@ export function AuthModal({
                   disabled={loading}
                   whileHover={{ scale: 1.02, y: -2 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full py-3 px-4 bg-surface-elevated hover:bg-surface disabled:opacity-50 disabled:cursor-not-allowed border border-border/30 hover:border-accent/30 rounded-2xl text-sm font-semibold text-text-primary transition-all flex items-center justify-center gap-3 shadow-lg shadow-black/5 hover:shadow-xl hover:shadow-accent/10"
+                  className="w-full py-3 px-4 bg-surface-elevated hover:bg-surface-elevated/80 disabled:opacity-50 disabled:cursor-not-allowed rounded-2xl text-sm font-semibold text-text-primary transition-all flex items-center justify-center gap-3 shadow-sm hover:shadow"
                 >
                   <svg className="w-5 h-5" viewBox="0 0 24 24">
                     <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
@@ -325,7 +325,7 @@ export function AuthModal({
                   disabled={loading}
                   whileHover={{ scale: 1.02, y: -2 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full py-3 px-4 bg-[#24292e] hover:bg-[#2f363d] disabled:opacity-50 disabled:cursor-not-allowed border border-[#1a1f23] hover:border-[#2f363d] rounded-2xl text-sm font-semibold text-white transition-all flex items-center justify-center gap-3 shadow-lg shadow-black/10 hover:shadow-xl"
+                  className="w-full py-3 px-4 bg-[#24292e] hover:bg-[#2f363d] disabled:opacity-50 disabled:cursor-not-allowed rounded-2xl text-sm font-semibold text-white transition-all flex items-center justify-center gap-3 shadow-sm hover:shadow"
                 >
                   <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>

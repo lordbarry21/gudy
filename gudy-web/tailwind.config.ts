@@ -47,6 +47,7 @@ const config: Config = {
         success: '#4E9A70',
         warning: '#D99B26',
         danger: '#D9534F',
+        error: '#D9534F',
         subject: {
           math: '#3A92A6',
           tka: '#D97757',

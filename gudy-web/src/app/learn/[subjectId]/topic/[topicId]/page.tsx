@@ -176,7 +176,7 @@ export default function TopicDetailPage() {
         {/* Target 100 Criteria Banner */}
         {topic.targetCriteria && (
           <motion.div
-            className="bg-amber-500/10 border border-amber-500/25 rounded-2xl p-5 mb-6 shadow-card"
+            className="bg-amber-500/10 rounded-2xl p-5 mb-6 shadow-card"
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.05 }}
@@ -248,7 +248,7 @@ export default function TopicDetailPage() {
                   )}
                 </button>
               </div>
-              <div className="bg-surface-elevated rounded-xl p-4 border border-border/80 dark:border-border/60 font-sans text-xs sm:text-sm text-text-primary overflow-x-auto whitespace-pre-wrap leading-relaxed tracking-normal select-all">
+              <div className="bg-surface-elevated rounded-xl p-4 border border-border font-sans text-xs sm:text-sm text-text-primary overflow-x-auto whitespace-pre-wrap leading-relaxed tracking-normal select-all">
                 {formattedFormula}
               </div>
             </motion.div>
