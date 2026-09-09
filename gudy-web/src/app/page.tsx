@@ -6,6 +6,7 @@ import { useAppStore } from '@/lib/store'
 import { formatStudyTime, calculateProgress } from '@/lib/utils'
 import { useLanguage, getGreetingTranslation } from '@/lib/i18n/useLanguage'
 import { StudyTimer } from '@/components/study-timer'
+import { DailyStreakCard } from '@/components/cards/DailyStreakCard'
 import {
   Books,
   Clock,
@@ -91,48 +92,17 @@ export default function HomePage() {
           className="space-y-6"
         >
           {/* Top Row: Study Timer & Streak */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <motion.div variants={itemVariants} className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* New Study Timer Card */}
-            <motion.div variants={itemVariants}>
+            <div className="h-full">
               <StudyTimer />
-            </motion.div>
+            </div>
 
             {/* Streak Card */}
-            <motion.div variants={itemVariants}>
-              <div className="bg-surface border border-border rounded-2xl p-6 shadow-card hover:border-border-hover transition-colors h-full flex flex-col justify-between">
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-xs font-semibold uppercase tracking-wider text-text-muted">
-                      {t.home.dailyStreak}
-                    </span>
-                    <div className="w-8 h-8 rounded-lg bg-accent/15 text-accent flex items-center justify-center">
-                      <Fire size={18} weight="fill" />
-                    </div>
-                  </div>
-
-                  <div className="flex items-baseline gap-2 mb-2">
-                    <span className="text-4xl font-bold text-text-primary tracking-tight">
-                      {progress.streak}
-                    </span>
-                    <span className="text-xs text-text-muted">
-                      {progress.streak === 1 ? t.home.day : t.home.days} {t.home.streak}
-                    </span>
-                  </div>
-
-                  <p className="text-xs text-text-secondary leading-relaxed">
-                    {progress.streak > 0
-                      ? t.home.maintainStreak
-                      : t.home.startStreak}
-                  </p>
-                </div>
-
-                <div className="pt-4 border-t border-border mt-4 flex items-center justify-between text-[11px] text-text-muted">
-                  <span>{t.home.target}</span>
-                  <span className="font-semibold text-text-primary">{progress.dailyGoal} {t.home.materialsPerDay}</span>
-                </div>
-              </div>
-            </motion.div>
-          </div>
+            <div className="h-full">
+              <DailyStreakCard progress={progress} />
+            </div>
+          </motion.div>
 
           {/* Overall Progress */}
           <motion.div variants={itemVariants}>

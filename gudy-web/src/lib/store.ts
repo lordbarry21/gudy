@@ -11,9 +11,11 @@ import {
   saveAchievements,
   getCurriculumVersion,
   saveCurriculumVersion,
+  getStudySessions,
 } from './storage'
 import { SUBJECTS_DATA, ACHIEVEMENTS_DATA } from './constants'
 import { getAllInitialTopics, CURRICULUM_VERSION } from '@/data/syllabus'
+import { evaluateStreakOnAppLaunch, recordStudyActivity } from './streak'
 
 interface AppStore {
   // State
@@ -122,10 +124,17 @@ export const useAppStore = create<AppStore>((set, get) => ({
     }
 
     const completedCount = updatedTopics.filter((t) => t.isLeaf && t.status === 'mastered').length
-    const updatedProgress = {
+    const baseProgress = {
       ...progress,
       totalTopicsCompleted: completedCount,
     }
+
+    const studySessions = getStudySessions()
+    const { updatedProgress } = evaluateStreakOnAppLaunch(
+      baseProgress,
+      studySessions,
+      updatedTopics
+    )
 
     // Save to state
     set({
@@ -162,12 +171,12 @@ export const useAppStore = create<AppStore>((set, get) => ({
   // Update study time
   updateStudyTime: (minutes: number) => {
     const { progress } = get()
-    const updated = {
+    const { updatedProgress } = recordStudyActivity({
       ...progress,
       totalMinutesSpent: progress.totalMinutesSpent + minutes,
-    }
-    set({ progress: updated })
-    saveProgress(updated)
+    })
+    set({ progress: updatedProgress })
+    saveProgress(updatedProgress)
   },
 
   // Toggle checklist item
@@ -212,9 +221,18 @@ export const useAppStore = create<AppStore>((set, get) => ({
 
     // Update progress
     const completedCount = updatedTopics.filter((t) => t.status === 'mastered').length
-    const updatedProgress = {
+    let updatedProgress = {
       ...progress,
       totalTopicsCompleted: completedCount,
+    }
+
+    const itemWasChecked = updatedTopics
+      .find((t) => t.id === topicId)
+      ?.checklist.find((c) => c.id === itemId)?.isChecked
+
+    if (itemWasChecked) {
+      const activityResult = recordStudyActivity(updatedProgress)
+      updatedProgress = activityResult.updatedProgress
     }
 
     set({
@@ -260,10 +278,10 @@ export const useAppStore = create<AppStore>((set, get) => ({
 
     // Update progress
     const completedCount = updatedTopics.filter((t) => t.status === 'mastered').length
-    const updatedProgress = {
+    const { updatedProgress } = recordStudyActivity({
       ...progress,
       totalTopicsCompleted: completedCount,
-    }
+    })
 
     set({
       topics: updatedTopics,
@@ -351,9 +369,14 @@ export const useAppStore = create<AppStore>((set, get) => ({
 
     // Update progress
     const completedCount = finalTopics.filter((t) => t.isLeaf && t.status === 'mastered').length
-    const updatedProgress = {
+    let updatedProgress = {
       ...progress,
       totalTopicsCompleted: completedCount,
+    }
+
+    if (!isCurrentlyMastered) {
+      const activityResult = recordStudyActivity(updatedProgress)
+      updatedProgress = activityResult.updatedProgress
     }
 
     set({
