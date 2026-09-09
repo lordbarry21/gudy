@@ -55,7 +55,7 @@ export const id = {
     whatIsStreakTitle: 'Apa itu Daily Streak & Tujuannya?',
     whatIsStreakDesc: 'Daily Streak melacak berapa hari berturut-turut kamu belajar aktif di Gudy. Tujuannya adalah membangun kebiasaan belajar harian yang konsisten dan mencegah prokrastinasi—karena konsistensi kecil setiap hari menghasilkan penguasaan materi yang mendalam.',
     howStreakWorksTitle: 'Cara Kerja & Mempertahankan Streak',
-    howStreakWorksDesc: 'Selesaikan materi target harianmu atau tuntaskan sesi fokus timer sebelum pukul 23:59 setiap hari untuk menambah +1 hari ke streak-mu.',
+    howStreakWorksDesc: 'Selesaikan target harianmu (materi atau sesi fokus) sebelum pukul 23:59 setiap hari untuk menambah +1 hari ke streak-mu.',
     weeklyStripMeaningTitle: 'Arti Indikator Mingguan',
     symbolCompletedLabel: 'Selesai',
     symbolCompletedDesc: 'Target harian tercapai',
@@ -67,6 +67,9 @@ export const id = {
     symbolSkippedDesc: 'Streak hilang karena terlewat',
     streakMilestonesTitle: 'Target Milestone & Rekor',
     streakMilestonesDesc: 'Pertahankan streak hingga 7, 14, 30, dan 100 hari untuk mengukir rekor baru dan mempertahankan momentum belajarmu!',
+    streakFreezeTransitionTitle: 'Khawatir Terlewat? Ada Streak Freeze',
+    streakFreezeTransitionDesc: 'Pelindung otomatis agar streak tidak reset saat absen 1 hari.',
+    seeFreezeDetails: 'Lihat Freeze',
     streakFreezeTitle: 'Apa itu Streak Freeze?',
     streakFreezeExplainer: 'Streak Freeze secara otomatis melindungi streak belajarmu jika kamu melewatkan 1 hari tanpa belajar, sehingga rekor streakmu tidak kembali ke nol.',
     howToGetFreeze: 'Cara Mendapatkan Streak Freeze:',
@@ -144,7 +147,7 @@ export const id = {
     reset: 'Reset',
     dailyTarget: 'Target Harian',
     todaysSessions: 'Sesi hari ini',
-    noSessionToday: 'Belum ada sesi hari ini. Mulai belajar sekarang! 🚀',
+    noSessionToday: 'Mulai sesi fokus atau selesaikan materi! 📚',
     minutes: 'menit',
     workGreat: 'Kerja bagus! Istirahat sebentar ya.',
     sessionComplete: 'Sesi Selesai! 🎉',
@@ -155,6 +158,7 @@ export const id = {
     focusing: 'Focusing',
     topicsCompleted: 'topik selesai',
     fromTarget: 'dari target',
+    sessionCountsHint: 'Setiap sesi fokus = +1 materi untuk target harian',
   },
 
   // Quiz
@@ -378,6 +382,15 @@ export const id = {
     evening: 'Selamat Malam',
     default: 'Halo',
   },
+
+  // Tutorial
+  tutorial: {
+    newHere: 'Tips untukmu!',
+    dismiss: 'Nanti',
+    showTutorial: 'Lihat Tips',
+    featureTips: 'Tips Fitur',
+    learnTip: 'Pelajari cara menggunakan fitur ini',
+  },
 }
 
 /**
@@ -432,7 +445,7 @@ export const en = {
     whatIsStreakTitle: 'What is Daily Streak & What is it for?',
     whatIsStreakDesc: 'Daily Streak tracks how many consecutive days you actively study in Gudy. Its purpose is to build a reliable daily study habit and prevent procrastination—because small daily consistency compounds into mastery.',
     howStreakWorksTitle: 'How to Keep & Extend Your Streak',
-    howStreakWorksDesc: 'Complete your daily target materials or finish a focus timer session before 23:59 each day to add +1 day to your streak.',
+    howStreakWorksDesc: 'Complete your daily target (materials or focus sessions) before 23:59 each day to add +1 day to your streak.',
     weeklyStripMeaningTitle: 'Weekly Indicators Guide',
     symbolCompletedLabel: 'Completed',
     symbolCompletedDesc: 'Daily target achieved',
@@ -444,6 +457,9 @@ export const en = {
     symbolSkippedDesc: 'Streak lost due to missed day',
     streakMilestonesTitle: 'Milestones & Best Record',
     streakMilestonesDesc: 'Maintain your streak to reach 7, 14, 30, and 100-day milestones and beat your personal best record!',
+    streakFreezeTransitionTitle: 'Worried About Missing a Day?',
+    streakFreezeTransitionDesc: 'Automatic protection prevents your streak from resetting to 0.',
+    seeFreezeDetails: 'Learn Freeze',
     streakFreezeTitle: 'What is a Streak Freeze?',
     streakFreezeExplainer: 'A Streak Freeze automatically preserves your study streak if you miss a day, preventing your counter from resetting to zero.',
     howToGetFreeze: 'How to Earn Streak Freezes:',
@@ -521,7 +537,7 @@ export const en = {
     reset: 'Reset',
     dailyTarget: 'Daily Target',
     todaysSessions: "Today's Sessions",
-    noSessionToday: 'No sessions today yet. Start studying now! 🚀',
+    noSessionToday: 'Start a focus session or complete materials! 📚',
     minutes: 'minutes',
     workGreat: 'Great work! Take a short break.',
     sessionComplete: 'Session Complete! 🎉',
@@ -532,6 +548,7 @@ export const en = {
     focusing: 'Focusing',
     topicsCompleted: 'topics completed',
     fromTarget: 'of target',
+    sessionCountsHint: 'Each focus session = +1 material toward daily target',
   },
 
   // Quiz
@@ -754,6 +771,15 @@ export const en = {
     afternoon: 'Good Afternoon',
     evening: 'Good Evening',
     default: 'Hello',
+  },
+
+  // Tutorial
+  tutorial: {
+    newHere: 'Tips for you!',
+    dismiss: 'Later',
+    showTutorial: 'See Tips',
+    featureTips: 'Feature Tips',
+    learnTip: 'Learn how to use this feature',
   },
 }
 

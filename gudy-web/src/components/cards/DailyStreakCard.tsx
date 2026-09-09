@@ -224,7 +224,7 @@ export function DailyStreakCard({ progress, className = '' }: DailyStreakCardPro
           </div>
 
           {/* Today's Target Progress Bar */}
-          <div className="bg-surface-elevated rounded-xl p-3 space-y-2">
+          <div className="bg-surface-elevated rounded-xl p-3 space-y-2" data-tutorial="daily-target">
             <div className="flex items-center justify-between text-[11px]">
               <span className="font-medium text-text-secondary">{t.home.todayProgress}</span>
               <span className="font-semibold text-text-primary">

@@ -60,7 +60,7 @@ const getTodayString = () => new Date().toISOString().split('T')[0]
 const getRandomItem = <T,>(arr: T[]): T => arr[Math.floor(Math.random() * arr.length)]
 
 export default function StudyTimer() {
-  const { subjects, progress, updateStudyTime } = useAppStore()
+  const { subjects, topics, progress, updateStudyTime } = useAppStore()
   const { t } = useLanguage()
   const [timerState, setTimerState] = useState<StudyTimerState>({
     isActive: false,
@@ -86,10 +86,24 @@ export default function StudyTimer() {
   // Get selected subject info
   const selectedSubject = subjects.find(s => s.id === timerState.selectedSubjectId)
 
-  // Calculate daily progress
+  // Calculate material-based daily progress (like DailyStreakCard)
+  const todayStr = getTodayString()
+  const liveTodayTopics = topics.filter((t) => t.isLeaf && t.completedAt && t.completedAt.startsWith(todayStr)).length
+  const liveTodaySessions = timerState.sessionsToday.filter(
+    (session) =>
+      session.date === todayStr ||
+      (session.completedAt && session.completedAt.startsWith(todayStr))
+  ).length
+  const todayCompletedCount = liveTodayTopics + liveTodaySessions
+  const dailyTargetCount = progress.dailyGoal || 3
+
+  // Calculate time-based progress
   const todayMinutes = timerState.sessionsToday.reduce((sum, s) => sum + s.durationMinutes, 0)
-  const dailyTargetMinutes = progress.dailyGoal * 20 // ~20 min per topic as baseline
-  const dailyProgress = Math.min((todayMinutes / dailyTargetMinutes) * 100, 100)
+  const todayProgressPercent = Math.min(
+    Math.round((todayCompletedCount / dailyTargetCount) * 100),
+    100
+  )
+  const isTargetMet = todayCompletedCount >= dailyTargetCount
 
   // Preset buttons
   const presets: { value: PomodoroPreset; label: string }[] = [
@@ -563,31 +577,53 @@ export default function StudyTimer() {
         </div>
       </div>
 
-      {/* Daily Progress Card */}
+      {/* Daily Progress Card - Material-based (connected to streak & daily target) */}
       <div className="bg-surface border border-border rounded-2xl p-4 shadow-card">
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-2">
             <Target size={16} className="text-accent" weight="bold" />
             <span className="text-xs font-semibold text-text-primary">{t.timer.dailyTarget}</span>
+            {isTargetMet && (
+              <span className="px-1.5 py-0.5 bg-success/15 text-success text-[9px] font-bold rounded-full">
+                ✓
+              </span>
+            )}
           </div>
           <span className="text-xs font-medium text-text-secondary">
-            {formatMinutes(todayMinutes)} / {formatMinutes(dailyTargetMinutes)}
+            {todayCompletedCount} / {dailyTargetCount} {t.home.materialsCompletedCount}
           </span>
         </div>
 
         <div className="h-2 bg-surface-elevated rounded-full overflow-hidden mb-3">
           <motion.div
             className="h-full rounded-full"
-            style={{ backgroundColor: todayMinutes >= dailyTargetMinutes ? '#22c55e' : '#f59e0b' }}
+            style={{ backgroundColor: isTargetMet ? '#22c55e' : '#f59e0b' }}
             initial={{ width: 0 }}
-            animate={{ width: `${dailyProgress}%` }}
+            animate={{ width: `${todayProgressPercent}%` }}
             transition={{ duration: 0.5 }}
           />
         </div>
 
+        {/* Connection to streak info */}
+        <div className="flex items-center justify-between text-[10px] text-text-muted">
+          <span>
+            {isTargetMet ? (
+              <span className="text-success font-medium">{t.home.goalReached}</span>
+            ) : (
+              <span>
+                {Math.max(dailyTargetCount - todayCompletedCount, 0)} {t.home.toExtendStreak}
+              </span>
+            )}
+          </span>
+          <div className="flex items-center gap-1.5">
+            <Fire size={12} className={progress.streak > 0 ? 'text-accent' : 'text-text-muted'} weight="fill" />
+            <span className="font-medium">{progress.streak}d streak</span>
+          </div>
+        </div>
+
         {/* Today's Sessions */}
         {timerState.sessionsToday.length > 0 && (
-          <div className="space-y-2">
+          <div className="space-y-2 mt-3 pt-3 border-t border-border">
             <span className="text-[10px] text-text-muted uppercase tracking-wider">
               {t.timer.todaysSessions}
             </span>
@@ -618,10 +654,15 @@ export default function StudyTimer() {
           </div>
         )}
 
-        {timerState.sessionsToday.length === 0 && (
-          <p className="text-[11px] text-text-muted text-center py-2">
-            {t.timer.noSessionToday}
-          </p>
+        {timerState.sessionsToday.length === 0 && liveTodayTopics === 0 && (
+          <div className="text-center py-3">
+            <p className="text-[11px] text-text-muted mb-1">
+              {t.timer.noSessionToday}
+            </p>
+            <p className="text-[10px] text-text-muted/70">
+              {t.timer.sessionCountsHint}
+            </p>
+          </div>
         )}
       </div>
 

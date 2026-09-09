@@ -17,6 +17,7 @@ import {
   Trophy,
 } from '@phosphor-icons/react'
 import Link from 'next/link'
+import { TutorialReplayButton } from '@/components/tutorial'
 
 export default function HomePage() {
   const { progress, subjects, initialize, isInitialized } = useAppStore()
@@ -67,7 +68,7 @@ export default function HomePage() {
   }
 
   return (
-    <main className="min-h-screen bg-background pb-24 lg:pb-12 lg:pl-64 transition-colors duration-200">
+    <main className="min-h-screen bg-background pb-24 lg:pb-12 lg:pl-64 transition-colors duration-200" data-tutorial="welcome">
       <div className="max-w-5xl mx-auto px-4 lg:px-8 pt-8">
         {/* Header */}
         <motion.div
@@ -94,12 +95,12 @@ export default function HomePage() {
           {/* Top Row: Study Timer & Streak */}
           <motion.div variants={itemVariants} className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* New Study Timer Card */}
-            <div className="h-full">
+            <div className="h-full" data-tutorial="focus-timer">
               <StudyTimer />
             </div>
 
             {/* Streak Card */}
-            <div className="h-full">
+            <div className="h-full" data-tutorial="streak">
               <DailyStreakCard progress={progress} />
             </div>
           </motion.div>
@@ -226,6 +227,9 @@ export default function HomePage() {
           </motion.div>
         </motion.div>
       </div>
+
+      {/* Tutorial Replay Button - Only on Home */}
+      <TutorialReplayButton />
     </main>
   )
 }

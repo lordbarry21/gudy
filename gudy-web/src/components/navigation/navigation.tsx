@@ -107,6 +107,7 @@ export function Navigation({ children }: { children: React.ReactNode }) {
                 key={item.href}
                 href={item.href}
                 onClick={isProfile ? handleProfileClick : undefined}
+                data-tutorial={item.href === '/learn' ? 'learn' : item.href === '/progress' ? 'progress' : item.href === '/practice' ? 'practice' : item.href === '/profile' ? 'profile' : undefined}
                 className={cn(
                   'relative flex items-center gap-3 px-3.5 py-2.5 rounded-xl transition-colors duration-150 outline-none focus:outline-none focus-visible:outline-none',
                   isActive
@@ -208,6 +209,7 @@ export function Navigation({ children }: { children: React.ReactNode }) {
                 key={item.href}
                 href={item.href}
                 onClick={isProfile ? handleProfileClick : undefined}
+                data-tutorial={item.href === '/learn' ? 'learn' : item.href === '/progress' ? 'progress' : item.href === '/practice' ? 'practice' : item.href === '/profile' ? 'profile' : undefined}
                 className={cn(
                   'relative flex flex-col items-center gap-0.5 px-3 py-1.5 rounded-lg transition-colors outline-none focus:outline-none focus-visible:outline-none',
                   isActive ? 'text-accent font-semibold' : 'text-text-muted hover:text-text-secondary'
