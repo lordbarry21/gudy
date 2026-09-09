@@ -1,6 +1,7 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import React from 'react'
+import { formatMathSymbols } from '@/lib/math-symbols'
 
 interface MathRendererProps {
   text: string
@@ -8,222 +9,195 @@ interface MathRendererProps {
   inline?: boolean
 }
 
-// Load MathJax from CDN and initialize
-let mathJaxReady = false
-let mathJaxInstance: any = null
-
-async function loadMathJax() {
-  if (mathJaxReady) return mathJaxInstance
-
-  // Load MathJax from CDN
-  if (typeof window !== 'undefined' && !(window as any).MathJax) {
-    await new Promise<void>((resolve, reject) => {
-      const script = document.createElement('script')
-      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js'
-      script.async = true
-      script.onload = () => resolve()
-      script.onerror = () => reject(new Error('Failed to load MathJax'))
-      document.head.appendChild(script)
-    })
-  }
-
-  // Wait for MathJax to be ready
-  await (window as any).MathJax.startup?.promise
-
-  mathJaxInstance = (window as any).MathJax
-  mathJaxReady = true
-
-  return mathJaxInstance
+interface FractionToken {
+  type: 'text' | 'frac'
+  text?: string
+  num?: string
+  den?: string
 }
 
-/**
- * Converts common math patterns to LaTeX format
- */
-function convertToLatex(text: string): string {
-  let result = text
+function parseFractions(input: string): FractionToken[] {
+  // Regex to match math fractions:
+  // 1. \frac{num}{den}
+  // 2. Parenthesized or simple fractions: (x - 4) / (√x - 2), 1/x, 1/y, 1/6, 2/3, 4/x², AF/FB
+  const fracPattern = /(?:\\frac\{([^}]+)\}\{([^}]+)\}|(\([^\)]+\)|[A-Z]{2}|\d+|[xyzabcpqrnmk](?:[²³⁰-⁹])?)\s*\/\s*(\([^\)]+\)|[A-Z]{2}|\d+|[xyzabcpqrnmk](?:[²³⁰-⁹])?))/g
 
-  // Protect already rendered HTML tags
-  const tags: string[] = []
-  result = result.replace(/<[^>]+>/g, (match) => {
-    tags.push(match)
-    return `__TAG_${tags.length - 1}__`
-  })
+  const tokens: FractionToken[] = []
+  let lastIndex = 0
+  let match: RegExpExecArray | null
 
-  // Convert fractions like 1/2, 2/3 to LaTeX \frac{1}{2}
-  result = result.replace(/(\d+)\/(\d+)/g, (_, num, den) => {
-    return `\\frac{${num}}{${den}}`
-  })
+  while ((match = fracPattern.exec(input)) !== null) {
+    if (match[0] === 'UI/UX') continue
 
-  // Convert square roots: √(x) -> \sqrt{x}
-  result = result.replace(/√\(([^)]+)\)/g, (_, content) => {
-    return `\\sqrt{${content}}`
-  })
-
-  // Convert square roots without parentheses: √x -> \sqrt{x}
-  result = result.replace(/√(\w+)/g, (_, content) => {
-    return `\\sqrt{${content}}`
-  })
-
-  // Convert superscripts: x^2 -> x^{2}
-  result = result.replace(/\^(\d+)/g, '^{$1}')
-  result = result.replace(/\^(\w)/g, '^{$1}')
-  result = result.replace(/\^\{([^}]+)\}/g, '^{$1}')
-
-  // Convert subscripts: x_1 -> x_{1}
-  result = result.replace(/_(\d+)/g, '_{$1}')
-  result = result.replace(/_(\w)/g, '_{$1}')
-  result = result.replace(/_\{([^}]+)\}/g, '_{$1}')
-
-  // Convert pi
-  result = result.replace(/π/g, '\\pi')
-
-  // Convert infinity
-  result = result.replace(/∞/g, '\\infty')
-
-  // Convert degrees
-  result = result.replace(/(\d+)°/g, '$1^\\circ')
-
-  // Convert arrows
-  result = result.replace(/→/g, '\\rightarrow')
-  result = result.replace(/←/g, '\\leftarrow')
-  result = result.replace(/↔/g, '\\leftrightarrow')
-  result = result.replace(/⇒/g, '\\Rightarrow')
-  result = result.replace(/⇐/g, '\\Leftarrow')
-
-  // Convert set notation
-  result = result.replace(/∈/g, '\\in')
-  result = result.replace(/∉/g, '\\notin')
-  result = result.replace(/⊂/g, '\\subset')
-  result = result.replace(/⊃/g, '\\supset')
-  result = result.replace(/∪/g, '\\cup')
-  result = result.replace(/∩/g, '\\cap')
-  result = result.replace(/∅/g, '\\emptyset')
-
-  // Convert Greek letters
-  result = result.replace(/α/g, '\\alpha')
-  result = result.replace(/β/g, '\\beta')
-  result = result.replace(/γ/g, '\\gamma')
-  result = result.replace(/δ/g, '\\delta')
-  result = result.replace(/θ/g, '\\theta')
-  result = result.replace(/λ/g, '\\lambda')
-  result = result.replace(/μ/g, '\\mu')
-  result = result.replace(/σ/g, '\\sigma')
-  result = result.replace(/φ/g, '\\phi')
-  result = result.replace(/ω/g, '\\omega')
-  result = result.replace(/Σ/g, '\\Sigma')
-  result = result.replace(/Δ/g, '\\Delta')
-  result = result.replace(/Ω/g, '\\Omega')
-
-  // Convert comparison operators
-  result = result.replace(/≤/g, '\\leq')
-  result = result.replace(/≥/g, '\\geq')
-  result = result.replace(/≠/g, '\\neq')
-  result = result.replace(/≈/g, '\\approx')
-
-  // Convert ±
-  result = result.replace(/±/g, '\\pm')
-  result = result.replace(/∓/g, '\\mp')
-
-  // Convert ∑ and ∫
-  result = result.replace(/∑/g, '\\sum')
-  result = result.replace(/∫/g, '\\int')
-
-  // Convert log with base: ²log -> {}^{2}\\log
-  result = result.replace(/²log/g, '{}^{2}\\log')
-  result = result.replace(/³log/g, '{}^{3}\\log')
-  result = result.replace(/⁴log/g, '{}^{4}\\log')
-
-  // Convert sin, cos, tan squared
-  result = result.replace(/sin²/g, '\\sin^{2}')
-  result = result.replace(/cos²/g, '\\cos^{2}')
-  result = result.replace(/tan²/g, '\\tan^{2}')
-
-  // Convert composition symbol
-  result = result.replace(/∘/g, '\\circ')
-
-  // Wrap with \( \) for inline math
-  result = `\\(${result}\\)`
-
-  // Restore tags
-  tags.forEach((tag, i) => {
-    result = result.replace(`__TAG_${i}__`, tag)
-  })
-
-  return result
-}
-
-export function MathRenderer({ text, className = '', inline = false }: MathRendererProps) {
-  const containerRef = useRef<HTMLSpanElement>(null)
-  const [rendered, setRendered] = useState(false)
-
-  useEffect(() => {
-    if (!containerRef.current) return
-
-    const renderMath = async () => {
-      try {
-        const MJ = await loadMathJax()
-        const latex = convertToLatex(text)
-
-        // Clear previous content
-        if (containerRef.current) {
-          containerRef.current.innerHTML = ''
-        }
-
-        // Create a temporary element to render MathJax
-        const temp = document.createElement('span')
-        temp.textContent = latex
-        containerRef.current?.appendChild(temp)
-
-        // Reset MathJax typeset
-        await MJ.startup.promise
-        const MathJax = MJ
-
-        await MathJax.typesetPromise([containerRef.current!])
-
-        setRendered(true)
-      } catch (error) {
-        console.warn('MathJax rendering error:', error)
-        // Fallback to plain text
-        if (containerRef.current) {
-          containerRef.current.textContent = text
-        }
-      }
+    if (match.index > lastIndex) {
+      tokens.push({ type: 'text', text: input.slice(lastIndex, match.index) })
     }
 
-    renderMath()
-  }, [text])
+    let num = match[1] || match[3]
+    let den = match[2] || match[4]
+    if (num.startsWith('(') && num.endsWith(')')) num = num.slice(1, -1).trim()
+    if (den.startsWith('(') && den.endsWith(')')) den = den.slice(1, -1).trim()
 
-  return (
-    <span
-      ref={containerRef}
-      className={`math-renderer ${rendered ? 'math-rendered' : ''} ${className}`}
-    />
-  )
+    tokens.push({ type: 'frac', num, den })
+    lastIndex = match.index + match[0].length
+  }
+
+  if (lastIndex < input.length) {
+    tokens.push({ type: 'text', text: input.slice(lastIndex) })
+  }
+
+  return tokens
 }
 
-/**
- * Smart math renderer that handles mixed content
- */
-export function SmartMathRenderer({ text, className = '' }: { text: string; className?: string }) {
-  const lines = text.split('\n')
+function renderTextWithFractions(text: string, keyPrefix: string | number): React.ReactNode {
+  const tokens = parseFractions(text)
+  if (tokens.length === 1 && tokens[0].type === 'text') {
+    return <span key={keyPrefix}>{formatMathSymbols(text)}</span>
+  }
 
   return (
-    <span className={className}>
-      {lines.map((line, idx) => {
-        const hasMath = /[\d]+[\/√²³⁴⁵⁶⁷⁸⁹⁰]|[²³⁴⁵⁶⁷⁸⁹⁰]log|√|\^|π|∞|≤|≥|≠|±|°|∈|∉|⊂|⊃|∪|∩|∅|→|←|⇔|⇒|⇐|∑|∫|∘/.test(line)
-
-        if (hasMath) {
+    <span key={keyPrefix} className="inline-baseline">
+      {tokens.map((token, subIdx) => {
+        if (token.type === 'frac' && token.num && token.den) {
           return (
-            <MathRenderer
-              key={idx}
-              text={line}
-              inline={true}
-            />
+            <span
+              key={`${keyPrefix}-f-${subIdx}`}
+              className="inline-flex flex-col items-center justify-center align-middle mx-1 -translate-y-0.5 text-[0.82em] leading-none select-text font-medium"
+            >
+              <span className="border-b-[1.5px] border-current px-1 pb-0.5 text-center leading-none block w-full">
+                {formatMathSymbols(token.num)}
+              </span>
+              <span className="px-1 pt-0.5 text-center leading-none block w-full">
+                {formatMathSymbols(token.den)}
+              </span>
+            </span>
           )
         }
-
-        return <span key={idx}>{line}</span>
+        return <span key={`${keyPrefix}-t-${subIdx}`}>{formatMathSymbols(token.text || '')}</span>
       })}
     </span>
   )
+}
+
+/**
+ * Formats inline text with code badges, bold/italic, and clean Unicode math symbols.
+ * Preserves all whitespace and word-spacing cleanly.
+ */
+function renderFormattedInline(content: string): React.ReactNode[] {
+  // Regex to match inline code (`code`), bold (**bold**), italic (*italic*), or plain segments
+  const tokenRegex = /(`[^`]+`|\*\*[^*]+\*\*|\*[^*]+\*)/g
+  const tokens = content.split(tokenRegex)
+
+  return tokens.map((token, index) => {
+    if (!token) return null
+
+    // Inline code
+    if (token.startsWith('`') && token.endsWith('`') && token.length >= 2) {
+      const code = token.slice(1, -1)
+      return (
+        <code
+          key={index}
+          className="px-1.5 py-0.5 mx-0.5 rounded-md bg-surface-elevated border border-border font-mono text-[0.9em] text-accent font-medium inline-block"
+        >
+          {code}
+        </code>
+      )
+    }
+
+    // Bold
+    if (token.startsWith('**') && token.endsWith('**') && token.length >= 4) {
+      const boldText = token.slice(2, -2)
+      return (
+        <strong key={index} className="font-bold text-text-primary">
+          {renderTextWithFractions(boldText, `b-${index}`)}
+        </strong>
+      )
+    }
+
+    // Italic
+    if (token.startsWith('*') && token.endsWith('*') && token.length >= 2) {
+      const italicText = token.slice(1, -1)
+      return (
+        <em key={index} className="italic text-text-primary">
+          {renderTextWithFractions(italicText, `i-${index}`)}
+        </em>
+      )
+    }
+
+    // Regular text with fractions and math symbols formatted
+    return renderTextWithFractions(token, index)
+  })
+}
+
+/**
+ * MathRenderer component that renders text with clean Unicode mathematical formatting,
+ * code blocks, and full typography preservation.
+ */
+export function MathRenderer({ text, className = '', inline = false }: MathRendererProps) {
+  if (!text) return null
+
+  // Handle multi-line text and code blocks
+  if (!inline && (text.includes('```') || text.includes('\n'))) {
+    // Check for fenced code blocks
+    const codeBlockRegex = /```([a-zA-Z0-9_-]*)\n([\s\S]*?)```/g
+    const parts: React.ReactNode[] = []
+    let lastIndex = 0
+    let match: RegExpExecArray | null
+
+    while ((match = codeBlockRegex.exec(text)) !== null) {
+      if (match.index > lastIndex) {
+        const textBefore = text.slice(lastIndex, match.index)
+        parts.push(
+          <span key={`text-${lastIndex}`}>
+            {renderFormattedInline(textBefore)}
+          </span>
+        )
+      }
+
+      const lang = match[1] || ''
+      const codeContent = match[2]
+      parts.push(
+        <div key={`code-${match.index}`} className="my-3">
+          {lang && (
+            <div className="px-3 py-1 bg-surface-elevated/80 border-t border-x border-border rounded-t-lg font-mono text-xs text-text-muted">
+              {lang}
+            </div>
+          )}
+          <pre
+            className={`p-4 bg-surface-elevated border border-border ${
+              lang ? 'rounded-b-lg' : 'rounded-lg'
+            } font-mono text-sm sm:text-base text-text-primary overflow-x-auto custom-scrollbar leading-relaxed`}
+          >
+            <code>{codeContent.trim()}</code>
+          </pre>
+        </div>
+      )
+
+      lastIndex = match.index + match[0].length
+    }
+
+    if (lastIndex < text.length) {
+      parts.push(
+        <span key={`text-${lastIndex}`}>
+          {renderFormattedInline(text.slice(lastIndex))}
+        </span>
+      )
+    }
+
+    return <span className={`math-renderer font-sans ${className}`}>{parts}</span>
+  }
+
+  // Single line / inline rendering
+  return (
+    <span className={`math-renderer font-sans ${className}`}>
+      {renderFormattedInline(text)}
+    </span>
+  )
+}
+
+/**
+ * Smart math renderer that delegates to MathRenderer with Unicode formatting.
+ */
+export function SmartMathRenderer({ text, className = '' }: { text: string; className?: string }) {
+  return <MathRenderer text={text} className={className} />
 }

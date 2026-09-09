@@ -95,7 +95,7 @@ export default function HomePage() {
           {/* Top Row: Study Timer & Streak */}
           <motion.div variants={itemVariants} className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* New Study Timer Card */}
-            <div className="h-full" data-tutorial="focus-timer">
+            <div className="h-full">
               <StudyTimer />
             </div>
 

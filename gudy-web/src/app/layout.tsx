@@ -3,7 +3,8 @@ import { Fraunces, Literata, Plus_Jakarta_Sans, Source_Serif_4 } from 'next/font
 import { AuthProvider } from '@/contexts/AuthContext'
 import { Navigation } from '@/components/navigation/navigation'
 import { ThemeProvider } from '@/components/theme-provider'
-import { TutorialProvider, TutorialOverlay, TutorialToast } from '@/components/tutorial'
+import { TutorialIntegration, TutorialOverlay, TutorialToast, TutorialReplayButton } from '@/components/tutorial'
+import { GlobalTimerIndicator, FocusCompletionModal } from '@/components/study-timer'
 import '@/styles/globals.css'
 
 // Fraunces - Quirky editorial serif with soul (Steve Jobs philosophy: type with personality)
@@ -83,11 +84,14 @@ export default function RootLayout({
       <body className={`${fraunces.variable} ${literata.variable} ${plusJakarta.variable} ${sourceSerif.variable} font-sans antialiased bg-background text-text-primary min-h-screen`}>
         <ThemeProvider>
           <AuthProvider>
-            <TutorialProvider>
+            <TutorialIntegration>
               <Navigation>{children}</Navigation>
               <TutorialToast />
               <TutorialOverlay />
-            </TutorialProvider>
+              <TutorialReplayButton />
+              <GlobalTimerIndicator />
+              <FocusCompletionModal />
+            </TutorialIntegration>
           </AuthProvider>
         </ThemeProvider>
       </body>

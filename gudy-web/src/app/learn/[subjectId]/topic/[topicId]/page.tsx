@@ -270,15 +270,15 @@ export default function TopicDetailPage() {
               </h2>
               <span className="text-[11px] text-text-muted font-mono">{checkedCount}/{totalCount} {t.topic.checked}</span>
             </div>
-            <div className="p-4 space-y-1.5">
+            <div className="p-4 space-y-2">
               {topic.checklist.map((item, index) => (
                 <motion.button
                   key={item.id}
                   onClick={() => toggleChecklistItem(topicId, item.id)}
-                  className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl transition-colors text-left ${
+                  className={`group w-full flex items-center gap-3.5 px-4 py-3 rounded-xl transition-all text-left border ${
                     item.isChecked
-                      ? 'bg-success/10 text-text-secondary'
-                      : 'bg-surface-elevated hover:bg-border text-text-primary'
+                      ? 'bg-success/10 border-success/20 text-text-secondary'
+                      : 'bg-surface-elevated hover:bg-surface-elevated/70 border-border/80 hover:border-accent/40 text-text-primary'
                   }`}
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -286,17 +286,17 @@ export default function TopicDetailPage() {
                   whileTap={{ scale: 0.99 }}
                 >
                   <div
-                    className={`w-5 h-5 rounded-md flex items-center justify-center transition-all shrink-0 ${
+                    className={`w-5 h-5 rounded-full flex items-center justify-center transition-all shrink-0 ${
                       item.isChecked
-                        ? 'bg-success text-white'
-                        : 'border border-border'
+                        ? 'bg-success text-white border-2 border-success shadow-sm'
+                        : 'border-2 border-text-muted/40 group-hover:border-accent bg-surface/60'
                     }`}
                   >
-                    {item.isChecked && <Check size={13} weight="bold" />}
+                    {item.isChecked && <Check size={12} weight="bold" />}
                   </div>
                   <span
-                    className={`text-xs flex-1 leading-relaxed ${
-                      item.isChecked ? 'line-through text-text-muted' : 'text-text-primary'
+                    className={`text-xs sm:text-[13px] flex-1 leading-relaxed ${
+                      item.isChecked ? 'line-through text-text-muted' : 'text-text-primary font-medium'
                     }`}
                   >
                     {item.title}

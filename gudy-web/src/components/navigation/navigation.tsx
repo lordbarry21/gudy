@@ -12,12 +12,16 @@ import {
   User,
   Sun,
   Moon,
+  X,
+  Sparkle,
 } from '@phosphor-icons/react'
 import { cn } from '@/lib/utils'
 import { useTheme } from '@/components/theme-provider'
 import { useAuth } from '@/contexts/AuthContext'
 import { useLanguage } from '@/lib/i18n/useLanguage'
 import { LanguageSwitch, LanguageSwitchCompact } from '@/components/LanguageSwitch'
+import { useTutorial } from '@/components/tutorial/TutorialContext'
+import { useTimerStore } from '@/lib/timer-store'
 
 const iconMap: Record<string, React.ElementType> = {
   house: House,
@@ -33,6 +37,9 @@ export function Navigation({ children }: { children: React.ReactNode }) {
   const { theme, toggleTheme } = useTheme()
   const { user, loading } = useAuth()
   const { t } = useLanguage()
+  const { isActive: isTutorialActive, currentStepData } = useTutorial()
+  const isZenMode = useTimerStore((s) => s.isZenMode && s.isActive)
+  const toggleZenMode = useTimerStore((s) => s.toggleZenMode)
 
   // Navigation items with translated labels
   const navItems = [
@@ -43,8 +50,8 @@ export function Navigation({ children }: { children: React.ReactNode }) {
     { label: t.nav.profile, href: '/profile', icon: 'user' },
   ]
 
-  // Hide navigation on login page
-  const isLoginPage = pathname === '/login'
+  // Hide navigation on login and quiz pages
+  const isFullScreenPage = pathname === '/login' || pathname.startsWith('/quiz')
 
   const handleProfileClick = (e: React.MouseEvent) => {
     // If not logged in and clicking profile, redirect to login
@@ -54,15 +61,46 @@ export function Navigation({ children }: { children: React.ReactNode }) {
     }
   }
 
-  if (isLoginPage) {
-    // On login page, just render children without navigation
+  if (isFullScreenPage) {
+    // On fullscreen pages (login, quiz), render children without navigation
     return <>{children}</>
   }
 
   return (
     <>
+      {/* Zen Mode Distraction-Free Header */}
+      {isZenMode && (
+        <>
+          <style dangerouslySetInnerHTML={{ __html: `
+            main {
+              padding-left: 0 !important;
+            }
+          `}} />
+          <motion.header
+            initial={{ y: -50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -50, opacity: 0 }}
+            className="fixed top-0 left-0 right-0 h-12 bg-surface/95 backdrop-blur-md border-b border-accent/20 z-30 flex items-center justify-between px-4 sm:px-8 text-xs shadow-sm"
+          >
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+              <span className="font-semibold text-text-primary">{t.timer.zenModeActive}</span>
+              <span className="hidden sm:inline text-text-muted">• {t.timer.zenModeTip}</span>
+            </div>
+            <button
+              onClick={() => toggleZenMode(false)}
+              className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-surface-elevated hover:bg-border text-text-secondary hover:text-text-primary font-medium border border-border transition-colors"
+            >
+              <X size={14} />
+              <span>{t.timer.exitZenMode}</span>
+            </button>
+          </motion.header>
+        </>
+      )}
+
       {/* Desktop Sidebar */}
-      <aside className="hidden lg:flex fixed left-0 top-0 h-screen w-64 bg-surface-sidebar border-r border-border flex-col p-6 z-50 transition-colors duration-200">
+      {!isZenMode && (
+      <aside className="hidden lg:flex fixed left-0 top-0 h-screen w-64 bg-surface-sidebar border-r border-border flex-col p-6 z-30 transition-colors duration-200">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 mb-8 group">
           <motion.div
@@ -101,6 +139,16 @@ export function Navigation({ children }: { children: React.ReactNode }) {
             const Icon = iconMap[item.icon]
             const isActive = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href))
             const isProfile = item.href === '/profile'
+            const isTutorialTarget = Boolean(
+              isTutorialActive &&
+              currentStepData?.id &&
+              (item.href === '/learn' ? currentStepData.id === 'learn'
+                : item.href === '/progress' ? currentStepData.id === 'progress'
+                : item.href === '/practice' ? currentStepData.id === 'practice'
+                : item.href === '/profile' ? currentStepData.id === 'profile'
+                : false)
+            )
+            const isHighlighted = isActive || isTutorialTarget
 
             return (
               <Link
@@ -110,15 +158,15 @@ export function Navigation({ children }: { children: React.ReactNode }) {
                 data-tutorial={item.href === '/learn' ? 'learn' : item.href === '/progress' ? 'progress' : item.href === '/practice' ? 'practice' : item.href === '/profile' ? 'profile' : undefined}
                 className={cn(
                   'relative flex items-center gap-3 px-3.5 py-2.5 rounded-xl transition-colors duration-150 outline-none focus:outline-none focus-visible:outline-none',
-                  isActive
+                  isHighlighted
                     ? 'text-accent font-semibold'
                     : 'text-text-secondary hover:text-text-primary hover:bg-surface-elevated/70'
                 )}
               >
-                {isActive && (
+                {(isActive || isTutorialTarget) && (
                   <motion.div
-                    layoutId="activeNav"
-                    className="absolute inset-0 bg-accent/12 dark:bg-accent/15 rounded-xl"
+                    layoutId={isActive ? 'activeNav' : undefined}
+                    className="absolute inset-0 bg-accent/15 rounded-xl"
                     transition={{ type: 'spring', stiffness: 500, damping: 35 }}
                   >
                     <div className="absolute left-1 top-2 bottom-2 w-1 rounded-full bg-accent" />
@@ -126,7 +174,7 @@ export function Navigation({ children }: { children: React.ReactNode }) {
                 )}
                 <Icon
                   size={20}
-                  weight={isActive ? 'fill' : 'regular'}
+                  weight={isHighlighted ? 'fill' : 'regular'}
                   className="relative z-10"
                 />
                 <span className="relative z-10 text-sm">{item.label}</span>
@@ -159,80 +207,95 @@ export function Navigation({ children }: { children: React.ReactNode }) {
           </p>
         </div>
       </aside>
+      )}
 
-      {/* Mobile Top Header (with Theme Toggle) */}
-      <header className="lg:hidden sticky top-0 left-0 right-0 h-14 bg-surface-sidebar/95 backdrop-blur-md border-b border-border flex items-center justify-between px-4 z-40">
-        <Link href="/" className="flex items-center gap-2.5">
-          <div className="w-8 h-8 relative shrink-0 rounded-lg overflow-hidden shadow-sm">
-            <Image
-              src="/logo.png"
-              alt="Gudy Logo"
-              width={32}
-              height={32}
-              className="w-full h-full object-cover hidden dark:block"
-              priority
-            />
-            <Image
-              src="/logo-white-512.png"
-              alt="Gudy Logo"
-              width={32}
-              height={32}
-              className="w-full h-full object-cover block dark:hidden"
-              priority
-            />
+      {/* Mobile Top Header (with Theme Toggle, hidden in Zen Mode) */}
+      {!isZenMode && (
+        <header className="lg:hidden sticky top-0 left-0 right-0 h-14 bg-surface-sidebar/95 backdrop-blur-md border-b border-border flex items-center justify-between px-4 z-30">
+          <Link href="/" className="flex items-center gap-2.5">
+            <div className="w-8 h-8 relative shrink-0 rounded-lg overflow-hidden shadow-sm">
+              <Image
+                src="/logo.png"
+                alt="Gudy Logo"
+                width={32}
+                height={32}
+                className="w-full h-full object-cover hidden dark:block"
+                priority
+              />
+              <Image
+                src="/logo-white-512.png"
+                alt="Gudy Logo"
+                width={32}
+                height={32}
+                className="w-full h-full object-cover block dark:hidden"
+                priority
+              />
+            </div>
+            <span className="font-bold text-lg text-text-primary tracking-tight">Gudy</span>
+          </Link>
+          <div className="flex items-center gap-2">
+            <LanguageSwitchCompact />
+            <button
+              type="button"
+              onClick={toggleTheme}
+              aria-label="Toggle Theme"
+              className="p-2 rounded-lg bg-surface-elevated border border-border text-text-secondary hover:text-text-primary transition-colors"
+            >
+              {theme === 'dark' ? <Sun size={18} weight="fill" className="text-accent" /> : <Moon size={18} weight="fill" className="text-accent" />}
+            </button>
           </div>
-          <span className="font-bold text-lg text-text-primary tracking-tight">Gudy</span>
-        </Link>
-        <div className="flex items-center gap-2">
-          <LanguageSwitchCompact />
-          <button
-            type="button"
-            onClick={toggleTheme}
-            aria-label="Toggle Theme"
-            className="p-2 rounded-lg bg-surface-elevated border border-border text-text-secondary hover:text-text-primary transition-colors"
-          >
-            {theme === 'dark' ? <Sun size={18} weight="fill" className="text-accent" /> : <Moon size={18} weight="fill" className="text-accent" />}
-          </button>
-        </div>
-      </header>
+        </header>
+      )}
 
-      {/* Mobile Bottom Nav */}
-      <nav className="lg:hidden fixed bottom-0 left-0 right-0 h-16 bg-surface-sidebar/95 backdrop-blur-md border-t border-border z-50">
-        <div className="flex items-center justify-around h-full px-2">
-          {navItems.map((item) => {
-            const Icon = iconMap[item.icon]
-            const isActive = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href))
-            const isProfile = item.href === '/profile'
+      {/* Mobile Bottom Nav (hidden in Zen Mode) */}
+      {!isZenMode && (
+        <nav className="lg:hidden fixed bottom-0 left-0 right-0 h-16 bg-surface-sidebar/95 backdrop-blur-md border-t border-border z-30">
+          <div className="flex items-center justify-around h-full px-2">
+            {navItems.map((item) => {
+              const Icon = iconMap[item.icon]
+              const isActive = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href))
+              const isProfile = item.href === '/profile'
+              const isTutorialTarget = Boolean(
+                isTutorialActive &&
+                currentStepData?.id &&
+                (item.href === '/learn' ? currentStepData.id === 'learn'
+                  : item.href === '/progress' ? currentStepData.id === 'progress'
+                  : item.href === '/practice' ? currentStepData.id === 'practice'
+                  : item.href === '/profile' ? currentStepData.id === 'profile'
+                  : false)
+              )
+              const isHighlighted = isActive || isTutorialTarget
 
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={isProfile ? handleProfileClick : undefined}
-                data-tutorial={item.href === '/learn' ? 'learn' : item.href === '/progress' ? 'progress' : item.href === '/practice' ? 'practice' : item.href === '/profile' ? 'profile' : undefined}
-                className={cn(
-                  'relative flex flex-col items-center gap-0.5 px-3 py-1.5 rounded-lg transition-colors outline-none focus:outline-none focus-visible:outline-none',
-                  isActive ? 'text-accent font-semibold' : 'text-text-muted hover:text-text-secondary'
-                )}
-              >
-                {isActive && (
-                  <motion.div
-                    layoutId="activeNavMobile"
-                    className="absolute inset-0 bg-accent/15 rounded-xl"
-                    transition={{ type: 'spring', stiffness: 500, damping: 35 }}
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={isProfile ? handleProfileClick : undefined}
+                  data-tutorial={item.href === '/learn' ? 'learn' : item.href === '/progress' ? 'progress' : item.href === '/practice' ? 'practice' : item.href === '/profile' ? 'profile' : undefined}
+                  className={cn(
+                    'relative flex flex-col items-center gap-0.5 px-3 py-1.5 rounded-lg transition-colors outline-none focus:outline-none focus-visible:outline-none',
+                    isHighlighted ? 'text-accent font-semibold' : 'text-text-muted hover:text-text-secondary'
+                  )}
+                >
+                  {(isActive || isTutorialTarget) && (
+                    <motion.div
+                      layoutId={isActive ? 'activeNavMobile' : undefined}
+                      className="absolute inset-0 bg-accent/15 rounded-xl"
+                      transition={{ type: 'spring', stiffness: 500, damping: 35 }}
+                    />
+                  )}
+                  <Icon
+                    size={20}
+                    weight={isHighlighted ? 'fill' : 'regular'}
+                    className="relative z-10"
                   />
-                )}
-                <Icon
-                  size={20}
-                  weight={isActive ? 'fill' : 'regular'}
-                  className="relative z-10"
-                />
-                <span className="relative z-10 text-[11px] font-medium">{item.label}</span>
-              </Link>
-            )
-          })}
-        </div>
-      </nav>
+                  <span className="relative z-10 text-[11px] font-medium">{item.label}</span>
+                </Link>
+              )
+            })}
+          </div>
+        </nav>
+      )}
 
       {/* Main Content */}
       {children}

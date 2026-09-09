@@ -21,27 +21,44 @@ export interface TutorialStep {
 export const TUTORIAL_STORAGE_KEY = 'gudy_tutorial_completed'
 
 export const TUTORIAL_STEPS_ID: TutorialStep[] = [
-  // Step 1: Welcome
+  // Step 1: Welcome (centered)
   {
     id: 'welcome',
     title: 'Selamat Datang di Gudy! 👋',
     description: 'Aplikasi pelacak belajar yang akan membantu kamu menguasai materi dengan lebih efektif. Yuk, kita lihat fitur-fiturnya!',
     selector: '[data-tutorial="welcome"]',
-    position: 'bottom',
+    position: 'center',
     skippable: true,
+    action: {
+      label: 'Mulai Jelajahi',
+      href: '/learn',
+    },
   },
-  // Step 2: Learn Page Overview
+  // Step 2: Learn Page
   {
     id: 'learn',
     title: '📚 Halaman Belajar',
-    description: 'Di sini kamu bisa melihat semua mata pelajaran dalam graph interaktif. Klik setiap node untuk melihat detail dan centang saat sudah dipahami. Filter berdasarkan subjek untuk fokus!',
+    description: 'Lihat semua mata pelajaran dalam graph interaktif. Klik setiap node untuk melihat detail dan centang saat sudah dipahami. Filter berdasarkan subjek untuk fokus!',
     selector: '[data-tutorial="learn"]',
     position: 'right',
     action: {
       label: 'Jelajahi Belajar',
+      href: '/learn',
     },
   },
-  // Step 3: Practice Page
+  // Step 3: Progress Tracking
+  {
+    id: 'progress',
+    title: '📈 Lacak Progres',
+    description: 'Lihat perkembangan belajarmu dengan visualisasi yang jelas. Statistik mingguan, ringkasan bulanan, dan analisis performa quiz ada di sini!',
+    selector: '[data-tutorial="progress"]',
+    position: 'right',
+    action: {
+      label: 'Lihat Progres',
+      href: '/progress',
+    },
+  },
+  // Step 4: Practice Page
   {
     id: 'practice',
     title: '✍️ Halaman Latihan',
@@ -50,17 +67,7 @@ export const TUTORIAL_STEPS_ID: TutorialStep[] = [
     position: 'right',
     action: {
       label: 'Mulai Latihan',
-    },
-  },
-  // Step 4: Progress Tracking
-  {
-    id: 'progress',
-    title: '📈 Lacak Progress',
-    description: 'Lihat perkembangan belajarmu dengan visualisasi yang jelas. Statistik mingguan, ringkasan bulanan, dan analisis performa quiz ada di sini!',
-    selector: '[data-tutorial="progress"]',
-    position: 'right',
-    action: {
-      label: 'Lihat Progress',
+      href: '/practice',
     },
   },
   // Step 5: Focus Mode Timer
@@ -81,6 +88,10 @@ export const TUTORIAL_STEPS_ID: TutorialStep[] = [
     description: 'Target default adalah 3 materi per hari. Selesaikan target ini untuk menambah streak belajarmu! Kamu bisa ubah target di halaman Profil.',
     selector: '[data-tutorial="daily-target"]',
     position: 'bottom',
+    action: {
+      label: 'Atur Target',
+      href: '/profile',
+    },
   },
   // Step 7: Streak System
   {
@@ -89,6 +100,9 @@ export const TUTORIAL_STEPS_ID: TutorialStep[] = [
     description: 'Jaga streakmu dengan belajar setiap hari! Selesaikan target harian untuk menambah streak. Gunakan Streak Freeze jika butuh istirahat satu hari tanpa kehilangan streak.',
     selector: '[data-tutorial="streak"]',
     position: 'bottom',
+    action: {
+      label: 'Pelajari Streak',
+    },
   },
   // Step 8: Profile Settings
   {
@@ -99,29 +113,38 @@ export const TUTORIAL_STEPS_ID: TutorialStep[] = [
     position: 'left',
     action: {
       label: 'Pengaturan',
+      href: '/profile',
     },
   },
-  // Step 9: Completion
+  // Step 9: Completion (centered)
   {
     id: 'complete',
     title: '🎉 Kamu Siap!',
     description: 'Semua fitur utama sudah kamu ketahui. Mulai perjalanan belajarmu sekarang dan jaga konsistensi! 💪',
     selector: '[data-tutorial="skip"]',
     position: 'center',
+    action: {
+      label: 'Mulai Belajar!',
+      href: '/learn',
+    },
   },
 ]
 
 export const TUTORIAL_STEPS_EN: TutorialStep[] = [
-  // Step 1: Welcome
+  // Step 1: Welcome (centered)
   {
     id: 'welcome',
     title: 'Welcome to Gudy! 👋',
     description: 'A study tracker app to help you master materials more effectively. Let\'s explore its features!',
     selector: '[data-tutorial="welcome"]',
-    position: 'bottom',
+    position: 'center',
     skippable: true,
+    action: {
+      label: 'Start Exploring',
+      href: '/learn',
+    },
   },
-  // Step 2: Learn Page Overview
+  // Step 2: Learn Page
   {
     id: 'learn',
     title: '📚 Learn Page',
@@ -130,20 +153,10 @@ export const TUTORIAL_STEPS_EN: TutorialStep[] = [
     position: 'right',
     action: {
       label: 'Explore Learn',
+      href: '/learn',
     },
   },
-  // Step 3: Practice Page
-  {
-    id: 'practice',
-    title: '✍️ Practice Page',
-    description: 'Test your understanding with interactive quizzes and PDF exercises! Choose a subject, answer questions, and check your best scores. Question bank available for exam prep.',
-    selector: '[data-tutorial="practice"]',
-    position: 'right',
-    action: {
-      label: 'Start Practice',
-    },
-  },
-  // Step 4: Progress Tracking
+  // Step 3: Progress Tracking
   {
     id: 'progress',
     title: '📈 Track Progress',
@@ -152,6 +165,19 @@ export const TUTORIAL_STEPS_EN: TutorialStep[] = [
     position: 'right',
     action: {
       label: 'View Progress',
+      href: '/progress',
+    },
+  },
+  // Step 4: Practice Page
+  {
+    id: 'practice',
+    title: '✍️ Practice Page',
+    description: 'Test your understanding with interactive quizzes and PDF exercises! Choose a subject, answer questions, and check your best scores.',
+    selector: '[data-tutorial="practice"]',
+    position: 'right',
+    action: {
+      label: 'Start Practice',
+      href: '/practice',
     },
   },
   // Step 5: Focus Mode Timer
@@ -172,6 +198,10 @@ export const TUTORIAL_STEPS_EN: TutorialStep[] = [
     description: 'Default target is 3 materials per day. Complete this target to build your learning streak! You can change the target in the Profile page.',
     selector: '[data-tutorial="daily-target"]',
     position: 'bottom',
+    action: {
+      label: 'Set Target',
+      href: '/profile',
+    },
   },
   // Step 7: Streak System
   {
@@ -180,6 +210,9 @@ export const TUTORIAL_STEPS_EN: TutorialStep[] = [
     description: 'Keep your streak alive by studying every day! Complete your daily target to add to your streak. Use Streak Freeze if you need a day off without losing your streak.',
     selector: '[data-tutorial="streak"]',
     position: 'bottom',
+    action: {
+      label: 'Learn Streak',
+    },
   },
   // Step 8: Profile Settings
   {
@@ -190,14 +223,19 @@ export const TUTORIAL_STEPS_EN: TutorialStep[] = [
     position: 'left',
     action: {
       label: 'Settings',
+      href: '/profile',
     },
   },
-  // Step 9: Completion
+  // Step 9: Completion (centered)
   {
     id: 'complete',
     title: '🎉 You\'re Ready!',
     description: 'You now know all the main features. Start your learning journey and keep up the consistency! 💪',
     selector: '[data-tutorial="skip"]',
     position: 'center',
+    action: {
+      label: 'Start Learning!',
+      href: '/learn',
+    },
   },
 ]

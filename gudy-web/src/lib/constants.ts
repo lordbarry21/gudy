@@ -92,6 +92,7 @@ export const STORAGE_KEYS = {
   ACHIEVEMENTS: 'gudy_achievements',
   CURRICULUM_VERSION: 'gudy_curriculum_version',
   STUDY_SESSIONS: 'gudy_study_sessions',
+  TIMER_STATE: 'gudy_timer_state',
 } as const
 
 // Pomodoro Timer Presets (in minutes)

@@ -428,22 +428,31 @@ export function TopicExplanationPanel({
                 </span>
               </div>
 
-              <div className="space-y-1 bg-surface-elevated/40 p-2 rounded-xl border border-border">
+              <div className="space-y-1.5 bg-surface-elevated/40 p-2.5 rounded-xl border border-border">
                 {currentTopic.checklist.map((item) => (
-                  <label
+                  <button
                     key={item.id}
-                    className="flex items-center gap-2.5 p-2 rounded-lg hover:bg-surface-elevated cursor-pointer transition-colors text-[11px]"
+                    type="button"
+                    onClick={() => toggleChecklistItem(currentTopic.id, item.id)}
+                    className={`group w-full flex items-center gap-2.5 p-2 rounded-lg transition-colors text-left text-xs ${
+                      item.isChecked
+                        ? 'bg-success/10 text-text-secondary'
+                        : 'hover:bg-surface-elevated text-text-primary'
+                    }`}
                   >
-                    <input
-                      type="checkbox"
-                      checked={item.isChecked}
-                      onChange={() => toggleChecklistItem(currentTopic.id, item.id)}
-                      className="accent-accent w-4 h-4 rounded cursor-pointer shrink-0"
-                    />
+                    <div
+                      className={`w-4 h-4 rounded-full flex items-center justify-center transition-all shrink-0 ${
+                        item.isChecked
+                          ? 'bg-success text-white border border-success'
+                          : 'border-2 border-text-muted/40 group-hover:border-accent bg-surface/60'
+                      }`}
+                    >
+                      {item.isChecked && <Check size={10} weight="bold" />}
+                    </div>
                     <span className={item.isChecked ? 'line-through text-text-muted' : 'text-text-primary'}>
                       {item.title}
                     </span>
-                  </label>
+                  </button>
                 ))}
               </div>
             </div>

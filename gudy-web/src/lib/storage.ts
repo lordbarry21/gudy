@@ -1,5 +1,5 @@
 import { STORAGE_KEYS } from './constants'
-import type { UserProgress, Subject, Topic, Achievement, StudySession, DailyStudySummary } from '@/types'
+import type { UserProgress, Subject, Topic, Achievement, StudySession, DailyStudySummary, StudyTimerState } from '@/types'
 
 // Get data from localStorage
 function getFromStorage<T>(key: string, defaultValue: T): T {
@@ -133,6 +133,67 @@ export function getCurriculumVersion(): string | null {
 
 export function saveCurriculumVersion(version: string): void {
   setToStorage(STORAGE_KEYS.CURRICULUM_VERSION, version)
+}
+
+// Timer State - For persisting focus timer across page navigation
+export interface StoredTimerState {
+  isActive: boolean
+  isPaused: boolean
+  selectedSubjectId: string | null
+  selectedPreset: number
+  remainingSeconds: number
+  totalSeconds: number
+  elapsedSeconds: number
+  currentMode: 'focus' | 'break'
+  startTime: string | null  // ISO timestamp when timer started (for calculating elapsed time)
+  pausedAt: string | null   // ISO timestamp when paused
+}
+
+const DEFAULT_TIMER_STATE: StoredTimerState = {
+  isActive: false,
+  isPaused: false,
+  selectedSubjectId: null,
+  selectedPreset: 25,
+  remainingSeconds: 25 * 60,
+  totalSeconds: 25 * 60,
+  elapsedSeconds: 0,
+  currentMode: 'focus',
+  startTime: null,
+  pausedAt: null,
+}
+
+export function getTimerState(): StoredTimerState {
+  return getFromStorage(STORAGE_KEYS.TIMER_STATE, DEFAULT_TIMER_STATE)
+}
+
+export function saveTimerState(state: StoredTimerState): void {
+  setToStorage(STORAGE_KEYS.TIMER_STATE, state)
+}
+
+// Calculate elapsed seconds based on stored start time (for background timer)
+export function calculateLiveElapsedSeconds(stored: StoredTimerState): number {
+  if (!stored.isActive || !stored.startTime) {
+    return stored.elapsedSeconds
+  }
+
+  if (stored.isPaused && stored.pausedAt) {
+    // Timer is paused - calculate elapsed up to when it was paused
+    const pausedTime = new Date(stored.pausedAt).getTime()
+    const startTime = new Date(stored.startTime).getTime()
+    return Math.floor((pausedTime - startTime) / 1000)
+  }
+
+  // Timer is running - calculate live elapsed
+  const now = Date.now()
+  const startTime = new Date(stored.startTime).getTime()
+  return Math.floor((now - startTime) / 1000)
+}
+
+// Calculate live remaining seconds
+export function calculateLiveRemainingSeconds(stored: StoredTimerState): number {
+  const liveElapsed = calculateLiveElapsedSeconds(stored)
+  const remaining = stored.totalSeconds - liveElapsed
+  return Math.max(0, remaining)
 }
 
 // Clear all data

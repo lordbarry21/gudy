@@ -45,29 +45,29 @@ export function AnswerOption({
   const getIcon = () => {
     if (showResult) {
       if (isCorrect) {
-        return <CheckCircle size={24} weight="fill" className="text-success" />
+        return <CheckCircle size={32} weight="fill" className="text-success" />
       }
       if (isWrong) {
-        return <XCircle size={24} weight="fill" className="text-error" />
+        return <XCircle size={32} weight="fill" className="text-error" />
       }
     }
 
     if (isSelected) {
-      return <Circle size={24} weight="fill" className="text-accent" />
+      return <Circle size={32} weight="fill" className="text-accent" />
     }
 
-    return <Circle size={24} className="text-text-muted" />
+    return <Circle size={32} className="text-text-muted" />
   }
 
   return (
     <motion.button
-      whileHover={{ scale: disabled ? 1 : 1.01 }}
-      whileTap={{ scale: disabled ? 1 : 0.99 }}
+      whileHover={{ scale: disabled ? 1 : 1.008 }}
+      whileTap={{ scale: disabled ? 1 : 0.992 }}
       onClick={onClick}
       disabled={disabled}
       className={`
-        w-full flex items-center gap-4 lg:gap-5 p-5 lg:p-6 rounded-2xl border-2
-        transition-all duration-200 text-left
+        w-full flex items-center gap-5 sm:gap-6 p-5 sm:p-6 rounded-2xl border-2
+        transition-all duration-200 text-left group
         ${getStyles()}
         ${disabled ? 'cursor-default' : 'cursor-pointer'}
       `}
@@ -75,22 +75,22 @@ export function AnswerOption({
       {/* Option Key Badge */}
       <span
         className={`
-          w-10 h-10 lg:w-12 lg:h-12 rounded-xl flex items-center justify-center
-          font-bold text-base lg:text-lg shrink-0
+          w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center
+          font-sans font-bold text-xl sm:text-2xl shrink-0 transition-colors
           ${isSelected || isCorrect
-            ? 'bg-accent text-white'
+            ? 'bg-accent text-white shadow-sm'
             : isWrong
-              ? 'bg-error text-white'
-              : 'bg-surface-elevated text-text-secondary'
+              ? 'bg-error text-white shadow-sm'
+              : 'bg-surface-elevated text-text-secondary group-hover:bg-accent/15 group-hover:text-accent'
           }
         `}
       >
         {optionKey}
       </span>
 
-      {/* Option Text - Larger for PC */}
-      <span className="flex-1 text-base lg:text-lg font-medium leading-relaxed">
-        <MathRenderer text={text} inline={true} />
+      {/* Option Text */}
+      <span className="flex-1 font-sans text-xl sm:text-2xl font-medium leading-relaxed tracking-normal">
+        <MathRenderer text={text} inline={true} className="!text-inherit" />
       </span>
 
       {/* Status Icon */}

@@ -43,6 +43,37 @@ def extract_python_data(filepath):
 
     return None
 
+SUPERSCRIPT_MAP = {
+    '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
+    '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹',
+    '+': '⁺', '-': '⁻', '=': '⁼', '(': '⁽', ')': '⁾',
+    'a': 'ᵃ', 'b': 'ᵇ', 'c': 'ᶜ', 'd': 'ᵈ', 'e': 'ᵉ',
+    'f': 'ᶠ', 'g': 'ᵍ', 'h': 'ʰ', 'i': 'ⁱ', 'j': 'ʲ',
+    'k': 'ᵏ', 'l': 'ˡ', 'm': 'ᵐ', 'n': 'ⁿ', 'o': 'ᵒ',
+    'p': 'ᵖ', 'r': 'ʳ', 's': 'ˢ', 't': 'ᵗ', 'u': 'ᵘ',
+    'v': 'ᵛ', 'w': 'ʷ', 'x': 'ˣ', 'y': 'ʸ', 'z': 'ᶻ',
+    'A': 'ᴬ', 'B': 'ᴮ', 'D': 'ᴰ', 'E': 'ᴱ', 'G': 'ᴳ',
+    'H': 'ᴴ', 'I': 'ᴵ', 'J': 'ᴶ', 'K': 'ᴷ', 'L': 'ᴸ',
+    'M': 'ᴹ', 'N': 'ᴺ', 'O': 'ᴼ', 'P': 'ᴾ', 'R': 'ᴿ',
+    'T': 'ᵀ', 'U': 'ᵁ', 'W': 'ᵂ',
+    '⁰': '⁰', '¹': '¹', '²': '²', '³': '³', '⁴': '⁴',
+    '⁵': '⁵', '⁶': '⁶', '⁷': '⁷', '⁸': '⁸', '⁹': '⁹',
+    '⁺': '⁺', '⁻': '⁻', '/': 'ᐟ'
+}
+
+def to_superscript(s):
+    clean = re.sub(r'\s+', '', s)
+    return ''.join(SUPERSCRIPT_MAP.get(c, c) for c in clean)
+
+def format_math_text(text):
+    if not text:
+        return text
+    # Exponents
+    text = re.sub(r'\^\(([^)]+)\)', lambda m: to_superscript(m.group(1)), text)
+    text = re.sub(r'\^\{([^}]+)\}', lambda m: to_superscript(m.group(1)), text)
+    text = re.sub(r'\^([0-9a-zA-Z\+\-]+)', lambda m: to_superscript(m.group(1)), text)
+    return text
+
 def clean_question(question_data):
     """Clean and normalize question data."""
     cleaned = question_data.copy()
@@ -51,8 +82,8 @@ def clean_question(question_data):
     if 'options' in cleaned:
         options = cleaned['options']
         if isinstance(options, dict):
-            # Convert any non-string keys to strings
-            cleaned['options'] = {str(k): str(v) for k, v in options.items()}
+            # Convert any non-string keys to strings and format math
+            cleaned['options'] = {str(k): format_math_text(str(v)) for k, v in options.items()}
         else:
             cleaned['options'] = {}
 
@@ -64,10 +95,10 @@ def clean_question(question_data):
     if 'num' in cleaned:
         cleaned['num'] = int(cleaned['num'])
 
-    # Ensure all string fields are properly formatted
+    # Ensure all string fields are properly formatted and math-formatted
     for field in ['topic', 'question', 'solution']:
         if field in cleaned and cleaned[field]:
-            cleaned[field] = str(cleaned[field]).strip()
+            cleaned[field] = format_math_text(str(cleaned[field]).strip())
 
     return cleaned
 

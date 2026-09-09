@@ -39,7 +39,7 @@ BAHASA_INGGRIS_DATA = {
                 {
                     "num": 2,
                     "topic": "Explicit Fact Scanning",
-                    "question": "According to the passage in Question 1, how do intelligent tutoring systems assist learners?",
+                    "question": "Read the passage below:\n'Artificial intelligence is profoundly reshaping modern educational methodologies. Intelligent tutoring systems can now diagnose individual student learning gaps in real time, adapting pedagogical content to accommodate varying cognitive paces. Furthermore, automated grading frameworks relieve instructors of repetitive administrative duties, enabling them to dedicate greater attention to individualized mentorship.'\n\nAccording to the passage, how do intelligent tutoring systems assist learners?",
                     "options": {
                         "A": "By calculating end-of-year tuition discounts",
                         "B": "By identifying learning gaps and adapting content to their individual pace",
@@ -53,7 +53,7 @@ BAHASA_INGGRIS_DATA = {
                 {
                     "num": 3,
                     "topic": "Inference Question",
-                    "question": "It can be inferred from the passage in Question 1 that before AI automation, teachers...",
+                    "question": "Read the passage below:\n'Artificial intelligence is profoundly reshaping modern educational methodologies. Intelligent tutoring systems can now diagnose individual student learning gaps in real time, adapting pedagogical content to accommodate varying cognitive paces. Furthermore, automated grading frameworks relieve instructors of repetitive administrative duties, enabling them to dedicate greater attention to individualized mentorship.'\n\nIt can be inferred from the passage that before AI automation, teachers...",
                     "options": {
                         "A": "Did not care about mentoring their students",
                         "B": "Spent a substantial portion of their working hours on repetitive assessment tasks",
@@ -67,7 +67,7 @@ BAHASA_INGGRIS_DATA = {
                 {
                     "num": 4,
                     "topic": "Primary Purpose",
-                    "question": "What is the author's primary purpose in writing the passage in Question 1?",
+                    "question": "Read the passage below:\n'Artificial intelligence is profoundly reshaping modern educational methodologies. Intelligent tutoring systems can now diagnose individual student learning gaps in real time, adapting pedagogical content to accommodate varying cognitive paces. Furthermore, automated grading frameworks relieve instructors of repetitive administrative duties, enabling them to dedicate greater attention to individualized mentorship.'\n\nWhat is the author's primary purpose in writing the passage?",
                     "options": {
                         "A": "To warn against the catastrophic dangers of classroom automation",
                         "B": "To inform readers about the positive impacts of AI on educational methods",
@@ -109,7 +109,7 @@ BAHASA_INGGRIS_DATA = {
                 {
                     "num": 7,
                     "topic": "Fact vs Distortion",
-                    "question": "Which of the following is NOT true according to the passage in Question 1?",
+                    "question": "Read the passage below:\n'Artificial intelligence is profoundly reshaping modern educational methodologies. Intelligent tutoring systems can now diagnose individual student learning gaps in real time, adapting pedagogical content to accommodate varying cognitive paces. Furthermore, automated grading frameworks relieve instructors of repetitive administrative duties, enabling them to dedicate greater attention to individualized mentorship.'\n\nWhich of the following is NOT true according to the passage?",
                     "options": {
                         "A": "AI systems can adapt content to different learning speeds",
                         "B": "AI tools enable teachers to provide more individualized mentorship",
@@ -151,7 +151,7 @@ BAHASA_INGGRIS_DATA = {
                 {
                     "num": 10,
                     "topic": "Cause and Effect Analysis",
-                    "question": "Based on the coral passage in Question 8, what directly triggers coral bleaching?",
+                    "question": "Passage: 'Coral reefs occupy less than 0.1 percent of the ocean's surface area, yet they harbor approximately 25 percent of all marine species. Rising sea surface temperatures disrupt the symbiotic relationship between corals and zooxanthellae algae, triggering widespread coral bleaching.'\n\nBased on the passage above, what directly triggers coral bleaching?",
                     "options": {
                         "A": "Commercial overfishing of pelagic sharks",
                         "B": "The breakdown of the symbiotic relationship with photosynthetic algae due to warm waters",
@@ -165,7 +165,7 @@ BAHASA_INGGRIS_DATA = {
                 {
                     "num": 11,
                     "topic": "Data Synthesis",
-                    "question": "According to the coral passage, what proportion of marine species relies upon coral reefs?",
+                    "question": "Passage: 'Coral reefs occupy less than 0.1 percent of the ocean's surface area, yet they harbor approximately 25 percent of all marine species. Rising sea surface temperatures disrupt the symbiotic relationship between corals and zooxanthellae algae, triggering widespread coral bleaching.'\n\nAccording to the passage, what proportion of marine species relies upon coral reefs?",
                     "options": {"A": "0.1 percent", "B": "2.5 percent", "C": "25 percent", "D": "50 percent", "E": "75 percent"},
                     "answer": "C",
                     "solution": "Explicit text: '...yet they harbor approximately 25 percent of all marine species.'"
@@ -296,7 +296,7 @@ BAHASA_INGGRIS_DATA = {
                 {
                     "num": 2,
                     "topic": "Troubleshooting Condition",
-                    "question": "According to the manual in Question 1, what prerequisite must be satisfied BEFORE running `php artisan migrate`?",
+                    "question": "Read the instruction snippet:\n'Step 3: Ensure your MySQL database service is active before running `php artisan migrate`. If connection errors occur, verify your DB_HOST and DB_PORT credentials in the `.env` file.'\n\nAccording to the manual above, what prerequisite must be satisfied BEFORE running `php artisan migrate`?",
                     "options": {
                         "A": "The Apache web server must be uninstalled",
                         "B": "The MySQL database service must be active and running",
@@ -338,7 +338,7 @@ BAHASA_INGGRIS_DATA = {
                 {
                     "num": 5,
                     "topic": "Mandatory vs Preferred",
-                    "question": "In the job ad in Question 4, what does 'Familiarity with Git version control is advantageous' imply?",
+                    "question": "Job advertisement:\n'Position: Junior Web Developer (Laravel)\nRequirements:\n- Vocational High School (SMK RPL) or Bachelor's in Computer Science.\n- Proven competency in PHP, Laravel framework, and MySQL database.\n- Familiarity with Git version control is advantageous.'\n\nIn the job advertisement above, what does 'Familiarity with Git version control is advantageous' imply?",
                     "options": {
                         "A": "Applicants without Git will be fined",
                         "B": "Git skill is a welcome plus/benefit, though not the primary baseline requirement",

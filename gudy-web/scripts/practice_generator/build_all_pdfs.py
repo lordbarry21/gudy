@@ -35,6 +35,38 @@ CHROME_PATH = r"C:\Program Files\Google\Chrome\Application\chrome.exe"
 BROWSER_EXE = EDGE_PATH if os.path.exists(EDGE_PATH) else CHROME_PATH
 PUBLIC_DEST = pathlib.Path(r"D:\Bari\Study Tracker App\gudy-web\public\practice")
 BANK_DEST = pathlib.Path(r"D:\Bari\Study Tracker App\gudy-web\practice_bank")
+SUPERSCRIPT_MAP = {
+    '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
+    '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹',
+    '+': '⁺', '-': '⁻', '=': '⁼', '(': '⁽', ')': '⁾',
+    'a': 'ᵃ', 'b': 'ᵇ', 'c': 'ᶜ', 'd': 'ᵈ', 'e': 'ᵉ',
+    'f': 'ᶠ', 'g': 'ᵍ', 'h': 'ʰ', 'i': 'ⁱ', 'j': 'ʲ',
+    'k': 'ᵏ', 'l': 'ˡ', 'm': 'ᵐ', 'n': 'ⁿ', 'o': 'ᵒ',
+    'p': 'ᵖ', 'r': 'ʳ', 's': 'ˢ', 't': 'ᵗ', 'u': 'ᵘ',
+    'v': 'ᵛ', 'w': 'ʷ', 'x': 'ˣ', 'y': 'ʸ', 'z': 'ᶻ',
+    'A': 'ᴬ', 'B': 'ᴮ', 'D': 'ᴰ', 'E': 'ᴱ', 'G': 'ᴳ',
+    'H': 'ᴴ', 'I': 'ᴵ', 'J': 'ᴶ', 'K': 'ᴷ', 'L': 'ᴸ',
+    'M': 'ᴹ', 'N': 'ᴺ', 'O': 'ᴼ', 'P': 'ᴾ', 'R': 'ᴿ',
+    'T': 'ᵀ', 'U': 'ᵁ', 'W': 'ᵂ',
+    '⁰': '⁰', '¹': '¹', '²': '²', '³': '³', '⁴': '⁴',
+    '⁵': '⁵', '⁶': '⁶', '⁷': '⁷', '⁸': '⁸', '⁹': '⁹',
+    '⁺': '⁺', '⁻': '⁻', '/': 'ᐟ'
+}
+
+def to_superscript(s):
+    import re
+    clean = re.sub(r'\s+', '', s)
+    return ''.join(SUPERSCRIPT_MAP.get(c, c) for c in clean)
+
+def format_math_text(text):
+    if not text:
+        return text
+    import re
+    text = re.sub(r'\^\(([^)]+)\)', lambda m: to_superscript(m.group(1)), text)
+    text = re.sub(r'\^\{([^}]+)\}', lambda m: to_superscript(m.group(1)), text)
+    text = re.sub(r'\^([0-9a-zA-Z\+\-]+)', lambda m: to_superscript(m.group(1)), text)
+    return text
+
 TEMP_HTML_DIR = pathlib.Path(r"C:\Users\barih\generate_practice_bundle\temp_html")
 TEMP_HTML_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -323,11 +355,11 @@ def build_exam_html(subject, subcat):
     q_blocks = []
     for i, q in enumerate(questions):
         options_html = "".join([
-            f'<div class="option-item"><span class="option-label">{opt}.</span><span class="option-content">{html.escape(str(text))}</span></div>'
+            f'<div class="option-item"><span class="option-label">{opt}.</span><span class="option-content">{html.escape(format_math_text(str(text)))}</span></div>'
             for opt, text in q["options"].items()
         ])
         alt_class = " alt-bg" if i % 2 == 1 else ""
-        escaped_q = html.escape(str(q['question'])).replace('\n', '<br>')
+        escaped_q = html.escape(format_math_text(str(q['question']))).replace('\n', '<br>')
         escaped_topic = html.escape(str(q['topic']))
         q_blocks.append(f"""
         <div class="question-card{alt_class}">
@@ -361,7 +393,7 @@ def build_exam_html(subject, subcat):
     sol_blocks = []
     for q in questions:
         sol_title = html.escape(f"Pembahasan Soal #{q['num']} [{q['topic']}] — Kunci Jawaban: ({q['answer']})")
-        sol_p = html.escape(str(q['solution'])).replace('\n', '<br>')
+        sol_p = html.escape(format_math_text(str(q['solution']))).replace('\n', '<br>')
         sol_blocks.append(f"""
         <div class="solution-card">
           <strong class="sol-title">{sol_title}</strong>

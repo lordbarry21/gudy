@@ -28,12 +28,12 @@ export function SolutionPanel({
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
-      className="space-y-5"
+      className="space-y-6 sm:space-y-8"
     >
       {/* Result Banner */}
       <div
         className={`
-          p-5 rounded-2xl border-2
+          p-6 sm:p-7 rounded-2xl border-2
           ${isCorrect
             ? 'bg-success/10 border-success/30'
             : wasSkipped
@@ -42,10 +42,10 @@ export function SolutionPanel({
           }
         `}
       >
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 sm:gap-5">
           <div
             className={`
-              w-12 h-12 rounded-xl flex items-center justify-center text-xl font-bold shadow-sm
+              w-14 h-14 sm:w-16 sm:h-16 rounded-xl flex items-center justify-center text-2xl font-bold shadow-sm
               ${isCorrect
                 ? 'bg-success text-white'
                 : wasSkipped
@@ -59,7 +59,7 @@ export function SolutionPanel({
           <div>
             <p
               className={`
-                font-display font-bold text-base
+                font-display font-bold text-xl sm:text-2xl
                 ${isCorrect
                   ? 'text-success'
                   : wasSkipped
@@ -74,7 +74,7 @@ export function SolutionPanel({
                   ? 'Tidak Dijawab'
                   : 'Kurang Tepat'}
             </p>
-            <p className="font-sans text-sm text-text-secondary mt-0.5">
+            <p className="font-sans text-base sm:text-lg text-text-secondary mt-1">
               {isCorrect
                 ? 'Jawaban kamu benar!'
                 : wasSkipped
@@ -86,17 +86,17 @@ export function SolutionPanel({
       </div>
 
       {/* Solution Content */}
-      <div className="bg-surface-elevated border border-border rounded-2xl p-6">
+      <div className="bg-surface-elevated border border-border rounded-2xl p-6 sm:p-8">
         <div className="flex items-start gap-4">
-          <div className="w-10 h-10 rounded-xl bg-accent/15 flex items-center justify-center shrink-0 shadow-sm">
-            <Lightbulb size={20} weight="fill" className="text-accent" />
+          <div className="w-12 h-12 rounded-xl bg-accent/15 flex items-center justify-center shrink-0 shadow-sm">
+            <Lightbulb size={24} weight="fill" className="text-accent" />
           </div>
           <div className="flex-1">
-            <h4 className="font-display font-bold text-base text-text-primary mb-3">
+            <h4 className="font-display font-bold text-lg sm:text-xl text-text-primary mb-4">
               Pembahasan
             </h4>
-            <div className="font-serif text-base text-text-secondary leading-relaxed">
-              <MathRenderer text={question.solution} inline={true} />
+            <div className="font-sans text-lg sm:text-xl text-text-secondary leading-relaxed">
+              <MathRenderer text={question.solution} />
             </div>
           </div>
         </div>
@@ -105,10 +105,10 @@ export function SolutionPanel({
       {/* Next Button */}
       <button
         onClick={onNext}
-        className="w-full flex items-center justify-center gap-2.5 py-3.5 px-5 rounded-xl bg-accent text-white font-sans font-bold text-sm hover:bg-accent-hover transition-all shadow-md hover:shadow-lg"
+        className="w-full flex items-center justify-center gap-3 py-4 px-6 rounded-xl bg-accent text-white font-sans font-bold text-lg hover:bg-accent-hover transition-all shadow-md hover:shadow-lg"
       >
         <span>{isLast ? t.quiz.result : t.quiz.next}</span>
-        <ArrowRight size={16} weight="bold" />
+        <ArrowRight size={20} weight="bold" />
       </button>
     </motion.div>
   )

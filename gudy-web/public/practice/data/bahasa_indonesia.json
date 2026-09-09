@@ -26,7 +26,7 @@
         {
           "num": 2,
           "topic": "Informasi Tersurat 5W+1H",
-          "question": "Berdasarkan kutipan teks pada soal no. 1, bagaimana kecerdasan buatan membantu mempercepat perumusan rencana terapi pasien?",
+          "question": "Bacalah kembali paragraf berikut!\n'Kecerdasan buatan (AI) telah membawa transformasi signifikan dalam sistem diagnostik medis modern. Melalui algoritma pembelajaran mendalam, sistem komputer kini mampu mendeteksi anomali pada citra rontgen dan MRI dengan tingkat akurasi yang melampaui rata-rata tenaga medis pemula. Selain itu, integrasi data rekam medis pasien mempercepat perumusan rencana terapi yang terpersonalisasi.'\n\nBerdasarkan kutipan teks tersebut, bagaimana kecerdasan buatan membantu mempercepat perumusan rencana terapi pasien?",
           "options": {
             "A": "Dengan menggantikan peran dokter spesialis sepenuhnya",
             "B": "Melalui integrasi data rekam medis pasien secara sistematis",
@@ -40,7 +40,7 @@
         {
           "num": 3,
           "topic": "Makna Istilah Teknis",
-          "question": "Makna istilah 'terpersonalisasi' pada kutipan teks di atas adalah...",
+          "question": "Perhatikan kutipan teks berikut!\n'Kecerdasan buatan (AI) telah membawa transformasi signifikan dalam sistem diagnostik medis modern. Melalui algoritma pembelajaran mendalam, sistem komputer kini mampu mendeteksi anomali pada citra rontgen dan MRI dengan tingkat akurasi yang melampaui rata-rata tenaga medis pemula. Selain itu, integrasi data rekam medis pasien mempercepat perumusan rencana terapi yang terpersonalisasi.'\n\nMakna istilah 'terpersonalisasi' pada kutipan teks di atas adalah...",
           "options": {
             "A": "Dibuat secara massal untuk semua orang",
             "B": "Disesuaikan secara khusus dengan kondisi individu tertentu",
@@ -82,7 +82,7 @@
         {
           "num": 6,
           "topic": "Pertanyaan Sesuai Isi Teks",
-          "question": "Kalimat tanya yang jawabannya TIDAK terdapat dalam paragraf pada soal no. 1 adalah...",
+          "question": "Bacalah kembali paragraf berikut!\n'Kecerdasan buatan (AI) telah membawa transformasi signifikan dalam sistem diagnostik medis modern. Melalui algoritma pembelajaran mendalam, sistem komputer kini mampu mendeteksi anomali pada citra rontgen dan MRI dengan tingkat akurasi yang melampaui rata-rata tenaga medis pemula. Selain itu, integrasi data rekam medis pasien mempercepat perumusan rencana terapi yang terpersonalisasi.'\n\nKalimat tanya yang jawabannya TIDAK terdapat dalam paragraf tersebut adalah...",
           "options": {
             "A": "Bidang apa yang mengalami transformasi akibat kecerdasan buatan?",
             "B": "Bagaimana AI mampu mendeteksi anomali pada citra rontgen?",
@@ -684,7 +684,7 @@
         {
           "num": 8,
           "topic": "Amanat Tersirat Cerita",
-          "question": "Pesan moral (amanat) yang dapat dipetik dari kutipan soal no. 6 adalah...",
+          "question": "Bacalah kembali kutipan cerpen berikut!\n'Meski Pak Salim tahu dompet tebal yang ditemukannya di pinggir jalan itu berisi uang puluhan juta rupiah yang sanggup melunasi seluruh hutangnya, ia memilih mengayuh sepedanya sejauh lima kilometer menuju kantor polisi terdekat untuk menyerahkannya.'\n\nPesan moral (amanat) yang dapat dipetik dari kutipan tersebut adalah...",
           "options": {
             "A": "Jangan bersepeda di jalan raya yang sepi",
             "B": "Kejujuran dan integritas diri harus dijaga di atas godaan materi dan kesulitan pribadi",

@@ -49,7 +49,7 @@
             "E": "81"
           },
           "answer": "C",
-          "solution": "Berdasarkan AM-GM: x + 2y = x + y + y >= 3 * (x * y²)^(1/3). Namun lebih sederhana: x + 2y >= 2√(2xy), y + 2z >= 2√(2yz), z + 2x >= 2√(2zx), maka hasil kali >= 8 * 2√2 = 16√2? Perhatikan saat x=y=z=1, nilainya (1+2)(1+2)(1+2) = 27. Dengan AM-GM 3 variabel: x + y + y >= 3(xy²)^(1/3), y + z + z >= 3(yz²)^(1/3), z + x + x >= 3(zx²)^(1/3). Dikalikan: (x+2y)(y+2z)(z+2x) >= 27(x³y³z³)^(1/3) = 27(xyz) = 27."
+          "solution": "Berdasarkan AM-GM: x + 2y = x + y + y >= 3 * (x * y²)¹ᐟ³. Namun lebih sederhana: x + 2y >= 2√(2xy), y + 2z >= 2√(2yz), z + 2x >= 2√(2zx), maka hasil kali >= 8 * 2√2 = 16√2? Perhatikan saat x=y=z=1, nilainya (1+2)(1+2)(1+2) = 27. Dengan AM-GM 3 variabel: x + y + y >= 3(xy²)¹ᐟ³, y + z + z >= 3(yz²)¹ᐟ³, z + x + x >= 3(zx²)¹ᐟ³. Dikalikan: (x+2y)(y+2z)(z+2x) >= 27(x³y³z³)¹ᐟ³ = 27(xyz) = 27."
         },
         {
           "num": 4,
@@ -91,7 +91,7 @@
             "E": "2047"
           },
           "answer": "C",
-          "solution": "Persamaan karakteristik: r² - 3r + 2 = 0 ==> (r - 1)(r - 2) = 0 ==> r = 1 atau r = 2. Maka bentuk umum a_n = A(1)^n + B(2)^n = A + B * 2^n. Untuk n=1: A + 2B = 1. Untuk n=2: A + 4B = 3. Kurangkan: 2B = 2 ==> B = 1, maka A = -1. Jadi a_n = 2^n - 1. Untuk n=10: a_10 = 2^10 - 1 = 1024 - 1 = 1023."
+          "solution": "Persamaan karakteristik: r² - 3r + 2 = 0 ==> (r - 1)(r - 2) = 0 ==> r = 1 atau r = 2. Maka bentuk umum a_n = A(1)ⁿ + B(2)ⁿ = A + B * 2ⁿ. Untuk n=1: A + 2B = 1. Untuk n=2: A + 4B = 3. Kurangkan: 2B = 2 ==> B = 1, maka A = -1. Jadi a_n = 2ⁿ - 1. Untuk n=10: a_10 = 2¹⁰ - 1 = 1024 - 1 = 1023."
         },
         {
           "num": 7,
@@ -166,7 +166,7 @@
         {
           "num": 12,
           "topic": "Deret Teleskopik",
-          "question": "Nilai dari sum_{n=1}^{99} 1 / (n * (n+1)) adalah...",
+          "question": "Nilai dari sum_{n=1}⁹⁹ 1 / (n * (n+1)) adalah...",
           "options": {
             "A": "98/99",
             "B": "99/100",
@@ -208,7 +208,7 @@
         {
           "num": 15,
           "topic": "Persamaan Eksponensial Aljabar",
-          "question": "Banyaknya solusi real dari persamaan 2^(x²) = 4^(x + 4) adalah...",
+          "question": "Banyaknya solusi real dari persamaan 2ˣ² = 4ˣ⁺⁴ adalah...",
           "options": {
             "A": "0",
             "B": "1",
@@ -217,7 +217,7 @@
             "E": "Tak hingga"
           },
           "answer": "C",
-          "solution": "2^(x²) = 2^(2(x + 4)) ==> x² = 2x + 8 ==> x² - 2x - 8 = 0 ==> (x - 4)(x + 2) = 0 ==> x = 4 atau x = -2. Terdapat 2 solusi real."
+          "solution": "2ˣ² = 2²⁽ˣ⁺⁴) ==> x² = 2x + 8 ==> x² - 2x - 8 = 0 ==> (x - 4)(x + 2) = 0 ==> x = 4 atau x = -2. Terdapat 2 solusi real."
         },
         {
           "num": 16,
@@ -264,7 +264,7 @@
         {
           "num": 19,
           "topic": "Barisan Fibonacci",
-          "question": "Jika F_1 = 1, F_2 = 1, F_{n} = F_{n-1} + F_{n-2}, maka nilai dari sum_{k=1}^n F_k adalah...",
+          "question": "Jika F_1 = 1, F_2 = 1, F_{n} = F_{n-1} + F_{n-2}, maka nilai dari sum_{k=1}ⁿ F_k adalah...",
           "options": {
             "A": "F_{n+1}",
             "B": "F_{n+2} - 1",
@@ -586,7 +586,7 @@
         {
           "num": 1,
           "topic": "Teorema Kecil Fermat",
-          "question": "Sisa pembagian 3^100 oleh 13 adalah...",
+          "question": "Sisa pembagian 3¹⁰⁰ oleh 13 adalah...",
           "options": {
             "A": "1",
             "B": "3",
@@ -595,7 +595,7 @@
             "E": "12"
           },
           "answer": "B",
-          "solution": "Karena 13 bilangan prima dan gcd(3, 13) = 1, Teorema Kecil Fermat menyatakan 3^12 ≡ 1 (mod 13). Kita bagi eksponennya: 100 = 12 * 8 + 4. Maka 3^100 = (3^12)^8 * 3^4 ≡ 1^8 * 81 ≡ 81 (mod 13). Karena 81 = 13 * 6 + 3, maka sisanya adalah 3."
+          "solution": "Karena 13 bilangan prima dan gcd(3, 13) = 1, Teorema Kecil Fermat menyatakan 3¹² ≡ 1 (mod 13). Kita bagi eksponennya: 100 = 12 * 8 + 4. Maka 3¹⁰⁰ = (3¹²)⁸ * 3⁴ ≡ 1⁸ * 81 ≡ 81 (mod 13). Karena 81 = 13 * 6 + 3, maka sisanya adalah 3."
         },
         {
           "num": 2,
@@ -656,7 +656,7 @@
         {
           "num": 6,
           "topic": "Keterbagian & Faktorisasi",
-          "question": "Digit terakhir dari 7^(2026) adalah...",
+          "question": "Digit terakhir dari 7²⁰²⁶ adalah...",
           "options": {
             "A": "1",
             "B": "3",
@@ -665,7 +665,7 @@
             "E": "5"
           },
           "answer": "D",
-          "solution": "Pola digit terakhir 7^n mod 10 berulang setiap periode 4: 7^1=7, 7^2=9, 7^3=3, 7^4=1. Karena 2026 mod 4 = 2, maka digit terakhirnya sama dengan 7^2 mod 10 = 9."
+          "solution": "Pola digit terakhir 7ⁿ mod 10 berulang setiap periode 4: 7¹=7, 7²=9, 7³=3, 7⁴=1. Karena 2026 mod 4 = 2, maka digit terakhirnya sama dengan 7² mod 10 = 9."
         },
         {
           "num": 7,
@@ -698,7 +698,7 @@
         {
           "num": 9,
           "topic": "Teorema Euler",
-          "question": "Dua digit terakhir dari 3^400 adalah...",
+          "question": "Dua digit terakhir dari 3⁴⁰⁰ adalah...",
           "options": {
             "A": "01",
             "B": "03",
@@ -707,12 +707,12 @@
             "E": "81"
           },
           "answer": "A",
-          "solution": "Dua digit terakhir adalah sisa mod 100. gcd(3, 100) = 1. φ(100) = 100 * (1 - 1/2) * (1 - 1/5) = 100 * (1/2) * (4/5) = 40. Berdasarkan Teorema Euler, 3^40 ≡ 1 (mod 100). Maka 3^400 = (3^40)^10 ≡ 1^10 = 1 (mod 100). Dua digit terakhir adalah 01."
+          "solution": "Dua digit terakhir adalah sisa mod 100. gcd(3, 100) = 1. φ(100) = 100 * (1 - 1/2) * (1 - 1/5) = 100 * (1/2) * (4/5) = 40. Berdasarkan Teorema Euler, 3⁴⁰ ≡ 1 (mod 100). Maka 3⁴⁰⁰ = (3⁴⁰)¹⁰ ≡ 1¹⁰ = 1 (mod 100). Dua digit terakhir adalah 01."
         },
         {
           "num": 10,
           "topic": "Lifting The Exponent Lemma",
-          "question": "Pangkat tertinggi dari 3 yang membagi 5^81 - 2^81 adalah...",
+          "question": "Pangkat tertinggi dari 3 yang membagi 5⁸¹ - 2⁸¹ adalah...",
           "options": {
             "A": "3",
             "B": "4",
@@ -721,7 +721,7 @@
             "E": "7"
           },
           "answer": "C",
-          "solution": "Gunakan LTE: Karena p = 3 ganjil, p membagi 5 - 2 = 3, dan p tidak membagi 5 atau 2. Rumus: v_3(5^81 - 2^81) = v_3(5 - 2) + v_3(81) = v_3(3) + v_3(3⁴) = 1 + 4 = 5. Jadi 3^5 adalah pembagi tertingginya."
+          "solution": "Gunakan LTE: Karena p = 3 ganjil, p membagi 5 - 2 = 3, dan p tidak membagi 5 atau 2. Rumus: v_3(5⁸¹ - 2⁸¹) = v_3(5 - 2) + v_3(81) = v_3(3) + v_3(3⁴) = 1 + 4 = 5. Jadi 3⁵ adalah pembagi tertingginya."
         },
         {
           "num": 11,
@@ -740,7 +740,7 @@
         {
           "num": 12,
           "topic": "Ordo Modulo",
-          "question": "Ordo dari 2 modulo 7 (ord_7(2)), yaitu bilangan bulat positif terkecil k sehingga 2^k ≡ 1 (mod 7), adalah...",
+          "question": "Ordo dari 2 modulo 7 (ord_7(2)), yaitu bilangan bulat positif terkecil k sehingga 2ᵏ ≡ 1 (mod 7), adalah...",
           "options": {
             "A": "1",
             "B": "2",
@@ -749,7 +749,7 @@
             "E": "7"
           },
           "answer": "C",
-          "solution": "2^1 = 2 ≡ 2, 2^2 = 4 ≡ 4, 2^3 = 8 ≡ 1 (mod 7). Maka ordo dari 2 modulo 7 adalah 3."
+          "solution": "2¹ = 2 ≡ 2, 2² = 4 ≡ 4, 2³ = 8 ≡ 1 (mod 7). Maka ordo dari 2 modulo 7 adalah 3."
         },
         {
           "num": 13,
@@ -924,7 +924,7 @@
             "E": "24"
           },
           "answer": "B",
-          "solution": "Ini adalah masalah derangement !4. Rumus !n = n! sum_{k=0}^n (-1)^k / k!. Nilai derangement standar: !1 = 0, !2 = 1, !3 = 2, !4 = 9, !5 = 44. Maka untuk n = 4 banyaknya cara adalah 9."
+          "solution": "Ini adalah masalah derangement !4. Rumus !n = n! sum_{k=0}ⁿ (-1)ᵏ / k!. Nilai derangement standar: !1 = 0, !2 = 1, !3 = 2, !4 = 9, !5 = 44. Maka untuk n = 4 banyaknya cara adalah 9."
         },
         {
           "num": 5,
@@ -980,7 +980,7 @@
             "E": "4096"
           },
           "answer": "C",
-          "solution": "Berdasarkan Teorema Binomial: (1 + 1)^n = sum_{k=0}^n C(n, k) = 2^n. Untuk n = 10: 2^10 = 1024."
+          "solution": "Berdasarkan Teorema Binomial: (1 + 1)ⁿ = sum_{k=0}ⁿ C(n, k) = 2ⁿ. Untuk n = 10: 2¹⁰ = 1024."
         },
         {
           "num": 9,
@@ -1111,12 +1111,12 @@
         {
           "num": 18,
           "topic": "Identitas Vandermonde",
-          "question": "Identitas sum_{k=0}^r C(m, k) C(n, r - k) sama dengan...",
+          "question": "Identitas sum_{k=0}ʳ C(m, k) C(n, r - k) sama dengan...",
           "options": {
             "A": "C(m + n, r)",
             "B": "C(m + n, m - n)",
             "C": "C(mn, r)",
-            "D": "2^(m+n)",
+            "D": "2ᵐ⁺ⁿ",
             "E": "C(m, r) + C(n, r)"
           },
           "answer": "A",
@@ -1258,7 +1258,7 @@
         {
           "num": 8,
           "topic": "Ketaksamaan Integral",
-          "question": "Jika f(x) kontinu dan positif pada [0, 1], maka [integral_0^1 f(x) dx] * [integral_0^1 1/f(x) dx] >= ...",
+          "question": "Jika f(x) kontinu dan positif pada [0, 1], maka [integral_0¹ f(x) dx] * [integral_0¹ 1/f(x) dx] >= ...",
           "options": {
             "A": "1/2",
             "B": "1",
@@ -1314,7 +1314,7 @@
         {
           "num": 12,
           "topic": "Basis Induksi Matematika",
-          "question": "Untuk membuktikan bahwa 2^n > n² untuk semua bilangan bulat n >= n_0, nilai n_0 terkecil yang valid sebagai basis induksi adalah...",
+          "question": "Untuk membuktikan bahwa 2ⁿ > n² untuk semua bilangan bulat n >= n_0, nilai n_0 terkecil yang valid sebagai basis induksi adalah...",
           "options": {
             "A": "1",
             "B": "2",
@@ -1323,12 +1323,12 @@
             "E": "5"
           },
           "answer": "E",
-          "solution": "Uji n: n=1: 2 > 1 (benar tapi gagal di n=2,3,4). n=2: 4 > 4 (salah). n=3: 8 > 9 (salah). n=4: 16 > 16 (salah). n=5: 32 > 25 (benar). Untuk semua n >= 5, 2^n > n² selalu benar. Jadi basis induksi n_0 = 5."
+          "solution": "Uji n: n=1: 2 > 1 (benar tapi gagal di n=2,3,4). n=2: 4 > 4 (salah). n=3: 8 > 9 (salah). n=4: 16 > 16 (salah). n=5: 32 > 25 (benar). Untuk semua n >= 5, 2ⁿ > n² selalu benar. Jadi basis induksi n_0 = 5."
         },
         {
           "num": 13,
           "topic": "Deret Taylor Maclaurin",
-          "question": "Koefisien dari x² pada ekspansi deret Maclaurin untuk f(x) = e^(2x) adalah...",
+          "question": "Koefisien dari x² pada ekspansi deret Maclaurin untuk f(x) = e²ˣ adalah...",
           "options": {
             "A": "1",
             "B": "2",
@@ -1337,12 +1337,12 @@
             "E": "1/2"
           },
           "answer": "B",
-          "solution": "e^u = 1 + u + u²/2! + ... Dengan u = 2x: e^(2x) = 1 + (2x) + (2x)²/2 = 1 + 2x + 4x²/2 = 1 + 2x + 2x². Koefisien x² adalah 2."
+          "solution": "eᵘ = 1 + u + u²/2! + ... Dengan u = 2x: e²ˣ = 1 + (2x) + (2x)²/2 = 1 + 2x + 4x²/2 = 1 + 2x + 2x². Koefisien x² adalah 2."
         },
         {
           "num": 14,
           "topic": "Kekonvergenan Deret",
-          "question": "Deret sum_{n=1}^∞ 1 / n^p konvergen jika dan hanya jika...",
+          "question": "Deret sum_{n=1}^∞ 1 / nᵖ konvergen jika dan hanya jika...",
           "options": {
             "A": "p < 1",
             "B": "p <= 1",

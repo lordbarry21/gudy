@@ -44,6 +44,36 @@ const SUPERSCRIPT_MAP: Record<string, string> = {
   'x': 'ˣ',
   'y': 'ʸ',
   'z': 'ᶻ',
+  'A': 'ᴬ',
+  'B': 'ᴮ',
+  'D': 'ᴰ',
+  'E': 'ᴱ',
+  'G': 'ᴳ',
+  'H': 'ᴴ',
+  'I': 'ᴵ',
+  'J': 'ᴶ',
+  'K': 'ᴷ',
+  'L': 'ᴸ',
+  'M': 'ᴹ',
+  'N': 'ᴺ',
+  'O': 'ᴼ',
+  'P': 'ᴾ',
+  'R': 'ᴿ',
+  'T': 'ᵀ',
+  'U': 'ᵁ',
+  'W': 'ᵂ',
+  '⁰': '⁰',
+  '¹': '¹',
+  '²': '²',
+  '³': '³',
+  '⁴': '⁴',
+  '⁵': '⁵',
+  '⁶': '⁶',
+  '⁷': '⁷',
+  '⁸': '⁸',
+  '⁹': '⁹',
+  '⁺': '⁺',
+  '⁻': '⁻',
   '/': 'ᐟ',
 }
 
@@ -83,14 +113,16 @@ const SUBSCRIPT_MAP: Record<string, string> = {
 }
 
 function toSuperscript(input: string): string {
-  return input
+  const clean = input.replace(/\s+/g, '')
+  return clean
     .split('')
     .map((char) => SUPERSCRIPT_MAP[char] ?? char)
     .join('')
 }
 
 function toSubscript(input: string): string {
-  return input
+  const clean = input.replace(/\s+/g, '')
+  return clean
     .split('')
     .map((char) => SUBSCRIPT_MAP[char] ?? char)
     .join('')
@@ -132,10 +164,21 @@ export function formatMathSymbols(text: string): string {
 
   // 5. Common LaTeX Operators & Symbols
   const replacements: Array<[RegExp, string]> = [
-    [/\\sum/g, '∑'],
-    [/\\prod/g, '∏'],
-    [/\\int/g, '∫'],
-    [/\\lim_\{([^}]+)\}/g, 'lim_($1)'],
+    [/\\lim_\{([^}]+)\}/g, 'lim($1)'],
+    [/\blim_\{([^}]+)\}/g, 'lim($1)'],
+    [/\\sum\b/g, '∑'],
+    [/\bsum_(?=[{\w])/g, '∑_'],
+    [/\\prod\b/g, '∏'],
+    [/\bprod_(?=[{\w])/g, '∏_'],
+    [/\\int\b/g, '∫'],
+    [/\bintegral_(?=[{\w])/g, '∫_'],
+    [/<=>/g, '⇔'],
+    [/<->/g, '↔'],
+    [/=>/g, '⇒'],
+    [/->/g, '→'],
+    [/>=/g, '≥'],
+    [/<=/g, '≤'],
+    [/!=/g, '≠'],
     [/\\implies/g, '⇒'],
     [/\\iff/g, '⇔'],
     [/\\to/g, '→'],
@@ -217,14 +260,15 @@ export function formatMathSymbols(text: string): string {
     result = result.replace(pattern, substitute)
   }
 
-  // 6. Handle exponents like x^3 -> x³, x^{n+1} -> xⁿ⁺¹
+  // 6. Handle exponents like x^3 -> x³, x^{n+1} -> xⁿ⁺¹, 7^(2026) -> 7²⁰²⁶, 3^100 -> 3¹⁰⁰
+  result = result.replace(/\^\(([^)]+)\)/g, (_, exp) => toSuperscript(exp))
   result = result.replace(/\^\{([^}]+)\}/g, (_, exp) => toSuperscript(exp))
-  result = result.replace(/\^([0-9a-zA-Z\+\-])/g, (_, exp) => toSuperscript(exp))
+  result = result.replace(/\^([0-9a-zA-Z\+\-]+)/g, (_, exp) => toSuperscript(exp))
 
   // 7. Handle single-letter / digit subscripts: x_i -> xᵢ, s_1 -> s₁, U_n -> Uₙ
   result = result.replace(/_\{([^}]+)\}/g, (_, sub) => {
     const converted = toSubscript(sub)
-    return converted.length === sub.length ? converted : `_${sub}`
+    return converted.length === sub.replace(/\s+/g, '').length ? converted : `_${sub}`
   })
   result = result.replace(/_([0-9a-zA-Z])/g, (_, sub) => {
     return SUBSCRIPT_MAP[sub] ?? `_${sub}`

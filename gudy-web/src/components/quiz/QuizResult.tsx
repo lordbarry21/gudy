@@ -63,14 +63,14 @@ export function QuizResult({
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.3 }}
-      className="space-y-6"
+      className="space-y-8 sm:space-y-10"
     >
       {/* Score Circle */}
-      <div className="flex flex-col items-center py-6">
+      <div className="flex flex-col items-center py-10 sm:py-12 lg:py-14">
         <div
           className={`
-            w-36 h-36 rounded-full flex items-center justify-center
-            border-8 mb-4
+            w-52 h-52 sm:w-60 sm:h-60 lg:w-72 lg:h-72 rounded-full flex items-center justify-center
+            border-[10px] lg:border-[12px] mb-6 lg:mb-8
             ${attempt.score >= 80
               ? 'border-success/30 bg-success/10'
               : attempt.score >= 60
@@ -81,82 +81,82 @@ export function QuizResult({
         >
           <div className="text-center">
             <span
-              className={`text-5xl font-black ${getScoreColor(attempt.score)}`}
+              className={`text-7xl sm:text-8xl lg:text-9xl font-black ${getScoreColor(attempt.score)}`}
             >
               {attempt.score}
             </span>
-            <span className="text-xl font-bold text-text-secondary">%</span>
+            <span className="text-3xl sm:text-4xl lg:text-5xl font-bold text-text-secondary">%</span>
           </div>
         </div>
 
-        <span className="text-3xl mb-2">{getScoreEmoji(attempt.score)}</span>
-        <h2 className={`text-xl font-bold ${getScoreColor(attempt.score)}`}>
+        <span className="text-5xl sm:text-6xl lg:text-7xl mb-4 lg:mb-5">{getScoreEmoji(attempt.score)}</span>
+        <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-bold ${getScoreColor(attempt.score)}`}>
           {getScoreLabel(attempt.score)}
         </h2>
-        <p className="text-sm text-text-secondary mt-1">
+        <p className="text-lg sm:text-xl lg:text-2xl text-text-secondary mt-3 lg:mt-4">
           {attempt.subcategoryTitle}
         </p>
       </div>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-3 gap-3">
+      <div className="grid grid-cols-3 gap-5 sm:gap-6 lg:gap-8">
         {/* Correct */}
-        <div className="bg-success/10 border border-success/20 rounded-xl p-4 text-center">
+        <div className="bg-success/10 border border-success/20 rounded-2xl p-6 sm:p-7 lg:p-8 text-center">
           <CheckCircle
-            size={24}
+            size={36}
             weight="fill"
-            className="text-success mx-auto mb-2"
+            className="text-success mx-auto mb-4 lg:mb-5"
           />
-          <p className="text-2xl font-bold text-success">
+          <p className="text-4xl sm:text-5xl lg:text-6xl font-bold text-success">
             {attempt.correctAnswers}
           </p>
-          <p className="text-xs text-text-secondary">{t.quiz.correct}</p>
+          <p className="text-base sm:text-lg lg:text-xl text-text-secondary mt-2 lg:mt-3">{t.quiz.correct}</p>
         </div>
 
         {/* Wrong */}
-        <div className="bg-error/10 border border-error/20 rounded-xl p-4 text-center">
+        <div className="bg-error/10 border border-error/20 rounded-2xl p-6 sm:p-7 lg:p-8 text-center">
           <XCircle
-            size={24}
+            size={36}
             weight="fill"
-            className="text-error mx-auto mb-2"
+            className="text-error mx-auto mb-4 lg:mb-5"
           />
-          <p className="text-2xl font-bold text-error">
+          <p className="text-4xl sm:text-5xl lg:text-6xl font-bold text-error">
             {attempt.wrongAnswers}
           </p>
-          <p className="text-xs text-text-secondary">{t.quiz.incorrect}</p>
+          <p className="text-base sm:text-lg lg:text-xl text-text-secondary mt-2 lg:mt-3">{t.quiz.incorrect}</p>
         </div>
 
         {/* Skipped */}
-        <div className="bg-warning/10 border border-warning/20 rounded-xl p-4 text-center">
-          <Target size={24} weight="fill" className="text-warning mx-auto mb-2" />
-          <p className="text-2xl font-bold text-warning">
+        <div className="bg-warning/10 border border-warning/20 rounded-2xl p-6 sm:p-7 lg:p-8 text-center">
+          <Target size={36} weight="fill" className="text-warning mx-auto mb-4 lg:mb-5" />
+          <p className="text-4xl sm:text-5xl lg:text-6xl font-bold text-warning">
             {attempt.skippedQuestions}
           </p>
-          <p className="text-xs text-text-secondary">Kosong</p>
+          <p className="text-base sm:text-lg lg:text-xl text-text-secondary mt-2 lg:mt-3">Kosong</p>
         </div>
       </div>
 
       {/* Duration */}
-      <div className="flex items-center justify-center gap-2 text-sm text-text-secondary">
-        <Clock size={16} />
+      <div className="flex items-center justify-center gap-3 text-lg sm:text-xl lg:text-2xl text-text-secondary">
+        <Clock size={22} />
         <span>{t.quiz.estimatedTime}: {formatDuration(attempt.startedAt, attempt.completedAt)}</span>
       </div>
 
       {/* Actions */}
-      <div className="space-y-3 pt-4">
+      <div className="space-y-4 sm:space-y-5 pt-6 sm:pt-8">
         <button
           onClick={onRetry}
-          className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-accent text-white font-semibold text-sm hover:bg-accent-hover transition-colors"
+          className="w-full flex items-center justify-center gap-3 py-5 px-6 rounded-xl bg-accent text-white font-semibold text-xl lg:text-2xl hover:bg-accent-hover transition-colors"
         >
-          <ArrowCounterClockwise size={18} />
+          <ArrowCounterClockwise size={26} />
           <span>{t.quiz.retry}</span>
         </button>
 
         <button
           onClick={onClose}
-          className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-surface-elevated border border-border text-text-primary font-semibold text-sm hover:bg-surface transition-colors"
+          className="w-full flex items-center justify-center gap-3 py-5 px-6 rounded-xl bg-surface-elevated border border-border text-text-primary font-semibold text-xl lg:text-2xl hover:bg-surface transition-colors"
         >
-          <Trophy size={18} />
+          <Trophy size={26} />
           <span>{t.quiz.backToPractice}</span>
         </button>
       </div>
