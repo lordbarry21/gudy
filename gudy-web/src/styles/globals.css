@@ -7,11 +7,29 @@
    Inspired by premium reading experiences (Medium, Apple, Stripe)
    ========================================================================== */
 
-/* Font Family Variables */
+/* Font Family Variables - Steve Jobs philosophy: typography with meaning */
+
+/*
+ * DISPLAY (Fraunces) - Editorial serif with soul
+ * - Quirky character adds personality
+ * - Good optical sizing at all sizes
+ * - Perfect for hero text and impactful headings
+ *
+ * SERIF (Source Serif 4) - Elegant reading experience
+ * - Sophisticated, timeless feel
+ * - Excellent for long-form content
+ * - Classic editorial quality
+ *
+ * SANS (Plus Jakarta Sans) - Warm, friendly UI
+ * - Geometric but not cold
+ * - Friendly for Indonesian students
+ * - Clean and modern for navigation/labels
+ */
+
 :root {
-  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
-  --font-serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
-  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: var(--font-display), Georgia, 'Times New Roman', serif;
+  --font-serif: var(--font-serif), Georgia, 'Times New Roman', serif;
+  --font-sans: var(--font-ui), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
   /* Claude Light Mode: Authentic Warm Paper & Sand (Not Bright White) */
   --background: #F3EFE6;
@@ -354,6 +372,186 @@ html {
 .font-mono {
   font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', monospace;
   font-feature-settings: 'liga' 1;
+}
+
+/* ==========================================================================
+   CREATIVE TYPOGRAPHY - Typography with meaning (Steve Jobs philosophy)
+   ========================================================================== */
+
+/* Gradient Text - For impactful headlines */
+.text-gradient {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 50%, var(--accent-dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-warm {
+  background: linear-gradient(135deg, #D97757 0%, #E48D70 50%, #D9943B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Editorial Display - Big, bold, impactful titles */
+.editorial-display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  font-optical-sizing: auto;
+  text-wrap: balance;
+}
+
+/* Quirky Display - Fraunces WONK axis for playful headlines */
+.quirky-display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-variation-settings: 'WONK' 1;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+/* Accent Title - Styled with subtle accent underline */
+.accent-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  position: relative;
+  display: inline-block;
+}
+
+.accent-title::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 40%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  border-radius: 2px;
+}
+
+/* Display Quote - For motivational quotes */
+.display-quote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.display-quote::before {
+  content: '"';
+  position: absolute;
+  left: 0;
+  top: -0.25em;
+  font-size: 3rem;
+  color: var(--accent);
+  opacity: 0.3;
+  font-family: var(--font-display);
+}
+
+/* Label Badge - Uppercase labels with personality */
+.label-badge {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  background: var(--accent-subtle);
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* Number Display - Large numbers with impact */
+.number-display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 3.5rem;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+
+.number-display-lg {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 4.5rem;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Stat Card Value - For dashboard numbers */
+.stat-value {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Nav Label - Clean UI text */
+.nav-label {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: -0.01em;
+}
+
+/* Section Header - Consistent section titles */
+.section-header {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* Body Reading - Serif for comfortable long reads */
+.body-reading {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  text-wrap: pretty;
+}
+
+/* Card Title - For card headers */
+.card-title {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+/* Subtle Muted Text */
+.text-muted {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* Accent Text - Brand colored text */
+.text-accent {
+  color: var(--accent);
+}
+
+/* Subtle Accent Background */
+.bg-accent-subtle {
+  background-color: var(--accent-subtle);
 }
 
 /* Text Selection with brand feel */

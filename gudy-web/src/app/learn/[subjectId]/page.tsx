@@ -5,6 +5,7 @@ import { useParams } from 'next/navigation'
 import { motion, AnimatePresence } from 'motion/react'
 import { useAppStore } from '@/lib/store'
 import { calculateProgress } from '@/lib/utils'
+import { useLanguage } from '@/lib/i18n/useLanguage'
 import { AuthPrompt } from '@/components/auth/AuthPrompt'
 import Link from 'next/link'
 import {
@@ -26,6 +27,7 @@ export default function SubjectDetailPage() {
   const params = useParams()
   const subjectId = params.subjectId as string
   const { subjects, topics, initialize, isInitialized, toggleTopicMasteredCascade } = useAppStore()
+  const { t } = useLanguage()
   const [mounted, setMounted] = useState(false)
   const [expandedTopics, setExpandedTopics] = useState<Set<string>>(new Set())
   const [viewMode, setViewMode] = useState<ViewMode>('list')
@@ -61,7 +63,7 @@ export default function SubjectDetailPage() {
         <div className="text-center">
           <h1 className="text-xl font-bold text-text-primary mb-2">Subject Not Found</h1>
           <Link href="/learn" className="text-accent hover:underline text-sm">
-            Back to Learn
+            {t.subject.backToSyllabus}
           </Link>
         </div>
       </main>
@@ -120,7 +122,7 @@ export default function SubjectDetailPage() {
               type="button"
               onClick={() => toggleExpanded(topic.id)}
               className="p-1 -m-1 text-text-muted hover:text-text-primary transition-colors outline-none focus:outline-none"
-              title={isExpanded ? 'Tutup subtopik' : 'Buka subtopik'}
+              title={isExpanded ? t.subject.closeSubtopics : t.subject.openSubtopics}
             >
               <motion.div animate={{ rotate: isExpanded ? 90 : 0 }} transition={{ duration: 0.15 }}>
                 <CaretRight size={15} />
@@ -136,8 +138,8 @@ export default function SubjectDetailPage() {
               className="p-0.5 rounded hover:scale-110 active:scale-95 transition-all outline-none focus:outline-none"
               title={
                 isFolderFullyMastered
-                  ? `Batalkan status selesai untuk semua materi dalam ${topic.title}`
-                  : `Tandai seluruh materi (${descendantLeaves.length} topik) dalam ${topic.title} telah dikuasai!`
+                  ? `${t.subject.unmarkComplete} ${topic.title}`
+                  : `${t.subject.markAllComplete}`
               }
             >
               <StatusIcon status={isFolderFullyMastered ? 'mastered' : topic.status} />
@@ -161,9 +163,9 @@ export default function SubjectDetailPage() {
                     : 'bg-surface-elevated text-text-muted'
                 }`}
               >
-                {masteredLeafCount}/{descendantLeaves.length} dikuasai
+                {masteredLeafCount}/{descendantLeaves.length} {t.subject.mastered}
               </span>
-              <span className="text-[11px] text-text-muted">{children.length} subkategori</span>
+              <span className="text-[11px] text-text-muted">{children.length} {t.subject.subcategories}</span>
             </div>
           </div>
         ) : (
@@ -180,8 +182,8 @@ export default function SubjectDetailPage() {
               className="p-0.5 rounded hover:scale-110 active:scale-95 transition-all outline-none focus:outline-none"
               title={
                 topic.status === 'mastered'
-                  ? `Batalkan status selesai untuk ${topic.title}`
-                  : `Tandai ${topic.title} telah dikuasai!`
+                  ? `${t.subject.unmarkTopic} ${topic.title}`
+                  : `${t.subject.markTopicComplete}`
               }
             >
               <StatusIcon status={topic.status} />
@@ -228,7 +230,7 @@ export default function SubjectDetailPage() {
             className="inline-flex items-center gap-2 text-text-secondary hover:text-accent text-sm font-medium transition-colors mb-6"
           >
             <ArrowLeft size={16} />
-            <span>Kembali ke Silabus</span>
+            <span>{t.subject.backToSyllabus}</span>
           </Link>
         </motion.div>
 
@@ -256,7 +258,7 @@ export default function SubjectDetailPage() {
                 <div className="flex items-center justify-between text-xs">
                   <span className="text-text-muted flex items-center gap-1.5 font-medium">
                     <Sparkle size={13} className="text-accent" weight="fill" />
-                    Kemajuan Belajar
+                    {t.subject.learningProgress}
                   </span>
                   <span className="font-bold font-mono" style={{ color: subject.color }}>{progressPct}%</span>
                 </div>
@@ -272,15 +274,15 @@ export default function SubjectDetailPage() {
                 <div className="flex items-center gap-3 text-[11px] text-text-muted">
                   <span className="flex items-center gap-1">
                     <CheckCircle size={13} className="text-success" weight="fill" />
-                    {subject.completedTopics} dikuasai
+                    {subject.completedTopics} {t.subject.mastered}
                   </span>
                   <span>·</span>
                   <span className="flex items-center gap-1">
                     <Lightning size={13} className="text-warning" weight="fill" />
-                    {allTopics.filter(t => t.status === 'inProgress').length} sedang dipelajari
+                    {allTopics.filter(t => t.status === 'inProgress').length} {t.subject.inProgress}
                   </span>
                   <span>·</span>
-                  <span>{subject.totalTopics} total materi</span>
+                  <span>{subject.totalTopics} {t.subject.totalMaterials}</span>
                 </div>
               </div>
             </div>
@@ -304,7 +306,7 @@ export default function SubjectDetailPage() {
               }`}
             >
               <ListBullets size={15} weight={viewMode === 'list' ? 'fill' : 'regular'} />
-              <span>Daftar Materi</span>
+              <span>{t.subject.subjectList}</span>
             </button>
             <button
               onClick={() => setViewMode('graph')}
@@ -315,11 +317,11 @@ export default function SubjectDetailPage() {
               }`}
             >
               <Graph size={15} weight={viewMode === 'graph' ? 'fill' : 'regular'} />
-              <span>Knowledge Graph</span>
+              <span>{t.subject.knowledgeGraph}</span>
             </button>
           </div>
           <span className="text-[11px] text-text-muted">
-            {viewMode === 'list' ? 'Klik baris untuk membuka materi' : 'Graf interaktif jaringan topik'}
+            {viewMode === 'list' ? t.subject.clickToOpen : t.subject.interactiveGraph}
           </span>
         </motion.div>
 
@@ -336,17 +338,17 @@ export default function SubjectDetailPage() {
               <div className="px-5 py-3.5 flex items-center justify-between">
                 <h2 className="font-semibold text-text-primary text-sm flex items-center gap-2">
                   <Sparkle size={15} className="text-accent" weight="fill" />
-                  <span>Daftar Topik Silabus</span>
+                  <span>{t.subject.syllabusTopics}</span>
                 </h2>
                 <div className="flex items-center gap-3 text-[11px]">
                   <span className="flex items-center gap-1 text-success">
-                    <CheckCircle size={13} weight="fill" /> Dikuasai
+                    <CheckCircle size={13} weight="fill" /> {t.subject.masteredLabel}
                   </span>
                   <span className="flex items-center gap-1 text-warning">
-                    <Lightning size={13} weight="fill" /> Sedang Dipelajari
+                    <Lightning size={13} weight="fill" /> {t.subject.inProgressLabel}
                   </span>
                   <span className="flex items-center gap-1 text-text-muted">
-                    <Circle size={13} /> Belum Mulai
+                    <Circle size={13} /> {t.subject.notStarted}
                   </span>
                 </div>
               </div>

@@ -5,6 +5,7 @@ import { useParams } from 'next/navigation'
 import { motion } from 'motion/react'
 import { useAppStore } from '@/lib/store'
 import { calculateProgress } from '@/lib/utils'
+import { useLanguage } from '@/lib/i18n/useLanguage'
 import Link from 'next/link'
 import { Check, Copy, ArrowLeft, Trophy, Star, Lightbulb, BookOpen, Sparkle } from '@phosphor-icons/react'
 import { formatMathSymbols } from '@/lib/math-symbols'
@@ -14,6 +15,7 @@ export default function TopicDetailPage() {
   const subjectId = params.subjectId as string
   const topicId = params.topicId as string
   const { topics, subjects, toggleChecklistItem, markAsMastered, resetTopicProgress, initialize, isInitialized } = useAppStore()
+  const { t } = useLanguage()
   const [mounted, setMounted] = useState(false)
   const [copied, setCopied] = useState(false)
 
@@ -40,13 +42,13 @@ export default function TopicDetailPage() {
       <main className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-xl font-bold text-text-primary mb-2">
-            Topik Tidak Ditemukan
+            {t.topic.topicNotFound}
           </h1>
           <Link
             href={`/learn/${subjectId}`}
             className="text-accent hover:underline text-sm"
           >
-            Kembali ke Subjek
+            {t.topic.backToSubjects}
           </Link>
         </div>
       </main>
@@ -85,7 +87,7 @@ export default function TopicDetailPage() {
             className="inline-flex items-center gap-2 text-text-secondary hover:text-accent text-sm font-medium transition-colors mb-6"
           >
             <ArrowLeft size={16} />
-            <span>Kembali ke {subject.name}</span>
+            <span>{t.topic.backToSubject} {subject.name}</span>
           </Link>
         </motion.div>
 
@@ -156,16 +158,16 @@ export default function TopicDetailPage() {
             </div>
 
             <div>
-              <p className="text-xs font-medium text-text-primary mb-0.5">Target Belajar</p>
+              <p className="text-xs font-medium text-text-primary mb-0.5">{t.topic.studyTarget}</p>
               <p className="text-xs text-text-muted">
-                {checkedCount} dari {totalCount} item selesai
+                {checkedCount} {t.topic.itemsCompleted} {totalCount}
               </p>
             </div>
 
             {isMastered && (
               <div className="ml-auto flex items-center gap-1.5 text-success text-xs font-semibold px-3 py-1 bg-success/10 rounded-full border border-success/20">
                 <Trophy size={16} weight="fill" />
-                <span>Dikuasai</span>
+                <span>{t.topic.mastered}</span>
               </div>
             )}
           </div>
@@ -181,7 +183,7 @@ export default function TopicDetailPage() {
           >
             <div className="flex items-center gap-2 mb-2 text-amber-600 dark:text-amber-400 font-semibold text-xs">
               <Star size={16} weight="fill" />
-              <span className="uppercase tracking-wider">Kriteria Nilai 100 & Target Asesmen</span>
+              <span className="uppercase tracking-wider">{t.topic.criteria100}</span>
             </div>
             <p className="text-text-primary text-xs sm:text-sm leading-relaxed font-medium">
               {topic.targetCriteria}
@@ -199,7 +201,7 @@ export default function TopicDetailPage() {
           >
             <div className="flex items-center gap-2 mb-2 text-text-primary font-semibold text-xs">
               <BookOpen size={16} className="text-accent" weight="fill" />
-              <span>Cakupan Materi Silabus</span>
+              <span>{t.topic.syllabusScope}</span>
             </div>
             <p className="text-text-secondary text-xs sm:text-sm leading-relaxed">
               {topic.scope}
@@ -221,7 +223,7 @@ export default function TopicDetailPage() {
               <div className="flex items-center justify-between mb-2.5">
                 <div className="flex items-center gap-2 text-text-primary font-semibold text-xs">
                   <Lightbulb size={16} className="text-warning" weight="fill" />
-                  <span>Pemantik Ingatan &amp; Formula Kunci</span>
+                  <span>{t.topic.memoryBooster}</span>
                 </div>
                 <button
                   type="button"
@@ -231,17 +233,17 @@ export default function TopicDetailPage() {
                     setTimeout(() => setCopied(false), 2000)
                   }}
                   className="flex items-center gap-1.5 text-xs text-text-muted hover:text-text-primary px-2.5 py-1 rounded-lg hover:bg-surface-elevated transition-colors"
-                  title="Salin formula"
+                  title={t.topic.copyFormula}
                 >
                   {copied ? (
                     <>
                       <Check size={14} className="text-success" weight="bold" />
-                      <span className="text-success text-xs font-medium">Tersalin</span>
+                      <span className="text-success text-xs font-medium">{t.topic.copied}</span>
                     </>
                   ) : (
                     <>
                       <Copy size={14} />
-                      <span className="text-xs">Salin Formula</span>
+                      <span className="text-xs">{t.topic.copyFormulaBtn}</span>
                     </>
                   )}
                 </button>
@@ -264,9 +266,9 @@ export default function TopicDetailPage() {
             <div className="px-6 py-4 border-b border-border flex items-center justify-between">
               <h2 className="font-semibold text-text-primary text-sm flex items-center gap-2">
                 <Sparkle size={15} className="text-accent" weight="fill" />
-                <span>Checklist Penguasaan Materi</span>
+                <span>{t.topic.checklistTitle}</span>
               </h2>
-              <span className="text-[11px] text-text-muted font-mono">{checkedCount}/{totalCount} centang</span>
+              <span className="text-[11px] text-text-muted font-mono">{checkedCount}/{totalCount} {t.topic.checked}</span>
             </div>
             <div className="p-4 space-y-1.5">
               {topic.checklist.map((item, index) => (
@@ -315,9 +317,9 @@ export default function TopicDetailPage() {
           <div className="px-6 py-4 border-b border-border flex items-center justify-between">
             <h2 className="font-semibold text-text-primary text-sm flex items-center gap-2">
               <Sparkle size={15} className="text-accent" weight="fill" />
-              <span>Prompt Belajar AI Tutor (Claude / LLM)</span>
+              <span>{t.topic.aiPrompt}</span>
             </h2>
-            <span className="text-[11px] text-text-muted">Siap pakai</span>
+            <span className="text-[11px] text-text-muted">{t.topic.readyToUse}</span>
           </div>
           <div className="p-5">
             <div className="bg-surface-elevated rounded-xl p-3.5 mb-3 border border-border text-xs text-text-secondary leading-relaxed font-mono whitespace-pre-wrap">
@@ -328,7 +330,7 @@ export default function TopicDetailPage() {
               className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-surface-elevated hover:bg-border text-text-primary text-xs font-medium rounded-xl border border-border transition-colors"
             >
               <Copy size={15} className={copied ? 'text-success' : 'text-text-muted'} />
-              <span>{copied ? 'Tersalin ke Clipboard!' : 'Salin Prompt untuk Belajar'}</span>
+              <span>{copied ? t.topic.copiedToClipboard : t.topic.copyPrompt}</span>
             </button>
           </div>
         </motion.div>
@@ -346,14 +348,14 @@ export default function TopicDetailPage() {
               className="flex-1 flex items-center justify-center gap-2 px-5 py-3 bg-accent hover:bg-accent-dark text-white text-xs font-medium rounded-xl shadow-sm transition-colors"
             >
               <Trophy size={16} weight="fill" />
-              <span>Tandai Topik Ini Dikuasai</span>
+              <span>{t.topic.markAsMastered}</span>
             </button>
           )}
           <button
             onClick={() => resetTopicProgress(topicId)}
             className="px-5 py-3 bg-surface border border-border text-text-secondary hover:text-text-primary text-xs font-medium rounded-xl hover:bg-surface-elevated transition-colors"
           >
-            Reset Progres
+            {t.topic.resetProgress}
           </button>
         </motion.div>
       </div>

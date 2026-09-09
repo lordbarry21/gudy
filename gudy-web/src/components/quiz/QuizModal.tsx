@@ -8,8 +8,8 @@ import {
   ArrowRight,
   Clock,
   ListBullets,
-  CheckCircle,
 } from '@phosphor-icons/react'
+import { useLanguage } from '@/lib/i18n/useLanguage'
 import { QuizQuestion, QuizAttempt } from '@/types'
 import { QuestionCard } from './QuestionCard'
 import { SolutionPanel } from './SolutionPanel'
@@ -50,6 +50,7 @@ export function QuizModal({
   onSubmit,
   onRetry,
 }: QuizModalProps) {
+  const { t } = useLanguage()
   const currentQuestion = questions[currentIndex]
   const totalQuestions = questions.length
   const answeredCount = Object.keys(answers).length
@@ -258,13 +259,13 @@ export function QuizModal({
                   `}
                 >
                   <ArrowLeft size={16} />
-                  <span>Sebelumnya</span>
+                  <span>{t.quiz.previous}</span>
                 </button>
 
                 {/* Timer estimate */}
                 <div className="flex items-center gap-1.5 text-xs text-text-muted">
                   <Clock size={14} />
-                  <span>~{estimatedMinutes} menit</span>
+                  <span>~{estimatedMinutes} {t.quiz.minutes}</span>
                 </div>
 
                 {/* Next/Submit Button */}
@@ -273,7 +274,7 @@ export function QuizModal({
                   className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold bg-accent text-white hover:bg-accent-hover transition-colors"
                 >
                   <span>
-                    {isLastQuestion ? 'Submit' : 'Selanjutnya'}
+                    {isLastQuestion ? t.quiz.submit : t.quiz.next}
                   </span>
                   <ArrowRight size={16} />
                 </button>

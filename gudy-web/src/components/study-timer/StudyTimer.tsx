@@ -15,12 +15,10 @@ import {
   CaretDown,
   X,
   Sparkle,
-  SunDim,
-  Moon,
   Confetti,
-  SpeakerHigh,
 } from '@phosphor-icons/react'
 import { useAppStore } from '@/lib/store'
+import { useLanguage } from '@/lib/i18n/useLanguage'
 import {
   POMODORO_PRESETS,
   BREAK_PRESETS,
@@ -63,6 +61,7 @@ const getRandomItem = <T,>(arr: T[]): T => arr[Math.floor(Math.random() * arr.le
 
 export default function StudyTimer() {
   const { subjects, progress, updateStudyTime } = useAppStore()
+  const { t } = useLanguage()
   const [timerState, setTimerState] = useState<StudyTimerState>({
     isActive: false,
     isPaused: false,
@@ -304,14 +303,14 @@ export default function StudyTimer() {
             </div>
             <div>
               <span className="text-sm font-semibold text-text-primary block">
-                Focus Mode
+                {t.timer.focusMode}
               </span>
               <span className="text-[11px] text-text-muted">
                 {timerState.isActive && !timerState.isPaused
-                  ? 'Tetap fokus ya! 🔥'
+                  ? t.timer.stayFocused
                   : timerState.elapsedSeconds > 0
-                  ? 'Sesi berlangsung'
-                  : 'Pilih mata pelajaran dan mulai'}
+                  ? t.timer.sessionActive
+                  : t.timer.selectSubjectHint}
               </span>
             </div>
           </div>
@@ -323,7 +322,7 @@ export default function StudyTimer() {
               className="flex items-center gap-2 px-2.5 py-1 bg-success/10 border border-success/20 rounded-full"
             >
               <span className="w-2 h-2 rounded-full bg-success animate-pulse" />
-              <span className="text-xs text-success font-medium">Focusing</span>
+              <span className="text-xs text-success font-medium">{t.timer.focusing}</span>
             </motion.div>
           )}
         </div>
@@ -353,12 +352,12 @@ export default function StudyTimer() {
                       {selectedSubject.name}
                     </p>
                     <p className="text-[11px] text-text-muted">
-                      {selectedSubject.completedTopics}/{selectedSubject.totalTopics} topik selesai
+                      {selectedSubject.completedTopics}/{selectedSubject.totalTopics} {t.timer.topicsCompleted}
                     </p>
                   </div>
                 </>
               ) : (
-                <span className="text-sm text-text-muted">Pilih mata pelajaran</span>
+                <span className="text-sm text-text-muted">{t.timer.selectSubject}</span>
               )}
             </div>
             {!timerState.isActive && (
@@ -409,7 +408,7 @@ export default function StudyTimer() {
 
         {/* Duration Presets */}
         <div className="flex items-center gap-2 mb-4">
-          <span className="text-[11px] text-text-muted mr-1">Durasi:</span>
+          <span className="text-[11px] text-text-muted mr-1">{t.timer.duration}</span>
           {presets.map((preset) => (
             <button
               key={preset.value}
@@ -481,8 +480,8 @@ export default function StudyTimer() {
             </span>
             <p className="text-[11px] text-text-muted mt-1">
               {timerState.isActive
-                ? `Sesi ${formatMinutes(timerState.elapsedSeconds / 60)} / ${formatMinutes(timerState.selectedPreset)}`
-                : `Target: ${timerState.selectedPreset} menit`}
+                ? `${t.timer.session} ${formatMinutes(timerState.elapsedSeconds / 60)} / ${formatMinutes(timerState.selectedPreset)}`
+                : `${t.timer.target} ${timerState.selectedPreset} ${t.timer.minutes}`}
             </p>
           </div>
         </div>
@@ -501,7 +500,7 @@ export default function StudyTimer() {
               }`}
             >
               <Play size={16} weight="fill" />
-              <span>Mulai Fokus</span>
+              <span>{t.timer.startFocus}</span>
             </motion.button>
           )}
 
@@ -512,14 +511,14 @@ export default function StudyTimer() {
                 className="flex items-center gap-1.5 px-4 py-2 bg-warning/10 hover:bg-warning/20 border border-warning/30 text-warning text-xs font-medium rounded-xl transition-colors"
               >
                 <Pause size={16} weight="fill" />
-                <span>Pause</span>
+                <span>{t.timer.pause}</span>
               </button>
               <button
                 onClick={completeSession}
                 className="flex items-center gap-1.5 px-4 py-2 bg-accent hover:bg-accent-dark text-white text-xs font-medium rounded-xl transition-colors shadow-sm"
               >
                 <Confetti size={16} weight="fill" />
-                <span>Selesai</span>
+                <span>{t.timer.complete}</span>
               </button>
             </>
           )}
@@ -531,14 +530,14 @@ export default function StudyTimer() {
                 className="flex items-center gap-1.5 px-4 py-2 bg-success hover:bg-success/90 text-white text-xs font-medium rounded-xl transition-colors"
               >
                 <Play size={16} weight="fill" />
-                <span>Lanjut</span>
+                <span>{t.timer.resume}</span>
               </button>
               <button
                 onClick={completeSession}
                 className="flex items-center gap-1.5 px-4 py-2 bg-accent hover:bg-accent-dark text-white text-xs font-medium rounded-xl transition-colors shadow-sm"
               >
                 <Confetti size={16} weight="fill" />
-                <span>Simpan</span>
+                <span>{t.timer.save}</span>
               </button>
             </>
           )}
@@ -550,14 +549,14 @@ export default function StudyTimer() {
                 className="flex items-center gap-1.5 px-4 py-2 bg-accent hover:bg-accent-dark text-white text-xs font-medium rounded-xl transition-colors shadow-sm"
               >
                 <Play size={16} weight="fill" />
-                <span>Lanjut</span>
+                <span>{t.timer.resume}</span>
               </button>
               <button
                 onClick={resetTimer}
                 className="flex items-center gap-1.5 px-4 py-2 bg-surface-elevated hover:bg-border text-text-secondary text-xs font-medium rounded-xl border border-border transition-colors"
               >
                 <ArrowCounterClockwise size={16} />
-                <span>Reset</span>
+                <span>{t.timer.reset}</span>
               </button>
             </>
           )}
@@ -569,7 +568,7 @@ export default function StudyTimer() {
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-2">
             <Target size={16} className="text-accent" weight="bold" />
-            <span className="text-xs font-semibold text-text-primary">Target Harian</span>
+            <span className="text-xs font-semibold text-text-primary">{t.timer.dailyTarget}</span>
           </div>
           <span className="text-xs font-medium text-text-secondary">
             {formatMinutes(todayMinutes)} / {formatMinutes(dailyTargetMinutes)}
@@ -590,7 +589,7 @@ export default function StudyTimer() {
         {timerState.sessionsToday.length > 0 && (
           <div className="space-y-2">
             <span className="text-[10px] text-text-muted uppercase tracking-wider">
-              Sesi hari ini
+              {t.timer.todaysSessions}
             </span>
             <div className="space-y-1.5">
               {timerState.sessionsToday.slice(-3).reverse().map((session) => (
@@ -621,7 +620,7 @@ export default function StudyTimer() {
 
         {timerState.sessionsToday.length === 0 && (
           <p className="text-[11px] text-text-muted text-center py-2">
-            Belum ada sesi hari ini. Mulai belajar sekarang! 🚀
+            {t.timer.noSessionToday}
           </p>
         )}
       </div>
@@ -639,7 +638,7 @@ export default function StudyTimer() {
               <div className="w-12 h-12 rounded-full bg-accent/15 text-accent flex items-center justify-center mx-auto mb-3">
                 <Coffee size={24} weight="fill" />
               </div>
-              <h3 className="text-sm font-semibold text-text-primary mb-1">Waktunya Istirahat!</h3>
+              <h3 className="text-sm font-semibold text-text-primary mb-1">{t.timer.breakTime}</h3>
               <p className="text-xs text-text-secondary mb-4">{breakMessage}</p>
 
               {breakQuote && (
@@ -650,13 +649,13 @@ export default function StudyTimer() {
               )}
 
               <div className="flex items-center justify-center gap-2 mb-4">
-                <span className="text-xs text-text-muted">Rekomendasi istirahat:</span>
+                <span className="text-xs text-text-muted">{t.timer.breakSuggestion}</span>
                 {[5, 10, 15].map((mins) => (
                   <span
                     key={mins}
                     className="px-2.5 py-1 bg-surface-elevated rounded-lg text-[11px] text-text-secondary"
                   >
-                    {mins} menit
+                    {mins} {t.timer.minutes}
                   </span>
                 ))}
               </div>
@@ -668,7 +667,7 @@ export default function StudyTimer() {
                 }}
                 className="w-full py-2 bg-accent hover:bg-accent-dark text-white text-xs font-medium rounded-xl transition-colors"
               >
-                Oke, lanjut nanti! 💪
+                {t.timer.okBreak}
               </button>
             </div>
           </motion.div>
@@ -696,9 +695,9 @@ export default function StudyTimer() {
                 <div className="w-14 h-14 rounded-full bg-success/15 text-success flex items-center justify-center mx-auto mb-4">
                   <Sparkle size={28} weight="fill" />
                 </div>
-                <h3 className="text-lg font-bold text-text-primary mb-1">Sesi Selesai! 🎉</h3>
+                <h3 className="text-lg font-bold text-text-primary mb-1">{t.timer.sessionComplete}</h3>
                 <p className="text-sm text-text-secondary mb-4">
-                  Kerja bagus! Istirahat sebentar ya.
+                  {t.timer.workGreat}
                 </p>
 
                 <div
@@ -717,7 +716,7 @@ export default function StudyTimer() {
                     {formatMinutes(completedSession.durationMinutes)}
                   </p>
                   <p className="text-[11px] text-text-muted">
-                    dari target {formatMinutes(completedSession.targetMinutes)}
+                    {t.timer.fromTarget} {formatMinutes(completedSession.targetMinutes)}
                   </p>
                 </div>
 
@@ -725,7 +724,7 @@ export default function StudyTimer() {
                   onClick={dismissCompletion}
                   className="w-full py-2.5 bg-accent hover:bg-accent-dark text-white text-sm font-medium rounded-xl transition-colors"
                 >
-                  Lanjut Belajar
+                  {t.timer.continueLearning}
                 </button>
               </div>
             </motion.div>

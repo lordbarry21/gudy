@@ -4,10 +4,12 @@ import { useEffect, useState } from 'react'
 import { motion } from 'motion/react'
 import { useAppStore } from '@/lib/store'
 import { calculateProgress } from '@/lib/utils'
+import { useLanguage } from '@/lib/i18n/useLanguage'
 import { Fire, Trophy, ChartLine, Lightning } from '@phosphor-icons/react'
 
 export default function ProgressPage() {
   const { progress, subjects, achievements, initialize, isInitialized } = useAppStore()
+  const { t } = useLanguage()
   const [mounted, setMounted] = useState(false)
   const [activeTab, setActiveTab] = useState<'stats' | 'achievements'>('stats')
 
@@ -32,8 +34,8 @@ export default function ProgressPage() {
   const unlockedCount = achievements.filter((a) => a.unlocked).length
 
   const tabs = [
-    { id: 'stats' as const, label: 'Statistik Belajar', icon: ChartLine },
-    { id: 'achievements' as const, label: 'Pencapaian (Badges)', icon: Trophy },
+    { id: 'stats' as const, label: t.progress.studyStats, icon: ChartLine },
+    { id: 'achievements' as const, label: t.progress.achievementsBadges, icon: Trophy },
   ]
 
   return (
@@ -47,10 +49,10 @@ export default function ProgressPage() {
           transition={{ duration: 0.4 }}
         >
           <h1 className="text-3xl lg:text-4xl font-bold text-text-primary tracking-tight mb-2">
-            Progres Pembelajaran
+            {t.progress.title}
           </h1>
           <p className="text-text-secondary text-sm">
-            Pantau konsistensi dan capaian target belajarmu
+            {t.progress.subtitle}
           </p>
         </motion.div>
 
@@ -71,11 +73,11 @@ export default function ProgressPage() {
                   {progress.streak}
                 </span>
                 <span className="text-sm font-medium text-text-muted">
-                  hari berturut-turut
+                  {t.progress.daysInARow}
                 </span>
               </div>
               <p className="text-xs text-text-secondary mt-0.5">
-                {progress.streak > 0 ? 'Luar biasa! Terus jaga momentum belajarmu.' : 'Mulai belajar hari ini untuk menyalakan streak.'}
+                {progress.streak > 0 ? t.progress.keepStreakGoing : t.progress.startStreak}
               </p>
             </div>
           </div>
@@ -122,32 +124,32 @@ export default function ProgressPage() {
           >
             {/* Overview Card */}
             <div className="bg-surface border border-border rounded-2xl p-6 shadow-card">
-              <h2 className="font-semibold text-text-primary text-sm mb-5">Ringkasan Materi</h2>
+              <h2 className="font-semibold text-text-primary text-sm mb-5">{t.progress.materialSummary}</h2>
               <div className="grid grid-cols-3 gap-4 mb-6">
                 <div className="text-center p-3 rounded-xl bg-surface-elevated/50 border border-border">
                   <p className="text-2xl lg:text-3xl font-bold text-accent font-mono mb-0.5">
                     {progress.totalTopicsCompleted}
                   </p>
-                  <p className="text-[11px] text-text-muted">Materi Selesai</p>
+                  <p className="text-[11px] text-text-muted">{t.progress.materialsCompleted}</p>
                 </div>
                 <div className="text-center p-3 rounded-xl bg-surface-elevated/50 border border-border">
                   <p className="text-2xl lg:text-3xl font-bold text-success font-mono mb-0.5">
                     {progress.longestStreak}
                   </p>
-                  <p className="text-[11px] text-text-muted">Rekor Streak</p>
+                  <p className="text-[11px] text-text-muted">{t.progress.streakRecord}</p>
                 </div>
                 <div className="text-center p-3 rounded-xl bg-surface-elevated/50 border border-border">
                   <p className="text-2xl lg:text-3xl font-bold text-text-primary font-mono mb-0.5">
                     {overallProgress}%
                   </p>
-                  <p className="text-[11px] text-text-muted">Total Penguasaan</p>
+                  <p className="text-[11px] text-text-muted">{t.progress.totalMastery}</p>
                 </div>
               </div>
 
               {/* Progress Bar */}
               <div className="space-y-2">
                 <div className="flex items-center justify-between text-xs">
-                  <span className="text-text-secondary">Kelengkapan Silabus</span>
+                  <span className="text-text-secondary">{t.progress.syllabusProgress}</span>
                   <span className="font-bold text-accent font-mono">{overallProgress}%</span>
                 </div>
                 <div className="h-2.5 bg-surface-elevated rounded-full overflow-hidden">
@@ -164,7 +166,7 @@ export default function ProgressPage() {
             {/* Subject Progress */}
             <div className="bg-surface border border-border rounded-2xl overflow-hidden shadow-card">
               <div className="px-6 py-4 border-b border-border">
-                <h2 className="font-semibold text-text-primary text-sm">Kemajuan per Mata Pelajaran</h2>
+                <h2 className="font-semibold text-text-primary text-sm">{t.progress.progressBySubject}</h2>
               </div>
               <div className="p-5 space-y-4">
                 {subjects.map((subject, index) => {
@@ -231,9 +233,9 @@ export default function ProgressPage() {
                 </div>
                 <div>
                   <p className="text-text-muted text-xs mb-0.5">
-                    {unlockedCount} dari {achievements.length} lencana diraih
+                    {unlockedCount} {t.progress.ofBadgesEarned} {achievements.length}
                   </p>
-                  <h3 className="text-lg font-bold text-text-primary tracking-tight">Pencapaian Terbuka</h3>
+                  <h3 className="text-lg font-bold text-text-primary tracking-tight">{t.progress.achievementsUnlocked}</h3>
                 </div>
                 <Trophy size={36} weight="fill" className="ml-auto text-text-muted/40" />
               </div>
@@ -278,7 +280,7 @@ export default function ProgressPage() {
                     {achievement.unlocked && (
                       <div className="mt-2.5 inline-flex items-center gap-1 text-success text-[10px] font-medium px-2 py-0.5 bg-success/10 rounded-full">
                         <Lightning size={12} weight="fill" />
-                        Terbuka
+                        {t.progress.unlocked}
                       </div>
                     )}
                   </div>

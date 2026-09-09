@@ -13,10 +13,11 @@ import {
   Sun,
   Moon,
 } from '@phosphor-icons/react'
-import { NAV_ITEMS } from '@/lib/constants'
 import { cn } from '@/lib/utils'
 import { useTheme } from '@/components/theme-provider'
 import { useAuth } from '@/contexts/AuthContext'
+import { useLanguage } from '@/lib/i18n/useLanguage'
+import { LanguageSwitch, LanguageSwitchCompact } from '@/components/LanguageSwitch'
 
 const iconMap: Record<string, React.ElementType> = {
   house: House,
@@ -31,6 +32,16 @@ export function Navigation({ children }: { children: React.ReactNode }) {
   const router = useRouter()
   const { theme, toggleTheme } = useTheme()
   const { user, loading } = useAuth()
+  const { t } = useLanguage()
+
+  // Navigation items with translated labels
+  const navItems = [
+    { label: t.nav.home, href: '/', icon: 'house' },
+    { label: t.nav.learn, href: '/learn', icon: 'book-open' },
+    { label: t.nav.progress, href: '/progress', icon: 'chart-line-up' },
+    { label: t.nav.practice, href: '/practice', icon: 'lightning' },
+    { label: t.nav.profile, href: '/profile', icon: 'user' },
+  ]
 
   // Hide navigation on login page
   const isLoginPage = pathname === '/login'
@@ -86,7 +97,7 @@ export function Navigation({ children }: { children: React.ReactNode }) {
 
         {/* Nav Items */}
         <nav className="flex-1 space-y-1.5">
-          {NAV_ITEMS.map((item) => {
+          {navItems.map((item) => {
             const Icon = iconMap[item.icon]
             const isActive = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href))
             const isProfile = item.href === '/profile'
@@ -125,6 +136,9 @@ export function Navigation({ children }: { children: React.ReactNode }) {
 
         {/* Footer & Theme Toggle */}
         <div className="pt-4 border-t border-border space-y-3">
+          {/* Language Switch */}
+          <LanguageSwitch variant="dropdown" />
+
           <button
             type="button"
             onClick={toggleTheme}
@@ -132,10 +146,10 @@ export function Navigation({ children }: { children: React.ReactNode }) {
           >
             <span className="flex items-center gap-2">
               {theme === 'dark' ? <Moon size={16} weight="fill" className="text-accent" /> : <Sun size={16} weight="fill" className="text-accent" />}
-              <span>{theme === 'dark' ? 'Dark Mode' : 'Light Mode'}</span>
+              <span>{theme === 'dark' ? t.theme.dark : t.theme.light}</span>
             </span>
             <span className="text-[10px] text-text-muted uppercase tracking-wider font-mono">
-              Toggle
+              {t.theme.toggle}
             </span>
           </button>
 
@@ -168,20 +182,23 @@ export function Navigation({ children }: { children: React.ReactNode }) {
           </div>
           <span className="font-bold text-lg text-text-primary tracking-tight">Gudy</span>
         </Link>
-        <button
-          type="button"
-          onClick={toggleTheme}
-          aria-label="Toggle Theme"
-          className="p-2 rounded-lg bg-surface-elevated border border-border text-text-secondary hover:text-text-primary transition-colors"
-        >
-          {theme === 'dark' ? <Sun size={18} weight="fill" className="text-accent" /> : <Moon size={18} weight="fill" className="text-accent" />}
-        </button>
+        <div className="flex items-center gap-2">
+          <LanguageSwitchCompact />
+          <button
+            type="button"
+            onClick={toggleTheme}
+            aria-label="Toggle Theme"
+            className="p-2 rounded-lg bg-surface-elevated border border-border text-text-secondary hover:text-text-primary transition-colors"
+          >
+            {theme === 'dark' ? <Sun size={18} weight="fill" className="text-accent" /> : <Moon size={18} weight="fill" className="text-accent" />}
+          </button>
+        </div>
       </header>
 
       {/* Mobile Bottom Nav */}
       <nav className="lg:hidden fixed bottom-0 left-0 right-0 h-16 bg-surface-sidebar/95 backdrop-blur-md border-t border-border z-50">
         <div className="flex items-center justify-around h-full px-2">
-          {NAV_ITEMS.map((item) => {
+          {navItems.map((item) => {
             const Icon = iconMap[item.icon]
             const isActive = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href))
             const isProfile = item.href === '/profile'

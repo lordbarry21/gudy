@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { Lightbulb, ArrowRight } from '@phosphor-icons/react'
+import { useLanguage } from '@/lib/i18n/useLanguage'
 import { QuizQuestion } from '@/types'
 import { MathRenderer } from './MathRenderer'
 
@@ -18,6 +19,7 @@ export function SolutionPanel({
   onNext,
   isLast,
 }: SolutionPanelProps) {
+  const { t } = useLanguage()
   const isCorrect = selectedAnswer === question.answer
   const wasSkipped = !selectedAnswer
 
@@ -67,7 +69,7 @@ export function SolutionPanel({
               `}
             >
               {isCorrect
-                ? 'Benar!'
+                ? `${t.quiz.correct}!`
                 : wasSkipped
                   ? 'Tidak Dijawab'
                   : 'Kurang Tepat'}
@@ -105,7 +107,7 @@ export function SolutionPanel({
         onClick={onNext}
         className="w-full flex items-center justify-center gap-2.5 py-3.5 px-5 rounded-xl bg-accent text-white font-sans font-bold text-sm hover:bg-accent-hover transition-all shadow-md hover:shadow-lg"
       >
-        <span>{isLast ? 'Lihat Hasil' : 'Soal Berikutnya'}</span>
+        <span>{isLast ? t.quiz.result : t.quiz.next}</span>
         <ArrowRight size={16} weight="bold" />
       </button>
     </motion.div>

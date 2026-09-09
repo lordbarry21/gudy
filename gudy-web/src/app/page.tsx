@@ -3,7 +3,8 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { useAppStore } from '@/lib/store'
-import { getGreeting, formatStudyTime, calculateProgress } from '@/lib/utils'
+import { formatStudyTime, calculateProgress } from '@/lib/utils'
+import { useLanguage, getGreetingTranslation } from '@/lib/i18n/useLanguage'
 import { StudyTimer } from '@/components/study-timer'
 import {
   Books,
@@ -18,6 +19,7 @@ import Link from 'next/link'
 
 export default function HomePage() {
   const { progress, subjects, initialize, isInitialized } = useAppStore()
+  const { t } = useLanguage()
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
@@ -34,6 +36,8 @@ export default function HomePage() {
       </main>
     )
   }
+
+  const greeting = getGreetingTranslation(t)
 
   const totalTopics = subjects.reduce((sum, s) => sum + s.totalTopics, 0)
   const completedTopics = subjects.reduce((sum, s) => sum + s.completedTopics, 0)
@@ -73,7 +77,7 @@ export default function HomePage() {
         >
           <p className="text-text-secondary text-xs uppercase tracking-wider font-medium mb-1.5 flex items-center gap-1.5">
             <Sparkle className="text-accent" size={14} weight="fill" />
-            <span>{getGreeting()}</span>
+            <span>{greeting}</span>
           </p>
           <h1 className="text-3xl lg:text-4xl font-bold text-text-primary tracking-tight">
             {progress.userName || 'Student'}
@@ -99,7 +103,7 @@ export default function HomePage() {
                 <div>
                   <div className="flex items-center justify-between mb-4">
                     <span className="text-xs font-semibold uppercase tracking-wider text-text-muted">
-                      Daily Streak
+                      {t.home.dailyStreak}
                     </span>
                     <div className="w-8 h-8 rounded-lg bg-accent/15 text-accent flex items-center justify-center">
                       <Fire size={18} weight="fill" />
@@ -111,20 +115,20 @@ export default function HomePage() {
                       {progress.streak}
                     </span>
                     <span className="text-xs text-text-muted">
-                      {progress.streak === 1 ? 'day' : 'days'} streak
+                      {progress.streak === 1 ? t.home.day : t.home.days} {t.home.streak}
                     </span>
                   </div>
 
                   <p className="text-xs text-text-secondary leading-relaxed">
                     {progress.streak > 0
-                      ? 'Konsistensi adalah kunci penguasaan materi. Pertahankan!'
-                      : 'Mulai belajar hari ini untuk menyalakan streak belajarmu.'}
+                      ? t.home.maintainStreak
+                      : t.home.startStreak}
                   </p>
                 </div>
 
                 <div className="pt-4 border-t border-border mt-4 flex items-center justify-between text-[11px] text-text-muted">
-                  <span>Target harian</span>
-                  <span className="font-semibold text-text-primary">{progress.dailyGoal} materi / hari</span>
+                  <span>{t.home.target}</span>
+                  <span className="font-semibold text-text-primary">{progress.dailyGoal} {t.home.materialsPerDay}</span>
                 </div>
               </div>
             </motion.div>
@@ -137,7 +141,7 @@ export default function HomePage() {
                 <div className="flex items-center gap-2">
                   <TrendUp size={18} className="text-accent" weight="bold" />
                   <h2 className="text-sm font-semibold text-text-primary">
-                    Overall Progress
+                    {t.home.overallProgress}
                   </h2>
                 </div>
                 <span className="text-lg font-bold text-accent font-mono">
@@ -158,14 +162,14 @@ export default function HomePage() {
                 <div className="flex items-center gap-4">
                   <span className="flex items-center gap-1.5">
                     <span className="w-2 h-2 rounded-full bg-success" />
-                    <span className="text-text-secondary">{completedTopics} dikuasai</span>
+                    <span className="text-text-secondary">{completedTopics} {t.home.topicsCompleted}</span>
                   </span>
                   <span className="flex items-center gap-1.5">
                     <span className="w-2 h-2 rounded-full bg-border-hover" />
-                    <span className="text-text-secondary">{totalTopics - completedTopics} tersisa</span>
+                    <span className="text-text-secondary">{totalTopics - completedTopics} {t.home.topicsRemaining}</span>
                   </span>
                 </div>
-                <span>Total {totalTopics} topik</span>
+                <span>{t.home.totalTopics} {totalTopics}</span>
               </div>
             </div>
           </motion.div>
@@ -174,9 +178,9 @@ export default function HomePage() {
           <motion.div variants={itemVariants}>
             <div className="grid grid-cols-3 gap-4">
               {[
-                { icon: Books, label: 'Topics Done', value: progress.totalTopicsCompleted, color: 'text-success', bg: 'bg-success/10' },
-                { icon: Clock, label: 'Study Time', value: formatStudyTime(progress.totalMinutesSpent), color: 'text-accent', bg: 'bg-accent/10' },
-                { icon: Trophy, label: 'Best Streak', value: `${progress.longestStreak}d`, color: 'text-warning', bg: 'bg-warning/10' },
+                { icon: Books, label: t.home.topicsDone, value: progress.totalTopicsCompleted, color: 'text-success', bg: 'bg-success/10' },
+                { icon: Clock, label: t.home.studyTime, value: formatStudyTime(progress.totalMinutesSpent), color: 'text-accent', bg: 'bg-accent/10' },
+                { icon: Trophy, label: t.home.bestStreak, value: `${progress.longestStreak}d`, color: 'text-warning', bg: 'bg-warning/10' },
               ].map((stat, i) => (
                 <motion.div
                   key={stat.label}
@@ -200,13 +204,13 @@ export default function HomePage() {
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-sm font-semibold text-text-primary flex items-center gap-2">
                 <Sparkle size={16} className="text-accent" weight="fill" />
-                <span>Mata Pelajaran Silabus</span>
+                <span>{t.home.subjects}</span>
               </h2>
               <Link
                 href="/learn"
                 className="text-xs text-accent hover:text-accent-dark font-medium transition-colors flex items-center gap-1 group"
               >
-                <span>Lihat Semua</span>
+                <span>{t.home.viewAll}</span>
                 <ArrowRight size={13} className="group-hover:translate-x-0.5 transition-transform" />
               </Link>
             </div>
@@ -234,7 +238,7 @@ export default function HomePage() {
                             </span>
                           </div>
                           <p className="text-xs text-text-muted truncate mb-2">
-                            {subject.completedTopics} / {subject.totalTopics} materi selesai
+                            {subject.completedTopics} / {subject.totalTopics} {t.home.materialsCompleted}
                           </p>
                           <div className="h-1.5 bg-surface-elevated rounded-full overflow-hidden">
                             <div

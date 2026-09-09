@@ -7,10 +7,9 @@ import {
   CheckCircle,
   XCircle,
   Clock,
-  ArrowRight,
   ArrowCounterClockwise,
-  X,
 } from '@phosphor-icons/react'
+import { useLanguage } from '@/lib/i18n/useLanguage'
 import { QuizAttempt, QuizQuestion } from '@/types'
 
 interface QuizResultProps {
@@ -26,6 +25,8 @@ export function QuizResult({
   onRetry,
   onClose,
 }: QuizResultProps) {
+  const { t } = useLanguage()
+
   const getScoreColor = (score: number) => {
     if (score >= 80) return 'text-success'
     if (score >= 60) return 'text-warning'
@@ -109,7 +110,7 @@ export function QuizResult({
           <p className="text-2xl font-bold text-success">
             {attempt.correctAnswers}
           </p>
-          <p className="text-xs text-text-secondary">Benar</p>
+          <p className="text-xs text-text-secondary">{t.quiz.correct}</p>
         </div>
 
         {/* Wrong */}
@@ -122,7 +123,7 @@ export function QuizResult({
           <p className="text-2xl font-bold text-error">
             {attempt.wrongAnswers}
           </p>
-          <p className="text-xs text-text-secondary">Salah</p>
+          <p className="text-xs text-text-secondary">{t.quiz.incorrect}</p>
         </div>
 
         {/* Skipped */}
@@ -138,7 +139,7 @@ export function QuizResult({
       {/* Duration */}
       <div className="flex items-center justify-center gap-2 text-sm text-text-secondary">
         <Clock size={16} />
-        <span>Waktu: {formatDuration(attempt.startedAt, attempt.completedAt)}</span>
+        <span>{t.quiz.estimatedTime}: {formatDuration(attempt.startedAt, attempt.completedAt)}</span>
       </div>
 
       {/* Actions */}
@@ -148,7 +149,7 @@ export function QuizResult({
           className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-accent text-white font-semibold text-sm hover:bg-accent-hover transition-colors"
         >
           <ArrowCounterClockwise size={18} />
-          <span>Coba Lagi</span>
+          <span>{t.quiz.retry}</span>
         </button>
 
         <button
@@ -156,7 +157,7 @@ export function QuizResult({
           className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-surface-elevated border border-border text-text-primary font-semibold text-sm hover:bg-surface transition-colors"
         >
           <Trophy size={18} />
-          <span>Kembali ke Practice</span>
+          <span>{t.quiz.backToPractice}</span>
         </button>
       </div>
     </motion.div>

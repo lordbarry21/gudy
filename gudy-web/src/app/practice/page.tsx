@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { useRouter } from 'next/navigation'
 import { useAppStore } from '@/lib/store'
 import { loadQuizData } from '@/lib/quiz-data'
+import { useLanguage } from '@/lib/i18n/useLanguage'
 import { AuthModal } from '@/components/auth/AuthModal'
 import {
   QuizCard,
@@ -37,6 +38,7 @@ type PracticeExam = {
 export default function PracticePage() {
   const router = useRouter()
   const { subjects, initialize, isInitialized } = useAppStore()
+  const { t } = useLanguage()
   const { user, loading: authLoading } = useAuth()
   const [mounted, setMounted] = useState(false)
   const [selectedSubject, setSelectedSubject] = useState<string>('all')
@@ -211,15 +213,15 @@ export default function PracticePage() {
               {/* Label Badge */}
               <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-sans font-semibold tracking-wide bg-accent/10 text-accent mb-3">
                 <Sparkle size={12} weight="fill" />
-                <span>Bank Soal & Ujian Mandiri Resmi (Target 100)</span>
+                <span>{t.practice.questionBank}</span>
               </div>
               {/* Main Title - Fraunces Display */}
               <h1 className="font-display text-4xl lg:text-5xl font-bold text-text-primary tracking-tight leading-tight mb-2 text-shadow-soft">
-                Latihan Soal & Ujian
+                {t.practice.title}
               </h1>
               {/* Subtitle - Source Serif for reading */}
               <p className="font-serif text-lg text-text-secondary leading-relaxed max-w-xl">
-                Kumpulkan dan asah kemampuan dengan soal-soal interaktif per subkategori
+                {t.practice.subtitle}
               </p>
             </div>
             <div className="flex items-center gap-3">
@@ -237,14 +239,14 @@ export default function PracticePage() {
                   className="flex items-center gap-2 font-sans text-xs font-medium text-text-muted bg-surface border border-border rounded-xl px-3.5 py-2.5 hover:text-accent hover:border-accent/50 transition-colors"
                 >
                   <SignIn size={14} />
-                  <span>Login untuk simpan progress</span>
+                  <span>{t.practice.loginToSave}</span>
                 </button>
               )}
 
               {/* Stats */}
               <div className="flex items-center gap-2 font-sans text-xs font-medium text-text-muted bg-surface border border-border rounded-xl px-3.5 py-2.5">
                 <Books size={16} className="text-accent" />
-                <span>{practiceList.length} Paket Tersedia</span>
+                <span>{practiceList.length} {t.practice.packagesAvailable}</span>
               </div>
             </div>
           </div>
@@ -262,21 +264,21 @@ export default function PracticePage() {
               <p className="font-display text-2xl font-bold text-text-primary tracking-tight">
                 {quizStats.averageScore}%
               </p>
-              <p className="font-sans text-xs text-text-muted mt-1 font-medium">Rata-rata Skor</p>
+              <p className="font-sans text-xs text-text-muted mt-1 font-medium">{t.practice.averageScore}</p>
             </div>
             <div className="bg-surface border border-border rounded-xl p-5 text-center">
               <CheckCircle size={22} className="text-success mx-auto mb-2" />
               <p className="font-display text-2xl font-bold text-text-primary tracking-tight">
                 {quizStats.totalQuizzesTaken}
               </p>
-              <p className="font-sans text-xs text-text-muted mt-1 font-medium">Quiz Dikerjakan</p>
+              <p className="font-sans text-xs text-text-muted mt-1 font-medium">{t.practice.quizzesCompleted}</p>
             </div>
             <div className="bg-surface border border-border rounded-xl p-5 text-center">
               <Sparkle size={22} className="text-accent mx-auto mb-2" />
               <p className="font-display text-2xl font-bold text-text-primary tracking-tight">
                 {quizStats.categoriesPlayed}
               </p>
-              <p className="font-sans text-xs text-text-muted mt-1 font-medium">Kategori Dimainkan</p>
+              <p className="font-sans text-xs text-text-muted mt-1 font-medium">{t.practice.categoriesPlayed}</p>
             </div>
           </motion.div>
         )}
@@ -289,7 +291,7 @@ export default function PracticePage() {
           />
           <input
             type="text"
-            placeholder="Cari paket latihan soal (misal: Aljabar, Vieta, Sanctum, Limit, Reading)..."
+            placeholder={t.practice.searchPlaceholder}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full pl-11 pr-12 py-3.5 rounded-xl bg-surface border border-border font-sans text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all"
@@ -299,7 +301,7 @@ export default function PracticePage() {
               onClick={() => setSearchQuery('')}
               className="absolute right-4 top-1/2 -translate-y-1/2 font-sans text-xs font-medium text-text-muted hover:text-text-primary transition-colors"
             >
-              Hapus
+              {t.practice.delete}
             </button>
           )}
         </div>
@@ -319,7 +321,7 @@ export default function PracticePage() {
                 : 'bg-surface border border-border text-text-secondary hover:text-text-primary hover:bg-surface-elevated'
             }`}
           >
-            Semua ({practiceList.length})
+            {t.practice.all} ({practiceList.length})
           </button>
           {subjects.map((subject) => {
             const count = practiceList.filter((e) => e.subjectId === subject.id).length
@@ -382,10 +384,10 @@ export default function PracticePage() {
           <div className="text-center py-16 bg-surface border border-border rounded-2xl p-8">
             <Lightning size={40} className="mx-auto text-text-muted mb-3" />
             <h3 className="font-semibold text-text-primary text-base mb-1">
-              Tidak Ada Paket Soal Ditemukan
+              {t.practice.noPackagesFound}
             </h3>
             <p className="text-text-secondary text-xs">
-              Coba sesuaikan kata kunci pencarian atau pilih subjek yang lain.
+              {t.practice.tryDifferentKeywords}
             </p>
           </div>
         )}

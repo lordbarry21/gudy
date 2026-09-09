@@ -62,15 +62,6 @@ export const APP_INFO = {
   version: '1.0.0',
 } as const
 
-// Navigation
-export const NAV_ITEMS = [
-  { label: 'Home', href: '/', icon: 'house' },
-  { label: 'Learn', href: '/learn', icon: 'book-open' },
-  { label: 'Progress', href: '/progress', icon: 'chart-line-up' },
-  { label: 'Practice', href: '/practice', icon: 'lightning' },
-  { label: 'Profile', href: '/profile', icon: 'user' },
-] as const
-
 // Achievement Definitions
 export const ACHIEVEMENTS_DATA: Array<{
   id: string

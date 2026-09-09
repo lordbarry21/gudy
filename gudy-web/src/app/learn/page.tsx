@@ -4,11 +4,13 @@ import { useEffect, useState } from 'react'
 import { motion } from 'motion/react'
 import { useAppStore } from '@/lib/store'
 import { calculateProgress } from '@/lib/utils'
+import { useLanguage } from '@/lib/i18n/useLanguage'
 import Link from 'next/link'
 import { ArrowRight, Trophy, CalendarCheck, Sparkle, CaretDown } from '@phosphor-icons/react'
 
 export default function LearnPage() {
   const { subjects, topics, initialize, isInitialized } = useAppStore()
+  const { t } = useLanguage()
   const [mounted, setMounted] = useState(false)
   const [showRoadmap, setShowRoadmap] = useState(false)
 
@@ -109,18 +111,18 @@ export default function LearnPage() {
           <div className="flex flex-wrap items-center gap-2 mb-2">
             <span className="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-accent/15 text-accent flex items-center gap-1.5">
               <Trophy size={13} weight="fill" />
-              <span>Target Nilai 100 & Medali Kompetisi</span>
+              <span>{t.learn.targetScore}</span>
             </span>
             <span className="px-2.5 py-1 rounded-full text-[11px] font-medium bg-surface-elevated text-text-muted border border-border">
-              {totalMastered}/{totalLeafCount} Unit Dikuasai
+              {totalMastered}/{totalLeafCount} {t.learn.unitsMastered}
             </span>
           </div>
 
           <h1 className="text-3xl lg:text-4xl font-bold text-text-primary tracking-tight mb-2">
-            Silabus Pembelajaran
+            {t.learn.title}
           </h1>
           <p className="text-text-secondary text-sm">
-            5 Bidang Keahlian, 29 Subkategori, dan 88 Unit Materi Terstruktur
+            {t.learn.subtitle}
           </p>
         </motion.div>
 
@@ -165,7 +167,7 @@ export default function LearnPage() {
                     {/* Progress Section */}
                     <div className="space-y-2.5 pt-4 border-t border-border">
                       <div className="flex items-center justify-between text-xs">
-                        <span className="text-text-muted font-medium">Kemajuan Materi</span>
+                        <span className="text-text-muted font-medium">{t.learn.materialProgress}</span>
                         <span
                           className="font-bold font-mono"
                           style={{ color: subject.color }}
@@ -183,8 +185,8 @@ export default function LearnPage() {
                         />
                       </div>
                       <div className="flex items-center justify-between text-[11px] text-text-muted">
-                        <span>{subject.completedTopics} dikuasai</span>
-                        <span>{subject.totalTopics} unit materi</span>
+                        <span>{subject.completedTopics} {t.learn.mastered}</span>
+                        <span>{subject.totalTopics} {t.learn.units}</span>
                       </div>
                     </div>
                   </div>
@@ -212,11 +214,11 @@ export default function LearnPage() {
               </div>
               <div>
                 <h3 className="text-sm font-semibold text-text-primary flex items-center gap-2">
-                  <span>Roadmap 6 Bulan Menuju Skor 100 & Medali</span>
+                  <span>{t.learn.sixMonthRoadmap}</span>
                   <Sparkle size={14} className="text-accent" weight="fill" />
                 </h3>
                 <p className="text-[11px] text-text-muted">
-                  Panduan pentahapan belajar dari fondasi hingga hari-H asesmen
+                  {t.learn.roadmapGuide}
                 </p>
               </div>
             </div>
